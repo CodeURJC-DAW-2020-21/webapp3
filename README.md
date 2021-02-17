@@ -58,7 +58,7 @@ The application has three types of users, which are:
 
   * **Anonymous user:** Users who are not registered will only be able to view the available categories and the plans they contain.
   
-  * **Registered user:** The registered user, like the *anonymous user*, are able to view the categories and the plans that contains them. In addition, they can edit their profile data except email, which will be unchangeable once the user register it; mark a plan as completed, view their profile information both on the web and in PDF format if they want to, choose favorite category(ies) and observe the progress for each category, represented in multiple charts which will be explained in the section ***Charts***. Finally, you can write a suggestion email to the administrator user.
+  * **Registered user:** The registered user, like the *anonymous user*, are able to view the categories and the plans that contains them. In addition, they can edit their profile data except email, which will be unchangeable once the user register it; mark a plan as completed, view their profile information both on the web and in PDF format if they want to, choose favorite category(ies) and observe the progress for each category, represented in multiple charts which will be explained in the section ***Charts***. Finally, they will receive an email when a tree in a category achieve a specific height.
   
   * **Administrator user:** This user is allowed, in addition to the functionalities described for the previous type of user, to control the record of plans made by users marking them as incompleted, and adding / editing categories and plans .
   
@@ -76,29 +76,30 @@ The web application will contain one or more images for each entity to increase 
 ## Charts
 The application will have four charts. These will only be visible to *Registered users* and *Administrator users*.
 
-  - The first one will show the number of completed tasks per category for each user, revealed through a *Radar chart*.
   
-    <img src="Stage 0 images/Radar Chart.png" width="350" height="300">
-  
-  - The second will show the number of *likes* for each category. This information will be displayed in a *Doughnut chart*.
+  - The first will show the number of *likes* for each category. This information will be displayed in a *Doughnut chart*.
   
     <img src="Stage 0 images/Doughnut Chart.png" width="300" height="230">
   
-  - The third chart will show the activity during the current year through a calendar view where it will be indicated by a color code based on gradients if the user has been active.
-  
-   <img src="Stage 0 images/Calendar Chart.png" width="650" height="300">
-  
-  - The fourth will illustrate through a *Bar chart* the height of the tree in relation to its category.
+  - The second will illustrate through a *Bar chart* the height of the tree in relation to its category.
   
     <img src="Stage 0 images/Bar Chart.png" width="700" height="500">
+    
+  - The third one will show the number of completed tasks per category for each user, revealed through a *Radar chart*.
+  
+    <img src="Stage 0 images/Radar Chart.png" width="350" height="300">
+    
+  - The fourth chart will show the activity during the current year through a calendar view where it will be indicated by a color code based on gradients if the user has been active. **(Optional)**
+  
+   <img src="Stage 0 images/Calendar Chart.png" width="650" height="300">
 
     
- ## Complementary Tecnologies
+ ## Complementary Technologies
 Complementary technologies to be used are:
 
-  * **Sending emails to users:** Registered users will receive an email when they register in the application to confirm said email and *Registered users* can make suggestions to *Administrator users* by email.
+  * **Sending emails to users:** Registered users will receive an email when they register in the application to confirm said email and also they will receive an email when a tree in a category achieve a specific height. 
   
-  * **PDFs Generation:** The user may require the system to view and save all their profile information and progress in the application in PDF format.
+  * **PDFs Generation:** The user may require the system to view and save all their profile information and progress in the application in PDF format. **(Optional)**
  
  ## Algorithm or advanced query
   - An algorithm will be used to calculate the height of the tree, which it increases in relation to the plan's completion. Their new height will be defined by calculating its increase proportionally to the difficulty of the task and decreasing when the plans are uncompleted.

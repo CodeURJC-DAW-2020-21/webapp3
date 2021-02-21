@@ -3,9 +3,8 @@
 --------------------------------------------------------------*/
 
 body{
-    background-image: repeating-linear-gradient(135deg, rgba(0,0,0,0.03) 0px, rgba(0,0,0,0.03) 2px,transparent 2px, transparent 4px),linear-gradient(45deg, rgb(18, 105, 233),rgb(166, 255, 155));;
+    background-image: repeating-linear-gradient(63deg, rgba(1, 224, 239, 0.38) 0px, rgba(1,224,239, 0.38) 1px,transparent 1px, transparent 11px,rgba(1,224,239, 0.38) 11px, rgba(1,224,239, 0.38) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(18deg, rgba(1,224,239, 0.38) 0px, rgba(1,224,239, 0.38) 1px,transparent 1px, transparent 11px,rgba(1,224,239, 0.38) 11px, rgba(1,224,239, 0.38) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(153deg, rgba(1,224,239, 0.38) 0px, rgba(1,224,239, 0.38) 1px,transparent 1px, transparent 11px,rgba(1,224,239, 0.38) 11px, rgba(1,224,239, 0.38) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(108deg, rgba(1,224,239, 0.38) 0px, rgba(1,224,239, 0.38) 1px,transparent 1px, transparent 11px,rgba(1,224,239, 0.38) 11px, rgba(1,224,239, 0.38) 12px,transparent 12px, transparent 32px),linear-gradient(108deg, rgba(1,224,239, 0.38),rgb(255,255,255));
 }
-
 canvas{
     max-width: 100%;
     max-height: 100%;
@@ -14,7 +13,7 @@ canvas{
 @media (max-width: 700px) {
     .chart{
         margin-top: 1em;
-        padding-top: 1em;
+        margin-left: 1.5em;
     }
 }
 
@@ -22,6 +21,7 @@ canvas{
     display: flex;
     width: 100%;
     justify-content: space-around;
+    background-color: #ffffff;
 }
 
 
@@ -41,16 +41,15 @@ canvas{
     border-radius: 10px;
     overflow: hidden;
     font-family: "Nunito", sans-serif;
+    padding-bottom: 10%;
 }
 
-.card-header{
-    background: #000000;
+.card-header {
+    background-image: repeating-linear-gradient(123deg, rgba(255,255,255, 0.05) 0px, rgba(255,255,255, 0.05) 1px,transparent 1px, transparent 11px,rgba(255,255,255, 0.05) 11px, rgba(255,255,255, 0.05) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(78deg, rgba(255,255,255, 0.05) 0px, rgba(255,255,255, 0.05) 1px,transparent 1px, transparent 11px,rgba(255,255,255, 0.05) 11px, rgba(255,255,255, 0.05) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(213deg, rgba(255,255,255, 0.05) 0px, rgba(255,255,255, 0.05) 1px,transparent 1px, transparent 11px,rgba(255,255,255, 0.05) 11px, rgba(255,255,255, 0.05) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(168deg, rgba(255,255,255, 0.05) 0px, rgba(255,255,255, 0.05) 1px,transparent 1px, transparent 11px,rgba(255,255,255, 0.05) 11px, rgba(255,255,255, 0.05) 12px,transparent 12px, transparent 32px),linear-gradient(168deg, rgb(0,0,0),rgb(66, 66, 66));
 }
 
 .pic{
     display: inline-block;
-    padding: 10px;
-    background: linear-gradient(130deg, #00f135, #0025fc);
     margin: 10%;
     background-size: 200% 200%;
     animation: animated-gradient 2s linear infinite;
@@ -80,7 +79,7 @@ canvas{
 
 .name{
     color: #ffffff;
-    font-size: 26px;
+    font-size: 22px;
     font-weight: normal;
 }
 
@@ -94,13 +93,13 @@ canvas{
 
 .item{
     flex: 1;
-    font-size: 15px;
-    color: #12a294;
+    font-size: 20px;
+    color: #01E0EF;
     font-weight: bold;
 }
 
 .email{
-    font-size: 24px;
+    font-size: 22px;
     color: #ffffff;
     font-weight: normal;
 }
@@ -110,10 +109,11 @@ canvas{
     margin-top: 5%;
     width: 100%;
     padding: 10px 20px;
+    margin-bottom: 20px;
     font-size: 100%;
     font-weight: 5000;
-    color: #12a294;
-    border-color: #99dec2;
+    color: #009ac6;
+    border-color: #7afdee;
     border-radius: 10px;
     cursor: pointer;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
@@ -123,7 +123,7 @@ canvas{
     position: relative;
     font-family: "Nunito", sans-serif;
     font-weight: bold;
-    border-width: 20px;
+    border-width: 3px;
 
 }
 
@@ -233,6 +233,7 @@ form .btn button{
 .header h1{
     color: #000000;
     font-weight: bold;
+    font-size: 22px;
 }
 
 .section{
@@ -240,13 +241,159 @@ form .btn button{
 }
 
 .section-header h2{
-    color: #ffffff;
+    color: #1150e5;
     font-weight: bold;
+    font-size: 20px;
 }
 
-.chartSeparation{
+
+.chartSeparation {
+    height: 100%;
+}
+
+
+
+.mini{
+    height:1.5em;
+    width:1.5em;
+}
+
+.start{
+    background-color: #008CBA;
+}
+
+.finish{
+    background-color: #4CAF50;
+    display: none;
+
+}
+.leave{
+    background-color: #b8b894;
+    display: none;
+
+}
+
+.like{
+    float: right;
+}
+
+.services .service-box.blue {
+    border-bottom: 3px solid #2db6fa;
+    box-shadow: 0px 0 30px rgb(8, 79, 134);
+}
+
+.services .service-box.orange {
+    border-bottom: 3px solid #f68c09;
+    box-shadow: 0px 0 30px rgb(164, 86, 1);
+}
+
+.services .service-box.green {
+    border-bottom: 3px solid #08da4e;
+    box-shadow: 0px 0 30px rgb(32, 96, 8);
+}
+
+
+.services .service-box.red {
+    border-bottom: 3px solid #e9222c;
+    box-shadow: 0px 0 30px rgba(126, 7, 21,0.4);
+}
+
+.services .service-box.bluenavy{
+    border-bottom: 3px solid #09039d;
+    box-shadow: 0px 0 30px rgba(4, 87, 241, 0.4);
+}
+
+.services .service-box.bluenavy .icon {
+    color: #09039d;
+    background: #d6d5f8;
+}
+
+.services .service-box.purple {
+    border-bottom: 3px solid #9814b8;
+    box-shadow: 0px 0 30px rgb(117, 48, 215);
+}
+
+
+form {
+    display: flex;
+    margin: 10%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0rem 5rem;
+    transition: all 0.2s 0.7s;
+    overflow: hidden;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.title {
+    font-size: 2.2rem;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+.input-field {
+    max-width: 380px;
+    width: 100%;
+    background-color: rgba(153,222,194,0.7);
+    margin: 10px 0;
+    height: 55px;
+    border-radius: 55px;
+    display: grid;
+    grid-template-columns: 15% 85%;
+    padding: 0 0.4rem;
+    position: relative;
+}
+
+.input-field i {
+    text-align: center;
+    line-height: 55px;
+    color: #454343;
+    transition: 0.5s;
+    font-size: 1.1rem;
+}
+
+
+.input-field input {
+    background: none;
+    outline: none;
+    border: none;
+    line-height: 1;
+    font-weight: 600;
+    font-size: 1.1rem;
+    font-family: "Nunito", sans-serif;
+    color: #333;
+}
+
+.input-field input::placeholder {
+    color: #454343;
+    font-weight: 500;
+}
+
+
+.btn-cancel{
+    color: #ffffff;
+    background-color: #ff0505;
+    border-radius: 10px;
+}
+
+.btn-confirm{
+    color: #ffffff;
+    height: 120%;
+    align-content: center;
+    background-color: #539245;
+    border-radius: 10px;
+}
+
+.btn-cancel:hover{
     background-color: #ffffff;
-    margin-top: 2em;
-    border-color: #000000;
-    border-width: 2px;
+    color: #ff0505;
+    border-color: #ff0505;
+}
+
+.btn-confirm:hover{
+    background-color: #ffffff;
+    color: #539245;
+    border-color: #539245;
 }

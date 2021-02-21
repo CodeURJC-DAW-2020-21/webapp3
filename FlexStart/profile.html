@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
           integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
           crossorigin="anonymous"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="javaScriptCode/graphics.js"></script>
@@ -44,10 +45,9 @@
     ======================================================== -->
 </head>
 
-<body>
+<body onload="createCharts()">
 
 <!-- ======= Header ======= -->
-
 <section>
     <header id="header" class="header fixed-top">
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
@@ -58,10 +58,10 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto" href="#hero">Home</a></li>
+                    <li><a class="nav-link scrollto" href=./index.html>Home</a></li>
                     <li><a class="nav-link scrollto" href="#">Categories</a></li>
                     <li><a class="nav-link scrollto" href="./AboutUs.html">About us</a></li>
-                    <li><a class="nav-link scrollto active" href=./ProfileView.html><i class="ri-user-fill icon" style="font-size: 2em"></i></a></li>
+                    <li><a class="nav-link scrollto active" href=ProfileView.html><i class="ri-user-fill icon" style="font-size: 2em"></i></a></li>
                     <li><a class="getstarted scrollto" href="#">Sign up</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
@@ -80,7 +80,7 @@
 
             <div class="row">
 
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-3 col-md-6">
 
                     <div class="profile-card">
                         <div class="card-header">
@@ -100,9 +100,33 @@
                             </div>
 							
                         </div>
-                    
-					</div>
-					
+                    </div>
+
+                </div>
+                <div class="col-lg-9 col-md-6 charts">
+
+                    <div class="row wrapper">
+                        <div class="col-lg-6 chartSeparation">
+                            <div id="doughnut">
+                                <canvas id="Doughnut-chart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 chartSeparation">
+                            <div id="barChart">
+                                <canvas id="bar-chart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 chartSeparation">
+                            <div id="radar-chart">
+                                <canvas id="radarChart"></canvas>
+                            </div>
+
+                        </div>
+
+                    </div>
+
                 </div>
 
             </div>
@@ -180,6 +204,7 @@
 
     </section><!-- End Services Section -->
 
+
 </main>
 
 
@@ -191,7 +216,8 @@
 <script src="assets/vendor/aos/aos.js"></script>
 <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script src="https://www.gstatic.com/charts/loader.js"></script>
 
 <!-- Template Main JS File -->
 <script src="assets/js/main.js"></script>

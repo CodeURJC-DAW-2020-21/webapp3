@@ -2406,7 +2406,35 @@ header a:hover:after {
   color: #012970;
 }
 
+.mini{
+	height:2em;
+	width:auto;
+}
+
+.start{
+	background-color: #008CBA;
+}
+	
+.finish{
+	background-color: #4CAF50;
+	  display: none;
+
+}
+.leave{
+	background-color: #b8b894;
+	display: none;
+
+}
+
 .divided{
   padding-top:3em;
   padding-bottom: 5em;
+}
+
+.like{
+	float: right;
+	height:1em;
+}
+.subtitle {
+  padding-top: 25px;
 }

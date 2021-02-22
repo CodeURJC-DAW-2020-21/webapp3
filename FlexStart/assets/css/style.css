@@ -2410,3 +2410,14 @@ header a:hover:after {
   padding-top:3em;
   padding-bottom: 5em;
 }
+
+#progress {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+@media (max-width: 770px) {
+  .imagenArbol {
+    margin-left: 1em;
+  }
+}

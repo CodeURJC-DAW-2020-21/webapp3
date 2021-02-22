@@ -3,8 +3,9 @@
 --------------------------------------------------------------*/
 
 body{
-    background-image: repeating-linear-gradient(63deg, rgba(1, 224, 239, 0.38) 0px, rgba(1,224,239, 0.38) 1px,transparent 1px, transparent 11px,rgba(1,224,239, 0.38) 11px, rgba(1,224,239, 0.38) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(18deg, rgba(1,224,239, 0.38) 0px, rgba(1,224,239, 0.38) 1px,transparent 1px, transparent 11px,rgba(1,224,239, 0.38) 11px, rgba(1,224,239, 0.38) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(153deg, rgba(1,224,239, 0.38) 0px, rgba(1,224,239, 0.38) 1px,transparent 1px, transparent 11px,rgba(1,224,239, 0.38) 11px, rgba(1,224,239, 0.38) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(108deg, rgba(1,224,239, 0.38) 0px, rgba(1,224,239, 0.38) 1px,transparent 1px, transparent 11px,rgba(1,224,239, 0.38) 11px, rgba(1,224,239, 0.38) 12px,transparent 12px, transparent 32px),linear-gradient(108deg, rgba(1,224,239, 0.38),rgb(255,255,255));
+    background-color: #e7f1ff;
 }
+
 canvas{
     max-width: 100%;
     max-height: 100%;
@@ -396,4 +397,8 @@ form {
     background-color: #ffffff;
     color: #539245;
     border-color: #539245;
+}
+
+.completedTasks{
+  background-color: #ffffff;
 }

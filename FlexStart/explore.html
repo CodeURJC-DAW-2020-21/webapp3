@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Growing - Welcome</title>
+  <meta content="" name="description">
+
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+ 
+ <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <!-- jquery  -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- =======================================================
+  * Template Name: FlexStart - v1.1.1
+  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="images/growingLogo.png" alt="">
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#categories">Categories</a></li>
+          <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
+          <li><a class="nav-link scrollto" href="#team">Team</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a class="nav-link scrollto" href="#team">Sign in</a></li>
+          <li><a class="getstarted scrollto" href="#about">Sign up</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+
+    <!-- ======= F.A.Q Section ======= -->
+  <section id="faq" class="faq">
+
+      <div class="container" data-aos="fade-left">
+
+        <header class="section-header category">
+          <div class="justify-content-center">
+            <h1>Explore</h1>
+            <h2 class="subtitle">A random selection of our plans for your pleasure</h2>
+          </div>
+        </header>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <!-- F.A.Q List 1-->
+            <div class="accordion accordion-flush" id="faqlist1">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
+                    <div class="service-box orange">
+                      <i class="ri-home-2-line icon"></i>
+                    </div>Clean up your room<img src="./assets/img/level/greenFlag.png" class="icon mini"/>
+                  </button>
+                </h2>
+                <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+                  <div class="accordion-body">
+                    Everyone forgets to clean his room for one week or two, today is the day to do it.
+					<div class="container">
+					<div class="row">
+						<div class="col-6">
+							<button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
+							<button onclick="ChangeButtonsStatus(this)"class="finish">I did it!</button>
+							<button onclick="ChangeButtonsStatus(this)"class="leave">I won't finish</button>
+						</div>
+						<div class="col-6">
+							<h2><img src="./assets/img/level/EmptyHeart.png" class="like icon mini" onclick="ChangeHeart(this)"/></h2>
+						</div>
+					</div>
+					</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-2">
+                    <div class="service-box blue">
+                      <i class="ri-mental-health-line icon"></i>
+                    </div>Sit down and relax 10 minutes<img src="./assets/img/level/greenFlag.png" class="icon mini"/>
+					</button>
+                </h2>
+                <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+                  <div class="accordion-body">
+                    Come on, you are not superman, everybody needs some relax time.
+					<div class="container">
+					<div class="row">
+						<div class="col-6">
+							<button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
+							<button onclick="ChangeButtonsStatus(this)"class="finish">I did it!</button>
+							<button onclick="ChangeButtonsStatus(this)"class="leave">I won't finish</button>
+						</div>
+						<div class="col-6">
+							<h2><img src="./assets/img/level/EmptyHeart.png" class="like icon mini" onclick="ChangeHeart(this)"/></h2>
+						</div>
+					</div>
+					</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3">
+                    <div class="service-box blue">
+                      <i class="ri-mental-health-line icon"></i>
+                    </div>Read for a while<img src="./assets/img/level/yellowFlag.png" class="icon mini"/>
+					</button>
+                </h2>
+                <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+                  <div class="accordion-body">
+                    Even if you are feeling down, reading a book is a good way to grow as a person
+					<div class="container">
+					<div class="row">
+						<div class="col-6">
+							<button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
+							<button onclick="ChangeButtonsStatus(this)"class="finish">I did it!</button>
+							<button onclick="ChangeButtonsStatus(this)"class="leave">I won't finish</button>
+						</div>
+						<div class="col-6">
+							<h2><img src="./assets/img/level/EmptyHeart.png" class="like icon mini" onclick="ChangeHeart(this)"/></h2>
+						</div>
+					</div>
+					</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+
+            <!-- F.A.Q List 2-->
+            <div class="accordion accordion-flush" id="faqlist2">
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-1">
+                    <div class="service-box red">
+                      <i class="ri-run-line icon"></i>
+                    </div>Go out for a walk<img src="./assets/img/level/yellowFlag.png" class="icon mini"/>
+                  </button>
+                </h2>
+                <div id="faq2-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
+                  <div class="accordion-body">
+                    Almost all philosophers recognise that going for a walk makes miracles for people struggling in something, come on, 20 minutes, in and out.
+					<div class="container">
+					<div class="row">
+						<div class="col-6">
+							<button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
+							<button onclick="ChangeButtonsStatus(this)"class="finish">I did it!</button>
+							<button onclick="ChangeButtonsStatus(this)"class="leave">I won't finish</button>
+						</div>
+						<div class="col-6">
+							<h2><img src="./assets/img/level/EmptyHeart.png" class="like icon mini" onclick="ChangeHeart(this)"/></h2>
+						</div>
+					</div>
+					</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-2">
+                    <div class="service-box green">
+                    <i class="ri-money-euro-circle-line icon"></i>
+                  </div> Create a home-bank<img src="./assets/img/level/greenFlag.png" class="icon mini"/>
+                  </button>
+                </h2>
+                <div id="faq2-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
+                  <div class="accordion-body">
+                    It is as easy as putting a label on a jar saying "Money", you can use it for new challenges. Just..., you know, keep it away from the windows.
+					<div class="container">
+					<div class="row">
+						<div class="col-6">
+							<button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
+							<button onclick="ChangeButtonsStatus(this)"class="finish">I did it!</button>
+							<button onclick="ChangeButtonsStatus(this)"class="leave">I won't finish</button>
+						</div>
+						<div class="col-6">
+							<h2><img src="./assets/img/level/EmptyHeart.png" class="like icon mini" onclick="ChangeHeart(this)"/></h2>
+						</div>
+					</div>
+					</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-3">
+                    <div class="service-box bluenavy">
+                      <i class="ri-hotel-bed-fill icon"></i>
+                    </div> Go to bed early<img src="./assets/img/level/redFlag.png" class="icon mini"/>
+                  </button>
+                </h2>
+                <div id="faq2-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
+                  <div class="accordion-body">
+                    Nothing helps more a person than getting a good night of sleep, we all know you would like to watch Instagram reels or Tik Toks, but this is better for you, trust me.
+					<div class="container">
+					<div class="row">
+						<div class="col-6">
+							<button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
+							<button onclick="ChangeButtonsStatus(this)"class="finish">I did it!</button>
+							<button onclick="ChangeButtonsStatus(this)"class="leave">I won't finish</button>
+						</div>
+						<div class="col-6">
+							<h2><img src="./assets/img/level/EmptyHeart.png" class="like icon mini" onclick="ChangeHeart(this)"/></h2>
+						</div>
+					</div>
+					</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+			<img src="./assets/img/spinner.gif" class="mini">loading more plans</img>
+        </div>
+      </div>
+    </section><!-- End F.A.Q Section -->
+
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>FlexStart</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

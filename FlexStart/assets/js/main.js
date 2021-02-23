@@ -290,15 +290,15 @@
 
 
 function ChangeButtonsStatus(obj){
-		$(obj).fadeToggle("fast", function(){
-			$(obj).siblings("button").fadeToggle("slow");
-		})
-    }
-	
+  $(obj).fadeToggle("fast", function(){
+    $(obj).siblings("button").fadeToggle("slow");
+  })
+}
+
 function ChangeHeart(obj){
-	if ($(obj).attr("src")=="./assets/img/level/EmptyHeart.png"){
-		$(obj).attr("src","./assets/img/level/FullHeart.png");
-	}else{
-		$(obj).attr("src","./assets/img/level/EmptyHeart.png");
-	}
+  if ($(obj).attr("src")==="./assets/img/level/EmptyHeart.png"){
+    $(obj).attr("src","./assets/img/level/FullHeart.png");
+  }else{
+    $(obj).attr("src","./assets/img/level/EmptyHeart.png");
+  }
 }

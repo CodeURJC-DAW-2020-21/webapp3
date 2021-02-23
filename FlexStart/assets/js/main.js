@@ -302,4 +302,3 @@ function ChangeHeart(obj){
     $(obj).attr("src","./assets/img/level/EmptyHeart.png");
   }
 }
-

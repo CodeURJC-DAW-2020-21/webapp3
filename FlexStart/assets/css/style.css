@@ -2433,18 +2433,6 @@ header a:hover:after {
   padding-top: 25px;
 }
 
-.plan1{
-  justify-content: space-evenly;
-}
-
-.masinfo {
-  float: right;
-}
-
-#info1 {
-  justify-content: space-evenly;
-}
-
 #progress {
   max-width: 100%;
   overflow: hidden;
@@ -2475,6 +2463,7 @@ header a:hover:after {
   border-radius: 8px;
   box-shadow: 0 5px #999;
 }
+
 .start:hover {background-color: #0d776d
 }
 
@@ -2499,6 +2488,7 @@ header a:hover:after {
   border-radius: 8px;
   box-shadow: 0 5px #999;
 }
+
 .finish:hover {background-color: #15bc1e
 }
 
@@ -2523,6 +2513,7 @@ header a:hover:after {
   border-radius: 8px;
   box-shadow: 0 5px #999;
 }
+
 .leave:hover {background-color: #d9631e
 }
 

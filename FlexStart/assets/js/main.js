@@ -288,11 +288,9 @@
 
 })();
 
-
 function ChangeButtonsStatus(obj){
-  $(obj).fadeToggle("fast", function(){
-    $(obj).siblings("button").fadeToggle("slow");
-  })
+  $(obj).fadeToggle("fast", () =>
+      $(obj).siblings("button").fadeToggle("slow"));
 }
 
 function ChangeHeart(obj){

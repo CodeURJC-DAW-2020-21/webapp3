@@ -39,7 +39,7 @@ section {
   overflow: hidden;
 }
 .subtitle {
-  padding: 25px;
+  padding-top: 25px;
 }
 
 .section-header {
@@ -1812,6 +1812,10 @@ header a:hover:after {
   text-align: center;
   font-size: 13px;
   color: #012970;
+}
+.mini{
+  height:1em;
+  width:auto;
 }
 
 #loading {

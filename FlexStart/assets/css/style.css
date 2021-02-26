@@ -274,6 +274,7 @@ header a:hover:after {
 
 .navbar a:hover, .navbar .active, .navbar li:hover > a {
   color: #12a294;
+
 }
 
 .navbar .getstarted {
@@ -285,7 +286,7 @@ header a:hover:after {
 }
 
 .navbar .sign_out{
-  background: #a40000;
+  background: #ff0000;
   padding: 8px 20px;
   margin-left: 30px;
   border-radius: 4px;
@@ -294,9 +295,9 @@ header a:hover:after {
 }
 
 .navbar .sign_out:hover {
-  color: #a40000;
-  background: #ffffff;
-  border-color: #a40000;
+  color: white;
+  background: #c10303;
+  border-color: #c10303;
   border-width: 2px;
 }
 
@@ -1863,8 +1864,8 @@ section .team{
 
 
 .like{
-  margin: 10px;
   float: right;
+  padding: 10px;
 }
 
 .subtitle {
@@ -1891,8 +1892,8 @@ section .team{
 }
 
 .mini{
-  height: 1em;
-  width: auto;
+  height:1.5em;
+  width:1.5em;
 }
 
 .start {
@@ -2052,6 +2053,6 @@ section .team{
   color: black;
 }
 
-.su{
-  margin-top: 50px;
+.col-6{
+  padding-top: 5px;
 }

@@ -319,6 +319,7 @@ form .btn button{
 
 .like{
     float: right;
+    padding: 10px;
 }
 
 .services .service-box.blue {

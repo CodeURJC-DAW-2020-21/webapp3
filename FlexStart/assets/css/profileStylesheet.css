@@ -74,14 +74,20 @@ section .services{
     background-image: repeating-linear-gradient(123deg, rgba(255,255,255, 0.05) 0px, rgba(255,255,255, 0.05) 1px,transparent 1px, transparent 11px,rgba(255,255,255, 0.05) 11px, rgba(255,255,255, 0.05) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(78deg, rgba(255,255,255, 0.05) 0px, rgba(255,255,255, 0.05) 1px,transparent 1px, transparent 11px,rgba(255,255,255, 0.05) 11px, rgba(255,255,255, 0.05) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(213deg, rgba(255,255,255, 0.05) 0px, rgba(255,255,255, 0.05) 1px,transparent 1px, transparent 11px,rgba(255,255,255, 0.05) 11px, rgba(255,255,255, 0.05) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(168deg, rgba(255,255,255, 0.05) 0px, rgba(255,255,255, 0.05) 1px,transparent 1px, transparent 11px,rgba(255,255,255, 0.05) 11px, rgba(255,255,255, 0.05) 12px,transparent 12px, transparent 32px),linear-gradient(168deg, rgb(0,0,0),rgb(66, 66, 66));
 }
 
-.card-title{
+.card-header.admin{
+    background-image: repeating-linear-gradient(103deg, rgb(212,175,55) 0px, rgb(212,175,55) 1px,transparent 1px, transparent 11px,rgb(212,175,55) 11px, rgb(212,175,55) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(58deg, rgb(212,175,55) 0px, rgb(212,175,55) 1px,transparent 1px, transparent 11px,rgb(212,175,55) 11px, rgb(212,175,55) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(193deg, rgb(212,175,55) 0px, rgb(212,175,55) 1px,transparent 1px, transparent 11px,rgb(212,175,55) 11px, rgb(212,175,55) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(148deg, rgb(212,175,55) 0px, rgb(212,175,55) 1px,transparent 1px, transparent 11px,rgb(212,175,55) 11px, rgb(212,175,55) 12px,transparent 12px, transparent 32px),linear-gradient(148deg, rgb(212,175,55),rgb(229,228,226));
+}
+
+.card-title.admin{
     font-size: 30px;
     padding-top: 15px;
     font-weight: bold;
-    background: linear-gradient(to right,  #C0C0C0 0%,#D4AF37 50% , #E5E4E2 100%);
+    background: #E5E4E2;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+
 
 .pic{
     display: inline-block;
@@ -118,7 +124,11 @@ section .services{
     font-weight: normal;
 }
 
-
+.name.admin{
+    color: #023198;
+    font-size: 22px;
+    font-weight: bold;
+}
 
 .card-footer{
     background: #f4f4f4;
@@ -133,10 +143,20 @@ section .services{
     font-weight: bold;
 }
 
+.item.admin{
+    color: #000000;
+}
+
 .email{
     font-size: 22px;
     color: #ffffff;
     font-weight: normal;
+}
+
+.email.admin{
+    color: #023198;
+    font-size: 22px;
+    font-weight: bold;
 }
 
 .show-btn{

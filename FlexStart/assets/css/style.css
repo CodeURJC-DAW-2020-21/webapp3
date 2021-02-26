@@ -1338,9 +1338,14 @@ header a:hover:after {
 /*--------------------------------------------------------------
 # Team
 --------------------------------------------------------------*/
+section .team{
+  height: 100vh;
+  padding-bottom: 20px;
+}
+
 .team {
   background: #fff;
-  padding: 60px 0;
+  padding: 60px 0 175px;
 }
 
 .team .member {

@@ -81,531 +81,444 @@
 
 <main>
 
-    <section class="profileContainer d-flex align-items-center container-fluid">
+    <div class="container-fluid">
 
-        <div class="container-fluid">
+        <div class="row">
 
-            <div class="row">
+            <div class="col-lg-1 d-md-block borderScreen"></div>
 
-                <div class="col-lg-4 col-md-5">
-                    <header class="section-header">
-                        <h1>About you</h1>
-                    </header>
-                    <div class="profile-card">
-                        <div class="card-header">
+            <div class="col-lg-10 col-md-12 main">
+                <h1 class="title"> Your account</h1>
+                <div class="container-fluid">
 
-                            <div class="pic">
-                                <img src="assets/img/team/team-3.PNG" alt="">
-                            </div>
+                    <section class="profileContainer d-flex align-items-center">
 
-                            <div class="item">
-                                Nombre:
-                                <div class="name">Jorge Adame Prudencio</div>
-                            </div>
+                        <div class="container-fluid">
 
-                            <div class="item">
-                                Email:
-                                <div class="email">jap@correo.com</div>
-                            </div>
+                            <div class="row">
 
-                            <!-- Button trigger modal -->
-                            <button type="button" class="show-btn" data-toggle="modal"
-                                    data-target="#EditDataModal">
-                                Edit profile
-                            </button>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="EditDataModal" tabindex="-1" aria-labelledby="EditDataModalLabel"
-                                 aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="EditDataModalLabel">Edit data</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="edit-profile">
-                                                <form action="#" class="sign-in-form">
-                                                    <div class="input-field">
-                                                        <i class="fas fa-user"></i>
-                                                        <input type="text" placeholder="Username"/>
-                                                    </div>
-                                                    <div class="input-field">
-                                                        <i class="fas fa-lock"></i>
-                                                        <input type="password" placeholder="Password"/>
-                                                    </div>
-                                                    <div class="input-field">
-                                                        <i class="fas fa-lock"></i>
-                                                        <input type="password" placeholder="Repeat Password"/>
-                                                    </div>
-                                                </form>
+                                <div class="col-lg-3 col-md-4">
+                                    <header class="section-header">
+                                        <h1>About you</h1>
+                                    </header>
+                                    <div class="profile-card">
+                                        <div class="card-header">
+                                            <h1 class="card-title"> Admin account </h1>
+                                            <div class="pic">
+                                                <img src="assets/img/team/team-3.PNG" alt="">
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn-cancel" data-dismiss="modal">
-                                                    Close
-                                                </button>
-                                                <button type="button" class="btn-confirm">Save changes</button>
+
+                                            <div class="item">
+                                                Nombre:
+                                                <div class="name">Jorge Adame Prudencio</div>
                                             </div>
+
+                                            <div class="item">
+                                                Email:
+                                                <div class="email">jap@correo.com</div>
+                                            </div>
+
+                                            <!-- Button trigger-->
+                                            <a href="./editProfile.html" class="show-btn" data-toggle="modal"
+                                               data-target="#EditDataModal">
+                                                <i class="fas fa-user-edit"></i>
+                                            </a>
+
                                         </div>
                                     </div>
+
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+                                <div class="col-lg-9 col-md-8 charts">
+                                    <header class="section-header">
+                                        <h1>Your progress</h1>
+                                    </header>
 
-                </div>
-                <div class="col-lg-8 col-md-7 charts">
-                    <header class="section-header">
-                        <h1>Your progress</h1>
-                    </header>
-
-                    <div class="row wrapper">
-                        <div class="col-lg-6 chartSeparation">
-                            <div id="doughnut">
-                                <canvas id="Doughnut-chart"></canvas>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 chartSeparation">
-                            <div id="barChart">
-                                <canvas id="bar-chart"></canvas>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 chartSeparation">
-                            <div id="radar-chart">
-                                <canvas id="radarChart"></canvas>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- Tasks completed Section-->
-    <section id="taskscompleted" class="services">
-
-        <div class="container" data-aos="fade-left">
-
-            <header class="section-header category">
-                <div class="justify-content-center">
-                    <h1>Categories</h1>
-                    <h2 class="subtitle">Choose a category to see your completed tasks you liked</h2>
-                </div>
-
-            </header>
-
-            <div class="row gy-4">
-
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-box blue">
-                        <i class="ri-mental-health-line icon"></i>
-                        <h3>Mental Health</h3>
-                        <a href="#" class="read-more"><span>Watch</span> <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-box red">
-                        <i class="ri-run-line icon"></i>
-                        <h3>Physical Health</h3>
-                        <a href="#" class="read-more"><span>Watch</span> <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                    <div class="service-box green">
-                        <i class="ri-money-euro-circle-line icon"></i>
-                        <h3>Savings</h3>
-                        <a href="#" class="read-more"><span>Watch</span> <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-                    <div class="service-box bluenavy">
-                        <i class="ri-hotel-bed-fill icon"></i>
-                        <h3>Good Night</h3>
-                        <a href="#" class="read-more"><span>Watch</span> <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-                    <div class="service-box orange">
-                        <i class="ri-home-2-line icon"></i>
-                        <h3>Home</h3>
-                        <a href="#" class="read-more"><span>Watch</span> <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="700">
-                    <div class="service-box purple">
-                        <i class="ri-focus-2-line icon"></i>
-                        <h3>Focus and Effort</h3>
-                        <a href="#" class="read-more"><span>Watch</span> <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section><!-- End Services Section -->
-
-
-    <!-- Tasks completed Section-->
-    <section id="tasks" class="services">
-
-        <div class="container" data-aos="fade-left">
-
-            <header class="section-header category">
-                <div class="justify-content-center">
-                    <h1>Categories</h1>
-                    <h2 class="subtitle">Choose a category to see your completed tasks you liked</h2>
-                </div>
-
-            </header>
-
-            <div class="row gy-4">
-
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-box blue">
-                        <i class="ri-mental-health-line icon"></i>
-                        <h3>Mental Health</h3>
-                        <a href="#" class="read-more"><span>Watch</span> <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-box red">
-                        <i class="ri-run-line icon"></i>
-                        <h3>Physical Health</h3>
-                        <a href="#" class="read-more"><span>Watch</span> <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                    <div class="service-box green">
-                        <i class="ri-money-euro-circle-line icon"></i>
-                        <h3>Savings</h3>
-                        <a href="#" class="read-more"><span>Watch</span> <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-                    <div class="service-box bluenavy">
-                        <i class="ri-hotel-bed-fill icon"></i>
-                        <h3>Good Night</h3>
-                        <a href="#" class="read-more"><span>Watch</span> <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-                    <div class="service-box orange">
-                        <i class="ri-home-2-line icon"></i>
-                        <h3>Home</h3>
-                        <a href="#" class="read-more"><span>Watch</span> <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="700">
-                    <div class="service-box purple">
-                        <i class="ri-focus-2-line icon"></i>
-                        <h3>Focus and Effort</h3>
-                        <a href="#" class="read-more"><span>Watch</span> <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section><!-- End Services Section -->
-
-    <!-- ======= Tasks completed Section ======= -->
-    <section id="faq" class="faq">
-
-        <div class="container" data-aos="fade-up">
-
-            <header class="section-header">
-                <h1>Tasks completed with like</h1>
-                <h2>Here you have the tasks you liked of the seleted category</h2>
-            </header>
-
-            <div class="row completedTasks">
-                <div class="col-lg-6">
-                    <!-- Tasks completed List 1-->
-                    <div class="accordion accordion-flush" id="faqlist1">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#faq-content-1">
-                                    <div class="service-box orange">
-                                        <i class="ri-home-2-line icon"></i>
-                                    </div>
-                                    Clean up your room<img src="./assets/img/level/greenFlag.png" class="icon mini"/>
-                                </button>
-                            </h2>
-                            <div id="faq-content-1" class="accordion-collapse collapse"
-                                 data-bs-parent="#faqlist1">
-                                <div class="accordion-body">
-                                    Everyone forgets to clean his room for one week or two, today is the day to do it.
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
-                                                <button onclick="ChangeButtonsStatus(this)" class="finish">I did it!
-                                                </button>
-                                                <button onclick="ChangeButtonsStatus(this)" class="leave">I won't
-                                                    finish
-                                                </button>
-                                            </div>
-                                            <div class="col-6">
-                                                <h2><img src="./assets/img/level/EmptyHeart.png" class="like icon mini"
-                                                         onclick="ChangeHeart(this)"/></h2>
+                                    <div class="row wrapper">
+                                        <div class="col-lg-6 col-md-12 chartSeparation">
+                                            <div id="doughnut">
+                                                <canvas id="Doughnut-chart"></canvas>
                                             </div>
                                         </div>
+
+                                        <div class="col-lg-6 col-md-12 chartSeparation">
+                                            <div id="barChart">
+                                                <canvas id="bar-chart"></canvas>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-12 chartSeparation">
+                                            <div id="radar-chart">
+                                                <canvas id="radarChart"></canvas>
+                                            </div>
+
+                                        </div>
+
                                     </div>
+
                                 </div>
+
                             </div>
+
                         </div>
 
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#faq-content-2">
+                    </section>
+
+                    <!-- Categories Section-->
+                    <section id="tasks" class="services">
+
+                        <div class="container-fluid" data-aos="fade-left">
+
+                            <header class="section-header category">
+                                <div class="justify-content-center">
+                                    <h1>Categories</h1>
+                                    <h2 class="subtitle">Choose a category to see your completed tasks you liked</h2>
+                                </div>
+
+                            </header>
+
+                            <div class="row gy-4">
+
+                                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                                     <div class="service-box blue">
                                         <i class="ri-mental-health-line icon"></i>
-                                    </div>
-                                    Sit down and relax 10 minutes<img src="./assets/img/level/greenFlag.png"
-                                                                      class="icon mini"/>
-                                </button>
-                            </h2>
-                            <div id="faq-content-2" class="accordion-collapse collapse"
-                                 data-bs-parent="#faqlist1">
-                                <div class="accordion-body">
-                                    Come on, you are not superman, everybody needs some relax time.
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
-                                                <button onclick="ChangeButtonsStatus(this)" class="finish">I did it!
-                                                </button>
-                                                <button onclick="ChangeButtonsStatus(this)" class="leave">I won't
-                                                    finish
-                                                </button>
-                                            </div>
-                                            <div class="col-6">
-                                                <h2><img src="./assets/img/level/EmptyHeart.png" class="like icon mini"
-                                                         onclick="ChangeHeart(this)"/></h2>
-                                            </div>
-                                        </div>
+                                        <h3>Mental Health</h3>
+                                        <a href="#" class="read-more"><span>Watch</span> <i class="bi bi-arrow-right"></i></a>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#faq-content-3">
-                                    <div class="service-box blue">
-                                        <i class="ri-mental-health-line icon"></i>
-                                    </div>
-                                    Read for a while<img src="./assets/img/level/yellowFlag.png" class="icon mini"/>
-                                </button>
-                            </h2>
-                            <div id="faq-content-3" class="accordion-collapse collapse"
-                                 data-bs-parent="#faqlist1">
-                                <div class="accordion-body">
-                                    Even if you are feeling down, reading a book is a good way to grow as a person
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
-                                                <button onclick="ChangeButtonsStatus(this)" class="finish">I did it!
-                                                </button>
-                                                <button onclick="ChangeButtonsStatus(this)" class="leave">I won't
-                                                    finish
-                                                </button>
-                                            </div>
-                                            <div class="col-6">
-                                                <h2><img src="./assets/img/level/EmptyHeart.png" class="like icon mini"
-                                                         onclick="ChangeHeart(this)"/></h2>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="col-lg-6">
-
-                    <!-- Tasks completed List 2-->
-                    <div class="accordion accordion-flush" id="faqlist2">
-
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#faq2-content-1">
+                                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
                                     <div class="service-box red">
                                         <i class="ri-run-line icon"></i>
-                                    </div>
-                                    Go out for a walk<img src="./assets/img/level/yellowFlag.png" class="icon mini"/>
-                                </button>
-                            </h2>
-                            <div id="faq2-content-1" class="accordion-collapse collapse"
-                                 data-bs-parent="#faqlist2">
-                                <div class="accordion-body">
-                                    Almost all philosophers recognise that going for a walk makes miracles for people
-                                    struggling in something, come on, 20 minutes, in and out.
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
-                                                <button onclick="ChangeButtonsStatus(this)" class="finish">I did it!
-                                                </button>
-                                                <button onclick="ChangeButtonsStatus(this)" class="leave">I won't
-                                                    finish
-                                                </button>
-                                            </div>
-                                            <div class="col-6">
-                                                <h2><img src="./assets/img/level/EmptyHeart.png" class="like icon mini"
-                                                         onclick="ChangeHeart(this)"/></h2>
-                                            </div>
-                                        </div>
+                                        <h3>Physical Health</h3>
+                                        <a href="#" class="read-more"><span>Watch</span> <i class="bi bi-arrow-right"></i></a>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#faq2-content-2">
+                                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
                                     <div class="service-box green">
                                         <i class="ri-money-euro-circle-line icon"></i>
-                                    </div>
-                                    Create a home-bank<img src="./assets/img/level/greenFlag.png" class="icon mini"/>
-                                </button>
-                            </h2>
-                            <div id="faq2-content-2" class="accordion-collapse collapse"
-                                 data-bs-parent="#faqlist2">
-                                <div class="accordion-body">
-                                    It is as easy as putting a label on a jar saying "Money", you can use it for new
-                                    challenges. Just..., you know, keep it away from the windows.
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
-                                                <button onclick="ChangeButtonsStatus(this)" class="finish">I did it!
-                                                </button>
-                                                <button onclick="ChangeButtonsStatus(this)" class="leave">I won't
-                                                    finish
-                                                </button>
-                                            </div>
-                                            <div class="col-6">
-                                                <h2><img src="./assets/img/level/EmptyHeart.png" class="like icon mini"
-                                                         onclick="ChangeHeart(this)"/></h2>
-                                            </div>
-                                        </div>
+                                        <h3>Savings</h3>
+                                        <a href="#" class="read-more"><span>Watch</span> <i class="bi bi-arrow-right"></i></a>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#faq2-content-3">
+                                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
                                     <div class="service-box bluenavy">
                                         <i class="ri-hotel-bed-fill icon"></i>
+                                        <h3>Good Night</h3>
+                                        <a href="#" class="read-more"><span>Watch</span> <i class="bi bi-arrow-right"></i></a>
                                     </div>
-                                    Go to bed early<img src="./assets/img/level/redFlag.png" class="icon mini"/>
-                                </button>
-                            </h2>
-                            <div id="faq2-content-3" class="accordion-collapse collapse"
-                                 data-bs-parent="#faqlist2">
-                                <div class="accordion-body">
-                                    Nothing helps more a person than getting a good night of sleep, we all know you
-                                    would like to watch Instagram reels or Tik Toks, but this is better for you, trust
-                                    me.
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
-                                                <button onclick="ChangeButtonsStatus(this)" class="finish">I did it!
+                                </div>
+
+                                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+                                    <div class="service-box orange">
+                                        <i class="ri-home-2-line icon"></i>
+                                        <h3>Home</h3>
+                                        <a href="#" class="read-more"><span>Watch</span> <i class="bi bi-arrow-right"></i></a>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="700">
+                                    <div class="service-box purple">
+                                        <i class="ri-focus-2-line icon"></i>
+                                        <h3>Focus and Effort</h3>
+                                        <a href="#" class="read-more"><span>Watch</span> <i class="bi bi-arrow-right"></i></a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+                    <!-- End CategoriesSection -->
+                    <!-- ======= Tasks completed Section ======= -->
+                    <section id="taskscompleted" class="taskscompleted">
+
+                        <div class="container" data-aos="fade-up">
+
+                            <header class="section-header">
+                                <h1>Tasks completed with like</h1>
+                                <h2>Here you have the tasks you liked of the seleted category</h2>
+                            </header>
+
+                            <div class="row completedTasks">
+                                <div class="col-lg-6">
+                                    <!-- Tasks completed List 1-->
+                                    <div class="accordion accordion-flush" id="taskscompletedlist1">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                                        data-bs-target="#taskscompleted-content-1">
+                                                    <div class="service-box orange">
+                                                        <i class="ri-home-2-line icon"></i>
+                                                    </div>
+                                                    Clean up your room<img src="./assets/img/level/greenFlag.png" class="icon mini"/>
                                                 </button>
-                                                <button onclick="ChangeButtonsStatus(this)" class="leave">I won't
-                                                    finish
-                                                </button>
-                                            </div>
-                                            <div class="col-6">
-                                                <h2><img src="./assets/img/level/EmptyHeart.png" class="like icon mini"
-                                                         onclick="ChangeHeart(this)"/></h2>
+                                            </h2>
+                                            <div id="taskscompleted-content-1" class="accordion-collapse collapse"
+                                                 data-bs-parent="#taskscompletedlist1">
+                                                <div class="accordion-body">
+                                                    Everyone forgets to clean his room for one week or two, today is the day to do it.
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
+                                                                <button onclick="ChangeButtonsStatus(this)" class="finish">I did it!
+                                                                </button>
+                                                                <button onclick="ChangeButtonsStatus(this)" class="leave">I won't
+                                                                    finish
+                                                                </button>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <h2><img src="./assets/img/level/EmptyHeart.svg" class="like icon mini"
+                                                                         onclick="ChangeHeart(this)"/></h2>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                                        data-bs-target="#taskscompleted-content-2">
+                                                    <div class="service-box blue">
+                                                        <i class="ri-mental-health-line icon"></i>
+                                                    </div>
+                                                    Sit down and relax 10 minutes<img src="./assets/img/level/greenFlag.png"
+                                                                                      class="icon mini"/>
+                                                </button>
+                                            </h2>
+                                            <div id="taskscompleted-content-2" class="accordion-collapse collapse"
+                                                 data-bs-parent="#taskscompletedlist1">
+                                                <div class="accordion-body">
+                                                    Come on, you are not superman, everybody needs some relax time.
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
+                                                                <button onclick="ChangeButtonsStatus(this)" class="finish">I did it!
+                                                                </button>
+                                                                <button onclick="ChangeButtonsStatus(this)" class="leave">I won't
+                                                                    finish
+                                                                </button>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <h2><img src="./assets/img/level/EmptyHeart.svg" class="like icon mini"
+                                                                         onclick="ChangeHeart(this)"/></h2>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                                        data-bs-target="#taskscompleted-content-3">
+                                                    <div class="service-box blue">
+                                                        <i class="ri-mental-health-line icon"></i>
+                                                    </div>
+                                                    Read for a while<img src="./assets/img/level/yellowFlag.png" class="icon mini"/>
+                                                </button>
+                                            </h2>
+                                            <div id="taskscompleted-content-3" class="accordion-collapse collapse"
+                                                 data-bs-parent="#taskscompletedlist1">
+                                                <div class="accordion-body">
+                                                    Even if you are feeling down, reading a book is a good way to grow as a person
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
+                                                                <button onclick="ChangeButtonsStatus(this)" class="finish">I did it!
+                                                                </button>
+                                                                <button onclick="ChangeButtonsStatus(this)" class="leave">I won't
+                                                                    finish
+                                                                </button>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <h2><img src="./assets/img/level/EmptyHeart.svg" class="like icon mini"
+                                                                         onclick="ChangeHeart(this)"/></h2>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+
+                                    <!-- Tasks completed List 2-->
+                                    <div class="accordion accordion-flush" id="taskscompletedlist2">
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                                        data-bs-target="#taskscompleted2-content-1">
+                                                    <div class="service-box red">
+                                                        <i class="ri-run-line icon"></i>
+                                                    </div>
+                                                    Go out for a walk<img src="./assets/img/level/yellowFlag.png" class="icon mini"/>
+                                                </button>
+                                            </h2>
+                                            <div id="taskscompleted2-content-1" class="accordion-collapse collapse"
+                                                 data-bs-parent="#taskscompletedlist2">
+                                                <div class="accordion-body">
+                                                    Almost all philosophers recognise that going for a walk makes miracles for people
+                                                    struggling in something, come on, 20 minutes, in and out.
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
+                                                                <button onclick="ChangeButtonsStatus(this)" class="finish">I did it!
+                                                                </button>
+                                                                <button onclick="ChangeButtonsStatus(this)" class="leave">I won't
+                                                                    finish
+                                                                </button>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <h2><img src="./assets/img/level/EmptyHeart.svg" class="like icon mini"
+                                                                         onclick="ChangeHeart(this)"/></h2>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                                        data-bs-target="#taskscompleted2-content-2">
+                                                    <div class="service-box green">
+                                                        <i class="ri-money-euro-circle-line icon"></i>
+                                                    </div>
+                                                    Create a home-bank<img src="./assets/img/level/greenFlag.png" class="icon mini"/>
+                                                </button>
+                                            </h2>
+                                            <div id="taskscompleted2-content-2" class="accordion-collapse collapse"
+                                                 data-bs-parent="#taskscompletedlist2">
+                                                <div class="accordion-body">
+                                                    It is as easy as putting a label on a jar saying "Money", you can use it for new
+                                                    challenges. Just..., you know, keep it away from the windows.
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
+                                                                <button onclick="ChangeButtonsStatus(this)" class="finish">I did it!
+                                                                </button>
+                                                                <button onclick="ChangeButtonsStatus(this)" class="leave">I won't
+                                                                    finish
+                                                                </button>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <h2><img src="./assets/img/level/EmptyHeart.svg" class="like icon mini"
+                                                                         onclick="ChangeHeart(this)"/></h2>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                                        data-bs-target="#taskscompleted2-content-3">
+                                                    <div class="service-box bluenavy">
+                                                        <i class="ri-hotel-bed-fill icon"></i>
+                                                    </div>
+                                                    Go to bed early<img src="./assets/img/level/redFlag.png" class="icon mini"/>
+                                                </button>
+                                            </h2>
+                                            <div id="taskscompleted2-content-3" class="accordion-collapse collapse"
+                                                 data-bs-parent="#taskscompletedlist2">
+                                                <div class="accordion-body">
+                                                    Nothing helps more a person than getting a good night of sleep, we all know you
+                                                    would like to watch Instagram reels or Tik Toks, but this is better for you, trust
+                                                    me.
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
+                                                                <button onclick="ChangeButtonsStatus(this)" class="finish">I did it!
+                                                                </button>
+                                                                <button onclick="ChangeButtonsStatus(this)" class="leave">I won't
+                                                                    finish
+                                                                </button>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <h2><img src="./assets/img/level/EmptyHeart.svg" class="like icon mini"
+                                                                         onclick="ChangeHeart(this)"/></h2>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </section>
+                    <!-- End Tasks completed Section -->
 
-                    </div>
+                    <section class="section-header">
+                        <h1>Users and Categories</h1>
+                        <br>
+                        <div class="field" id="searchform">
+                            <input type="text" id="searchterm" placeholder="User that you are looking for" />
+                            <button type="button" id="search">Find!</button>
+                        </div>
+
+                        <table id="UsersTable">
+                            <tr>
+                                <th>User</th>
+                                <th>Email</th>
+                                <th>Catergories</th>
+                                <th>Plans Completed</th>
+                            </tr>
+                            <tr>
+                                <td>Alfreds Futterkiste</td>
+                                <td>...</td>
+                                <td>...</td>
+                                <td>...</td>
+                            </tr>
+                            <tr>
+                                <td>Berglunds snabbköp</td>
+                                <td>...</td>
+                                <td>...</td>
+                                <td>...</td>
+                            </tr>
+                            <tr>
+                                <td>Centro comercial Moctezuma</td>
+                                <td>...</td>
+                                <td>...</td>
+                                <td>...</td>
+                            </tr>
+                        </table>
+                    </section>
                 </div>
+
             </div>
-        </div>
-    </section><!-- End Tasks completed Section -->
 
-    <section class="section-header">
-        <h1>Users and Categories</h1>
-        <br>
-        <div class="field" id="searchform">
-            <input type="text" id="searchterm" placeholder="User that you are looking for" />
-            <button type="button" id="search">Find!</button>
+            <div class="col-lg-1 d-md-block border-screen"></div>
+
         </div>
 
-        <table id="UsersTable">
-            <tr>
-                <th>User</th>
-                <th>Email</th>
-                <th>Catergories</th>
-                <th>Plans Completed</th>
-            </tr>
-            <tr>
-                <td>Alfreds Futterkiste</td>
-                <td>...</td>
-                <td>...</td>
-                <td>...</td>
-            </tr>
-            <tr>
-                <td>Berglunds snabbköp</td>
-                <td>...</td>
-                <td>...</td>
-                <td>...</td>
-            </tr>
-            <tr>
-                <td>Centro comercial Moctezuma</td>
-                <td>...</td>
-                <td>...</td>
-                <td>...</td>
-            </tr>
-        </table>
-    </section>
-
-
+    </div>
 
 </main>
+
+
+
 
 
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i

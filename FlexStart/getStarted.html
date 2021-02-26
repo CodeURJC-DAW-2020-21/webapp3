@@ -3,7 +3,7 @@
 <head>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Sign in / up</title>
+    <title>Growing - Sign in / up</title>
 
     <meta charset="UTF-8"/>
 
@@ -44,7 +44,6 @@
 </head>
 <body>
 
-
 <!-- ======= Header ======= -->
 <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
@@ -69,7 +68,7 @@
 
 
 <section id="login">
-    <div class="container-login">
+    <div class="container-login" data-aos="fade-left" data-aos-delay="700">
         <div class="forms-container">
             <div class="signin-signup">
                 <form action="#" class="sign-in-form">
@@ -91,6 +90,14 @@
                         <input type="text" placeholder="Username"/>
                     </div>
                     <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Name"/>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Surname"/>
+                    </div>
+                    <div class="input-field">
                         <i class="fas fa-envelope"></i>
                         <input type="email" placeholder="Email"/>
                     </div>
@@ -100,7 +107,7 @@
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password"/>
+                        <input type="password" placeholder="Confirm Password"/>
                     </div>
                     <input type="submit" class="btn" value="Sign up"/>
                 </form>
@@ -157,5 +164,12 @@
 
 
 <script src="assets/js/getStarted.js"></script>
+
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="assets/vendor/aos/aos.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="assets/js/main.js"></script>
+
 </body>
 </html>

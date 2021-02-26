@@ -285,10 +285,28 @@ header a:hover:after {
   color: #fff;
 }
 
+.navbar .sign_out{
+  background: #a40000;
+  padding: 8px 20px;
+  margin-left: 30px;
+  border-radius: 4px;
+  color: #fff;
+  transform: none;
+}
+
+.navbar .sign_out:hover {
+  color: #a40000;
+  background: #ffffff;
+  border-color: #a40000;
+  border-width: 2px;
+}
+
+
 .navbar .getstarted:hover {
   color: #fff;
   background: #264653;
 }
+
 
 .navbar .dropdown ul {
   display: block;
@@ -729,7 +747,7 @@ header a:hover:after {
 }
 
 .active:hover{
-  color: #000000;
+  color: #d6ffb9;
 }
 
 .features .feature-tabs .tab-content h4 {
@@ -1838,6 +1856,7 @@ header a:hover:after {
   margin-left: auto;
   margin-right: auto;
 }
+
 
 .like{
   margin: 10px;

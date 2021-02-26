@@ -7,6 +7,22 @@ body{
     background-color: #D6FFB9;
 }
 
+.main{
+    margin-top: 10px;
+    background: #ffffff;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px 0px rgba(0,0,0,0.3);
+}
+
+.main .title{
+    margin-top: 20px;
+    text-transform: uppercase;
+    background: linear-gradient(to right, #D6FFB9 0%, #12a294 50% ,#0a58ca 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+
 canvas{
     max-width: 100%;
     max-height: 100%;
@@ -36,14 +52,20 @@ canvas{
 }
 
 .profile-card{
-    margin-left: 10%;
-    width: 80%;
+    width: 90%;
     height: 100%;
     text-align: center;
     border-radius: 10px;
     overflow: hidden;
     font-family: "Nunito", sans-serif;
     padding-bottom: 10%;
+}
+
+section .services{
+    padding-top: 5px;
+}
+.category{
+    padding-top: 10px;
 }
 
 .card-header {
@@ -107,27 +129,15 @@ canvas{
 }
 
 .show-btn{
-    background: #fff;
-    margin-top: 5%;
-    width: 100%;
-    padding: 10px 20px;
-    margin-bottom: 20px;
-    font-size: 100%;
-    font-weight: 5000;
-    color: #009ac6;
-    border-color: #7afdee;
-    border-radius: 10px;
-    cursor: pointer;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+    background: transparent;
 }
 
-.show-btn{
-    position: relative;
-    font-family: "Nunito", sans-serif;
-    font-weight: bold;
-    border-width: 3px;
 
+.fa-user-edit{
+    color: #f7ff00;
+    font: 30px/1px FontAwesome ;
 }
+
 
 .container-edit{
     position: absolute;
@@ -251,6 +261,7 @@ form .btn button{
 
 .chartSeparation {
     height: 100%;
+    margin-bottom: 15px;
 }
 
 
@@ -315,90 +326,6 @@ form .btn button{
     box-shadow: 0px 0 30px rgb(117, 48, 215);
 }
 
-
-form {
-    display: flex;
-    margin: 10%;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0rem 5rem;
-    transition: all 0.2s 0.7s;
-    overflow: hidden;
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-}
-
-.title {
-    font-size: 2.2rem;
-    color: #444;
-    margin-bottom: 10px;
-}
-
-.input-field {
-    max-width: 380px;
-    width: 100%;
-    background-color: rgba(153,222,194,0.7);
-    margin: 10px 0;
-    height: 55px;
-    border-radius: 55px;
-    display: grid;
-    grid-template-columns: 15% 85%;
-    padding: 0 0.4rem;
-    position: relative;
-}
-
-.input-field i {
-    text-align: center;
-    line-height: 55px;
-    color: #454343;
-    transition: 0.5s;
-    font-size: 1.1rem;
-}
-
-
-.input-field input {
-    background: none;
-    outline: none;
-    border: none;
-    line-height: 1;
-    font-weight: 600;
-    font-size: 1.1rem;
-    font-family: "Nunito", sans-serif;
-    color: #333;
-}
-
-.input-field input::placeholder {
-    color: #454343;
-    font-weight: 500;
-}
-
-
-.btn-cancel{
-    color: #ffffff;
-    background-color: #ff0505;
-    border-radius: 10px;
-}
-
-.btn-confirm{
-    color: #ffffff;
-    height: 120%;
-    align-content: center;
-    background-color: #539245;
-    border-radius: 10px;
-}
-
-.btn-cancel:hover{
-    background-color: #ffffff;
-    color: #ff0505;
-    border-color: #ff0505;
-}
-
-.btn-confirm:hover{
-    background-color: #ffffff;
-    color: #539245;
-    border-color: #539245;
-}
 
 .completedTasks{
   background-color: #ffffff;

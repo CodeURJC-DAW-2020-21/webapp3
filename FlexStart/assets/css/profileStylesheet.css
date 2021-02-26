@@ -3,7 +3,8 @@
 --------------------------------------------------------------*/
 
 body{
-    background-color: #e7f1ff;
+    background-image: url(../img/background.svg);
+    background-color: #D6FFB9;
 }
 
 canvas{
@@ -22,7 +23,7 @@ canvas{
     display: flex;
     width: 100%;
     justify-content: space-around;
-    background-color: #ffffff;
+    background-color: #f2f2f2;
 }
 
 

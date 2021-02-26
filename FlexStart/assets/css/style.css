@@ -272,9 +272,8 @@ header a:hover:after {
   margin-left: 5px;
 }
 
-
 .navbar a:hover, .navbar .active, .navbar li:hover > a {
-  color: #264653;
+  color: #12a294;
 }
 
 .navbar .getstarted {
@@ -2043,4 +2042,16 @@ section .team{
   text-align: left;
   background-color: rgb(26, 188, 156);
   color: white;
+}
+
+.users{
+  color: black;
+}
+
+.users:hover{
+  color: black;
+}
+
+.su{
+  margin-top: 50px;
 }

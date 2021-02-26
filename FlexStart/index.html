@@ -50,9 +50,9 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href=index.html>Home</a></li>
-          <li><a class="nav-link scrollto" href="AboutUs.html">About us</a></li>
           <li><a class="nav-link scrollto" href=categories.html>Categories</a></li>
           <li><a class="nav-link scrollto " href="explore.html">Explore</a></li>
+          <li><a class="nav-link scrollto" href="AboutUs.html">About us</a></li>
           <li><a class="getstarted scrollto" href="getStarted.html">Get Started</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -71,7 +71,7 @@
           <h2 data-aos="fade-up" data-aos-delay="400">Every big tree starts as a seed.<br> Your change starts now! </h2>
           <div data-aos="fade-up" data-aos-delay="600">
             <div class="text-center text-lg-start">
-              <a href="#about" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+              <a href="getStarted.html" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
                 <span>What are you waiting for?</span>
                 <i class="bi bi-arrow-right"></i>
               </a>
@@ -99,7 +99,7 @@
                 We are a group of software engineering students who are making this web application for a university subject
               </p>
               <div class="text-center text-lg-start">
-                <a href="#" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+                <a href="AboutUs.html" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
                   <span>Read More</span>
                   <i class="bi bi-arrow-right"></i>
                 </a>
@@ -285,15 +285,15 @@
             <div class="tab-content">
 
               <div class="tab-pane fade show active" id="tab1">
-		<p>Users who are not registered will only be able to view the available categories and the plans they contain. </p>
+		        <p class="users">Users who are not registered will only be able to view the available categories and the plans they contain. </p>
               </div><!-- End Tab 1 Content -->
 
               <div class="tab-pane fade show" id="tab2">
-                <p>The registered user, like the anonymous user, are able to view the categories and the plans that contains them. In addition, they can edit their profile data except email, which will be unchangeable once the user register it; mark a plan as completed, view their profile information both on the web and in PDF format if they want to, choose favorite category(ies) and observe the progress for each category, represented in multiple charts which will be explained in the section Charts. Finally, they will receive an email when a tree in a category achieve a specific height.</p>
+                <p class="users">The registered user, like the anonymous user, are able to view the categories and the plans that contains them. In addition, they can edit their profile data except email, which will be unchangeable once the user register it; mark a plan as completed, view their profile information both on the web and in PDF format if they want to, choose favorite category(ies) and observe the progress for each category, represented in multiple charts which will be explained in the section Charts. Finally, they will receive an email when a tree in a category achieve a specific height.</p>
               </div><!-- End Tab 2 Content -->
 
               <div class="tab-pane fade show" id="tab3">
-                <p>This user is allowed, in addition to the functionalities described for the previous type of user, to control the record of plans made by users marking them as incompleted, and adding / editing categories and plans.</p>
+                <p class="users">This user is allowed, in addition to the functionalities described for the previous type of user, to control the record of plans made by users marking them as incompleted, and adding / editing categories and plans.</p>
               </div><!-- End Tab 3 Content -->
 
             </div>
@@ -325,32 +325,48 @@
 
           <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="service-box blue">
-              <i class="ri-emotion-laugh-fill icon"></i>
-              <h3>Healthy mind & body</h3>
+              <i class="ri-mental-health-line icon"></i>
+              <h3>Mental Health</h3>
               <a href="mentalHealth.html" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
 
           <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-box orange">
-              <i class="ri-money-euro-circle-line icon"></i>
-              <h3>Savings</h3>
+            <div class="service-box red">
+              <i class="ri-run-line icon"></i>
+              <h3>Physical Health</h3>
               <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
 
           <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="400">
             <div class="service-box green">
-              <i class="ri-hotel-bed-fill icon"></i>
-              <h3>Good night</h3>
+              <i class="ri-money-euro-circle-line icon"></i>
+              <h3>Savings</h3>
               <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
 
           <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="500">
-            <div class="service-box red">
-              <i class="ri-run-line icon"></i>
-              <h3>Workout</h3>
+            <div class="service-box bluenavy">
+              <i class="ri-hotel-bed-fill icon"></i>
+              <h3>Good Night</h3>
+              <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="service-box orange">
+              <i class="ri-home-2-line icon"></i>
+              <h3>Home</h3>
+              <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="service-box purple">
+              <i class="ri-focus-2-line icon"></i>
+              <h3>Focus and Effort</h3>
               <a href="#" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
             </div>
           </div>

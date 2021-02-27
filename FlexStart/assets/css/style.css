@@ -235,6 +235,7 @@ section {
 
 .navbar li {
   position: relative;
+  padding-left: 0;
 }
 
 
@@ -252,7 +253,9 @@ section {
 }
 
 .navbar a i {
-  font-size: 12px;
+  font-size: 25px;
+  padding-top: 10px;
+  padding-bottom: 20px;
   line-height: 0;
   margin-left: 5px;
 }
@@ -275,26 +278,36 @@ section {
   color: #fff;
 }
 
-.navbar .sign_out{
-  background: #ff0000;
-  padding: 8px 20px;
-  margin-left: 30px;
-  border-radius: 4px;
-  color: #fff;
-  transform: none;
-}
-
-.navbar .sign_out:hover {
-  color: white;
-  background: #c10303;
-  border-color: #c10303;
-  border-width: 2px;
-}
-
 
 .navbar .getstarted:hover {
   color: #fff;
   background: #264653;
+}
+
+
+
+.navbar .sign_out{
+  background: #ff0000;
+  padding: 8px 20px;
+  margin-left: 20px;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.navbar .sign_out:hover {
+  border-width: 20px;
+  color: #fc0000;
+  background: #ffffff;
+  border-color: #c10303;
+}
+
+.navbar .sign_out:hover:after{
+  background: #ff0000;
+  padding: 8px 20px;
+  margin-left: 20px;
+  border-radius: 4px;
+  color: #fff;
+
 }
 
 
@@ -333,7 +346,7 @@ section {
 .mobile-nav-toggle {
   color: #12a294;
   font-size: 28px;
-  cursor: pointer;
+  cursor: context-menu;
   display: none;
   line-height: 0;
   transition: 0.5s;

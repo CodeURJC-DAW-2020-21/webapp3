@@ -1,7 +1,7 @@
 <img src="Stage 0 images/Growing logo.png" width="350" height="100">
 
 ## PHASE 0
-
+___
 ### Team Members
  
  |    Name and Surname      |             Email              |  Git account  |
@@ -90,11 +90,7 @@ The application will have four charts. These will only be visible to *Registered
   - The third one will show the number of completed tasks per category for each user, revealed through a *Radar chart*.
   
     <img src="Stage 0 images/Radar Chart.png" width="350" height="300">
-    
-  - The fourth chart will show the activity during the current year through a calendar view where it will be indicated by a color code based on gradients if the user has been active. **(Optional)**
-  
-   <img src="Stage 0 images/Calendar Chart.png" width="650" height="300">
-
+ 
     
  ## Complementary Technologies
 Complementary technologies to be used are:
@@ -109,35 +105,59 @@ Complementary technologies to be used are:
   - An algorithm will be used to recommend plans to the user based on their data such as their *likes* and their favorite category. 
 
 ## PHASE 1
-
+___
 ## Screenshots
 ### Principal page
+This screen is the first one that all users see when they access the webapp. In this one, they can see basic information about the initiative, some info about the team like our values and finally some preview of the rest of funtionalities like the categories or a portfolio where they can see a snapshot of every screen.
  <img src="Stage 1 images/index.png" width="700">
 
-### Categories 
+### Categories
+Because of the main purpose of the webapp is encourage users to make activities, for the UX is a good practice separate them into categories defined by their finality. This ends in a main screen where all the web visitors can differentiate the principal classes. The main interaction lies in some boxes where each one has a title, a short description and finally a *Read More* button, arriving in the next screen explained. Finally, the admin will have visible a button where it can create new ones.
+
  <img src="Stage 1 images/categories.png" width="700">
  
- #### Mental health
+ #### Category information
+ This screen represent the information that all webapp categories have. Everyone has the title, on the left side an image of a tree which represents the actual user improvements inside them. Regarding this image, it is important to explain the fact that the tree will be growing through the advances, having 5 stages, which are the following ones:
+ 
+ 
+ 
+ On the other side, the information displayed consists in a simple list with all the tasks users can complete. Finally, in this screen, the **admin user** will have multiple visible options that allows them to edit each task and technical features of the category:
+ 
  <img src="Stage 1 images/mentalHealth.png" width="700">
  
 ### Explore
+In this screen, all the users can see a random selection of plans that are included on the webpage.
+
  <img src="Stage 1 images/explore.png" width="700">
  
 ### About us
+This screen only contains the main information about the team membership. This information is composed by a representative photography, the member's full name and its role inside the project.
+
  <img src="Stage 1 images/AboutUs.png" width="700">
  
 ### GetStarted
+This screen has the main purpose to create new users or sign in users. When users came to this page, they will se the sign in (first picture), but easily can be transfered into the sign up section by clicking the *Sign Up* button.
+
  <img src="Stage 1 images/loginRegisterSignIn.png" width="700">
  <img src="Stage 1 images/loginRegisterSignUp.png" width="700">
 
 ### Profile
+This screen is only visible to the registered users. Inside, users can see an information card, which has a button for traveling to the edition page, explained on a later snapshot; three charts that represents the progress they made and see by category all the plans they did and *dislike* them.
+
 <img src="Stage 1 images/profile.png" width="700">  
 
-#### Edit profile
-<img src="Stage 1 images/editProfile.png" width="700">
-
 ### Administrator profile
+This screen is almost the same screen than the previous one explained. The main differences are ubicated on the information card with the tag: *Admin account* and a table at the end of the page which allows the user to search the record of plans made searching for users and category.
+
 <img src="Stage 1 images/adminProfile.png" width="700">
 
+#### Edit profile
+This page can only be accessed from the registered user / admin profile screen and is composed by a form with some inputs to change the personal information of the actual user.
+
+<img src="Stage 1 images/editProfile.png" width="700">
+
+
 ## Navigation diagram
+Finally, in the following diagram, you can see all the navigation map inside the webapp:
+
 <img src="Stage 1 images/navigationDiagram.png">

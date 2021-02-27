@@ -1,5 +1,7 @@
 <img src="Stage 0 images/Growing logo.png" width="350" height="100">
 
+## PHASE 0
+
 ### Team Members
  
  |    Name and Surname      |             Email              |  Git account  |
@@ -104,4 +106,38 @@ Complementary technologies to be used are:
  ## Algorithm or advanced query
   - An algorithm will be used to calculate the height of the tree, which it increases in relation to the plan's completion. Their new height will be defined by calculating its increase proportionally to the difficulty of the task and decreasing when the plans are uncompleted.
   
-  - An algorithm will be used to recommend plans to the user based on their data such as their *likes* and their favorite category.
+  - An algorithm will be used to recommend plans to the user based on their data such as their *likes* and their favorite category. 
+
+## PHASE 1
+
+## Screenshots
+### Principal page
+ <img src="Stage 1 images/index.png" width="700">
+
+### Categories 
+ <img src="Stage 1 images/categories.png" width="700">
+ 
+ #### Mental health
+ <img src="Stage 1 images/mentalHealth.png" width="700">
+ 
+### Explore
+ <img src="Stage 1 images/explore.png" width="700">
+ 
+### About us
+ <img src="Stage 1 images/AboutUs.png" width="700">
+ 
+### GetStarted
+ <img src="Stage 1 images/loginRegisterSignIn.png" width="700">
+ <img src="Stage 1 images/loginRegisterSignUp.png" width="700">
+
+### Profile
+<img src="Stage 1 images/profile.png" width="700">  
+
+#### Edit profile
+<img src="Stage 1 images/editProfile.png" width="700">
+
+### Administrator profile
+<img src="Stage 1 images/adminProfile.png" width="700">
+
+## Navigation diagram
+<img src="Stage 1 images/navigationDiagram.png">

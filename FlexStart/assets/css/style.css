@@ -185,26 +185,11 @@ section {
 }
 
 .header a:hover{
-  color: #12a294;
+  color: #0028d0;
   text-decoration: none;
   display: inline-block;
   position: relative;
 }
-
-header a:after {
-  bottom: 0;
-  content: "";
-  display: block;
-  height: 3px;
-  left: 50%;
-  background: #12a294;
-  width: 0;
-}
-header a:hover:after {
-  width: 100%;
-  left: 0;
-}
-
 
 .header.header-scrolled {
   background: #fff;
@@ -272,10 +257,15 @@ header a:hover:after {
   margin-left: 5px;
 }
 
-.navbar a:hover, .navbar .active, .navbar li:hover > a {
-  color: #12a294;
-
+.navbar a:hover, .navbar li:hover > a {
+  color: #0a58ca;
 }
+
+.navbar .active, .navbar .active:hover{
+  color: #12a294;
+  cursor: pointer;
+}
+
 
 .navbar .getstarted {
   background: #12a294;
@@ -335,41 +325,7 @@ header a:hover:after {
   font-weight: 600;
 }
 
-.navbar .dropdown ul a i {
-  font-size: 12px;
-}
 
-.navbar .dropdown ul a:hover, .navbar .dropdown ul .active:hover, .navbar .dropdown ul li:hover > a {
-  color: #1c7474;
-}
-
-.navbar .dropdown:hover > ul {
-  opacity: 1;
-  top: 100%;
-  visibility: visible;
-}
-
-.navbar .dropdown .dropdown ul {
-  top: 0;
-  left: calc(100% - 30px);
-  visibility: hidden;
-}
-
-.navbar .dropdown .dropdown:hover > ul {
-  opacity: 1;
-  top: 0;
-  left: 100%;
-  visibility: visible;
-}
-
-@media (max-width: 1366px) {
-  .navbar .dropdown .dropdown ul {
-    left: -90%;
-  }
-  .navbar .dropdown .dropdown:hover > ul {
-    left: -100%;
-  }
-}
 
 /**
 * Mobile Navigation
@@ -405,6 +361,7 @@ header a:hover:after {
   bottom: 0;
   background: #264253;
   transition: 0.3s;
+
 }
 
 .navbar-mobile .mobile-nav-toggle {
@@ -429,22 +386,32 @@ header a:hover:after {
 
 .navbar-mobile a {
   padding: 10px 20px;
-  font-size: 15px;
+  font-size: 20px;
   color: #000000;
 }
 
-.navbar-mobile a:hover, .navbar-mobile .active, .navbar-mobile li:hover > a {
+.navbar-mobile a:hover, .navbar-mobile li:hover > a {
   color: #12a294;
+  margin-left: 30px;
+  width: 93%;
+  box-shadow: 0px 2px 20px rgb(12, 96, 84);
 }
 
 .navbar-mobile a:hover:after, .navbar-mobile .active:after, .navbar-mobile li:hover > a:after {
   color: #000000;
-  transition: none;
+  width: 93%;
 }
-
 
 .navbar-mobile .getstarted {
   margin: 15px;
+  padding-left: 10px;
+  width: 96%;
+  color: #ffffff;
+}
+
+.navbar-mobile .getstarted:hover {
+  margin: 15px;
+  width: 96%;
 }
 
 .navbar-mobile .dropdown ul {

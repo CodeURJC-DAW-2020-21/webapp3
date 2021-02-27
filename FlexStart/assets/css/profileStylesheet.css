@@ -18,7 +18,6 @@ body{
     margin-top: 30px;
     font-size: 44px;
     font-weight: bold;
-    text-transform: uppercase;
     background: linear-gradient(to right, #D6FFB9 0%, #12a294 50% ,#0a58ca 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

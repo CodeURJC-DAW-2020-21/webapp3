@@ -119,7 +119,7 @@ Because of the main purpose of the webapp is encourage users to make activities,
  #### Category information
  This screen represent the information that all webapp categories have. Everyone has the title, on the left side an image of a tree which represents the actual user improvements inside them. Regarding this image, it is important to explain the fact that the tree will be growing through the advances, having 5 stages, which are the following ones:
  
- 
+ <img src="Stage 1 images/stage 1.png" width="150"> 🠊 <img src="Stage 1 images/stage 2.png" width="150"> 🠊 <img src="Stage 1 images/stage 3.png" width="150"> 🠊 <img src="Stage 1 images/stage 4.png" width="150"> 🠊 <img src="Stage 1 images/stage 5.png" width="150">
  
  On the other side, the information displayed consists in a simple list with all the tasks users can complete. Finally, in this screen, the **admin user** will have multiple visible options that allows them to edit each task and technical features of the category:
  

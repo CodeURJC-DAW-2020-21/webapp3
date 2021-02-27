@@ -266,7 +266,7 @@ section {
 
 .navbar .active, .navbar .active:hover{
   color: #12a294;
-  cursor: pointer;
+  cursor: context-menu;
 }
 
 

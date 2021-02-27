@@ -1,7 +1,6 @@
 <img src="Stage 0 images/Growing logo.png" width="350" height="100">
 
 ## PHASE 0
-___
 ### Team Members
  
  |    Name and Surname      |             Email              |  Git account  |
@@ -62,7 +61,7 @@ The application has three types of users, which are:
   
   * **Registered user:** The registered user, like the *anonymous user*, are able to view the categories and the plans that contains them. In addition, they can edit their profile data except email, which will be unchangeable once the user register it; mark a plan as completed, view their profile information both on the web and in PDF format if they want to, choose favorite category(ies) and observe the progress for each category, represented in multiple charts which will be explained in the section ***Charts***. Finally, they will receive an email when a tree in a category achieve a specific height.
   
-  * **Administrator user:** This user is allowed, in addition to the functionalities described for the previous type of user, to control the record of plans made by users marking them as incompleted, and adding / editing categories and plans .
+  * **Administrator user:** This user is allowed, in addition to the functionalities described for the previous type of user, to control the record of plans made by users marking them as incompleted, and adding / editing categories and plans.
   
 ## Images 
 The web application will contain one or more images for each entity to increase user satisfaction and making UI more intuitive. These are defined to:
@@ -105,7 +104,6 @@ Complementary technologies to be used are:
   - An algorithm will be used to recommend plans to the user based on their data such as their *likes* and their favorite category. 
 
 ## PHASE 1
-___
 ## Screenshots
 ### Principal page
 This screen is the first one that all users see when they access the webapp. In this one, they can see basic information about the initiative, some info about the team like our values and finally some preview of the rest of funtionalities like the categories or a portfolio where they can see a snapshot of every screen.
@@ -119,7 +117,7 @@ Because of the main purpose of the webapp is encourage users to make activities,
  #### Category information
  This screen represent the information that all webapp categories have. Everyone has the title, on the left side an image of a tree which represents the actual user improvements inside them. Regarding this image, it is important to explain the fact that the tree will be growing through the advances, having 5 stages, which are the following ones:
  
- <img src="Stage 1 images/stage 1.png" width="135"> 🠊 <img src="Stage 1 images/stage 2.png" width="135"> 🠊 <img src="Stage 1 images/stage 3.png" width="135"> 🠊 <img src="Stage 1 images/stage 4.png" width="135"> 🠊 <img src="Stage 1 images/stage 5.png" width="135">
+ <img src="Stage 1 images/stage 1.png" width="135"> → <img src="Stage 1 images/stage 2.png" width="135"> → <img src="Stage 1 images/stage 3.png" width="135"> → <img src="Stage 1 images/stage 4.png" width="135"> → <img src="Stage 1 images/stage 5.png" width="135">
  
  On the other side, the information displayed consists in a simple list with all the tasks users can complete. Finally, in this screen, the **admin user** will have multiple visible options that allows them to edit each task and technical features of the category:
  

@@ -107,12 +107,12 @@ Complementary technologies to be used are:
 ## Screenshots
 ### Principal page
 This screen is the first one that all users see when they access the webapp. In this one, they can see basic information about the initiative, some info about the team like our values and finally some preview of the rest of funtionalities like the categories or a portfolio where they can see a snapshot of every screen.
- <img src="Stage 1 images/index.png" width="700">
+ <img src="Stage 1 images/indexScreen.png">
 
 ### Categories
 Because of the main purpose of the webapp is encourage users to make activities, for the UX is a good practice separate them into categories defined by their finality. This ends in a main screen where all the web visitors can differentiate the principal classes. The main interaction lies in some boxes where each one has a title, a short description and finally a *Read More* button, arriving in the next screen explained. Finally, the admin will have visible a button where it can create new ones.
 
- <img src="Stage 1 images/categories.png" width="700">
+ <img src="Stage 1 images/categoriesScreen.png">
  
  #### Category information
  This screen represent the information that all webapp categories have. Everyone has the title, on the left side an image of a tree which represents the actual user improvements inside them. Regarding this image, it is important to explain the fact that the tree will be growing through the advances, having 5 stages, which are the following ones:
@@ -121,38 +121,38 @@ Because of the main purpose of the webapp is encourage users to make activities,
  
  On the other side, the information displayed consists in a simple list with all the tasks users can complete. Finally, in this screen, the **admin user** will have multiple visible options that allows them to edit each task and technical features of the category:
  
- <img src="Stage 1 images/mentalHealth.png" width="700">
+ <img src="Stage 1 images/mentalHealthScreen.png">
  
 ### Explore
 In this screen, all the users can see a random selection of plans that are included on the webpage.
 
- <img src="Stage 1 images/explore.png" width="700">
+ <img src="Stage 1 images/explore.png">
  
 ### About us
 This screen only contains the main information about the team membership. This information is composed by a representative photography, the member's full name and its role inside the project.
 
- <img src="Stage 1 images/AboutUs.png" width="700">
+ <img src="Stage 1 images/aboutUsScreen.png">
  
 ### GetStarted
 This screen has the main purpose to create new users or sign in users. When users came to this page, they will se the sign in (first picture), but easily can be transfered into the sign up section by clicking the *Sign Up* button.
 
- <img src="Stage 1 images/loginRegisterSignIn.png" width="700">
- <img src="Stage 1 images/loginRegisterSignUp.png" width="700">
+ <img src="Stage 1 images/loginRegisterSignIn.png">
+ <img src="Stage 1 images/loginRegisterSignUp.png">
 
 ### Profile
 This screen is only visible to the registered users. Inside, users can see an information card, which has a button for traveling to the edition page, explained on a later snapshot; three charts that represents the progress they made and see by category all the plans they did and *dislike* them.
 
-<img src="Stage 1 images/profile.png" width="700">  
+<img src="Stage 1 images/profileScreen.png">  
 
 ### Administrator profile
 This screen is almost the same screen than the previous one explained. The main differences are ubicated on the information card with the tag: *Admin account* and a table at the end of the page which allows the user to search the record of plans made searching for users and category.
 
-<img src="Stage 1 images/adminProfile.png" width="700">
+<img src="Stage 1 images/adminProfileScreen.png">
 
 #### Edit profile
 This page can only be accessed from the registered user / admin profile screen and is composed by a form with some inputs to change the personal information of the actual user.
 
-<img src="Stage 1 images/editProfile.png" width="700">
+<img src="Stage 1 images/editProfileScreen.png">
 
 
 ## Navigation diagram

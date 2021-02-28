@@ -1816,7 +1816,7 @@ section .team{
   color: #012970;
 }
 .mini{
-  height:1em;
+  height:1.5em;
   width:auto;
 }
 
@@ -1871,10 +1871,6 @@ section .team{
   padding-left: 28%;
 }
 
-.mini{
-  height:1.5em;
-  width:1.5em;
-}
 
 .start {
   margin: 10px;

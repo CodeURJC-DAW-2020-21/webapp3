@@ -114,7 +114,7 @@ Because of the main purpose of the webapp is encourage users to make activities,
 
  <img src="Stage 1 images/categoriesScreen.png">
 
- #### Category information
+ ### Category information
  This screen represent the information that all webapp categories have. Everyone has the title, on the left side an image of a tree which represents the actual user improvements inside them. Regarding this image, it is important to explain the fact that the tree will be growing through the advances, having 5 stages, which are the following ones:
 
  <img src="Stage 1 images/stage 1.png" width="135"> → <img src="Stage 1 images/stage 2.png" width="135"> → <img src="Stage 1 images/stage 3.png" width="135"> → <img src="Stage 1 images/stage 4.png" width="135"> → <img src="Stage 1 images/stage 5.png" width="135">
@@ -149,7 +149,7 @@ This screen is almost the same screen than the previous one explained. The main 
 
 <img src="Stage 1 images/adminProfileScreen.png">
 
-#### Edit profile
+### Edit profile
 This page can only be accessed from the registered user / admin profile screen and is composed by a form with some inputs to change the personal information of the actual user.
 
 <img src="Stage 1 images/editProfileScreen.png">

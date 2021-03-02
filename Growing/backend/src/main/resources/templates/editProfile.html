@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Growing - Edit profile</title>
+
+    <!-- Favicons -->
+    <link href="../static/assets/img/favicon.png" rel="icon">
+    <link href="../static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+          integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+          crossorigin="anonymous"/>
+    <!-- Vendor CSS Files -->
+    <link href="../static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../static/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="../static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="../static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="../static/assets/css/style.css" rel="stylesheet">
+    <!-- Own CSS -->
+    <link rel="stylesheet" href="../static/assets/css/editProfileStyle.css">
+</head>
+
+<body>
+<section>
+    <header id="header" class="header fixed-top">
+        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+            <a href="index.html" class="logo d-flex align-items-center">
+                <img src="../static/images/growingLogo.png" alt="">
+            </a>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto" href=index.html>Home</a></li>
+                    <li><a class="nav-link scrollto" href=categories.html>Categories</a></li>
+                    <li><a class="nav-link scrollto" href="explore.html">Explore</a></li>
+                    <li><a class="nav-link scrollto" href="AboutUs.html">About us</a></li>
+                    <li><a class="nav-link scrollto " href=profile.html><i class="fas fa-user"></i></a>
+                    </li>
+                    <li><a class="sign_out scrollto" href="#">Sign out</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+        </div>
+    </header><!-- End Header -->
+</section>
+
+<section class="edit_data">
+
+    <h1 class="title"> Edit your data</h1>
+
+    <div class="container">
+        <!-- Photo -->
+        <div class="d-flex justify-content-center">
+            <img class="profilePhoto" src="../static/assets/img/team/team-3.PNG">
+        </div>
+        <div class="contact-form row">
+            <!-- Email-->
+            <div class="d-flex justify-content-center">
+                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+            </div>
+            <!-- Username -->
+            <div class="form-field col-lg-8">
+                <input id ="userName" class="form-control" type="text">
+                <label for="userName" class="form-label">Username</label>
+            </div>
+            <!-- Name-->
+            <div class="form-field col-lg-6">
+                <input id ="name" class="form-control" type="text">
+                <label for="name" class="form-label">Name</label>
+            </div>
+            <!--Surname-->
+            <div class="form-field col-lg-6">
+                <input id ="email" class="form-control" type="text">
+                <label for="email" class="form-label">Surname</label>
+            </div>
+            <!-- Password -->
+            <div class="form-field col-lg-6">
+                <input type="password" id ="password" class="form-control">
+                <label for="password" class="form-label">Password</label>
+            </div>
+            <!-- Confirm Password -->
+            <div class="form-field col-lg-6">
+                <input type="password" id ="repeatPassword" class="form-control">
+                <label for="repeatPassword" class="form-label">Repeat Password</label>
+            </div>
+            <!-- Change photo -->
+            <div class="custom-file col-lg-12">
+                <input type="file" class="custom-file-input" id="customFile">
+            </div>
+            <!-- Submit button-->
+            <button type="submit" class="btn-submit">Confirm</button>
+        </div>
+    </div>
+</section>
+
+<!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+    <div class="container">
+        <div class="copyright">
+            &copy; Copyright <strong><span>FlexStart</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+            <!-- All the links in the footer should remain intact. -->
+            <!-- You can delete the links only if you purchased the pro version. -->
+            <!-- Licensing information: https://bootstrapmade.com/license/ -->
+            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+    </div>
+</footer><!-- End Footer -->
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+</body>
+</html>

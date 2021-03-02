@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Growing - Mental Health</title>
+
+    <!-- Favicons -->
+    <link href="../static/assets/img/favicon.png" rel="icon">
+    <link href="../static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="../static/../static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../static/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="../static/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="../static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Fontawesome Icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+          integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+          crossorigin="anonymous"/>
+
+    <!-- Own CSS Files-->
+    <link rel="stylesheet" href="../static/../static/assets/css/style.css">
+    <link href="../static/assets/css/category.css" rel="stylesheet">
+
+    <!-- jquery  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+
+<!-- Start of the header-->
+<header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+        <a href="index.html" class="logo d-flex align-items-center">
+            <img src="../static/images/growingLogo.png" alt="">
+        </a>
+
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a class="nav-link scrollto" href=index.html>Home</a></li>
+                <li><a class="nav-link scrollto" href=categories.html>Categories</a></li>
+                <li><a class="nav-link scrollto" href="explore.html">Explore</a></li>
+                <li><a class="nav-link scrollto" href="AboutUs.html">About us</a></li>
+                <li><a class="getstarted scrollto" href="getStarted.html">Get Started</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+    </div>
+</header>
+<!-- End Header -->
+
+<!-- Start of the Page-->
+<section id="mentalHealth" class="mentalHealth">
+    <div class="container">
+        <!-- Container of the header-->
+        <header class="section-header category" data-aos="fade-left">
+            <div class="justify-content-center">
+                <h1>Mental health <img src="./../static/assets/img/level/EmptyHeart.svg" class="like icon mini"
+                                                     onclick="ChangeHeart(this)"/></h1>
+                <h2 class="subtitle">In this category we show you a group of plans that you must carry out every day to
+                    improve your mental health. The tree will increase its height when you complete some plans and it
+                    will lower when you don't.</h2>
+            </div>
+        </header>
+        <!-- End of the container of the header-->
+
+        <div class="row" data-aos="fade-up">
+            <!-- Tree section-->
+            <div class="col-md-5">
+                <header class="section-header">
+                    <h3>Your progress</h3>
+                </header>
+                <div class="imagenArbol">
+                    <img id="progress" src="../static/assets/img/progress/fase5.png"/>
+                    <p class="update"> Last updated: 11/03/2020 </p>
+                </div>
+            </div>
+            <!-- End of Tree Section -->
+
+            <!-- Start of Task List -->
+            <div class="col-md-7 list">
+                <header class="section-header plan">
+                    <h3>Task</h3>
+                    <!-- Add button for Admin User -->
+                    <div class="add">
+                        <button id="btnAdd" class="btn-Add">Add <i class="fas fa-plus-circle"></i></button>
+                    </div>
+                    <!-- End add button for Admin User -->
+
+                </header>
+
+                <div class="accordion accordion-flush" id="faqlist1">
+                    <!-- Item 1-->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq-content-1">
+                                <div class="service-box orange">
+                                    <i class="ri-mental-health-line icon"></i>
+                                </div>
+                                TAKE TIME TO YOURSELF<img src="./../static/assets/img/level/greenFlag.png" class="icon mini"/>
+                                <i class="icon fas fa-pencil-alt"></i>
+                            </button>
+                        </h2>
+                        <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+                            <div class="accordion-body">
+                                We know that sometimes life is hard, so there are times when it is necessary to think
+                                about ourselves. 30 minutes to do something that you are passionate about will be enough
+                                to continue with your duties.
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
+                                            <button onclick="ChangeButtonsStatus(this)" class="finish">I did it!
+                                            </button>
+                                            <button onclick="ChangeButtonsStatus(this)" class="leave">I won't finish
+                                            </button>
+                                        </div>
+                                        <div class="col-3">
+                                            <h2><img src="./../static/assets/img/level/EmptyHeart.svg" class="like icon mini"
+                                                     onclick="ChangeHeart(this)"/></h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq-content-2">
+                                <!-- Item 2-->
+                                <div class="service-box orange">
+                                    <i class="ri-mental-health-line icon"></i>
+                                </div>
+                                MEDITATION<img src="./../static/assets/img/level/yellowFlag.png" class="icon mini"/>
+                                <i class="icon fas fa-pencil-alt"></i>
+                            </button>
+                        </h2>
+                        <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+                            <div class="accordion-body">
+                                When we meditate, we inject far-reaching and long-lasting benefits into our lives: We
+                                lower our stress levels, we get to know our pain, we connect better, we improve our
+                                focus, and we're kinder to ourselves. Let us walk you through the basics in our new
+                                mindful guide on how to meditate.
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
+                                            <button onclick="ChangeButtonsStatus(this)" class="finish">I did it!
+                                            </button>
+                                            <button onclick="ChangeButtonsStatus(this)" class="leave">I won't finish
+                                            </button>
+                                        </div>
+                                        <div class="col-3">
+                                            <h2><img src="./../static/assets/img/level/EmptyHeart.svg" class="like icon mini"
+                                                     onclick="ChangeHeart(this)"/></h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <!-- Item 3-->
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq-content-3">
+                                <div class="service-box orange">
+                                    <i class="ri-mental-health-line icon"></i>
+                                </div>
+                                DO YOGA<img src="./../static/assets/img/level/redFlag.png" class="icon mini"/>
+                                <i class="icon fas fa-pencil-alt"></i>
+                            </button>
+                        </h2>
+                        <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+                            <div class="accordion-body">
+                                Practicing the postures, breathing exercises and meditation makes you healthier in body,
+                                mind and spirit. Yoga lets you tune in, chill out, shape up -- all at the same time.
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
+                                            <button onclick="ChangeButtonsStatus(this)" class="finish">I did it!
+                                            </button>
+                                            <button onclick="ChangeButtonsStatus(this)" class="leave">I won't finish
+                                            </button>
+                                        </div>
+                                        <div class="col-3">
+                                            <h2><img src="./../static/assets/img/level/EmptyHeart.svg" class="like icon mini"
+                                                     onclick="ChangeHeart(this)"/></h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Item 3-->
+                </div>
+                <!-- End Task List -->
+            </div>
+            <!-- End container Task List -->
+        </div>
+        <!-- End row -->
+    </div>
+    <!-- End Screen Container -->
+</section>
+
+<!-- Start Copyright footer -->
+<footer id="footer" class="footer">
+    <div class="container">
+        <div class="copyright">
+            &copy; Copyright <strong><span>FlexStart</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+            <!-- All the links in the footer should remain intact. -->
+            <!-- You can delete the links only if you purchased the pro version. -->
+            <!-- Licensing information: https://bootstrapmade.com/license/ -->
+            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+    </div>
+</footer>
+<!-- End Copyright Footer -->
+
+<!-- Button that allows the return to the start of the screen-->
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="../static/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="../static/assets/vendor/aos/aos.js"></script>
+<script src="../static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="../static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="../static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+
+<!-- Template Main JS File -->
+<script src="../static/assets/js/main.js"></script>
+
+
+</body>
+</html>

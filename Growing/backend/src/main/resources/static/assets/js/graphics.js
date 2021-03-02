@@ -13,10 +13,10 @@ function createCharts() {
 function doughnutDisplay() {
     new Chart(document.getElementById("Doughnut-chart").getContext('2d'), {
         data: {
-            labels: ["Category 1", "Category 2", "Category 3", "Category 4", "Category 5"],
+            labels: ["Mental Health", "Physical health", "Savings", "Good night", "Home", "Focus and effort"],
             datasets: [{
                 backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
-                data: [10, 37, 20, 78, 43],
+                data: [10, 37, 20, 78, 43, 30],
                 bezierCurve: false
             }]
         },
@@ -44,11 +44,11 @@ function barChartDisplay(){
     new Chart(document.getElementById("bar-chart"), {
         type: 'bar',
         data: {
-            labels: ["Category 1", "Category 2", "Category 3", "Category 4", "Category 5"],
+			labels: ["Mental Health", "Physical health", "Savings", "Good night", "Home", "Focus and effort"],
             datasets: [
                 {
                     backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-                    data: [2478,5267,734,784,433]
+                    data: [2478,5267,734,784,433, 500]
                 }
             ]
         },
@@ -73,14 +73,14 @@ function radarDisplay(){
     new Chart(document.getElementById('radarChart'), {
         type: 'radar',
         data: {
-            labels: ['Category 1', 'Category 2', 'Category 3' , 'Category 4', 'Category 5'],
+            labels: ["Mental Health", "Physical health", "Savings", "Good night", "Home", "Focus and effort"],
             datasets: [{
                 backgroundColor: color('rgba(18, 162, 148, 0.2)').rgbString(),
                 borderColor: "rgba(18, 162, 148, 0.8)",
                 pointBackgroundColor: "rgba(18, 162, 148, 1)",
                 bezierCurve : false,
                 data: [
-                    10,20,30,40,50
+                    10,20,30,40,50, 60
                 ],
             }]
         },

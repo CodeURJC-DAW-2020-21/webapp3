@@ -1,0 +1,79 @@
+.buttonContainer{
+    margin-bottom: 3%;
+    height: 40%;
+    align-items: end;
+    display: none;
+}
+
+.buttonContainer .btn-edit{
+    font-family: "Nunito", sans-serif;
+    font-size: 24px;
+    width: 15%;
+    border-radius: 15px;
+    margin-bottom: 3%;
+    color: #ffffff;
+    background-color: #11ba3f;
+    border-color: #ffffff;
+    border-width: 5px;
+}
+
+.buttonContainer .fa-pencil-alt{
+    color: #ffffff;
+    font: 20px/1px FontAwesome ;
+    padding-left: 15px;
+}
+
+.buttonContainer .btn-edit:hover{
+    border-radius: 15px;
+    color: #11ba3f;
+    background-color: #ffffff;
+    border-color: #11ba3f;
+    border-width: 5px;
+}
+
+
+@media (max-width: 1000px){
+    .btn-edit{
+        margin-bottom: 3%;
+        height: 40%;
+        width:100%;
+        align-items: center;
+    }
+
+    .btn-edit:hover{
+        font-family: "Nunito", sans-serif;
+        font-size: 24px;
+        border-radius: 15px;
+        color: #11ba3f;
+        background-color: #ffffff;
+        border-color: #11ba3f;
+        border-width: 5px;
+    }
+
+}
+
+.btn-Add{
+    font-family: "Nunito", sans-serif;
+    font-size: 24px;
+    width: 15%;
+    border-color: transparent;
+    background-color: transparent;
+    display: none;
+}
+
+.fa-plus-circle{
+    color: #11ba3f;
+    font: 30px/1px FontAwesome ;
+}
+
+.fa-plus-circle:hover{
+    color: #084ffd;
+}
+
+
+.fa-pencil-alt{
+    color: #40ae02;
+    font: 24px/1px FontAwesome ;
+    padding-left: 25px;
+    visibility: hidden;
+}

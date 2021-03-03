@@ -58,4 +58,9 @@ public class GrowingController {
         model.addAttribute("liked", true);
         return "categoryInfo";
     }
+
+    @GetMapping("/404-NotFound")
+    public String notFound(){
+        return "404";
+    }
 }

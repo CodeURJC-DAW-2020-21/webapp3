@@ -34,7 +34,8 @@ public class GrowingController {
     }
 
     @GetMapping("/profile")
-    public String profile(){
+    public String profile(Model model){
+        model.addAttribute("admin", false);
         return "profile";
     }
 
@@ -52,7 +53,8 @@ public class GrowingController {
                 "                    will lower when you don't.");
         model.addAttribute("date", "11/03/2020");
 
-        model.addAttribute("registered", false);
+        model.addAttribute("registered", true);
+        model.addAttribute("admin", true);
         model.addAttribute("liked", true);
         return "categoryInfo";
     }

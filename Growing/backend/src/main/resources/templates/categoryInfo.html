@@ -110,11 +110,15 @@
             <div class="col-md-7 list">
                 <header class="section-header plan">
                     <h3>Task</h3>
-                    <!-- Add button for Admin User -->
-                    <div class="add">
-                        <button id="btnAdd" class="btn-Add">Add <i class="fas fa-plus-circle"></i></button>
-                    </div>
-                    <!-- End add button for Admin User -->
+                    {{#registered}}
+                        {{#admin}}
+                        <!-- Add button for Admin User -->
+                        <div class="add">
+                            <button id="btnAdd" class="btn-Add">Add <i class="fas fa-plus-circle"></i></button>
+                        </div>
+                        <!-- End add button for Admin User -->
+                    {{/admin}}
+                    {{/registered}}
 
                 </header>
 

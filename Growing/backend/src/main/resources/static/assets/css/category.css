@@ -2,7 +2,6 @@
     margin-bottom: 3%;
     height: 40%;
     align-items: end;
-    display: none;
 }
 
 .buttonContainer .btn-edit{
@@ -58,7 +57,6 @@
     width: 15%;
     border-color: transparent;
     background-color: transparent;
-    display: none;
 }
 
 .fa-plus-circle{

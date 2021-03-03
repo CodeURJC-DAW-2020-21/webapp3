@@ -321,72 +321,7 @@
 
 
     <!-- ======= Services Section ======= -->
-    <section id="categories" class="services">
-
-      <div class="container" data-aos="fade-up">
-
-        <header class="section-header">
-          <h1>Categories</h1>
-          <h2>Check our brand new categories</h2>
-        </header>
-
-        <div class="row gy-4">
-          <!-- Category 1-->
-          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-box blue">
-              <i class="ri-mental-health-line icon"></i>
-              <h3>Mental Health</h3>
-              <a href="/categoryInfo" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-          <!-- Category 2-->
-          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-box red">
-              <i class="ri-run-line icon"></i>
-              <h3>Physical Health</h3>
-              <a href="/categoryInfo" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-          <!-- Category 3-->
-          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="service-box green">
-              <i class="ri-money-euro-circle-line icon"></i>
-              <h3>Savings</h3>
-              <a href="/categoryInfo" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-          <!-- Category 4-->
-          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="500">
-            <div class="service-box bluenavy">
-              <i class="ri-hotel-bed-fill icon"></i>
-              <h3>Good Night</h3>
-              <a href="/categoryInfo" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-          <!-- Category 5-->
-          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="500">
-            <div class="service-box orange">
-              <i class="ri-home-2-line icon"></i>
-              <h3>Home</h3>
-              <a href="/categoryInfo" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-          <!-- Category 6-->
-          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="500">
-            <div class="service-box purple">
-              <i class="ri-focus-2-line icon"></i>
-              <h3>Focus and Effort</h3>
-              <a href="/categoryInfo" class="read-more"><span>Read More</span> <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-    <!-- End Services Section -->
-
+    {{>categoryList}}
    
 
     <!-- ======= F.A.Q Section ======= -->
@@ -553,20 +488,8 @@
   </main>
   <!-- End #main -->
 
-  <footer id="footer" class="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>FlexStart</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
+  <!-- Footer -->
+  {{>footer}}
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

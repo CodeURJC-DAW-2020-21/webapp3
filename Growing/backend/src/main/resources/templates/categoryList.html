@@ -12,74 +12,17 @@
         <!-- End title header -->
         <div class="row gy-4">
 
-            <!-- Category 1-->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="service-box blue">
-                    <i class="ri-mental-health-line icon"></i>
-                    <h3>Mental Health</h3>
-                    <p>Because we know that having a good mental health is fundamental, we want to share with you some
-                        tasks for helping you to achieve it.</p>
-                    <a href="/categoryInfo" class="read-more"><span>Read More</span> <i
-                            class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
-            <!-- Category 2-->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                <div class="service-box red">
-                    <i class="ri-run-line icon"></i>
-                    <h3>Physical Health</h3>
-                    <p>Do you want to be fit making regular exercise but you are a lazy person? Look at the plans of
-                        this category and reject the lazyness!</p>
-                    <a href="/categoryInfo" class="read-more"><span>Read More</span> <i
-                            class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
-            <!-- Category 3-->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                <div class="service-box green">
-                    <i class="ri-money-euro-circle-line icon"></i>
-                    <h3>Savings</h3>
-                    <p>Everyone want to have money but most of the people waste it in stuff they don't need.<br>In this
-                        category we will help you with some tips
-                        to increase your savings and not wasting them.</p>
-                    <a href="/categoryInfo" class="read-more"><span>Read More</span> <i
-                            class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
-            <!-- Category 4-->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-                <div class="service-box bluenavy">
-                    <i class="ri-hotel-bed-fill icon"></i>
-                    <h3>Good Night</h3>
-                    <p>Do you have insomnia? Here you will see multiple tasks that you can do to sleep like a baby
-                        during the night.</p>
-                    <a href="/categoryInfo" class="read-more"><span>Read More</span> <i
-                            class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
-            <!-- Category 5-->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-                <div class="service-box orange">
-                    <i class="ri-home-2-line icon"></i>
-                    <h3>Home</h3>
-                    <p>Do you have to do home tasks but you leave them to the end or you even make them? This is your
-                        category! You won't forget them and finish them quickly</p>
-                    <a href="/categoryInfo" class="read-more"><span>Read More</span> <i
-                            class="bi bi-arrow-right"></i></a>
-                </div>
-            </div>
-            <!-- Category 6-->
+            {{#category}}
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="700">
-                <div class="service-box purple">
-                    <i class="ri-focus-2-line icon"></i>
-                    <h3>Focus and Effort</h3>
-                    <p>Do you want to be challenged daily? I challenge you to follow the pace of this category and
-                        complete the refreshing daily challenge.</p>
-                    <a href="/categoryInfo" class="read-more"><span>Read More</span> <i
+                <div class="service-box {{color}}">
+                    <i class="{{icon}}"></i>
+                    <h3>{{name}}</h3>
+                    <p>{{description}}</p>
+                    <a href="/categoryInfo/{{name}}" class="read-more"><span>Read More</span> <i
                             class="bi bi-arrow-right"></i></a>
                 </div>
             </div>
-
+            {{/category}}
         </div>
 
     </div>

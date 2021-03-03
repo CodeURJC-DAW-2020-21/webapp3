@@ -7,7 +7,7 @@
     <title>Growing - Mental Health</title>
 
     {{>head}}
-    <link href="assets/css/category.css" rel="stylesheet">
+    <link href="/assets/css/category.css" rel="stylesheet">
 
     <!-- jquery  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -22,7 +22,7 @@
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
         <a href="/" class="logo d-flex align-items-center">
-            <img src="images/growingLogo.png" alt="">
+            <img src="/images/growingLogo.png" alt="">
         </a>
 
         <nav id="navbar" class="navbar">
@@ -53,17 +53,17 @@
         <!-- Container of the header-->
         <header class="section-header category" data-aos="fade-left">
             <div class="justify-content-center">
-                <h1>{{title}}
+                <h1>{{name}}
 
                     <!-- This is to diferentiate if the like icon is appearing because the user is logged-->
                     {{#registered}}
                         <!-- Filled heart if the user gave his / her like-->
                         {{^liked}}
-                        <img src="assets/img/level/EmptyHeart.svg" class="like icon mini" onclick="ChangeHeart(this)" alt="notFilledHeart"/></h1>
+                        <img src="/assets/img/level/EmptyHeart.svg" class="like icon mini" onclick="ChangeHeart(this)" alt="notFilledHeart"/></h1>
                         <!-- Empty on the other case-->
                         {{/liked}}
                         {{#liked}}
-                        <img src="assets/img/level/FullHeart.svg" class="like icon mini" onclick="ChangeHeart(this)" alt ="filled like"/>
+                        <img src="/assets/img/level/FullHeart.svg" class="like icon mini" onclick="ChangeHeart(this)" alt ="filled like"/>
                         {{/liked}}
                     {{/registered}}
                 </h1>
@@ -79,7 +79,7 @@
                     <h3>Your progress</h3>
                 </header>
                 <div class="imagenArbol">
-                    <img id="progress" src="assets/img/progress/fase5.png"/>
+                    <img id="progress" src="/assets/img/progress/fase5.png"/>
                     <p class="update"> Last updated: {{date}} </p>
                 </div>
             </div>
@@ -93,10 +93,10 @@
                         {{#admin}}
                         <!-- Add button for Admin User -->
                         <div class="add">
-                            <button id="btnAdd" class="btn-Add">Add <i class="fas fa-plus-circle"></i></button>
+                            <button id="btnAdd" class="btn-add"><i class="fas fa-plus-circle"></i></button>
                         </div>
                         <!-- End add button for Admin User -->
-                    {{/admin}}
+                        {{/admin}}
                     {{/registered}}
 
                 </header>
@@ -110,8 +110,13 @@
                                 <div class="service-box orange">
                                     <i class="ri-mental-health-line icon"></i>
                                 </div>
-                                TAKE TIME TO YOURSELF<img src="./assets/img/level/greenFlag.png" class="icon mini"/>
-                                <i class="icon fas fa-pencil-alt"></i>
+                                TAKE TIME TO YOURSELF<img src="/assets/img/level/greenFlag.png" class="icon mini"/>
+                                {{#registered}}
+                                {{#admin}}
+                                <button class="btn-edit"><i class="icon fas fas fa-pencil-alt"></i></button>
+                                {{/admin}}
+                                {{/registered}}
+
                             </button>
                         </h2>
                         <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
@@ -129,7 +134,7 @@
                                             </button>
                                         </div>
                                         <div class="col-3">
-                                            <h2><img src="./assets/img/level/EmptyHeart.svg" class="like icon mini"
+                                            <h2><img src="/assets/img/level/EmptyHeart.svg" class="like icon mini"
                                                      onclick="ChangeHeart(this)"/></h2>
                                         </div>
                                     </div>
@@ -145,8 +150,13 @@
                                 <div class="service-box orange">
                                     <i class="ri-mental-health-line icon"></i>
                                 </div>
-                                MEDITATION<img src="./assets/img/level/yellowFlag.png" class="icon mini"/>
-                                <i class="icon fas fa-pencil-alt"></i>
+                                MEDITATION<img src="/assets/img/level/yellowFlag.png" class="icon mini"/>
+                                {{#registered}}
+                                {{#admin}}
+                                <button class="btn-edit"><i class="icon fas fas fa-pencil-alt"></i></button>
+                                {{/admin}}
+                                {{/registered}}
+
                             </button>
                         </h2>
                         <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
@@ -165,7 +175,7 @@
                                             </button>
                                         </div>
                                         <div class="col-3">
-                                            <h2><img src="./assets/img/level/EmptyHeart.svg" class="like icon mini"
+                                            <h2><img src="/assets/img/level/EmptyHeart.svg" class="like icon mini"
                                                      onclick="ChangeHeart(this)"/></h2>
                                         </div>
                                     </div>
@@ -181,8 +191,12 @@
                                 <div class="service-box orange">
                                     <i class="ri-mental-health-line icon"></i>
                                 </div>
-                                DO YOGA<img src="./assets/img/level/redFlag.png" class="icon mini"/>
-                                <i class="icon fas fa-pencil-alt"></i>
+                                DO YOGA<img src="/assets/img/level/redFlag.png" class="icon mini"/>
+                                {{#registered}}
+                                {{#admin}}
+                                <button class="btn-edit"><i class="icon fas fas fa-pencil-alt"></i></button>
+                                {{/admin}}
+                                {{/registered}}
                             </button>
                         </h2>
                         <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
@@ -199,7 +213,7 @@
                                             </button>
                                         </div>
                                         <div class="col-3">
-                                            <h2><img src="./assets/img/level/EmptyHeart.svg" class="like icon mini"
+                                            <h2><img src="/assets/img/level/EmptyHeart.svg" class="like icon mini"
                                                      onclick="ChangeHeart(this)"/></h2>
                                         </div>
                                     </div>

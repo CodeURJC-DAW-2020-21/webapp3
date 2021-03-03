@@ -294,9 +294,9 @@ function ChangeButtonsStatus(obj){
 }
 
 function ChangeHeart(obj){
-  if ($(obj).attr("src")==="assets/img/level/EmptyHeart.svg"){
-    $(obj).attr("src","assets/img/level/FullHeart.svg");
+  if ($(obj).attr("src")==="/assets/img/level/EmptyHeart.svg"){
+    $(obj).attr("src","/assets/img/level/FullHeart.svg");
   }else{
-    $(obj).attr("src","assets/img/level/EmptyHeart.svg");
+    $(obj).attr("src","/assets/img/level/EmptyHeart.svg");
   }
 }

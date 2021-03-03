@@ -1,20 +1,29 @@
 package es.dawequipo3.growing;
 
+import es.dawequipo3.growing.service.CategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 
 @Controller
 public class GrowingController {
 
+    @Autowired
+    private CategoryService categoryService;
+
     @GetMapping("/")
-    public String index(){
+    public String index(Model model){
+        model.addAttribute("category", categoryService.findAll());
         return "index";
     }
 
     @GetMapping("/categories")
-    public String categories(){
+    public String categories(Model model){
+        model.addAttribute("category", categoryService.findAll());
         return "categories";
     }
 
@@ -39,20 +48,11 @@ public class GrowingController {
         return "profile";
     }
 
-    @GetMapping("/profileAdmin")
-    public String profileAdmin(){
-        return "profileAdmin";
-    }
-
-    @GetMapping("/categoryInfo")
-    public String categoryInfo(Model model){
-
-        model.addAttribute("title", "Mental Health");
-        model.addAttribute("description", "In this category we show you a group of plans that you must carry out every day to\n" +
-                "                    improve your mental health. The tree will increase its height when you complete some plans and it\n" +
-                "                    will lower when you don't.");
-        model.addAttribute("date", "11/03/2020");
-
+    @GetMapping("/categoryInfo/{name}")
+    public String categoryInfo(Model model, @PathVariable String name){
+        model.addAttribute("category", categoryService.findByName(name));
+        model.addAttribute("description", categoryService.findByName(name).getDescription());
+        model.addAttribute("date", "11-3-2020");
         model.addAttribute("registered", true);
         model.addAttribute("admin", true);
         model.addAttribute("liked", true);
@@ -63,4 +63,5 @@ public class GrowingController {
     public String notFound(){
         return "404";
     }
+
 }

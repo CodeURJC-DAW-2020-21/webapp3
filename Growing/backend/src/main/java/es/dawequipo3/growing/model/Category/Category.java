@@ -1,11 +1,19 @@
-package es.dawequipo3.growing.model;
+package es.dawequipo3.growing.model.Category;
 
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+@Entity
 public class Category {
-
+    @Id
     private String name;
     private String description;
     private String icon;
     private String color;
+    @ManyToMany
+    private Set<>
 
     public Category(){}
 

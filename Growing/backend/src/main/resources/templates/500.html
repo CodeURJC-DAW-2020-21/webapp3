@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Growing - Not found</title>
+    <title>Growing - Server error</title>
 
     {{>head}}
     <link rel="stylesheet" href="/assets/css/errorScreen.css">
 
 </head>
-<body>
+<body class="desert">
 
 <!-- ======= Header ======= -->
 <section>
@@ -22,10 +22,10 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto" href="./">Home</a></li>
+                    <li><a class="nav-link scrollto" href="/">Home</a></li>
                     <li><a class="nav-link scrollto" href="/categories">Categories</a></li>
                     <li><a class="nav-link scrollto" href="/explore">Explore</a></li>
-                    <li><a class="nav-link scrollto" href="./aboutUs">About us</a></li>
+                    <li><a class="nav-link scrollto" href="/aboutUs">About us</a></li>
                     <li><a class="nav-link scrollto active" href="/profile"><i class="fas fa-user"></i></a>
                     </li>
                     <li><a class="sign_out scrollto" href="#">Sign out</a></li>
@@ -38,28 +38,19 @@
     </header><!-- End Header -->
 </section>
 
-<div class="container-fluid">
+<div class="container-fluid desert">
 
     <div class="row">
 
         <div class="col-lg-1 d-md-block borderScreen"></div>
 
         <div class="col-lg-10 col-md-12 main">
-            <h1 class="title">404 - Not found</h1>
-            <div class="container-fluid" data-aos="fade-up">
-                <div class="row">
-                    <div class="col-lg-6 col-md-block">
-                        <img class="Gif" src="./assets/img/notFound.gif"/>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="Text">
-                            <h2>Don't hide yourself!</h2>
-                            <h3>You didn't break the website, you only accessed to a not existing screen or you are not
-                                allowed to be here.<br><br>But don't worry, click on every link of the navbar and return to normality</h3>
-                        </div>
-                    </div>
-                </div>
+            <h1 class="title">500 - Server Error</h1>
+            <div class="Text errorMessage">
+                <h2>Ups, a server error appeared</h2>
+                <h3>Where are all the trees? <br> They are gone because of a server error.<br> Don't panic, we are working hard to bring them back for you.</h3>
             </div>
+                <img class="img" src="/assets/img/working.png">
         </div>
 
         <div class="col-lg-1 d-md-block border-screen"></div>

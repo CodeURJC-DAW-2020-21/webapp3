@@ -64,4 +64,8 @@ public class GrowingController {
         return "404";
     }
 
+    @GetMapping("/500-ServerError")
+    public String serverError(){
+        return "500";
+    }
 }

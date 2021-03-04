@@ -8,7 +8,6 @@ body{
     background: #ffffff;
     border-radius: 30px;
     box-shadow: 0 10px 30px 0px rgba(0,0,0,0.3);
-    height: 76vh;
 }
 
 .main .title{
@@ -22,26 +21,51 @@ body{
 }
 
 
-.notFoundGif{
+.Gif{
     padding-top: 10%;
     padding-left: 10%;
+    padding-bottom: 10%;
     width: 90%;
     height: 90%;
 }
 
-.notFoundText{
-    padding-top: 17%;
+.Text{
+    padding-top: 10%;
+    padding-bottom: 10%;
 }
 
-.notFoundText h2{
+.Text h2{
     text-align: center;
     font-size: 36px;
     color: #ff0000;
     font-weight: bold;
 }
 
-.notFoundText h3{
+.Text h3{
     font-size: 32px;
     color: #0a58ca;
     text-align: center;
+}
+
+.Gif.server{
+    width:100%;
+    height: 110%;
+}
+
+.desert{
+    background-image: url(../img/desert.png);
+    background-color: transparent;
+}
+
+.server-fail{
+    min-height: 77vh;
+}
+
+.img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.errorMessage{
+    padding: 0 0;
 }

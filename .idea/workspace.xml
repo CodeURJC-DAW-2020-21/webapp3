@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cb90931d-97b0-4c6b-a3b1-1fb468902f31" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_11_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_11_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_11_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_11_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_11_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_11_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_9_0_39.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_9_0_39.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_4_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_4_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_4_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_4_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_4_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_mustache_2_4_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_4_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_4_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_spring_aop_5_3_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_spring_beans_5_3_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_spring_context_5_3_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_spring_core_5_3_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_spring_expression_5_3_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_spring_jcl_5_3_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_spring_web_5_3_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_spring_webmvc_5_3_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Growing/backend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Growing/backend/backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Growing/backend/backend.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Growing/backend/src/main/java/es/dawequipo3/growing/GrowingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Growing/backend/src/main/java/es/dawequipo3/growing/GrowingController.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="1pD8kyaoQ66tzeObUm39FKD9gYl" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="true" />
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../helloworld-spring" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+  </component>
+  <component name="RunManager" selected="Application.GrowingApplication">
+    <configuration name="GrowingApplication (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="es.dawequipo3.growing.GrowingApplication" />
+      <module name="webapp3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="es.dawequipo3.growing.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GrowingApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="15" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="es.codeurjc.growing.GrowingApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="es.codeurjc.growing.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.GrowingApplication" />
+      <item itemvalue="Application.GrowingApplication (1)" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.GrowingApplication (1)" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cb90931d-97b0-4c6b-a3b1-1fb468902f31" name="Default Changelist" comment="" />
+      <created>1614706446883</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1614706446883</updated>
+      <workItem from="1614706448476" duration="2840000" />
+      <workItem from="1614767080579" duration="454000" />
+      <workItem from="1614767743346" duration="34000" />
+      <workItem from="1614767792646" duration="193000" />
+      <workItem from="1614767995508" duration="248000" />
+      <workItem from="1614768253831" duration="998000" />
+      <workItem from="1614769391073" duration="906000" />
+      <workItem from="1614888420111" duration="7000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

@@ -89,5 +89,10 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.xmlunit:xmlunit-core:2.7.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-mustache:2.4.3" level="project" />
     <orderEntry type="library" name="Maven: com.samskivert:jmustache:1.15" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-security:2.4.3" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.3.4" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:5.4.5" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-core:5.4.5" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-web:5.4.5" level="project" />
   </component>
 </module>

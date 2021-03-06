@@ -1,11 +1,5 @@
-package es.dawequipo3.growing.model.User;
+package es.dawequipo3.growing.model;
 
-
-import es.dawequipo3.growing.model.Category.Category;
-import es.dawequipo3.growing.model.Plan.Completed_plan;
-import es.dawequipo3.growing.model.Plan.Plan;
-import es.dawequipo3.growing.model.Tree.Tree;
-import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.List;

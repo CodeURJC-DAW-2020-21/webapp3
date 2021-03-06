@@ -1,8 +1,5 @@
-package es.dawequipo3.growing.model.Tree;
+package es.dawequipo3.growing.model;
 
-
-import es.dawequipo3.growing.model.Category.Category;
-import es.dawequipo3.growing.model.User.User;
 
 import javax.persistence.*;
 

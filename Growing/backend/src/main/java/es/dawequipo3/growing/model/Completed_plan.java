@@ -1,8 +1,6 @@
-package es.dawequipo3.growing.model.Plan;
+package es.dawequipo3.growing.model;
 
 
-
-import es.dawequipo3.growing.model.Category.Category;
 
 import javax.persistence.*;
 

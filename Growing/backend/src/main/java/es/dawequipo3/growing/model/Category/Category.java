@@ -1,9 +1,11 @@
 package es.dawequipo3.growing.model.Category;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import es.dawequipo3.growing.model.Plan.Plan;
+import es.dawequipo3.growing.model.Tree.Tree;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Category {
@@ -12,11 +14,12 @@ public class Category {
     private String description;
     private String icon;
     private String color;
-    @ManyToMany
-    private Set<>
-
     public Category(){}
-
+    //Basic relationships
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Tree> tree;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Plan> plans;
 
     public Category(String name, String description, String icon, String color) {
         super();
@@ -24,6 +27,7 @@ public class Category {
         this.description = description;
         this.icon = icon;
         this.color = color;
+
     }
 
     public String getName() {

@@ -1,8 +1,14 @@
 package es.dawequipo3.growing.model.User;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import es.dawequipo3.growing.model.Category.Category;
+import es.dawequipo3.growing.model.Plan.Completed_plan;
+import es.dawequipo3.growing.model.Plan.Plan;
+import es.dawequipo3.growing.model.Tree.Tree;
+import org.hibernate.annotations.Cascade;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class User {
@@ -11,6 +17,22 @@ public class User {
     private String username;
     private String password;
     private String photo_url;
+
+    //Basic relationships
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Tree> tree;
+
+    //Relational relationships
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Category> fav_categorie;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Plan> liked_plans;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Completed_plan> completed_plans;
+
+
 
     public User(String email, String username, String password, String photo_url) {
         super();

@@ -1,6 +1,7 @@
 package es.dawequipo3.growing;
 
 import es.dawequipo3.growing.service.CategoryService;
+import es.dawequipo3.growing.service.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,9 @@ public class GrowingController {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private PlanService planService;
 
     @GetMapping("/")
     public String index(Model model){
@@ -56,6 +60,7 @@ public class GrowingController {
         model.addAttribute("registered", true);
         model.addAttribute("admin", true);
         model.addAttribute("liked", true);
+        model.addAttribute("plans", planService.findAll());
         return "categoryInfo";
     }
 

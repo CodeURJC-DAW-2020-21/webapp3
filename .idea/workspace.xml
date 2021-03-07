@@ -2,33 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb90931d-97b0-4c6b-a3b1-1fb468902f31" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_11_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_11_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_11_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_11_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_11_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_11_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_9_0_39.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_9_0_39.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_4_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_4_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_4_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_4_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_4_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_mustache_2_4_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_4_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_4_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_spring_aop_5_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_spring_beans_5_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_spring_context_5_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_spring_core_5_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_spring_expression_5_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_spring_jcl_5_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_spring_web_5_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/libraries/Maven__org_springframework_spring_webmvc_5_3_1.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Growing/backend/src/main/resources/templates/accordionCategories.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Growing/backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Growing/backend/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Growing/backend/backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Growing/backend/backend.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Growing/backend/src/main/java/es/dawequipo3/growing/GrowingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Growing/backend/src/main/java/es/dawequipo3/growing/GrowingController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +44,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../helloworld-spring" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Growing/backend" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -127,6 +104,7 @@
       <workItem from="1614768253831" duration="998000" />
       <workItem from="1614769391073" duration="906000" />
       <workItem from="1614888420111" duration="7000" />
+      <workItem from="1615144495765" duration="120000" />
     </task>
     <servers />
   </component>
@@ -144,6 +122,12 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="420" y="247" key="FileChooserDialogImpl" timestamp="1615144614001">
+      <screen x="0" y="0" width="1280" height="984" />
+    </state>
+    <state x="420" y="247" key="FileChooserDialogImpl/0.0.1280.984@0.0.1280.984" timestamp="1615144614001" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

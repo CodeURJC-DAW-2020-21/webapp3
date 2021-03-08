@@ -2,6 +2,7 @@ package es.dawequipo3.growing.model;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,7 +25,8 @@ public class Category {
         this.description = description;
         this.icon = icon;
         this.color = color;
-
+        this.tree = new ArrayList<>();
+        this.plans = new ArrayList<>();
     }
 
     public String getName() {

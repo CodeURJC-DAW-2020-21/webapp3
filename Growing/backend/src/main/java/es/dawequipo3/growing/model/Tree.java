@@ -13,6 +13,11 @@ public class Tree {
     private int last_update; //Stored as ms since epoch
 
 
+    public Tree(int height, int last_update) {
+        Height = height;
+        this.last_update = last_update;
+    }
+
     public int getHeight() {
         return Height;
     }

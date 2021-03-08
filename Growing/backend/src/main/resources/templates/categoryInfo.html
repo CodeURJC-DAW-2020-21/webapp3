@@ -53,7 +53,7 @@
         <!-- Container of the header-->
         <header class="section-header category" data-aos="fade-left">
             <div class="justify-content-center">
-                <h1>{{category.name}}
+                <h1>{{name}}
 
                     <!-- This is to diferentiate if the like icon is appearing because the user is logged-->
                     {{#registered}}
@@ -67,7 +67,7 @@
                         {{/liked}}
                     {{/registered}}
                 </h1>
-                <h2 class="subtitle">{{category.description}}</h2>
+                <h2 class="subtitle">{{description}}</h2>
             </div>
         </header>
         <!-- End of the container of the header-->
@@ -101,7 +101,7 @@
 
                 </header>
 
-                {{>accordionCategories}}
+                <!-- {{>accordionCategories}} -->
                 <!-- End Task List -->
             </div>
             <!-- End container Task List -->

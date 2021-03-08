@@ -30,19 +30,18 @@
         <item name="GROUP_NODE:S2" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:Mustache_Configuration" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83c00b7c-64de-4c2c-a7b9-d0498b57839c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/model/Plan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/service/PlanService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/accordionCategories.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="83c00b7c-64de-4c2c-a7b9-d0498b57839c" name="Default Changelist" comment="Added mustache in categoryInfo.html&#10;&#10;I have added mustache to the plans of a category, for this I modified the controller and created a model and service class for the plans.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/backend.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/GrowingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/GrowingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/accordionCategories.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/accordionCategories.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/categoryInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/categoryInfo.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -130,17 +129,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.GrowingApplication">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="generated-requests#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -176,8 +164,17 @@
       <workItem from="1614716753074" duration="11959000" />
       <workItem from="1614765814428" duration="5099000" />
       <workItem from="1615144616531" duration="539000" />
-      <workItem from="1615145213329" duration="3523000" />
+      <workItem from="1615145213329" duration="4662000" />
+      <workItem from="1615197772293" duration="2204000" />
     </task>
+    <task id="LOCAL-00001" summary="Added mustache in categoryInfo.html&#10;&#10;I have added mustache to the plans of a category, for this I modified the controller and created a model and service class for the plans.">
+      <created>1615148965022</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1615148965022</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,7 +185,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="Mustache_Configuration" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -196,7 +205,8 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="Added mustache in categoryInfo.html&#10;&#10;I have added mustache to the plans of a category, for this I modified the controller and created a model and service class for the plans." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added mustache in categoryInfo.html&#10;&#10;I have added mustache to the plans of a category, for this I modified the controller and created a model and service class for the plans." />
   </component>
   <component name="WindowStateProjectService">
     <state x="120" y="66" key="#Project_Structure" timestamp="1615144799217">
@@ -211,54 +221,58 @@
       <screen x="0" y="0" width="1280" height="984" />
     </state>
     <state x="420" y="246" key="FileChooserDialogImpl/0.0.1280.984@0.0.1280.984" timestamp="1615144786424" />
-    <state width="1237" height="325" key="GridCell.Tab.0.bottom" timestamp="1615148304794">
+    <state width="1237" height="263" key="GridCell.Tab.0.bottom" timestamp="1615199888326">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="325" key="GridCell.Tab.0.bottom/0.0.1280.984@0.0.1280.984" timestamp="1615148304794" />
-    <state width="1237" height="325" key="GridCell.Tab.0.center" timestamp="1615148304794">
+    <state width="1237" height="263" key="GridCell.Tab.0.bottom/0.0.1280.984@0.0.1280.984" timestamp="1615199888326" />
+    <state width="1237" height="263" key="GridCell.Tab.0.center" timestamp="1615199888326">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="325" key="GridCell.Tab.0.center/0.0.1280.984@0.0.1280.984" timestamp="1615148304794" />
-    <state width="1237" height="325" key="GridCell.Tab.0.left" timestamp="1615148304794">
+    <state width="1237" height="263" key="GridCell.Tab.0.center/0.0.1280.984@0.0.1280.984" timestamp="1615199888326" />
+    <state width="1237" height="263" key="GridCell.Tab.0.left" timestamp="1615199888326">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="325" key="GridCell.Tab.0.left/0.0.1280.984@0.0.1280.984" timestamp="1615148304794" />
-    <state width="1237" height="325" key="GridCell.Tab.0.right" timestamp="1615148304794">
+    <state width="1237" height="263" key="GridCell.Tab.0.left/0.0.1280.984@0.0.1280.984" timestamp="1615199888326" />
+    <state width="1237" height="263" key="GridCell.Tab.0.right" timestamp="1615199888326">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="325" key="GridCell.Tab.0.right/0.0.1280.984@0.0.1280.984" timestamp="1615148304794" />
-    <state width="1237" height="325" key="GridCell.Tab.1.bottom" timestamp="1615148304795">
+    <state width="1237" height="263" key="GridCell.Tab.0.right/0.0.1280.984@0.0.1280.984" timestamp="1615199888326" />
+    <state width="1237" height="263" key="GridCell.Tab.1.bottom" timestamp="1615199888327">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="325" key="GridCell.Tab.1.bottom/0.0.1280.984@0.0.1280.984" timestamp="1615148304795" />
-    <state width="1237" height="325" key="GridCell.Tab.1.center" timestamp="1615148304794">
+    <state width="1237" height="263" key="GridCell.Tab.1.bottom/0.0.1280.984@0.0.1280.984" timestamp="1615199888327" />
+    <state width="1237" height="263" key="GridCell.Tab.1.center" timestamp="1615199888327">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="325" key="GridCell.Tab.1.center/0.0.1280.984@0.0.1280.984" timestamp="1615148304794" />
-    <state width="1237" height="325" key="GridCell.Tab.1.left" timestamp="1615148304794">
+    <state width="1237" height="263" key="GridCell.Tab.1.center/0.0.1280.984@0.0.1280.984" timestamp="1615199888327" />
+    <state width="1237" height="263" key="GridCell.Tab.1.left" timestamp="1615199888327">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="325" key="GridCell.Tab.1.left/0.0.1280.984@0.0.1280.984" timestamp="1615148304794" />
-    <state width="1237" height="325" key="GridCell.Tab.1.right" timestamp="1615148304794">
+    <state width="1237" height="263" key="GridCell.Tab.1.left/0.0.1280.984@0.0.1280.984" timestamp="1615199888327" />
+    <state width="1237" height="263" key="GridCell.Tab.1.right" timestamp="1615199888327">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="325" key="GridCell.Tab.1.right/0.0.1280.984@0.0.1280.984" timestamp="1615148304794" />
-    <state width="1237" height="325" key="GridCell.Tab.2.bottom" timestamp="1615148304795">
+    <state width="1237" height="263" key="GridCell.Tab.1.right/0.0.1280.984@0.0.1280.984" timestamp="1615199888327" />
+    <state width="1237" height="325" key="GridCell.Tab.2.bottom" timestamp="1615150504463">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="325" key="GridCell.Tab.2.bottom/0.0.1280.984@0.0.1280.984" timestamp="1615148304795" />
-    <state width="1237" height="325" key="GridCell.Tab.2.center" timestamp="1615148304795">
+    <state width="1237" height="325" key="GridCell.Tab.2.bottom/0.0.1280.984@0.0.1280.984" timestamp="1615150504463" />
+    <state width="1237" height="325" key="GridCell.Tab.2.center" timestamp="1615150504463">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="325" key="GridCell.Tab.2.center/0.0.1280.984@0.0.1280.984" timestamp="1615148304795" />
-    <state width="1237" height="325" key="GridCell.Tab.2.left" timestamp="1615148304795">
+    <state width="1237" height="325" key="GridCell.Tab.2.center/0.0.1280.984@0.0.1280.984" timestamp="1615150504463" />
+    <state width="1237" height="325" key="GridCell.Tab.2.left" timestamp="1615150504463">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="325" key="GridCell.Tab.2.left/0.0.1280.984@0.0.1280.984" timestamp="1615148304795" />
-    <state width="1237" height="325" key="GridCell.Tab.2.right" timestamp="1615148304795">
+    <state width="1237" height="325" key="GridCell.Tab.2.left/0.0.1280.984@0.0.1280.984" timestamp="1615150504463" />
+    <state width="1237" height="325" key="GridCell.Tab.2.right" timestamp="1615150504463">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state width="1237" height="325" key="GridCell.Tab.2.right/0.0.1280.984@0.0.1280.984" timestamp="1615148304795" />
+    <state width="1237" height="325" key="GridCell.Tab.2.right/0.0.1280.984@0.0.1280.984" timestamp="1615150504463" />
+    <state x="232" y="225" key="Vcs.Push.Dialog.v2" timestamp="1615149214103">
+      <screen x="0" y="0" width="1280" height="984" />
+    </state>
+    <state x="232" y="225" key="Vcs.Push.Dialog.v2/0.0.1280.984@0.0.1280.984" timestamp="1615149214103" />
     <state x="457" y="406" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1615145354542">
       <screen x="0" y="0" width="1280" height="984" />
     </state>

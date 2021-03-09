@@ -12,8 +12,49 @@ public class Plan {
     private String Description;
     private int difficulty;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    private List<Completed_plan> completed_plans;
+    /*@ManyToMany(cascade = CascadeType.ALL)
+    private List<Completed_plan> completed_plans;*/
 
+    @ManyToOne
+    private Category category;
 
+    public Plan(){}
+
+    public Plan(String name, String description, int difficulty) {
+        Name = name;
+        Description = description;
+        this.difficulty = difficulty;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
+
+    public int getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 }

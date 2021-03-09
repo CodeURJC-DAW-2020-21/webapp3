@@ -10,25 +10,25 @@ public class Category {
     @Id
     private String name;
 
-    private String description;
+    private String des;
     private String icon;
     private String color;
     public Category(){}
 
     //Basic relationships
-    /*@OneToMany(cascade = CascadeType.ALL)
-    private List<Tree> tree;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Plan> plans;*/
+    /* @OneToMany(cascade = CascadeType.ALL)
+    private List<Tree> tree;*/
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+    private List<Plan> plans;
 
     public Category(String name, String description, String icon, String color) {
         super();
         this.name = name;
-        this.description = description;
+        this.des = description;
         this.icon = icon;
         this.color = color;
-       /* this.tree = new ArrayList<>();
-        this.plans = new ArrayList<>();*/
+       /* this.tree = new ArrayList<>();*/
+        this.plans = new ArrayList<>();
     }
 
     public String getName() {
@@ -40,11 +40,11 @@ public class Category {
     }
 
     public String getDescription() {
-        return description;
+        return des;
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.des = description;
     }
 
     public String getIcon() {
@@ -67,7 +67,7 @@ public class Category {
     public String toString() {
         return "Category{" +
                 "name='" + name + '\'' +
-                ", description='" + description + '\'' +
+                ", description='" + des + '\'' +
                 ", icon='" + icon + '\'' +
                 ", color='" + color + '\'' +
                 '}';

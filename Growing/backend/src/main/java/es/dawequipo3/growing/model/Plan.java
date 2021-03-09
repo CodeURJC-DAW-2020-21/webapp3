@@ -12,9 +12,6 @@ public class Plan {
     private String Description;
     private int difficulty;
 
-    /*@ManyToMany(cascade = CascadeType.ALL)
-    private List<Completed_plan> completed_plans;*/
-
     @ManyToOne
     private Category category;
 

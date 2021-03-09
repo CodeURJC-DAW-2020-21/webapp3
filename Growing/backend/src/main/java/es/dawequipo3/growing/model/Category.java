@@ -15,9 +15,6 @@ public class Category {
     private String color;
     public Category(){}
 
-    //Basic relationships
-    /* @OneToMany(cascade = CascadeType.ALL)
-    private List<Tree> tree;*/
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     private List<Plan> plans;
 
@@ -27,7 +24,6 @@ public class Category {
         this.des = description;
         this.icon = icon;
         this.color = color;
-       /* this.tree = new ArrayList<>();*/
         this.plans = new ArrayList<>();
     }
 
@@ -61,6 +57,14 @@ public class Category {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public List<Plan> getPlans() {
+        return plans;
+    }
+
+    public void setPlans(List<Plan> plans) {
+        this.plans = plans;
     }
 
     @Override

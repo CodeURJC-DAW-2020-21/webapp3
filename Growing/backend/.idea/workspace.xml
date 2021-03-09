@@ -5,13 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83c00b7c-64de-4c2c-a7b9-d0498b57839c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_h2database_h2_1_4_200.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/NoSuchElementExceptionCA.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/model/Category/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/model/Category/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/model/Plan/Plan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/model/Plan/Plan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/model/Tree/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/model/Tree/Tree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/model/Tree/TreeId.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/model/User/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/model/User/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/service/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/backend.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/GrowingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/GrowingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/model/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/model/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/repository/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/repository/TreeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/repository/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +32,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/../.." value="EmailTechnology" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="ProjectId" id="1pDTdlaMMkaG4QJYwc6bWMGGIio" />
@@ -48,6 +58,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
@@ -120,5 +131,16 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/GrowingController.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

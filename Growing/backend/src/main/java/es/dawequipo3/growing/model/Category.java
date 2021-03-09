@@ -9,15 +9,17 @@ import java.util.List;
 public class Category {
     @Id
     private String name;
+
     private String description;
     private String icon;
     private String color;
     public Category(){}
+
     //Basic relationships
-    @OneToMany(cascade = CascadeType.ALL)
+    /*@OneToMany(cascade = CascadeType.ALL)
     private List<Tree> tree;
     @OneToMany(cascade = CascadeType.ALL)
-    private List<Plan> plans;
+    private List<Plan> plans;*/
 
     public Category(String name, String description, String icon, String color) {
         super();
@@ -25,8 +27,8 @@ public class Category {
         this.description = description;
         this.icon = icon;
         this.color = color;
-        this.tree = new ArrayList<>();
-        this.plans = new ArrayList<>();
+       /* this.tree = new ArrayList<>();
+        this.plans = new ArrayList<>();*/
     }
 
     public String getName() {

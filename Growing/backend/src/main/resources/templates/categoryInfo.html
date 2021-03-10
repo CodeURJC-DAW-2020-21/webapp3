@@ -79,7 +79,7 @@
                     <h3>Your progress</h3>
                 </header>
                 <div class="imagenArbol">
-                    <img id="progress" src="/assets/img/progress/fase5.png"/>
+                    <img id="progress" src="/assets/img/progress/fase{{}}.png"/>
                     <p class="update"> Last updated: {{date}} </p>
                 </div>
             </div>
@@ -207,8 +207,10 @@
                                     <div class="row">
                                         <div class="col-9">
                                             <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
-                                            <button onclick="ChangeButtonsStatus(this)" class="finish">I did it!
-                                            </button>
+                                            <form method="post" action="/activityCompleted">
+                                                <button onclick="ChangeButtonsStatus(this)" class="finish">I did it!
+                                                </button>
+                                            </form>
                                             <button onclick="ChangeButtonsStatus(this)" class="leave">I won't finish
                                             </button>
                                         </div>

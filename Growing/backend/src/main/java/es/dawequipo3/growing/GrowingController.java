@@ -1,15 +1,15 @@
 package es.dawequipo3.growing;
 
-import es.dawequipo3.growing.model.Category;
-import es.dawequipo3.growing.model.Plan;
-import es.dawequipo3.growing.repository.CategoryRepository;
-import es.dawequipo3.growing.repository.PlanRepository;
+import es.dawequipo3.growing.model.*;
+import es.dawequipo3.growing.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.Calendar;
+import java.util.Date;
 import javax.annotation.PostConstruct;
 import java.util.List;
 
@@ -23,7 +23,14 @@ public class GrowingController {
     @Autowired
     private PlanRepository planRepository;
 
+    @Autowired
+    private TreeRepository treeRepository;
 
+    @Autowired
+    private Completed_planRepository completed_planRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
 
    @PostConstruct
@@ -61,7 +68,11 @@ public class GrowingController {
         planRepository.save(plan1);
         planRepository.save(plan2);
 
-
+       User u1 = new User("p1@gmail.com","paquito","contraseña");
+       User u2 = new User("yo@hotmail.com","XXXkillerG0D99XXX","IAmVeryMature");
+       Tree t1= new Tree(u1,goodNight,0, Calendar.getInstance().getTimeInMillis());
+       Tree t2= new Tree(u2,physicalHealth,0, Calendar.getInstance().getTimeInMillis());
+        
     }
 
     @GetMapping("/")

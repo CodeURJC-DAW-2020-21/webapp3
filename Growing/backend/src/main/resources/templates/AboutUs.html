@@ -27,7 +27,16 @@
                 <li><a class="nav-link scrollto" href="/categories">Categories</a></li>
                 <li><a class="nav-link scrollto " href="/explore">Explore</a></li>
                 <li><a class="nav-link scrollto active" href="/aboutUs">About us</a></li>
+                {{#registered}}
+                <li><a class="nav-link scrollto active" href="/profile"><i class="fas fa-user"></i></a>
+                </li>
+                <form action="/logout" method="post" >
+                    <input type="submit" value="Sign out" class="sign_out scrollto"/>
+                </form>
+                {{/registered}}
+                {{^registered}}
                 <li><a class="getstarted scrollto" href="/getStarted">Get Started</a></li>
+                {{/registered}}
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->

@@ -295,9 +295,8 @@ section {
 }
 
 .navbar .sign_out:hover {
-  border-width: 20px;
-  color: #fc0000;
-  background: #ffffff;
+  color: #ffffff;
+  background: #c10303;
   border-color: #c10303;
 }
 

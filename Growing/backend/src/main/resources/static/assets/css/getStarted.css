@@ -388,3 +388,15 @@ form.sign-in-form {
     left: 50%;
   }
 }
+.error {
+  size: inherit;
+  align-content: space-around ;
+  background: #fab4b4;
+  border: 1px solid red;
+  border-radius: 8px;
+}
+.textError {
+  font-size: inherit;
+  color: red;
+  margin: 7px;
+}

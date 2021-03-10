@@ -34,7 +34,9 @@
                 {{#registered}}
                 <li><a class="nav-link scrollto active" href="/profile"><i class="fas fa-user"></i></a>
                 </li>
-                <li><a class="sign_out scrollto" href="/getStarted">Sign out</a></li>
+                <form action="/logout" method="post" >
+                    <input type="submit" value="Sign out" class="sign_out scrollto"/>
+                </form>
                 {{/registered}}
                 {{^registered}}
                 <li><a class="getstarted scrollto" href="/getStarted">Get Started</a></li>
@@ -80,7 +82,9 @@
                 </header>
                 <div class="imagenArbol">
                     <img id="progress" src="/assets/img/progress/fase5.png"/>
+                    {{#registered}}
                     <p class="update"> Last updated: {{date}} </p>
+                    {{/registered}}
                 </div>
             </div>
             <!-- End of Tree Section -->
@@ -124,6 +128,7 @@
                                 We know that sometimes life is hard, so there are times when it is necessary to think
                                 about ourselves. 30 minutes to do something that you are passionate about will be enough
                                 to continue with your duties.
+                                {{#registered}}
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-9">
@@ -139,6 +144,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                {{/registered}}
                             </div>
                         </div>
                     </div>
@@ -165,6 +171,7 @@
                                 lower our stress levels, we get to know our pain, we connect better, we improve our
                                 focus, and we're kinder to ourselves. Let us walk you through the basics in our new
                                 mindful guide on how to meditate.
+                                {{#registered}}
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-9">
@@ -180,6 +187,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                {{/registered}}
                             </div>
                         </div>
                     </div>
@@ -203,6 +211,7 @@
                             <div class="accordion-body">
                                 Practicing the postures, breathing exercises and meditation makes you healthier in body,
                                 mind and spirit. Yoga lets you tune in, chill out, shape up -- all at the same time.
+                                {{#registered}}
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-9">
@@ -218,6 +227,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                {{/registered}}
                             </div>
                         </div>
                     </div>

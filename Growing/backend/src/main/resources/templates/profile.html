@@ -41,7 +41,9 @@
                     <li><a class="nav-link scrollto" href="./aboutUs">About us</a></li>
                     <li><a class="nav-link scrollto active" href="/profile"><i class="fas fa-user"></i></a>
                     </li>
-                    <li><a class="sign_out scrollto" href="#">Sign out</a></li>
+                    <form action="/logout" method="post" >
+                        <input type="submit" value="Sign out" class="sign_out scrollto"/>
+                    </form>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -91,7 +93,7 @@
                                             </div>
 
                                             <!-- Button trigger-->
-                                            <a href="/editProfile">
+                                            <a href="editProfile.html">
                                                 <i class="fas fa-user-edit"></i>
                                             </a>
 

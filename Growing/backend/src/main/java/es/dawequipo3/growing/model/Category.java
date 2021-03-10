@@ -2,31 +2,32 @@ package es.dawequipo3.growing.model;
 
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
+
+
 
 @Entity
 public class Category {
+
     @Id
     private String name;
-
     private String des;
     private String icon;
     private String color;
 
-
-    //Basic relationships
-    @OneToMany(mappedBy = "name")
-    private List<Category> trees;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "name")
+    @OneToMany(mappedBy = "category")
     private List<Plan> plans;
 
-    //Relational relations
-    @ManyToMany
-    private List<User> fav_by_users;
-
     public Category() {
+    }
+
+    public Category(String name, String des, String icon, String color, List<Plan> plans) {
+        super();
+        this.name = name;
+        this.des = des;
+        this.icon = icon;
+        this.color = color;
+        this.plans = plans;
     }
 
     public Category(String name, String description, String icon, String color) {
@@ -35,8 +36,6 @@ public class Category {
         this.des = description;
         this.icon = icon;
         this.color = color;
-        /* this.tree = new ArrayList<>();*/
-        this.plans = new ArrayList<>();
     }
 
     public String getName() {
@@ -69,6 +68,22 @@ public class Category {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public String getDes() {
+        return des;
+    }
+
+    public void setDes(String des) {
+        this.des = des;
+    }
+
+    public List<Plan> getPlans() {
+        return plans;
+    }
+
+    public void setPlans(List<Plan> plans) {
+        this.plans = plans;
     }
 
     @Override

@@ -1,17 +1,13 @@
 package es.dawequipo3.growing.model;
 
-
-import org.h2.result.SearchRow;
-
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.Table;
-
 import java.io.Serializable;
+import java.util.Date;
 
 
 @Embeddable
-public class TreePK implements Serializable {
+public class CompletedPlanPK implements Serializable {
 
     @Column
     private String user;
@@ -19,12 +15,16 @@ public class TreePK implements Serializable {
     @Column
     private String category;
 
-    public TreePK(String user, String category) {
+    @Column(insertable = false, updatable = false)
+    private Date date;
+
+    public CompletedPlanPK() {
+    }
+
+    public CompletedPlanPK(String user, String category) {
         this.user = user;
         this.category = category;
+        this.date = new Date();
     }
 
-    public TreePK() {
-
-    }
 }

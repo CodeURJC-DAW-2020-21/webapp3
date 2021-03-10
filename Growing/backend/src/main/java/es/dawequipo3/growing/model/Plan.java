@@ -4,25 +4,31 @@ package es.dawequipo3.growing.model;
 import javax.persistence.*;
 import java.util.List;
 
+@Table(name = "Plan")
 @Entity
 public class Plan {
+
 
     @Id
     private String name;
     private String description;
     private int difficulty;
+
     @ManyToOne
     private Category category;
 
-
-    @ManyToMany(cascade = CascadeType.ALL)
-    private List<Completed_plan> completed_plans;
-
     @ManyToMany
-    private List<User> liked_by;
+    private List<User> likedBy;
 
 
-    public Plan(){}
+    protected Plan(){}
+
+    public Plan(String name, String description, int difficulty, Category category) {
+        this.name = name;
+        this.description = description;
+        this.difficulty = difficulty;
+        this.category = category;
+    }
 
     public Plan(String name, String description, int difficulty) {
         this.name = name;

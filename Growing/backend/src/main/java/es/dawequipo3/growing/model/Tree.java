@@ -6,31 +6,45 @@ import javax.persistence.*;
 
 @Entity
 public class Tree {
-    @Id
-    @GeneratedValue()
-    private int id;
-    private int Height;
-    private int last_update; //Stored as ms since epoch
+    @EmbeddedId
+    private TreePK treePK;
 
+    //Relations
+    @ManyToOne
+    @JoinColumn(name = "user_email")
+    private User user;
 
-    public Tree(int height, int last_update) {
-        Height = height;
+    @ManyToOne
+    private Category category;
+
+    private int height;
+    private long last_update; //Stored as ms since epoch
+
+    public Tree(User PKUser, Category PKCategory,int height, long last_update) {
+        this.treePK = new TreePK(PKUser.getEmail(),PKCategory.getName());
+        this.height = height;
         this.last_update = last_update;
+        this.user = PKUser;
+        this.category = PKCategory;
+    }
+
+    public Tree() {
+
     }
 
     public int getHeight() {
-        return Height;
+        return height;
     }
 
     public void setHeight(int height) {
-        Height = height;
+        this.height = height;
     }
 
-    public int getLast_update() {
+    public long getLast_update() {
         return last_update;
     }
 
-    public void setLast_update(int last_update) {
+    public void setLast_update(long last_update) {
         this.last_update = last_update;
     }
 }

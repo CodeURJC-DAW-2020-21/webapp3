@@ -13,13 +13,21 @@ public class Category {
     private String des;
     private String icon;
     private String color;
-    public Category(){}
+
 
     //Basic relationships
-    /* @OneToMany(cascade = CascadeType.ALL)
-    private List<Tree> tree;*/
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+    @OneToMany(mappedBy = "name")
+    private List<Category> trees;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "name")
     private List<Plan> plans;
+
+    //Relational relations
+    @ManyToMany
+    private List<User> fav_by_users;
+
+    public Category() {
+    }
 
     public Category(String name, String description, String icon, String color) {
         super();
@@ -27,7 +35,7 @@ public class Category {
         this.des = description;
         this.icon = icon;
         this.color = color;
-       /* this.tree = new ArrayList<>();*/
+        /* this.tree = new ArrayList<>();*/
         this.plans = new ArrayList<>();
     }
 

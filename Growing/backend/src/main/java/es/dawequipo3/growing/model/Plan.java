@@ -8,38 +8,42 @@ import java.util.List;
 public class Plan {
 
     @Id
-    private String Name;
-    private String Description;
+    private String name;
+    private String description;
     private int difficulty;
-
-    /*@ManyToMany(cascade = CascadeType.ALL)
-    private List<Completed_plan> completed_plans;*/
-
     @ManyToOne
     private Category category;
+
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Completed_plan> completed_plans;
+
+    @ManyToMany
+    private List<User> liked_by;
+
 
     public Plan(){}
 
     public Plan(String name, String description, int difficulty) {
-        Name = name;
-        Description = description;
+        this.name = name;
+        this.description = description;
         this.difficulty = difficulty;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     public int getDifficulty() {

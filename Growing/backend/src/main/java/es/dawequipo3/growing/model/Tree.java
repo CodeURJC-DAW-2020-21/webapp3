@@ -31,6 +31,14 @@ public class Tree {
         this.last_update = new Date();
     }
 
+    public TreePK getTreePK() {
+        return treePK;
+    }
+
+    public void setTreePK(TreePK treePK) {
+        this.treePK = treePK;
+    }
+
     public int getHeight() {
         return height;
     }

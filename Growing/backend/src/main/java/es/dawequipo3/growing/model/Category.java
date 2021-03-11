@@ -2,6 +2,7 @@ package es.dawequipo3.growing.model;
 
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 
@@ -14,6 +15,7 @@ public class Category {
     private String des;
     private String icon;
     private String color;
+    private Date date;
 
     @OneToMany(mappedBy = "category")
     private List<Plan> plans;
@@ -28,6 +30,7 @@ public class Category {
         this.icon = icon;
         this.color = color;
         this.plans = plans;
+        this.date = new Date();
     }
 
     public Category(String name, String description, String icon, String color) {
@@ -36,6 +39,7 @@ public class Category {
         this.des = description;
         this.icon = icon;
         this.color = color;
+        this.date = new Date();
     }
 
     public String getName() {
@@ -84,6 +88,14 @@ public class Category {
 
     public void setPlans(List<Plan> plans) {
         this.plans = plans;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     @Override

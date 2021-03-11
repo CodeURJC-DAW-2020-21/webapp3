@@ -38,7 +38,9 @@
                 {{#registered}}
                 <li><a class="nav-link scrollto active" href="/profile"><i class="fas fa-user"></i></a>
                 </li>
-                <li><a class="sign_out scrollto" href="/getStarted">Sign out</a></li>
+                <li><form action="/logout" method="post">
+                    <button class="sign_out scrollto" type="submit">Sign out</button>
+                </form></li>
                 {{/registered}}
                 {{^registered}}
                 <li><a class="getstarted scrollto" href="/getStarted">Get Started</a></li>
@@ -71,7 +73,7 @@
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#faq-content-1">
-                                <div class="service-box orange">
+                                <div class="service-box">
                                     <i class="ri-home-2-line icon"></i>
                                 </div>
                                 Clean up your room<img src="/assets/img/level/greenFlag.png" class="icon mini"/>
@@ -84,7 +86,8 @@
                                     <div class="row">
                                         <div class="col-9">
                                             <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
-                                            <button onclick="ChangeButtonsStatus(this)" class="finish">I did it!
+
+                                            <button formmethod="post" formaction="activityCompleted" onclick="ChangeButtonsStatus(this)" class="finish">I did it!
                                             </button>
                                             <button onclick="ChangeButtonsStatus(this)" class="leave">I won't finish
                                             </button>
@@ -117,7 +120,7 @@
                                     <div class="row">
                                         <div class="col-9">
                                             <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
-                                            <button onclick="ChangeButtonsStatus(this)" class="finish">I did it!
+                                            <button formmethod="post" formaction="/activityCompleted" onclick="ChangeButtonsStatus(this)" class="finish">I did it!
                                             </button>
                                             <button onclick="ChangeButtonsStatus(this)" class="leave">I won't finish
                                             </button>
@@ -149,7 +152,7 @@
                                     <div class="row">
                                         <div class="col-9">
                                             <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
-                                            <button onclick="ChangeButtonsStatus(this)" class="finish">I did it!
+                                            <button formmethod="post" formaction="/activityCompleted" onclick="ChangeButtonsStatus(this)" class="finish">I did it!
                                             </button>
                                             <button onclick="ChangeButtonsStatus(this)" class="leave">I won't finish
                                             </button>
@@ -190,7 +193,7 @@
                                     <div class="row">
                                         <div class="col-9">
                                             <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
-                                            <button onclick="ChangeButtonsStatus(this)" class="finish">I did it!
+                                            <button formmethod="post" formaction="/activityCompleted" onclick="ChangeButtonsStatus(this)" class="finish">I did it!
                                             </button>
                                             <button onclick="ChangeButtonsStatus(this)" class="leave">I won't finish
                                             </button>
@@ -223,7 +226,7 @@
                                     <div class="row">
                                         <div class="col-9">
                                             <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
-                                            <button onclick="ChangeButtonsStatus(this)" class="finish">I did it!
+                                            <button formmethod="post" formaction="/activityCompleted" onclick="ChangeButtonsStatus(this)" class="finish">I did it!
                                             </button>
                                             <button onclick="ChangeButtonsStatus(this)" class="leave">I won't finish
                                             </button>
@@ -256,7 +259,7 @@
                                     <div class="row">
                                         <div class="col-9">
                                             <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
-                                            <button onclick="ChangeButtonsStatus(this)" class="finish">I did it!
+                                            <button formmethod="post" formaction="/activityCompleted" onclick="ChangeButtonsStatus(this)" class="finish">I did it!
                                             </button>
                                             <button onclick="ChangeButtonsStatus(this)" class="leave">I won't finish
                                             </button>

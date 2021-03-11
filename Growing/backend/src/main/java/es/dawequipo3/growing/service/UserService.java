@@ -23,6 +23,9 @@ public class UserService {
     @Autowired
     private TreeService treeService;
 
+    @Autowired
+    private EmailService emailService;
+
 
     @PostConstruct
     public void init(){
@@ -38,6 +41,7 @@ public class UserService {
         for (Category category: categoryService.findAll()) {
             treeService.save(new Tree(user.getEmail(), category.getName()));
         }
+        emailService.sendEmailRegister(user.getEmail());
     }
 
 

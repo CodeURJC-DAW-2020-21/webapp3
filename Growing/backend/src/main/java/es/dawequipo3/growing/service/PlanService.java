@@ -1,11 +1,18 @@
 package es.dawequipo3.growing.service;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.zip.DataFormatException;
 
+import es.dawequipo3.growing.model.Category;
+import es.dawequipo3.growing.model.Completed_plan;
 import es.dawequipo3.growing.model.Plan;
+import es.dawequipo3.growing.model.User;
+import es.dawequipo3.growing.repository.Completed_planRepository;
 import es.dawequipo3.growing.repository.PlanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +27,9 @@ public class PlanService {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private Completed_planRepository completed_planRepository;
 
     @PostConstruct
     public void init() {
@@ -43,4 +53,9 @@ public class PlanService {
         return planRepository.findPlansByCategory_Name(name);
     }
 
+    public Optional<Plan> findPlanByName(String name){return planRepository.findPlansByName(name);}
+
+    public void saveCompletedPlan(User user, Plan plan){
+        completed_planRepository.save(new Completed_plan(user, plan));
+    }
 }

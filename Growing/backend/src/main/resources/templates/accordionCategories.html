@@ -1,0 +1,55 @@
+<div class="accordion accordion-flush" id="faqlist1">
+    <!-- Item 1-->
+    {{#plans}}
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#faq-content-{{-index}}">
+                <div class="service-box">
+                    <i class="{{category.icon}}"></i>
+                </div>
+                {{name}} <img src="/assets/img/level/level{{difficulty}}.png" class="icon mini"/>
+                {{#registered}}
+                {{#admin}}
+                <button class="btn-edit"><i class="icon fas fas fa-pencil-alt"></i></button>
+                {{/admin}}
+                {{/registered}}
+
+            </button>
+        </h2>
+
+        <div id="faq-content-{{-index}}" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+            <div class="accordion-body ">
+                <div class="container">
+                    <div class="row">
+                        {{description}}
+                        <div class="col-9">
+                            <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
+                            <form method="post" action="/complete/{{name}}">
+                                <input type="submit" value="I did it">
+                            </form>
+                            <button onclick="ChangeButtonsStatus(this)" class="finish" value="I did it!">I did it!</button>
+                            <button onclick="ChangeButtonsStatus(this)" class="leave">I won't finish</button>
+                        </div>
+                        <div class="col-3">
+                            <h2>
+                                <!-- This is to diferentiate if the like icon is appearing because the user is logged-->
+                                {{#registered}}
+                                <!-- Filled heart if the user gave his / her like-->
+                                {{^liked}}
+                                <img src="/assets/img/level/EmptyHeart.svg" class="like icon mini" onclick="ChangeHeart(this)" alt="notFilledHeart"/>
+                                <!-- Empty on the other case-->
+                                {{/liked}}
+                                {{#liked}}
+                                <img src="/assets/img/level/FullHeart.svg" class="like icon mini" onclick="ChangeHeart(this)" alt ="filled like"/>
+                                {{/liked}}
+                                {{/registered}}
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/plans}}
+</div>

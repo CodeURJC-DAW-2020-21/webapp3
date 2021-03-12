@@ -7,7 +7,6 @@ body{
     background-color: #D6FFB9;
 }
 
-
 .main{
     margin-top: 10px;
     background: #ffffff;
@@ -45,7 +44,6 @@ canvas{
     background-color: #f2f2f2;
 }
 
-
 .profileContainer{
     min-height: 80vh;
     background-size: cover;
@@ -67,6 +65,7 @@ canvas{
 section .services{
     padding-top: 5px;
 }
+
 .category{
     padding-top: 10px;
 }
@@ -87,8 +86,6 @@ section .services{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-
-
 
 .pic{
     display: inline-block;
@@ -116,7 +113,6 @@ section .services{
     display: block;
     width: 100%;
     height: 100%;
-
 }
 
 .name{
@@ -135,7 +131,6 @@ section .services{
     background: #f4f4f4;
     padding: 20px 10px;
 }
-
 
 .item{
     flex: 1;
@@ -160,12 +155,17 @@ section .services{
     font-weight: bold;
 }
 
-
 .fa-user-edit{
-    color: #f7ff00;
-    font: 30px/1px FontAwesome ;
+    color: #01E0EF;
 }
 
+.administrator {
+    color: #000000;
+}
+
+.ad {
+    color: #0153d9;
+}
 
 .services .service-box {
     box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
@@ -193,13 +193,10 @@ section .services{
     font-size: 20px;
 }
 
-
 .chartSeparation {
     height: 100%;
     margin-bottom: 15px;
 }
-
-
 
 .mini{
     height:1.5em;
@@ -213,15 +210,14 @@ section .services{
 .finish{
     background-color: #4CAF50;
     display: none;
-
 }
-.leave{
+
+.leave {
     background-color: #b8b894;
     display: none;
-
 }
 
-.like{
+.like {
     float: right;
     padding: 10px;
 }
@@ -241,13 +237,12 @@ section .services{
     box-shadow: 0px 0 30px rgb(32, 96, 8);
 }
 
-
 .services .service-box.red {
     border-bottom: 3px solid #e9222c;
     box-shadow: 0px 0 30px rgba(126, 7, 21,0.4);
 }
 
-.services .service-box.bluenavy{
+.services .service-box.bluenavy {
     border-bottom: 3px solid #09039d;
     box-shadow: 0px 0 30px rgba(4, 87, 241, 0.4);
 }
@@ -262,11 +257,9 @@ section .services{
     box-shadow: 0px 0 30px rgb(117, 48, 215);
 }
 
-
-.completedTasks{
+.completedTasks {
   background-color: #ffffff;
 }
-
 
 .field {
     display:flex;
@@ -285,8 +278,7 @@ section .services{
 ;
 }
 
-.field>input[type=text],
-.field>button {
+.field>input[type=text], .field>button {
     display:block;
     font:1.2em 'Montserrat Alternates';
 }
@@ -319,7 +311,6 @@ section .services{
 #UsersTable tr:hover {background-color: #ddd;}
 
 #UsersTable th {
-
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;

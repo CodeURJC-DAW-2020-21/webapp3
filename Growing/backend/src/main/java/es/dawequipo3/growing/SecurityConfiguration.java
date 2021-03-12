@@ -37,7 +37,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         // Public pages
         http.authorizeRequests().antMatchers("/assets/**").permitAll();
         http.authorizeRequests().antMatchers("/").permitAll();
-        http.authorizeRequests().antMatchers("/getStarted").permitAll();
         http.authorizeRequests().antMatchers("/categories").permitAll();
         http.authorizeRequests().antMatchers("/explore").permitAll();
         http.authorizeRequests().antMatchers("/AboutUs").permitAll();
@@ -47,9 +46,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/500-ServerError").permitAll();
 
 
+        // Only for not registered users
+        http.authorizeRequests().antMatchers("/getStarted").anonymous();
+
         // Private pages (all other pages)
         http.authorizeRequests().antMatchers("/profile").hasAnyRole("USER");
-        http.authorizeRequests().antMatchers("/editProfile").hasAnyRole("USER","ADMIN");
+        http.authorizeRequests().antMatchers("/editProfile").hasAnyRole("USER");
         http.authorizeRequests().antMatchers("/profileAdmin").hasAnyRole("ADMIN");
 
         // Login form

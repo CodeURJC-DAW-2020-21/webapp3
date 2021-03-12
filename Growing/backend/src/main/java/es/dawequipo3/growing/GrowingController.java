@@ -45,25 +45,18 @@ public class GrowingController {
     @GetMapping("/getStarted")
     public String getStarted(Model model, HttpServletRequest request){
         model.addAttribute("registered",request.isUserInRole("USER"));
-        model.addAttribute("error", true);
+        model.addAttribute("error", request.isRequestedSessionIdValid());
         return "getStarted";
     }
 
     @GetMapping("/profile")
     public String profile(Model model, HttpServletRequest request){
-        model.addAttribute("registered",request.isUserInRole("USER"));
+        model.addAttribute("admin",request.isUserInRole("ADMIN"));
         return "profile";
     }
 
-    @GetMapping("/adminProfile")
-    public String profileAdmin(Model model, HttpServletRequest request){
-        model.addAttribute("admin",request.isUserInRole("ADMIN"));
-        return "profileAdmin";
-    }
-
     @GetMapping("/editProfile")
-    public String editProfile(Model model, HttpServletRequest request){
-        model.addAttribute("registered",request.isUserInRole("USER"));
+    public String editProfile(){
         return "editProfile";
     }
 

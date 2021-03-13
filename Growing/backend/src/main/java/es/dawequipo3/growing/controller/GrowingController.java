@@ -41,7 +41,7 @@ public class GrowingController {
         Plan plan = planService.findPlanByName(name).orElseThrow();
         Category category = plan.getCategory();
         Tree tree = treeService.findTree("p1@gmail.com", category.getName()).orElseThrow();
-        treeService.updateHeight(tree, plan, "!!!!!!!!!!!!!!!!!!!!!!!!!");
+        treeService.updateHeight(tree, plan, "insert email here");
 
         planService.saveCompletedPlan(userService.findUserByEmail("p1@gmail.com").orElseThrow(), plan);
         categoryService.refreshDate(category);

@@ -1,11 +1,8 @@
 package es.dawequipo3.growing.model;
 
 
-import org.h2.result.SearchRow;
-
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.Table;
 
 import java.io.Serializable;
 

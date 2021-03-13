@@ -1,11 +1,8 @@
 package es.dawequipo3.growing.model;
 
 
-import com.sun.istack.NotNull;
-import com.sun.xml.bind.v2.util.QNameMap;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.List;
 
 @Table(name = "User")

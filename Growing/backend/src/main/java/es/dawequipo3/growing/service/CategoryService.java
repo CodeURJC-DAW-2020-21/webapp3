@@ -4,7 +4,11 @@ package es.dawequipo3.growing.service;
 import java.util.List;
 import java.util.Optional;
 import es.dawequipo3.growing.model.Category;
+import es.dawequipo3.growing.model.Tree;
+import es.dawequipo3.growing.model.User;
 import es.dawequipo3.growing.repository.CategoryRepository;
+import es.dawequipo3.growing.repository.TreeRepository;
+import es.dawequipo3.growing.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,11 +21,18 @@ public class CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private TreeService treeService;
+
     @PostConstruct
     public void init(){
+
         Category mentalHealth = new Category("Mental health", "Because we know that having a good mental health is fundamental, we want to share with you some\n" +
                 "                        tasks for helping you to achieve it", "ri-mental-health-line icon", "blue");
-        categoryRepository.save(mentalHealth);
+        this.save(mentalHealth);
 
         Category physicalHealth = new Category("Physical health", "Do you want to be fit making regular exercise but you are a lazy person? Look at the plans of\n" +
                 "                        this category and reject the lazyness!", "ri-run-line icon", "red");
@@ -45,8 +56,12 @@ public class CategoryService {
     }
 
     public void save(Category category){
-        categoryRepository.save(category);
-    }
+            categoryRepository.save(category);
+            for (User user: userService.findAll()) {
+                treeService.save(new Tree(user, category));
+            }
+        }
+
 
     public List<Category> findAll(){return categoryRepository.findAll();}
 

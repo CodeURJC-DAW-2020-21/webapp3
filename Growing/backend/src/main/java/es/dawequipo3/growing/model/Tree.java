@@ -2,33 +2,46 @@ package es.dawequipo3.growing.model;
 
 
 import javax.persistence.*;
+import java.util.Calendar;
 import java.util.Date;
 
-@Table(name = "Tree")
 @Entity
 public class Tree {
     @EmbeddedId
     private TreePK treePK;
     private int height;
-    @Column(insertable = false, updatable = false)
-    private Date last_update; //Stored as ms since epoch
 
-    public Tree(User PKUser, Category PKCategory,int height, Date last_update) {
+    @Column
+    private long last_update; //Stored as ms since epoch
+
+    @ManyToOne
+    @MapsId("userPK")
+    User user;
+
+    @ManyToOne
+    @MapsId("categoryPK")
+    Category category;
+
+    public Tree(User PKUser, Category PKCategory,int height, long last_update) {
         super();
         this.treePK = new TreePK(PKUser.getEmail(),PKCategory.getName());
         this.height = height;
         this.last_update = last_update;
+        this.user=PKUser;
+        this.category=PKCategory;
     }
 
     public Tree() {
 
     }
 
-    public Tree(String email, String name) {
+    public Tree(User PKUser, Category PKCategory) {
         super();
-        this.treePK = new TreePK(email,name);
-        this.height = 0;
-        this.last_update = new Date();
+        this.treePK = new TreePK(PKUser.getEmail(),PKCategory.getName());
+        this.height = 13;
+        this.last_update = Calendar.getInstance().getTimeInMillis();
+        this.user=PKUser;
+        this.category=PKCategory;
     }
 
     public int getHeight() {
@@ -39,11 +52,28 @@ public class Tree {
         this.height = height;
     }
 
-    public Date getLast_update() {
+    public long getLast_update() {
         return last_update;
     }
 
-    public void setLast_update(Date last_update) {
+    public void setLast_update(long last_update) {
         this.last_update = last_update;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 }
+

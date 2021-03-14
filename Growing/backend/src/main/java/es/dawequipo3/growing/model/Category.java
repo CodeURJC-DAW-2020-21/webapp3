@@ -15,8 +15,15 @@ public class Category {
     private String icon;
     private String color;
 
-    @OneToMany(mappedBy = "category")
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "category")
     private List<Plan> plans;
+
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "category")
+    List<Tree> trees;
+
+    @ManyToMany(mappedBy = "userFavoritesCategory")
+    private List<User> userFavoritesCategory;
 
     public Category() {
     }
@@ -56,6 +63,22 @@ public class Category {
 
     public String getIcon() {
         return icon;
+    }
+
+    public List<Tree> getTrees() {
+        return trees;
+    }
+
+    public void setTrees(List<Tree> trees) {
+        this.trees = trees;
+    }
+
+    public List<User> getUserFavoritesCategory() {
+        return userFavoritesCategory;
+    }
+
+    public void setUserFavoritesCategory(List<User> favorited_by) {
+        this.userFavoritesCategory = favorited_by;
     }
 
     public void setIcon(String icon) {

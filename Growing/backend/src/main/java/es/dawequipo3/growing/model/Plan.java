@@ -4,7 +4,7 @@ package es.dawequipo3.growing.model;
 import javax.persistence.*;
 import java.util.List;
 
-@Table(name = "Plan")
+
 @Entity
 public class Plan {
 
@@ -14,11 +14,14 @@ public class Plan {
     private String description;
     private int difficulty;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Category category;
 
-    @ManyToMany
-    private List<User> likedBy;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "plan")
+    List<Completed_plan> completed_plans;
+
+    @ManyToMany(mappedBy = "likedPlans")
+    private List<User> likedPlans;
 
 
     protected Plan(){}

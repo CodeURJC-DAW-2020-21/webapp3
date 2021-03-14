@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -29,18 +30,24 @@ public class UserService {
         User u1 = new User("p1@gmail.com","pericopalotes909","perico", "palotes","contraseña");
         User u2 = new User("yo@hotmail.com","XXXkillerG0D99XXX", "josé", "garcia", "IAmVeryMature");
 
-        this.save(u1);
-        this.save(u2);
+        userRepository.save(u1);
+        userRepository.save(u2);
     }
 
     public void save(User user){
         userRepository.save(user);
         for (Category category: categoryService.findAll()) {
-            treeService.save(new Tree(user.getEmail(), category.getName()));
+            treeService.save(new Tree(user, category));
         }
     }
 
+    public void deleteAllUsers(){
+        userRepository.deleteAll();
+    }
 
+    public List<User> findAll(){
+        return userRepository.findAll();
+    }
     public Optional<User> findUserByEmail(String email){
         return userRepository.findById(email);
     }

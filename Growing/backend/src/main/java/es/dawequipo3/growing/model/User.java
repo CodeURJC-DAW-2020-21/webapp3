@@ -1,21 +1,19 @@
 package es.dawequipo3.growing.model;
 
 
-import com.sun.istack.NotNull;
-import com.sun.xml.bind.v2.util.QNameMap;
+import es.dawequipo3.growing.service.CategoryService;
+import es.dawequipo3.growing.service.TreeService;
 
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.List;
 
-@Table(name = "User")
 @Entity
 public class User {
     @Id
-    @Column(name = "email")
     private String email;
 
-    @Column(nullable = false, name = "username")
+    @Column(nullable = false)
     private String username;
 
     @Column(nullable = false)
@@ -24,15 +22,31 @@ public class User {
     @Column(nullable = false)
     private String surname;
 
-    @Column(nullable = false, name = "password")
+    @Column(nullable = false)
     private String password;
 
     @Transient
     private String confirmPassword;
 
-    @ManyToMany(mappedBy = "likedBy")
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "LikedPlans",
+            joinColumns = @JoinColumn(name = "email"),
+            inverseJoinColumns = @JoinColumn(name = "planName"))
     private List<Plan> likedPlans;
 
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "favoriteCategories",
+            joinColumns = @JoinColumn(name = "email"),
+            inverseJoinColumns = @JoinColumn(name = "category"))
+    private List<Category> userFavoritesCategory;
+
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    List<Tree> trees;
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+    List<Completed_plan> completed_plans;
 
     public User() {}
 
@@ -44,8 +58,9 @@ public class User {
         this.surname = surname;
         this.password = password;
         this.confirmPassword = confirmPassword;
+        this.trees=new ArrayList<Tree>();
     }
-
+    //This constructor is for creating sample users
     public User(String email, String username, String name, String surname, String password) {
         super();
         this.email = email;
@@ -53,9 +68,31 @@ public class User {
         this.name = name;
         this.surname = surname;
         this.password = password;
+        this.trees=new ArrayList<Tree>();
+
     }
 
+    public void initializeAllTrees(CategoryService categoryService, TreeService treeService){
+        for (Category category: categoryService.findAll()) {
+            treeService.save(new Tree(this, category));
+        }
+    }
+    public void addCategoryTree(Category category,TreeService treeService){
+        treeService.save(new Tree(this, category));
+    }
 
+    public void FavoriteCategory(Category category) {
+        this.userFavoritesCategory.add(category);
+    }
+    public boolean CategoryNameInTrees(Category category){
+        String name= category.getName();
+        for (Tree tree:this.trees){
+            if (tree.getCategory().getName().equals(name)){
+                return true;
+            }
+        }
+        return false;
+    }
     public String getEmail() {
         return email;
     }
@@ -78,6 +115,30 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Plan> getLikedPlans() {
+        return likedPlans;
+    }
+
+    public void setLikedPlans(List<Plan> likedPlans) {
+        this.likedPlans = likedPlans;
+    }
+
+    public List<Category> getUserFavoritesCategory() {
+        return userFavoritesCategory;
+    }
+
+    public void setUserFavoritesCategory(List<Category> fav_categories) {
+        this.userFavoritesCategory = fav_categories;
+    }
+
+    public List<Tree> getTrees() {
+        return trees;
+    }
+
+    public void setTrees(List<Tree> trees) {
+        this.trees = trees;
     }
 
     public String getName() {

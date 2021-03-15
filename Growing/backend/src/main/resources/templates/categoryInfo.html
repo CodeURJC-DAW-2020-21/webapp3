@@ -34,7 +34,10 @@
                 {{#registered}}
                 <li><a class="nav-link scrollto active" href="/profile"><i class="fas fa-user"></i></a>
                 </li>
-                <li><a class="sign_out scrollto" href="/getStarted">Sign out</a></li>
+                <li><form action="/logout" method="post">
+                    <button class="sign_out scrollto" type="submit">Sign out</button>
+                </form>
+                </li>
                 {{/registered}}
                 {{^registered}}
                 <li><a class="getstarted scrollto" href="/getStarted">Get Started</a></li>
@@ -68,6 +71,15 @@
                     {{/registered}}
                 </h1>
                 <h2 class="subtitle">{{category.des}}</h2>
+                {{#registered}}
+                {{#admin}}
+                <!-- Add button for Admin User -->
+                <div class="editCategory">
+                    <button class="btnEditCategory" formmethod="post" type="submit" >Edit<i class="icon fas fas fa-pencil-alt"></i></button>
+                </div>
+                <!-- End add button for Admin User -->
+                {{/admin}}
+                {{/registered}}
             </div>
         </header>
         <!-- End of the container of the header-->
@@ -80,7 +92,7 @@
                 </header>
                 <div class="imagenArbol">
                     <img id="progress" src="/assets/img/progress/fase{{level}}.png"/>
-                    <p class="update"> Last updated: {{date}} </p>
+                    <p class="update"> Last updated: {{category.date}} </p>
                 </div>
             </div>
             <!-- End of Tree Section -->
@@ -90,13 +102,13 @@
                 <header class="section-header plan">
                     <h3>Task</h3>
                     {{#registered}}
-                        {{#admin}}
-                        <!-- Add button for Admin User -->
-                        <div class="add">
-                            <button id="btnAdd" class="btn-add"><i class="fas fa-plus-circle"></i></button>
-                        </div>
-                        <!-- End add button for Admin User -->
-                        {{/admin}}
+                    {{#admin}}
+                    <!-- Add button for Admin User -->
+                    <div class="add">
+                        <button id="btnAdd" class="btn-add"><i class="fas fa-plus-circle"></i></button>
+                    </div>
+                    <!-- End add button for Admin User -->
+                    {{/admin}}
                     {{/registered}}
 
                 </header>

@@ -1,6 +1,7 @@
 package es.dawequipo3.growing.service;
 
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import es.dawequipo3.growing.model.Category;
@@ -69,9 +70,9 @@ public class CategoryService {
         return categoryRepository.findCategoryByName(name);
     }
 
-    public void deleteById(String name){
-        categoryRepository.deleteById(name);
+    public void refreshDate(Category category){
+        category.setDate(new Date());
+        categoryRepository.save(category);
     }
-
 
 }

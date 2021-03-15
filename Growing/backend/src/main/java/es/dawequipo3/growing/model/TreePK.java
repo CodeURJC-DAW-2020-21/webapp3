@@ -25,22 +25,6 @@ public class TreePK implements Serializable {
     public TreePK() {
     }
 
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
     public String getUserPK() {
         return userPK;
     }

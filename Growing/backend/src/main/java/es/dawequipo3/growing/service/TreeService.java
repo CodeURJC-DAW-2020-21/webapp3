@@ -38,7 +38,7 @@ public class TreeService {
     public void updateHeight(Tree tree, Plan plan, String email){
         int increment = plan.getDifficulty() * 5;
         if (tree.getHeight() < 45 && tree.getHeight()+ increment >= 45)
-            emailService.sendEmailHeight(email, tree.getTreePK().getCategory(), tree.getHeight() + increment);
+            emailService.sendEmailHeight(email, tree.getTreePK().getCategoryPK(), tree.getHeight() + increment);
         tree.setHeight(tree.getHeight() + increment);
         treeRepository.save(tree);
     }

@@ -84,8 +84,6 @@ public class GrowingController {
         return "editProfile";
     }
 
-}
-
     @GetMapping("/categoryInfo/{name}")
     public String categoryInfo(Model model, @PathVariable String name){
         model.addAttribute("category",categoryService.findByName(name).orElseThrow());

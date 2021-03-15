@@ -79,7 +79,7 @@
                     <h3>Your progress</h3>
                 </header>
                 <div class="imagenArbol">
-                    <img id="progress" src="/assets/img/progress/fase{{}}.png"/>
+                    <img id="progress" src="/assets/img/progress/fase{{level}}.png"/>
                     <p class="update"> Last updated: {{date}} </p>
                 </div>
             </div>
@@ -101,130 +101,7 @@
 
                 </header>
 
-                <div class="accordion accordion-flush" id="faqlist1">
-                    <!-- Item 1-->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#faq-content-1">
-                                <div class="service-box orange">
-                                    <i class="ri-mental-health-line icon"></i>
-                                </div>
-                                TAKE TIME TO YOURSELF<img src="/assets/img/level/greenFlag.png" class="icon mini"/>
-                                {{#registered}}
-                                {{#admin}}
-                                <button class="btn-edit"><i class="icon fas fas fa-pencil-alt"></i></button>
-                                {{/admin}}
-                                {{/registered}}
-
-                            </button>
-                        </h2>
-                        <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
-                            <div class="accordion-body">
-                                We know that sometimes life is hard, so there are times when it is necessary to think
-                                about ourselves. 30 minutes to do something that you are passionate about will be enough
-                                to continue with your duties.
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-9">
-                                            <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
-                                            <button onclick="ChangeButtonsStatus(this)" class="finish">I did it!
-                                            </button>
-                                            <button onclick="ChangeButtonsStatus(this)" class="leave">I won't finish
-                                            </button>
-                                        </div>
-                                        <div class="col-3">
-                                            <h2><img src="/assets/img/level/EmptyHeart.svg" class="like icon mini"
-                                                     onclick="ChangeHeart(this)"/></h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#faq-content-2">
-                                <!-- Item 2-->
-                                <div class="service-box orange">
-                                    <i class="ri-mental-health-line icon"></i>
-                                </div>
-                                MEDITATION<img src="/assets/img/level/yellowFlag.png" class="icon mini"/>
-                                {{#registered}}
-                                {{#admin}}
-                                <button class="btn-edit"><i class="icon fas fas fa-pencil-alt"></i></button>
-                                {{/admin}}
-                                {{/registered}}
-
-                            </button>
-                        </h2>
-                        <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
-                            <div class="accordion-body">
-                                When we meditate, we inject far-reaching and long-lasting benefits into our lives: We
-                                lower our stress levels, we get to know our pain, we connect better, we improve our
-                                focus, and we're kinder to ourselves. Let us walk you through the basics in our new
-                                mindful guide on how to meditate.
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-9">
-                                            <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
-                                            <button onclick="ChangeButtonsStatus(this)" class="finish">I did it!
-                                            </button>
-                                            <button onclick="ChangeButtonsStatus(this)" class="leave">I won't finish
-                                            </button>
-                                        </div>
-                                        <div class="col-3">
-                                            <h2><img src="/assets/img/level/EmptyHeart.svg" class="like icon mini"
-                                                     onclick="ChangeHeart(this)"/></h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <!-- Item 3-->
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#faq-content-3">
-                                <div class="service-box orange">
-                                    <i class="ri-mental-health-line icon"></i>
-                                </div>
-                                DO YOGA<img src="/assets/img/level/redFlag.png" class="icon mini"/>
-                                {{#registered}}
-                                {{#admin}}
-                                <button class="btn-edit"><i class="icon fas fas fa-pencil-alt"></i></button>
-                                {{/admin}}
-                                {{/registered}}
-                            </button>
-                        </h2>
-                        <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
-                            <div class="accordion-body">
-                                Practicing the postures, breathing exercises and meditation makes you healthier in body,
-                                mind and spirit. Yoga lets you tune in, chill out, shape up -- all at the same time.
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-9">
-                                            <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
-                                            <form method="post" action="/activityCompleted">
-                                                <button onclick="ChangeButtonsStatus(this)" class="finish">I did it!
-                                                </button>
-                                            </form>
-                                            <button onclick="ChangeButtonsStatus(this)" class="leave">I won't finish
-                                            </button>
-                                        </div>
-                                        <div class="col-3">
-                                            <h2><img src="/assets/img/level/EmptyHeart.svg" class="like icon mini"
-                                                     onclick="ChangeHeart(this)"/></h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Item 3-->
-                </div>
+                {{>accordionCategories}}
                 <!-- End Task List -->
             </div>
             <!-- End container Task List -->

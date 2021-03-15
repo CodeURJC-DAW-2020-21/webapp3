@@ -4,10 +4,8 @@ package es.dawequipo3.growing.model;
 import javax.persistence.*;
 import java.util.List;
 
-
 @Entity
 public class Plan {
-
 
     @Id
     private String name;

@@ -2,9 +2,8 @@ package es.dawequipo3.growing.model;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
-
-
 
 @Entity
 public class Category {
@@ -15,9 +14,9 @@ public class Category {
     private String icon;
     private String color;
 
+
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "category")
     private List<Plan> plans;
-
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "category")
     List<Tree> trees;
@@ -43,6 +42,7 @@ public class Category {
         this.des = description;
         this.icon = icon;
         this.color = color;
+        this.plans = new ArrayList<>();
     }
 
     public String getName() {
@@ -91,14 +91,6 @@ public class Category {
 
     public void setColor(String color) {
         this.color = color;
-    }
-
-    public String getDes() {
-        return des;
-    }
-
-    public void setDes(String des) {
-        this.des = des;
     }
 
     public List<Plan> getPlans() {

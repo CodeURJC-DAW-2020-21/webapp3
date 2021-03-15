@@ -38,7 +38,7 @@ public class Tree {
     public Tree(User PKUser, Category PKCategory) {
         super();
         this.treePK = new TreePK(PKUser.getEmail(),PKCategory.getName());
-        this.height = 13;
+        this.height = 0;
         this.last_update = Calendar.getInstance().getTimeInMillis();
         this.user=PKUser;
         this.category=PKCategory;

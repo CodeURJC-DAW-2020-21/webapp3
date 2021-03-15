@@ -2,8 +2,6 @@ package es.dawequipo3.growing.controller;
 
 import es.dawequipo3.growing.model.*;
 import es.dawequipo3.growing.service.CategoryService;
-import es.dawequipo3.growing.service.PlanService;
-import es.dawequipo3.growing.service.TreeService;
 import es.dawequipo3.growing.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Optional;
 
 
 @Controller
@@ -23,37 +23,34 @@ public class GrowingController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private TreeService treeService;
 
-    @Autowired
-    private PlanService planService;
+    public void EmailFavoritesCategoryName(String email, String categoryName) {
+        //Retrieve posible entities
+        Optional<User> OptionalUser = userService.findUserByEmail(email);
+        Optional<Category> OptionalCategory = categoryService.findByName(categoryName);
 
+        if (OptionalUser.isPresent() && OptionalCategory.isPresent()) {
+            //Get the necesary entities
+            User user = OptionalUser.get();
+            Category category = OptionalCategory.get();
+            //Add to favorites
+            user.FavoriteCategory(category);
+            userService.save(user);
+        }
+    }
 
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(Model model, HttpServletRequest request){
+        model.addAttribute("registered",request.isUserInRole("USER"));
         model.addAttribute("category", categoryService.findAll());
         return "index";
     }
 
-    @PostMapping("/complete/{name}")
-    public String updateTree(Model model, @PathVariable String name) {
-        Plan plan = planService.findPlanByName(name).orElseThrow();
-        Category category = plan.getCategory();
-        Tree tree = treeService.findTree("p1@gmail.com", category.getName()).orElseThrow();
-        treeService.updateHeight(tree, plan, "insert email here");
-
-        planService.saveCompletedPlan(userService.findUserByEmail("p1@gmail.com").orElseThrow(), plan);
-        categoryService.refreshDate(category);
-
-        return "redirect:/categories";
-    }
 
     @PostMapping("/getStarted/signUp")
     public String signUp(User user) {
         if (user.getPassword().equals(user.getConfirmPassword()))
             userService.save(user);
-
         return "redirect:/";
     }
 
@@ -63,45 +60,51 @@ public class GrowingController {
         return "explore";
     }
 
+
     @GetMapping("/aboutUs")
-    public String aboutUs() {
+    public String aboutUs(Model model, HttpServletRequest request){
+        model.addAttribute("registered",request.isUserInRole("USER"));
         return "AboutUs";
     }
 
     @GetMapping("/getStarted")
-    public String getStarted() {
+    public String getStarted(Model model, HttpServletRequest request){
+        model.addAttribute("registered",request.isUserInRole("USER"));
+        model.addAttribute("error", request.isRequestedSessionIdValid());
         return "getStarted";
     }
 
     @GetMapping("/profile")
-    public String profile(Model model){
-        model.addAttribute("admin", false);
+    public String profile(Model model, HttpServletRequest request){
+        model.addAttribute("admin",request.isUserInRole("ADMIN"));
         return "profile";
     }
 
     @GetMapping("/editProfile")
-    public String editProfile() {
+    public String editProfile(){
         return "editProfile";
     }
 
     @GetMapping("/categoryInfo/{name}")
-    public String categoryInfo(Model model, @PathVariable String name){
-        model.addAttribute("category",categoryService.findByName(name).orElseThrow());
-        model.addAttribute("plans", planService.findPlansByCategory(name));
+    public String categoryInfo(Model model, @PathVariable String name, HttpServletRequest request){
+        model.addAttribute("category", categoryService.findByName(name).orElseThrow());
         model.addAttribute("date", "11-3-2020");
-        model.addAttribute("registered", true);
-        model.addAttribute("admin", true);
+        model.addAttribute("registered",request.isUserInRole("USER"));
+        model.addAttribute("admin",request.isUserInRole("ADMIN"));
         model.addAttribute("liked", true);
         return "categoryInfo";
     }
 
     @GetMapping("/404-NotFound")
-    public String notFound(){
+    public String notFound(Model model, HttpServletRequest request){
+        model.addAttribute("registered",request.isUserInRole("USER"));
         return "404";
     }
 
     @GetMapping("/500-ServerError")
-    public String serverError(){
+    public String serverError(Model model, HttpServletRequest request){
+        model.addAttribute("registered",request.isUserInRole("USER"));
         return "500";
     }
+
 }

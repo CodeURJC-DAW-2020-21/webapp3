@@ -13,7 +13,7 @@ public class Completed_plan {
     private CompletedPlanPK completedPlanPK;
 
     @ManyToOne
-    @MapsId("user_PK")
+    @MapsId("user_Pk")
     private User user;
 
     @ManyToOne

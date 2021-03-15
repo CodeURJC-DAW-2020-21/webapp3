@@ -12,6 +12,7 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.Optional;
 
+
 @Service
 public class UserService {
 
@@ -47,6 +48,14 @@ public class UserService {
 
     public void deleteAllUsers(){
         userRepository.deleteAll();
+    }
+
+    public void deleteUser(Optional<User> user){
+
+        if(user.isPresent()) {
+            User deletedUser = user.get();
+            userRepository.delete(deletedUser);
+        }
     }
 
     public List<User> findAll(){

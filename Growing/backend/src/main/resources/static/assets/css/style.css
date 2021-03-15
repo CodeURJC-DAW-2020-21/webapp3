@@ -298,6 +298,7 @@ section {
   color: #ffffff;
   background: #c10303;
   border-color: #c10303;
+  border-width: 4px;
 }
 
 .navbar .sign_out:hover:after{

@@ -63,37 +63,37 @@
                     <input type="submit" value="Login" class="btn solid"/>
                 </form>
                 <!-- Sign UP-->
-                <form action="#" class="sign-up-form">
+                <form action="getStarted/signUp" method="post" class="sign-up-form">
                     <h2 class="title">Sign up</h2>
                     <!-- Username -->
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Username"/>
+                        <input type="text" name="username" placeholder="Username"/>
                     </div>
                     <!-- Name-->
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Name"/>
+                        <input type="text" name="name" placeholder="Name"/>
                     </div>
                     <!-- Surname -->
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Surname"/>
+                        <input type="text" name="surname" placeholder="Surname"/>
                     </div>
                     <!-- Email -->
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" placeholder="Email"/>
+                        <input type="email" name="email" placeholder="Email"/>
                     </div>
                     <!-- Password -->
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password"/>
+                        <input type="password" name="password" placeholder="Password"/>
                     </div>
                     <!-- Confirm Password -->
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Confirm Password"/>
+                        <input type="password" name="confirmPassword" placeholder="Confirm Password"/>
                     </div>
                     <input type="submit" class="btn" value="Sign up"/>
                 </form>
@@ -130,4 +130,5 @@
 </section>
 
 <!-- ======= Footer ======= -->
+<script src="/assets/js/getStarted.js"></script>
 {{>footer}}

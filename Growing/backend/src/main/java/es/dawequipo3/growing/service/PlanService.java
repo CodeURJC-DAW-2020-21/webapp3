@@ -43,4 +43,8 @@ public class PlanService {
         return planRepository.findPlansByCategory_Name(name);
     }
 
+
+    public List<Plan> findAll() {
+        return planRepository.findAll();
+    }
 }

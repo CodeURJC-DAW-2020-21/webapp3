@@ -15,7 +15,16 @@ public class Category {
     private String icon;
     private String color;
     private Date date;
+    @Transient
+    private int likes;
 
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "category")
     private List<Plan> plans;

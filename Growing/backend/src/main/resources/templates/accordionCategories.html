@@ -32,19 +32,19 @@
                             <button onclick="ChangeButtonsStatus(this)" class="leave">I won't finish</button>
                         </div>
                         <div class="col-3">
-                            <h2>
                                 <!-- This is to diferentiate if the like icon is appearing because the user is logged-->
                                 {{#registered}}
-                                <!-- Filled heart if the user gave his / her like-->
-                                {{^liked}}
-                                <img src="/assets/img/level/EmptyHeart.svg" class="like icon mini" onclick="ChangeHeart(this)" alt="notFilledHeart"/>
-                                <!-- Empty on the other case-->
-                                {{/liked}}
-                                {{#liked}}
-                                <img src="/assets/img/level/FullHeart.svg" class="like icon mini" onclick="ChangeHeart(this)" alt ="filled like"/>
-                                {{/liked}}
+                                {{^likedUser}}
+                                <form action="/categoryInfo/{{category.name}}/{{name}}/like" method="post" class="like icon mini">
+                                    <input type="image" name="submit" src="/assets/img/level/EmptyHeart.svg" class="like icon mini" alt="emptyHeart">
+                                </form>
+                                {{/likedUser}}
+                                {{#likedUser}}
+                                <form action="/categoryInfo/{{category.name}}/{{name}}/dislike" method="post">
+                                    <input type="image" name="submit" src ="/assets/img/level/FullHeart.svg" class="like icon mini" alt="filledHeart">
+                                </form>
+                                {{/likedUser}}
                                 {{/registered}}
-                            </h2>
                         </div>
                     </div>
                 </div>

@@ -2,8 +2,11 @@ package es.dawequipo3.growing;
 
 import es.dawequipo3.growing.model.*;
 import es.dawequipo3.growing.service.CategoryService;
+import es.dawequipo3.growing.service.PlanService;
 import es.dawequipo3.growing.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +25,8 @@ public class GrowingController {
     @Autowired
     private CategoryService categoryService;
 
+    @Autowired
+    private PlanService planService;
     @Autowired
     private UserService userService;
 
@@ -45,6 +51,19 @@ public class GrowingController {
         return "index";
     }
 
+
+    @GetMapping("/explore/")
+    public String ExploreRequestPlanPageCero(Model model) {
+        List<Plan> pages = planService.GetPageable(0);
+        model.addAttribute("Plan",pages);
+        return "explore";
+    }
+    @GetMapping("/explore/{pageNumber}")
+    public String ExploreRequestPlanPage(Model model, @PathVariable int pageNumber) {
+        List<Plan> pages = planService.GetPageable(pageNumber);
+        model.addAttribute("Plan", pages);
+        return "PlanTemplate";
+    }
     @GetMapping("/categories")
     public String categories(Model model) {
         List<Category> categories = categoryService.findAll();

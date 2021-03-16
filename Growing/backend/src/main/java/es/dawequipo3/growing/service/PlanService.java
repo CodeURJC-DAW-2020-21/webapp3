@@ -58,4 +58,13 @@ public class PlanService {
     public void saveCompletedPlan(User user, Plan plan){
         completed_planRepository.save(new Completed_plan(user, plan));
     }
+
+    public List<Plan> likedplans(String email, String cat){
+        return planRepository.getPlanByCategoryAndAndLikedUser(cat, email);
+    }
+
+    public Boolean existsLiked(String plan, String user){
+        return planRepository.existsLiked(plan, user) == 1;
+    }
+
 }

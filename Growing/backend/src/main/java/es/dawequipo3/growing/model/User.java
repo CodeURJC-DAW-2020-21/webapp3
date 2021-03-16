@@ -28,18 +28,19 @@ public class User {
     @Transient
     private String confirmPassword;
 
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-            name = "LikedPlans",
-            joinColumns = @JoinColumn(name = "email"),
-            inverseJoinColumns = @JoinColumn(name = "planName"))
+            name = "user_liked_plans",
+            joinColumns = @JoinColumn(name = "liked_by_email"),
+            inverseJoinColumns = @JoinColumn(name = "liked_plans_name"))
     private List<Plan> likedPlans;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
-            name = "favoriteCategories",
-            joinColumns = @JoinColumn(name = "email"),
-            inverseJoinColumns = @JoinColumn(name = "category"))
+            name = "category_user_liked",
+            joinColumns = @JoinColumn(name = "liked_categories_name"),
+            inverseJoinColumns = @JoinColumn(name = "user_liked_email"))
     private List<Category> userFavoritesCategory;
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)

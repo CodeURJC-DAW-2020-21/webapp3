@@ -30,7 +30,8 @@
                 {{#registered}}
                 <li><a class="nav-link scrollto" href="/profile"><i class="fas fa-user"></i></a>
                 </li>
-                <form action="/logout" method="post" >
+                <form action="/logout" method="post">
+                    <input type="hidden" name="_csrf" value="{{token}}"/>
                     <input type="submit" value="Sign out" class="sign_out scrollto"/>
                 </form>
                 {{/registered}}

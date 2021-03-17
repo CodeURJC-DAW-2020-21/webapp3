@@ -5,6 +5,7 @@ import es.dawequipo3.growing.model.Tree;
 import es.dawequipo3.growing.model.User;
 import es.dawequipo3.growing.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -27,14 +28,16 @@ public class UserService {
     @Autowired
     private EmailService emailService;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @PostConstruct
-    public void init(){
-        User u1 = new User("p1@gmail.com","pericopalotes909","perico", "palotes","contraseña");
-        User u2 = new User("yo@hotmail.com","XXXkillerG0D99XXX", "josé", "garcia", "IAmVeryMature", "ADMIN");
+    private void initDatabase() {
+        // USER
+        userRepository.save(new User("user@gmail","user","Evarist","Oh", passwordEncoder.encode("pass"), "USER"));
+        // ADMIN
+        userRepository.save(new User("admin@gmail","admin","Naomi","Watts", passwordEncoder.encode("pass"), "ADMIN","USER"));
 
-        userRepository.save(u1);
-        userRepository.save(u2);
     }
 
     public void save(User user){

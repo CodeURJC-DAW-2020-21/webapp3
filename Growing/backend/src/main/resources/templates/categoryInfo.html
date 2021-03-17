@@ -34,9 +34,11 @@
                 {{#registered}}
                 <li><a class="nav-link scrollto" href="/profile"><i class="fas fa-user"></i></a>
                 </li>
-                <li><form action="/logout" method="post">
-                    <button class="sign_out scrollto" type="submit">Sign out</button>
-                </form>
+                <li>
+                    <form action="/logout" method="post" >
+                        <input type="hidden" name="_csrf" value="{{token}}"/>
+                        <input type="submit" value="Sign out" class="sign_out scrollto"/>
+                    </form>
                 </li>
                 {{/registered}}
                 {{^registered}}
@@ -91,7 +93,7 @@
                 <div class="imagenArbol">
                     <img id="progress" src="/assets/img/progress/fase5.png"/>
                     {{^registered}}
-                    <p class="update">To see your progress: <a href="/getStarted">log in</a></p>
+                    <p class="update">To see your real progress: <a href="/getStarted">log in</a></p>
                     {{/registered}}
                     {{#registered}}
                     <p class="update"> Last updated: {{category.date}} </p>

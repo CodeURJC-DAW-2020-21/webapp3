@@ -60,6 +60,7 @@
                         <i class="fas fa-lock"></i>
                         <input type="password" name="password" placeholder="Password"/>
                     </div>
+                    <input type="hidden" name="_csrf" value="{{token}}"/>
                     <input type="submit" value="Login" class="btn solid"/>
                 </form>
                 <!-- Sign UP-->
@@ -95,6 +96,7 @@
                         <i class="fas fa-lock"></i>
                         <input type="password" name="confirmPassword" placeholder="Confirm Password"/>
                     </div>
+                    <input type="hidden" name="_csrf" value="{{token}}"/>
                     <input type="submit" class="btn" value="Sign up"/>
                 </form>
             </div>

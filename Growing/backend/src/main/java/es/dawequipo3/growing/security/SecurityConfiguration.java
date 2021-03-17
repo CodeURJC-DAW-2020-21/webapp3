@@ -1,6 +1,5 @@
-package es.dawequipo3.growing;
+package es.dawequipo3.growing.security;
 
-import es.dawequipo3.growing.service.RepositoryUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -63,7 +62,5 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.logout().logoutUrl("/logout");
         http.logout().logoutSuccessUrl("/");
 
-        // Disable CSRF at the moment
-        http.csrf().disable();
     }
 }

@@ -27,6 +27,7 @@
                         <div class="col-9">
                             <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
                             <form method="post" action="/complete/{{name}}">
+                                <input type="hidden" name="_csrf" value="{{token}}"/>
                                 <input type="submit" value="I did it">
                             </form>
                             <button onclick="ChangeButtonsStatus(this)" class="finish" value="I did it!">I did it!</button>

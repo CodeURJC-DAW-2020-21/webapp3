@@ -1,4 +1,4 @@
-package es.dawequipo3.growing.service;
+package es.dawequipo3.growing.security;
 
 import es.dawequipo3.growing.model.User;
 import es.dawequipo3.growing.repository.UserRepository;

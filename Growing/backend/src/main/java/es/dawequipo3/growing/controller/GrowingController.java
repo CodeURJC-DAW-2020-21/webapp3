@@ -95,6 +95,7 @@ public class GrowingController {
             plan.setLikedUser(true);
         }
         model.addAttribute("category", category);
+        return "redirect:/";
     }
 
     @GetMapping("/editProfile")
@@ -102,17 +103,7 @@ public class GrowingController {
         return "editProfile";
     }
 
-    @GetMapping("/categoryInfo/{name}")
-    public String categoryInfo(Model model, @PathVariable String name, HttpServletRequest request){
-        Category category = categoryService.findByName(name).orElseThrow();
-        for (Plan plan: category.getPlans()){
-            plan.setLikedUser(planService.existsLiked(plan.getName(), "p1@gmail.com"));
-        }
-        model.addAttribute("category", category);
-        model.addAttribute("registered",request.isUserInRole("USER"));
-        model.addAttribute("admin",request.isUserInRole("ADMIN"));
-        return "categoryInfo";
-    }
+
 
     @GetMapping("/404-NotFound")
     public String notFound(Model model, HttpServletRequest request){

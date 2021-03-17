@@ -39,8 +39,8 @@ public class User {
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "category_user_liked",
-            joinColumns = @JoinColumn(name = "liked_categories_name"),
-            inverseJoinColumns = @JoinColumn(name = "user_liked_email"))
+            joinColumns = @JoinColumn(name = "user_liked_email"),
+            inverseJoinColumns = @JoinColumn(name = "liked_categories_name"))
     private List<Category> userFavoritesCategory;
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)

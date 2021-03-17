@@ -18,6 +18,9 @@ public class Category {
     @Transient
     private int likes;
 
+    @Transient
+    private boolean likedByUser;
+
     public int getLikes() {
         return likes;
     }
@@ -120,6 +123,14 @@ public class Category {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public boolean isLikedByUser() {
+        return likedByUser;
+    }
+
+    public void setLikedByUser(boolean likedByUser) {
+        this.likedByUser = likedByUser;
     }
 
     @Override

@@ -3,6 +3,7 @@ package es.dawequipo3.growing.controller;
 import es.dawequipo3.growing.model.Category;
 import es.dawequipo3.growing.model.Plan;
 import es.dawequipo3.growing.model.Tree;
+import es.dawequipo3.growing.model.User;
 import es.dawequipo3.growing.service.CategoryService;
 import es.dawequipo3.growing.service.PlanService;
 import es.dawequipo3.growing.service.TreeService;
@@ -54,5 +55,35 @@ public class CategoryController {
     }
 
 
+    @GetMapping("/categoryInfo/{name}")
+    public String categoryInfo(Model model, @PathVariable String name, HttpServletRequest request){
+        Category category = categoryService.findByName(name).orElseThrow();
+        for (Plan plan: category.getPlans()){
+            plan.setLikedUser(planService.existsLiked(plan.getName(), "p1@gmail.com"));
+        }
+        category.setLikedByUser(userService.findUserByEmail("p1@gmail.com").orElseThrow().getUserFavoritesCategory().contains(category));
+        model.addAttribute("category", category);
+        model.addAttribute("registered",request.isUserInRole("USER"));
+        model.addAttribute("admin",request.isUserInRole("ADMIN"));
+        return "categoryInfo";
+    }
+
+    @PostMapping("/categoryInfo/{name}/like")
+    public String categoryLike(Model model, @PathVariable String name, HttpServletRequest request){
+        Category category = categoryService.findByName(name).orElseThrow();
+        User user = userService.findUserByEmail("p1@gmail.com").orElseThrow();
+        user.getUserFavoritesCategory().add(category);
+        userService.save(user);
+        return "redirect:/categoryInfo/{name}";
+    }
+
+    @PostMapping("/categoryInfo/{name}/dislike")
+    public String categoryDislike(Model model, @PathVariable String name, HttpServletRequest request){
+        Category category = categoryService.findByName(name).orElseThrow();
+        User user = userService.findUserByEmail("p1@gmail.com").orElseThrow();
+        user.getUserFavoritesCategory().remove(category);
+        userService.save(user);
+        return "redirect:/categoryInfo/{name}";
+    }
 
 }

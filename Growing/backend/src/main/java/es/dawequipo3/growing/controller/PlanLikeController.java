@@ -29,7 +29,7 @@ public class PlanLikeController {
         user.getLikedPlans().add(planService.findPlanByName(planName).orElseThrow());
         userService.save(user);
 
-        return "redirect:/categoryInfo/{name}";
+        return "redirect:/categoryInfo/"+ name;
     }
 
     @PostMapping("/categoryInfo/{name}/{planName}/dislike")
@@ -38,7 +38,7 @@ public class PlanLikeController {
         user.getLikedPlans().remove(planService.findPlanByName(planName).orElseThrow());
         userService.save(user);
 
-        return "redirect:/categoryInfo/{name}";
+        return "redirect:/categoryInfo/"+name;
     }
 
 }

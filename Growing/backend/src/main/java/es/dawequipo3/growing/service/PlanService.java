@@ -1,9 +1,7 @@
 package es.dawequipo3.growing.service;
 
-import java.util.Collection;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
+import java.util.Optional;
 
 import es.dawequipo3.growing.model.Plan;
 import es.dawequipo3.growing.repository.PlanRepository;
@@ -43,7 +41,9 @@ public class PlanService {
         return planRepository.findPlansByCategory_Name(name);
     }
 
-
+    public Optional<Plan> findPlansByName(String name){
+        return planRepository.findByName(name);
+    }
     public List<Plan> findAll() {
         return planRepository.findAll();
     }

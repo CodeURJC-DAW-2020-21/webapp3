@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <!-- Responsive-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 
     <title>Growing - Admin profile</title>
 
@@ -18,9 +18,9 @@
 
     <!-- Vendor CSS Files -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossorigin="anonymous">
+          rel="stylesheet">
 
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -34,9 +34,9 @@
     <link href="assets/css/profileStylesheet.css" rel="stylesheet">
 
     <!-- FontAwesome CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
           integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
-          crossorigin="anonymous"/>
+          rel="stylesheet"/>
 
     <!-- Scripts for ChartJS representation-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
@@ -55,14 +55,14 @@
 
 <!-- ======= Header ======= -->
 <section>
-    <header id="header" class="header fixed-top">
+    <header class="header fixed-top" id="header">
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-            <a href="/" class="logo d-flex align-items-center">
-                <img src="images/growingLogo.png" alt="">
+            <a class="logo d-flex align-items-center" href="/">
+                <img alt="" src="images/growingLogo.png">
             </a>
 
-            <nav id="navbar" class="navbar">
+            <nav class="navbar" id="navbar">
                 <ul>
                     <li><a class="nav-link scrollto" href="./">Home</a></li>
                     <li><a class="nav-link scrollto" href="/categories">Categories</a></li>
@@ -106,7 +106,7 @@
                                         <div class="card-header admin">
                                             <h1 class="card-title admin"> Admin account </h1>
                                             <div class="pic">
-                                                <img src="assets/img/team/team-3.PNG" alt="">
+                                                <img alt="" src="assets/img/team/team-3.PNG">
                                             </div>
 
                                             <div class="item admin">
@@ -166,7 +166,7 @@
                     </section>
 
                     <!-- Categories Section-->
-                    <section id="tasks" class="services">
+                    <section class="services" id="tasks">
 
                         <div class="container-fluid" data-aos="fade-left">
 
@@ -184,7 +184,7 @@
                                     <div class="service-box blue">
                                         <i class="ri-mental-health-line icon"></i>
                                         <h3>Mental Health</h3>
-                                        <a href="/categoryInfo" class="read-more"><span>Watch</span> <i
+                                        <a class="read-more" href="/categoryInfo"><span>Watch</span> <i
                                                 class="bi bi-arrow-right"></i></a>
                                     </div>
                                 </div>
@@ -193,7 +193,7 @@
                                     <div class="service-box red">
                                         <i class="ri-run-line icon"></i>
                                         <h3>Physical Health</h3>
-                                        <a href="/categoryInfo" class="read-more"><span>Watch</span> <i
+                                        <a class="read-more" href="/categoryInfo"><span>Watch</span> <i
                                                 class="bi bi-arrow-right"></i></a>
                                     </div>
                                 </div>
@@ -202,7 +202,7 @@
                                     <div class="service-box green">
                                         <i class="ri-money-euro-circle-line icon"></i>
                                         <h3>Savings</h3>
-                                        <a href="/categoryInfo" class="read-more"><span>Watch</span> <i
+                                        <a class="read-more" href="/categoryInfo"><span>Watch</span> <i
                                                 class="bi bi-arrow-right"></i></a>
                                     </div>
                                 </div>
@@ -211,7 +211,7 @@
                                     <div class="service-box bluenavy">
                                         <i class="ri-hotel-bed-fill icon"></i>
                                         <h3>Good Night</h3>
-                                        <a href="/categoryInfo" class="read-more"><span>Watch</span> <i
+                                        <a class="read-more" href="/categoryInfo"><span>Watch</span> <i
                                                 class="bi bi-arrow-right"></i></a>
                                     </div>
                                 </div>
@@ -220,7 +220,7 @@
                                     <div class="service-box orange">
                                         <i class="ri-home-2-line icon"></i>
                                         <h3>Home</h3>
-                                        <a href="/categoryInfo" class="read-more"><span>Watch</span> <i
+                                        <a class="read-more" href="/categoryInfo"><span>Watch</span> <i
                                                 class="bi bi-arrow-right"></i></a>
                                     </div>
                                 </div>
@@ -229,7 +229,7 @@
                                     <div class="service-box purple">
                                         <i class="ri-focus-2-line icon"></i>
                                         <h3>Focus and Effort</h3>
-                                        <a href="/categoryInfo" class="read-more"><span>Watch</span> <i
+                                        <a class="read-more" href="/categoryInfo"><span>Watch</span> <i
                                                 class="bi bi-arrow-right"></i></a>
                                     </div>
                                 </div>
@@ -242,7 +242,7 @@
                     <!-- End CategoriesSection -->
 
                     <!-- ======= Tasks completed Section ======= -->
-                    <section id="taskscompleted" class="taskscompleted">
+                    <section class="taskscompleted" id="taskscompleted">
 
                         <div class="container">
 
@@ -257,39 +257,39 @@
                                     <div class="accordion accordion-flush" id="taskscompletedlist1">
                                         <div class="accordion-item">
                                             <h2 class="accordion-header">
-                                                <button class="accordion-button collapsed" type="button"
+                                                <button class="accordion-button collapsed" data-bs-target="#taskscompleted-content-1"
                                                         data-bs-toggle="collapse"
-                                                        data-bs-target="#taskscompleted-content-1">
+                                                        type="button">
                                                     <div class="service-box orange">
                                                         <i class="ri-home-2-line icon"></i>
                                                     </div>
-                                                    Clean up your room<img src="./assets/img/level/greenFlag.png"
-                                                                           class="icon mini"/>
+                                                    Clean up your room<img class="icon mini"
+                                                                           src="./assets/img/level/greenFlag.png"/>
                                                 </button>
                                             </h2>
-                                            <div id="taskscompleted-content-1" class="accordion-collapse collapse"
-                                                 data-bs-parent="#taskscompletedlist1">
+                                            <div class="accordion-collapse collapse" data-bs-parent="#taskscompletedlist1"
+                                                 id="taskscompleted-content-1">
                                                 <div class="accordion-body">
                                                     Everyone forgets to clean his room for one week or two, today is the
                                                     day to do it.
                                                     <div class="container">
                                                         <div class="row">
                                                             <div class="col-9">
-                                                                <button onclick="ChangeButtonsStatus(this)"
-                                                                        class="start">Start
+                                                                <button class="start"
+                                                                        onclick="ChangeButtonsStatus(this)">Start
                                                                 </button>
-                                                                <button onclick="ChangeButtonsStatus(this)"
-                                                                        class="finish">I did it!
+                                                                <button class="finish"
+                                                                        onclick="ChangeButtonsStatus(this)">I did it!
                                                                 </button>
-                                                                <button onclick="ChangeButtonsStatus(this)"
-                                                                        class="leave">I won't
+                                                                <button class="leave"
+                                                                        onclick="ChangeButtonsStatus(this)">I won't
                                                                     finish
                                                                 </button>
                                                             </div>
                                                             <div class="col-3">
-                                                                <h2><img src="./assets/img/level/EmptyHeart.svg"
-                                                                         class="like icon mini"
-                                                                         onclick="ChangeHeart(this)"/></h2>
+                                                                <h2><img class="like icon mini"
+                                                                         onclick="ChangeHeart(this)"
+                                                                         src="./assets/img/level/EmptyHeart.svg"/></h2>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -299,39 +299,39 @@
 
                                         <div class="accordion-item">
                                             <h2 class="accordion-header">
-                                                <button class="accordion-button collapsed" type="button"
+                                                <button class="accordion-button collapsed" data-bs-target="#taskscompleted-content-2"
                                                         data-bs-toggle="collapse"
-                                                        data-bs-target="#taskscompleted-content-2">
+                                                        type="button">
                                                     <div class="service-box blue">
                                                         <i class="ri-mental-health-line icon"></i>
                                                     </div>
                                                     Sit down and relax 10 minutes<img
-                                                        src="./assets/img/level/greenFlag.png"
-                                                        class="icon mini"/>
+                                                        class="icon mini"
+                                                        src="./assets/img/level/greenFlag.png"/>
                                                 </button>
                                             </h2>
-                                            <div id="taskscompleted-content-2" class="accordion-collapse collapse"
-                                                 data-bs-parent="#taskscompletedlist1">
+                                            <div class="accordion-collapse collapse" data-bs-parent="#taskscompletedlist1"
+                                                 id="taskscompleted-content-2">
                                                 <div class="accordion-body">
                                                     Come on, you are not superman, everybody needs some relax time.
                                                     <div class="container">
                                                         <div class="row">
                                                             <div class="col-9">
-                                                                <button onclick="ChangeButtonsStatus(this)"
-                                                                        class="start">Start
+                                                                <button class="start"
+                                                                        onclick="ChangeButtonsStatus(this)">Start
                                                                 </button>
-                                                                <button onclick="ChangeButtonsStatus(this)"
-                                                                        class="finish">I did it!
+                                                                <button class="finish"
+                                                                        onclick="ChangeButtonsStatus(this)">I did it!
                                                                 </button>
-                                                                <button onclick="ChangeButtonsStatus(this)"
-                                                                        class="leave">I won't
+                                                                <button class="leave"
+                                                                        onclick="ChangeButtonsStatus(this)">I won't
                                                                     finish
                                                                 </button>
                                                             </div>
                                                             <div class="col-3">
-                                                                <h2><img src="./assets/img/level/EmptyHeart.svg"
-                                                                         class="like icon mini"
-                                                                         onclick="ChangeHeart(this)"/></h2>
+                                                                <h2><img class="like icon mini"
+                                                                         onclick="ChangeHeart(this)"
+                                                                         src="./assets/img/level/EmptyHeart.svg"/></h2>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -341,39 +341,39 @@
 
                                         <div class="accordion-item">
                                             <h2 class="accordion-header">
-                                                <button class="accordion-button collapsed" type="button"
+                                                <button class="accordion-button collapsed" data-bs-target="#taskscompleted-content-3"
                                                         data-bs-toggle="collapse"
-                                                        data-bs-target="#taskscompleted-content-3">
+                                                        type="button">
                                                     <div class="service-box blue">
                                                         <i class="ri-mental-health-line icon"></i>
                                                     </div>
-                                                    Read for a while<img src="./assets/img/level/yellowFlag.png"
-                                                                         class="icon mini"/>
+                                                    Read for a while<img class="icon mini"
+                                                                         src="./assets/img/level/yellowFlag.png"/>
                                                 </button>
                                             </h2>
-                                            <div id="taskscompleted-content-3" class="accordion-collapse collapse"
-                                                 data-bs-parent="#taskscompletedlist1">
+                                            <div class="accordion-collapse collapse" data-bs-parent="#taskscompletedlist1"
+                                                 id="taskscompleted-content-3">
                                                 <div class="accordion-body">
                                                     Even if you are feeling down, reading a book is a good way to grow
                                                     as a person
                                                     <div class="container">
                                                         <div class="row">
                                                             <div class="col-9">
-                                                                <button onclick="ChangeButtonsStatus(this)"
-                                                                        class="start">Start
+                                                                <button class="start"
+                                                                        onclick="ChangeButtonsStatus(this)">Start
                                                                 </button>
-                                                                <button onclick="ChangeButtonsStatus(this)"
-                                                                        class="finish">I did it!
+                                                                <button class="finish"
+                                                                        onclick="ChangeButtonsStatus(this)">I did it!
                                                                 </button>
-                                                                <button onclick="ChangeButtonsStatus(this)"
-                                                                        class="leave">I won't
+                                                                <button class="leave"
+                                                                        onclick="ChangeButtonsStatus(this)">I won't
                                                                     finish
                                                                 </button>
                                                             </div>
                                                             <div class="col-3">
-                                                                <h2><img src="./assets/img/level/EmptyHeart.svg"
-                                                                         class="like icon mini"
-                                                                         onclick="ChangeHeart(this)"/></h2>
+                                                                <h2><img class="like icon mini"
+                                                                         onclick="ChangeHeart(this)"
+                                                                         src="./assets/img/level/EmptyHeart.svg"/></h2>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -391,18 +391,18 @@
 
                                         <div class="accordion-item">
                                             <h2 class="accordion-header">
-                                                <button class="accordion-button collapsed" type="button"
+                                                <button class="accordion-button collapsed" data-bs-target="#taskscompleted2-content-1"
                                                         data-bs-toggle="collapse"
-                                                        data-bs-target="#taskscompleted2-content-1">
+                                                        type="button">
                                                     <div class="service-box red">
                                                         <i class="ri-run-line icon"></i>
                                                     </div>
-                                                    Go out for a walk<img src="./assets/img/level/yellowFlag.png"
-                                                                          class="icon mini"/>
+                                                    Go out for a walk<img class="icon mini"
+                                                                          src="./assets/img/level/yellowFlag.png"/>
                                                 </button>
                                             </h2>
-                                            <div id="taskscompleted2-content-1" class="accordion-collapse collapse"
-                                                 data-bs-parent="#taskscompletedlist2">
+                                            <div class="accordion-collapse collapse" data-bs-parent="#taskscompletedlist2"
+                                                 id="taskscompleted2-content-1">
                                                 <div class="accordion-body">
                                                     Almost all philosophers recognise that going for a walk makes
                                                     miracles for people
@@ -410,21 +410,21 @@
                                                     <div class="container">
                                                         <div class="row">
                                                             <div class="col-9">
-                                                                <button onclick="ChangeButtonsStatus(this)"
-                                                                        class="start">Start
+                                                                <button class="start"
+                                                                        onclick="ChangeButtonsStatus(this)">Start
                                                                 </button>
-                                                                <button onclick="ChangeButtonsStatus(this)"
-                                                                        class="finish">I did it!
+                                                                <button class="finish"
+                                                                        onclick="ChangeButtonsStatus(this)">I did it!
                                                                 </button>
-                                                                <button onclick="ChangeButtonsStatus(this)"
-                                                                        class="leave">I won't
+                                                                <button class="leave"
+                                                                        onclick="ChangeButtonsStatus(this)">I won't
                                                                     finish
                                                                 </button>
                                                             </div>
                                                             <div class="col-3">
-                                                                <h2><img src="./assets/img/level/EmptyHeart.svg"
-                                                                         class="like icon mini"
-                                                                         onclick="ChangeHeart(this)"/></h2>
+                                                                <h2><img class="like icon mini"
+                                                                         onclick="ChangeHeart(this)"
+                                                                         src="./assets/img/level/EmptyHeart.svg"/></h2>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -434,18 +434,18 @@
 
                                         <div class="accordion-item">
                                             <h2 class="accordion-header">
-                                                <button class="accordion-button collapsed" type="button"
+                                                <button class="accordion-button collapsed" data-bs-target="#taskscompleted2-content-2"
                                                         data-bs-toggle="collapse"
-                                                        data-bs-target="#taskscompleted2-content-2">
+                                                        type="button">
                                                     <div class="service-box green">
                                                         <i class="ri-money-euro-circle-line icon"></i>
                                                     </div>
-                                                    Create a home-bank<img src="./assets/img/level/greenFlag.png"
-                                                                           class="icon mini"/>
+                                                    Create a home-bank<img class="icon mini"
+                                                                           src="./assets/img/level/greenFlag.png"/>
                                                 </button>
                                             </h2>
-                                            <div id="taskscompleted2-content-2" class="accordion-collapse collapse"
-                                                 data-bs-parent="#taskscompletedlist2">
+                                            <div class="accordion-collapse collapse" data-bs-parent="#taskscompletedlist2"
+                                                 id="taskscompleted2-content-2">
                                                 <div class="accordion-body">
                                                     It is as easy as putting a label on a jar saying "Money", you can
                                                     use it for new
@@ -453,21 +453,21 @@
                                                     <div class="container">
                                                         <div class="row">
                                                             <div class="col-9">
-                                                                <button onclick="ChangeButtonsStatus(this)"
-                                                                        class="start">Start
+                                                                <button class="start"
+                                                                        onclick="ChangeButtonsStatus(this)">Start
                                                                 </button>
-                                                                <button onclick="ChangeButtonsStatus(this)"
-                                                                        class="finish">I did it!
+                                                                <button class="finish"
+                                                                        onclick="ChangeButtonsStatus(this)">I did it!
                                                                 </button>
-                                                                <button onclick="ChangeButtonsStatus(this)"
-                                                                        class="leave">I won't
+                                                                <button class="leave"
+                                                                        onclick="ChangeButtonsStatus(this)">I won't
                                                                     finish
                                                                 </button>
                                                             </div>
                                                             <div class="col-3">
-                                                                <h2><img src="./assets/img/level/EmptyHeart.svg"
-                                                                         class="like icon mini"
-                                                                         onclick="ChangeHeart(this)"/></h2>
+                                                                <h2><img class="like icon mini"
+                                                                         onclick="ChangeHeart(this)"
+                                                                         src="./assets/img/level/EmptyHeart.svg"/></h2>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -477,18 +477,18 @@
 
                                         <div class="accordion-item">
                                             <h2 class="accordion-header">
-                                                <button class="accordion-button collapsed" type="button"
+                                                <button class="accordion-button collapsed" data-bs-target="#taskscompleted2-content-3"
                                                         data-bs-toggle="collapse"
-                                                        data-bs-target="#taskscompleted2-content-3">
+                                                        type="button">
                                                     <div class="service-box bluenavy">
                                                         <i class="ri-hotel-bed-fill icon"></i>
                                                     </div>
-                                                    Go to bed early<img src="./assets/img/level/redFlag.png"
-                                                                        class="icon mini"/>
+                                                    Go to bed early<img class="icon mini"
+                                                                        src="./assets/img/level/redFlag.png"/>
                                                 </button>
                                             </h2>
-                                            <div id="taskscompleted2-content-3" class="accordion-collapse collapse"
-                                                 data-bs-parent="#taskscompletedlist2">
+                                            <div class="accordion-collapse collapse" data-bs-parent="#taskscompletedlist2"
+                                                 id="taskscompleted2-content-3">
                                                 <div class="accordion-body">
                                                     Nothing helps more a person than getting a good night of sleep, we
                                                     all know you
@@ -498,21 +498,21 @@
                                                     <div class="container">
                                                         <div class="row">
                                                             <div class="col-9">
-                                                                <button onclick="ChangeButtonsStatus(this)"
-                                                                        class="start">Start
+                                                                <button class="start"
+                                                                        onclick="ChangeButtonsStatus(this)">Start
                                                                 </button>
-                                                                <button onclick="ChangeButtonsStatus(this)"
-                                                                        class="finish">I did it!
+                                                                <button class="finish"
+                                                                        onclick="ChangeButtonsStatus(this)">I did it!
                                                                 </button>
-                                                                <button onclick="ChangeButtonsStatus(this)"
-                                                                        class="leave">I won't
+                                                                <button class="leave"
+                                                                        onclick="ChangeButtonsStatus(this)">I won't
                                                                     finish
                                                                 </button>
                                                             </div>
                                                             <div class="col-3">
-                                                                <h2><img src="./assets/img/level/EmptyHeart.svg"
-                                                                         class="like icon mini"
-                                                                         onclick="ChangeHeart(this)"/></h2>
+                                                                <h2><img class="like icon mini"
+                                                                         onclick="ChangeHeart(this)"
+                                                                         src="./assets/img/level/EmptyHeart.svg"/></h2>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -531,80 +531,64 @@
                         <h1>Users and Categories</h1>
                         <br>
                         <div class="field" id="searchform">
-                            <input type="text" id="searchterm" placeholder="User that you are looking for"/>
-                            <button type="button" id="search">Find!</button>
+                            <input id="searchterm" placeholder="User that you are looking for" type="text"/>
+                            <button id="search" type="button" onclick="LoadTable()">Find!</button>
                         </div>
 
                         <table id="UsersTable">
-                            <tr>
-                                <th>User</th>
+                            <tr id="UsersTableTitle">
                                 <th>Email</th>
-                                <th>Plans Completed</th>
+                                <th>Plan Completed</th>
+                                <th>Date</th>
                                 <th>Remove</th>
                             </tr>
+                            {{#CompletedPlan}}
                             <tr>
-                                <td>Alfreds Futterkiste</td>
-                                <td>...</td>
-                                <td>...</td>
+                                <td class="email">{{getEmail}}</td>
+                                <td class="name">{{getPlanName}}</td>
+                                <td class="date">{{getDate}}</td>
                                 <td>
-                                    <button>Remove</button>
+                                    <button class="displayed leave " onclick="RemoveCompletedPlan(this)">Remove</button>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>Berglunds snabbköp</td>
-                                <td>...</td>
-                                <td>...</td>
-                                <td>
-                                    <button>Remove</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Centro comercial Moctezuma</td>
-                                <td>...</td>
-                                <td>...</td>
-                                <td>
-                                    <button>Remove</button>
-                                </td>
-                            </tr>
+                            {{/CompletedPlan}}
                         </table>
                     </section>
 
 
-</main>
+                    <!-- ======= Footer ======= -->
+                    <footer class="footer" id="footer">
+                        <div class="container">
+                            <div class="copyright">
+                                &copy; Copyright <strong><span>FlexStart</span></strong>. All Rights Reserved
+                            </div>
+                            <div class="credits">
+                                <!-- All the links in the footer should remain intact. -->
+                                <!-- You can delete the links only if you purchased the pro version. -->
+                                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
+                                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                            </div>
+                        </div>
+                    </footer><!-- End Footer -->
 
-<!-- ======= Footer ======= -->
-<footer id="footer" class="footer">
-    <div class="container">
-        <div class="copyright">
-            &copy; Copyright <strong><span>FlexStart</span></strong>. All Rights Reserved
-        </div>
-        <div class="credits">
-            <!-- All the links in the footer should remain intact. -->
-            <!-- You can delete the links only if you purchased the pro version. -->
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-        </div>
-    </div>
-</footer><!-- End Footer -->
+                    <a class="back-to-top d-flex align-items-center justify-content-center" href="#"><i
+                            class="bi bi-arrow-up-short"></i></a>
 
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-        class="bi bi-arrow-up-short"></i></a>
+                    <!-- Vendor JS Files -->
+                    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+                    <script src="assets/vendor/aos/aos.js"></script>
+                    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+                    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+                    <script src="https://www.gstatic.com/charts/loader.js"></script>
 
-<!-- Vendor JS Files -->
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
-<script src="assets/vendor/aos/aos.js"></script>
-<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-<script src="https://www.gstatic.com/charts/loader.js"></script>
+                    <script crossorigin="anonymous"
+                            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                            src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-
-<!-- Template Main JS File -->
-<script src="assets/js/main.js"></script>
+                    <!-- Template Main JS File -->
+                    <script src="assets/js/main.js"></script>
 
 </body>
 

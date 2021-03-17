@@ -31,7 +31,7 @@ public class UserService {
     @PostConstruct
     public void init(){
         User u1 = new User("p1@gmail.com","pericopalotes909","perico", "palotes","contraseña");
-        User u2 = new User("yo@hotmail.com","XXXkillerG0D99XXX", "josé", "garcia", "IAmVeryMature");
+        User u2 = new User("yo@hotmail.com","XXXkillerG0D99XXX", "josé", "garcia", "IAmVeryMature", "ADMIN");
 
         userRepository.save(u1);
         userRepository.save(u2);

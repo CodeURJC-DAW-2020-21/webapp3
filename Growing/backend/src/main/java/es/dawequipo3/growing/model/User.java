@@ -1,6 +1,7 @@
 package es.dawequipo3.growing.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import es.dawequipo3.growing.service.CategoryService;
 import es.dawequipo3.growing.service.TreeService;
 
@@ -22,7 +23,6 @@ public class User {
     @Column(nullable = false)
     private String surname;
 
-    @Column(nullable = false)
     private String encodedPassword;
 
     @Transient
@@ -31,7 +31,6 @@ public class User {
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles;
 
-
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "LikedPlans",
@@ -39,7 +38,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "planName"))
     private List<Plan> likedPlans;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
             name = "favoriteCategories",
             joinColumns = @JoinColumn(name = "email"),
@@ -54,17 +53,6 @@ public class User {
 
     public User() {}
 
-    public User(String email, String username, String name, String surname, String encodedPassword, String confirmEncodedPassword) {
-        super();
-        this.email = email;
-        this.username = username;
-        this.name = name;
-        this.surname = surname;
-        this.encodedPassword = encodedPassword;
-        this.confirmEncodedPassword = confirmEncodedPassword;
-        this.trees=new ArrayList<Tree>();
-    }
-
     //This constructor is for creating sample users
     public User(String email, String username, String name, String surname, String encodedPassword, String...roles) {
         super();
@@ -75,7 +63,6 @@ public class User {
         this.encodedPassword = encodedPassword;
         this.roles = List.of(roles);
         this.trees=new ArrayList<Tree>();
-
     }
 
     public void initializeAllTrees(CategoryService categoryService, TreeService treeService){
@@ -90,6 +77,7 @@ public class User {
     public void FavoriteCategory(Category category) {
         this.userFavoritesCategory.add(category);
     }
+
     public boolean CategoryNameInTrees(Category category){
         String name= category.getName();
         for (Tree tree:this.trees){
@@ -167,7 +155,7 @@ public class User {
         return confirmEncodedPassword;
     }
 
-    public void setConfirmPassword(String confirmEncodedPassword) {
+    public void setConfirmEncodedPassword(String confirmEncodedPassword) {
         this.confirmEncodedPassword = confirmEncodedPassword;
     }
 

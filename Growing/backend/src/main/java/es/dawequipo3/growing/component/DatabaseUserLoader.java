@@ -20,9 +20,9 @@ public class DatabaseUserLoader {
     @PostConstruct
     private void initDatabase() {
         // USER
-        userRepository.save(new User("user@gmail","username","user","user", passwordEncoder.encode("pass"), "USER"));
+        userRepository.save(new User("user@gmail","username","Evarist","User", passwordEncoder.encode("pass"), "USER"));
         // ADMIN
-        userRepository.save(new User("admin@gmail","admin","admin","admin", passwordEncoder.encode("pass"), "ADMIN"));
+        userRepository.save(new User("admin@gmail","admin","Naomi","Admin", passwordEncoder.encode("pass"), "ADMIN","USER"));
 
     }
 }

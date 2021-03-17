@@ -1,6 +1,7 @@
 package es.dawequipo3.growing.controller;
 
 import es.dawequipo3.growing.model.*;
+import es.dawequipo3.growing.repository.UserRepository;
 import es.dawequipo3.growing.service.CategoryService;
 import es.dawequipo3.growing.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class GrowingController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserRepository userRepository;
 
 
     public void EmailFavoritesCategoryName(String email, String categoryName) {
@@ -76,7 +80,14 @@ public class GrowingController {
 
     @GetMapping("/profile")
     public String profile(Model model, HttpServletRequest request){
-        model.addAttribute("admin",request.isUserInRole("ADMIN"));
+        String username = request.getUserPrincipal().getName();
+        User user = userRepository.findByUsername(username).orElseThrow();
+
+        model.addAttribute("name", user.getName());
+        model.addAttribute("surname", user.getSurname());
+        model.addAttribute("username", user.getUsername());
+        model.addAttribute("email", user.getEmail());
+        model.addAttribute("admin", request.isUserInRole("ADMIN"));
         return "profile";
     }
 

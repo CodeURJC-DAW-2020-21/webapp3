@@ -5,24 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83c00b7c-64de-4c2c-a7b9-d0498b57839c" name="Default Changelist" comment="Added user and admin roles&#10;&#10;I have also edited the pages so that depending on the role different things appear">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_13_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_2_2.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_web_5_4_5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_web_5_4_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_web_5_4_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_web_5_4_2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/backend.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/GrowingController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/controller/CategoryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/controller/GrowingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/controller/GrowingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/model/Completed_plan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/model/Completed_plan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/model/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/model/Tree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/service/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/css/category.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/assets/css/category.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/assets/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/accordionCategories.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/accordionCategories.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/categoryInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/categoryInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/profile.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,18 +31,21 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/../.." value="DatabaseImprovement" />
+        <entry key="$PROJECT_DIR$/../.." value="Stage-2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="1pDTdlaMMkaG4QJYwc6bWMGGIio" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -76,7 +78,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.254023" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -157,6 +159,11 @@
       <workItem from="1615398156351" duration="6279000" />
       <workItem from="1615543627566" duration="7370000" />
       <workItem from="1615822899142" duration="2188000" />
+      <workItem from="1615840359912" duration="1282000" />
+      <workItem from="1615851985448" duration="941000" />
+      <workItem from="1615881675444" duration="4925000" />
+      <workItem from="1615891773929" duration="3283000" />
+      <workItem from="1615908869931" duration="11177000" />
     </task>
     <task id="LOCAL-00001" summary="Port 8080 changed to 8443">
       <created>1614901668584</created>

@@ -22,7 +22,8 @@
             <div class="accordion-body ">
                 <div class="container">
                     <div class="row">
-                        {{description}}
+                        <div>{{description}}</div>
+                        {{#registered}}
                         <div class="col-9">
                             <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
                             <form method="post" action="/complete/{{name}}">
@@ -31,6 +32,7 @@
                             <button onclick="ChangeButtonsStatus(this)" class="finish" value="I did it!">I did it!</button>
                             <button onclick="ChangeButtonsStatus(this)" class="leave">I won't finish</button>
                         </div>
+                        {{/registered}}
                         <div class="col-3">
                             <h2>
                                 <!-- This is to diferentiate if the like icon is appearing because the user is logged-->

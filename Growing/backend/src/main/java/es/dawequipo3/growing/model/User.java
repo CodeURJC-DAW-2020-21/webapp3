@@ -23,10 +23,14 @@ public class User {
     private String surname;
 
     @Column(nullable = false)
-    private String password;
+    private String encodedPassword;
 
     @Transient
-    private String confirmPassword;
+    private String confirmEncodedPassword;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles;
+
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -50,24 +54,26 @@ public class User {
 
     public User() {}
 
-    public User(String email, String username, String name, String surname, String password, String confirmPassword) {
+    public User(String email, String username, String name, String surname, String encodedPassword, String confirmEncodedPassword) {
         super();
         this.email = email;
         this.username = username;
         this.name = name;
         this.surname = surname;
-        this.password = password;
-        this.confirmPassword = confirmPassword;
+        this.encodedPassword = encodedPassword;
+        this.confirmEncodedPassword = confirmEncodedPassword;
         this.trees=new ArrayList<Tree>();
     }
+
     //This constructor is for creating sample users
-    public User(String email, String username, String name, String surname, String password) {
+    public User(String email, String username, String name, String surname, String encodedPassword, String...roles) {
         super();
         this.email = email;
         this.username = username;
         this.name = name;
         this.surname = surname;
-        this.password = password;
+        this.encodedPassword = encodedPassword;
+        this.roles = List.of(roles);
         this.trees=new ArrayList<Tree>();
 
     }
@@ -109,12 +115,12 @@ public class User {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getEncodedPassword() {
+        return encodedPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String encodedPassword) {
+        this.encodedPassword = encodedPassword;
     }
 
     public List<Plan> getLikedPlans() {
@@ -157,11 +163,19 @@ public class User {
         this.surname = surname;
     }
 
-    public String getConfirmPassword() {
-        return confirmPassword;
+    public String getConfirmEncodedPassword() {
+        return confirmEncodedPassword;
     }
 
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
+    public void setConfirmPassword(String confirmEncodedPassword) {
+        this.confirmEncodedPassword = confirmEncodedPassword;
+    }
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
     }
 }

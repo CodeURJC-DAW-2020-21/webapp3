@@ -71,7 +71,6 @@
                     {{/registered}}
                 </h1>
                 <h2 class="subtitle">{{category.des}}</h2>
-                {{#registered}}
                 {{#admin}}
                 <!-- Add button for Admin User -->
                 <div class="editCategory">
@@ -79,7 +78,6 @@
                 </div>
                 <!-- End add button for Admin User -->
                 {{/admin}}
-                {{/registered}}
             </div>
         </header>
         <!-- End of the container of the header-->
@@ -91,7 +89,10 @@
                     <h3>Your progress</h3>
                 </header>
                 <div class="imagenArbol">
-                    <img id="progress" src="/assets/img/progress/fase2.png"/>
+                    <img id="progress" src="/assets/img/progress/fase5.png"/>
+                    {{^registered}}
+                    <p class="update">To see your progress: <a href="/getStarted">log in</a></p>
+                    {{/registered}}
                     {{#registered}}
                     <p class="update"> Last updated: {{category.date}} </p>
                     {{/registered}}
@@ -103,7 +104,6 @@
             <div class="col-md-7 list">
                 <header class="section-header plan">
                     <h3>Task</h3>
-                    {{#registered}}
                     {{#admin}}
                     <!-- Add button for Admin User -->
                     <div class="add">
@@ -111,7 +111,6 @@
                     </div>
                     <!-- End add button for Admin User -->
                     {{/admin}}
-                    {{/registered}}
 
                 </header>
 

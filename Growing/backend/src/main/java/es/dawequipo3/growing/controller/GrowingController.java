@@ -49,21 +49,21 @@ public class GrowingController {
 
     @PostMapping("/getStarted/signUp")
     public String signUp(User user) {
-        if (user.getPassword().equals(user.getConfirmPassword()))
+        if (user.getEncodedPassword().equals(user.getConfirmEncodedPassword()))
             userService.save(user);
         return "redirect:/";
     }
 
     @GetMapping("/explore")
-    public String explore(Model model) {
-        model.addAttribute("registered", true);
+    public String explore(Model model, HttpServletRequest request){
+        model.addAttribute("registered", request.isUserInRole("USER"));
         return "explore";
     }
 
 
     @GetMapping("/aboutUs")
     public String aboutUs(Model model, HttpServletRequest request){
-        model.addAttribute("registered",request.isUserInRole("USER"));
+        model.addAttribute("registered", request.isUserInRole("USER"));
         return "AboutUs";
     }
 
@@ -88,7 +88,6 @@ public class GrowingController {
     @GetMapping("/categoryInfo/{name}")
     public String categoryInfo(Model model, @PathVariable String name, HttpServletRequest request){
         model.addAttribute("category", categoryService.findByName(name).orElseThrow());
-        model.addAttribute("date", "11-3-2020");
         model.addAttribute("registered",request.isUserInRole("USER"));
         model.addAttribute("admin",request.isUserInRole("ADMIN"));
         model.addAttribute("liked", true);

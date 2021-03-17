@@ -47,3 +47,12 @@
     font: 20px/1px FontAwesome ;
     background-color: transparent;
 }
+
+a {
+    color: #12a294;
+    text-decoration: none;
+}
+a:hover {
+    color: #717ff5;
+    text-decoration: none;
+}

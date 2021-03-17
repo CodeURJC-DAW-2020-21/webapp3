@@ -278,13 +278,10 @@ section {
   color: #fff;
 }
 
-
 .navbar .getstarted:hover {
   color: #fff;
   background: #264653;
 }
-
-
 
 .navbar .sign_out{
   background: #ff0000;
@@ -298,7 +295,6 @@ section {
   color: #ffffff;
   background: #c10303;
   border-color: #c10303;
-  border-width: 4px;
 }
 
 .navbar .sign_out:hover:after{
@@ -309,7 +305,6 @@ section {
   color: #fff;
 
 }
-
 
 .navbar .dropdown ul {
   display: block;
@@ -338,11 +333,10 @@ section {
   font-weight: 600;
 }
 
-
-
 /**
 * Mobile Navigation
 */
+
 .mobile-nav-toggle {
   color: #12a294;
   font-size: 28px;
@@ -439,10 +433,10 @@ section {
   box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
 }
 
-
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
+
 .hero {
   width: 100%;
   height: 100vh;
@@ -536,6 +530,7 @@ section {
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
+
 .about .content {
   background-color: #f6f9ff;
   padding: 40px;
@@ -589,6 +584,7 @@ section {
 /*--------------------------------------------------------------
 # Values
 --------------------------------------------------------------*/
+
 .values .box {
   padding: 30px;
   box-shadow: 0px 0 5px rgba(1, 41, 112, 0.08);
@@ -621,6 +617,7 @@ section {
 /*--------------------------------------------------------------
 # Counts
 --------------------------------------------------------------*/
+
 .counts {
   padding: 70px 0 60px;
 }
@@ -658,6 +655,7 @@ section {
 /*--------------------------------------------------------------
 # Features
 --------------------------------------------------------------*/
+
 .features .feature-box {
   padding: 24px 20px;
   box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
@@ -719,7 +717,6 @@ section {
   margin-bottom: -2px;
   border-radius: 0;
 }
-
 
 .features .feature-tabs .nav-link.active {
   color: #20c997;
@@ -788,6 +785,7 @@ section {
 /*--------------------------------------------------------------
 # Services
 --------------------------------------------------------------*/
+
 .services .service-box {
   box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
   height: 100%;
@@ -831,7 +829,6 @@ section {
 .services .service-box.blue {
   border-bottom: 3px solid #2db6fa;
   box-shadow: 0px 0 30px rgb(8, 79, 134);
-
 }
 
 .services .service-box.blue .icon {
@@ -994,6 +991,7 @@ section {
 /*--------------------------------------------------------------
 # Portfolio
 --------------------------------------------------------------*/
+
 .portfolio #portfolio-flters {
   margin: 0 auto 25px auto;
   list-style: none;
@@ -1842,7 +1840,6 @@ section .team{
   margin-right: auto;
 }
 
-
 .like{
   float: right;
   padding: 10px;
@@ -1870,7 +1867,6 @@ section .team{
   color: #9c9c9c;
   padding-left: 28%;
 }
-
 
 .start {
   margin: 10px;

@@ -4,16 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83c00b7c-64de-4c2c-a7b9-d0498b57839c" name="Default Changelist" comment="Added user database">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6d7b1777-9f31-42b3-831f-00afefd57a0c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6d7b1777-9f31-42b3-831f-00afefd57a0c.xml" afterDir="false" />
+    <list default="true" id="83c00b7c-64de-4c2c-a7b9-d0498b57839c" name="Default Changelist" comment="Added 2 users in database">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/SecurityConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/component/DatabaseUserLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/component/DatabaseUserLoader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/controller/GrowingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/controller/GrowingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/service/RepositoryUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/service/RepositoryUserDetailsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/AboutUs.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/AboutUs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/categories.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/categories.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/categoryInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/categoryInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/editProfile.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/editProfile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/explore.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/explore.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/profile.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -158,7 +158,7 @@
       <workItem from="1615891773929" duration="3283000" />
       <workItem from="1615908869931" duration="11501000" />
       <workItem from="1615941839889" duration="99000" />
-      <workItem from="1615984505209" duration="5345000" />
+      <workItem from="1615984505209" duration="10188000" />
     </task>
     <task id="LOCAL-00001" summary="Port 8080 changed to 8443">
       <created>1614901668584</created>
@@ -181,7 +181,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615941478982</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added 2 users in database">
+      <created>1615990012504</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1615990012504</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -203,7 +210,8 @@
     <MESSAGE value="Port 8080 changed to 8443" />
     <MESSAGE value="Added user and admin roles&#10;&#10;I have also edited the pages so that depending on the role different things appear" />
     <MESSAGE value="Added user database" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added user database" />
+    <MESSAGE value="Added 2 users in database" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added 2 users in database" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

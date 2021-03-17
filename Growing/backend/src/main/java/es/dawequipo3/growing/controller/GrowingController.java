@@ -83,16 +83,17 @@ public class GrowingController {
         String username = request.getUserPrincipal().getName();
         User user = userRepository.findByUsername(username).orElseThrow();
 
-        model.addAttribute("name", user.getName());
-        model.addAttribute("surname", user.getSurname());
-        model.addAttribute("username", user.getUsername());
-        model.addAttribute("email", user.getEmail());
+        model.addAttribute("user", user);
         model.addAttribute("admin", request.isUserInRole("ADMIN"));
         return "profile";
     }
 
     @GetMapping("/editProfile")
-    public String editProfile(){
+    public String editProfile(Model model, HttpServletRequest request){
+        String username = request.getUserPrincipal().getName();
+        User user = userRepository.findByUsername(username).orElseThrow();
+
+        model.addAttribute("user", user);
         return "editProfile";
     }
 

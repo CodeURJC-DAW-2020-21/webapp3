@@ -3,6 +3,7 @@ package es.dawequipo3.growing.controller;
 import es.dawequipo3.growing.model.Category;
 import es.dawequipo3.growing.model.Plan;
 import es.dawequipo3.growing.model.Tree;
+import es.dawequipo3.growing.model.User;
 import es.dawequipo3.growing.service.CategoryService;
 import es.dawequipo3.growing.service.PlanService;
 import es.dawequipo3.growing.service.TreeService;
@@ -34,13 +35,15 @@ public class CategoryController {
 
 
     @PostMapping("/complete/{name}")
-    public String updateTree(Model model, @PathVariable String name) {
+    public String updateTree(Model model, @PathVariable String name, HttpServletRequest request) {
         Plan plan = planService.findPlanByName(name).orElseThrow();
         Category category = plan.getCategory();
-        Tree tree = treeService.findTree("p1@gmail.com", category.getName()).orElseThrow();
-        treeService.updateHeight(tree, plan, "j.ad.p2370@gmail.com");
+        request.getUserPrincipal().getName();
+        User user = userService.findUserByName(request.getUserPrincipal().getName()).orElseThrow();
+        Tree tree = treeService.findTree(user.getEmail(), category.getName()).orElseThrow();
+        treeService.updateHeight(tree, plan, user.getEmail());
 
-        planService.saveCompletedPlan(userService.findUserByEmail("p1@gmail.com").orElseThrow(), plan);
+        planService.saveCompletedPlan(user, plan);
         categoryService.refreshDate(category);
 
         return "redirect:/categories";
@@ -53,6 +56,14 @@ public class CategoryController {
         return "categories";
     }
 
+    @GetMapping("/categoryInfo/{name}")
+    public String categoryInfo(Model model, @PathVariable String name, HttpServletRequest request){
+        model.addAttribute("category", categoryService.findByName(name).orElseThrow());
+        model.addAttribute("registered",request.isUserInRole("USER"));
+        model.addAttribute("admin",request.isUserInRole("ADMIN"));
+        model.addAttribute("liked", true);
+        return "categoryInfo";
+    }
 
 
 }

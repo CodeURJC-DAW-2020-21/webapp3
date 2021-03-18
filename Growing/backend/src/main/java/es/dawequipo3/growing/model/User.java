@@ -4,13 +4,18 @@ package es.dawequipo3.growing.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import es.dawequipo3.growing.service.CategoryService;
 import es.dawequipo3.growing.service.TreeService;
+import org.hibernate.engine.jdbc.BlobProxy;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
 import javax.persistence.*;
+import java.io.IOException;
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class User {
+public class User{
     @Id
     private String email;
 
@@ -23,7 +28,12 @@ public class User {
     @Column(nullable = false)
     private String surname;
 
+
     private String encodedPassword;
+
+    @Lob
+    @JsonIgnore
+    private Blob imageFile;
 
     @Transient
     private String confirmEncodedPassword;
@@ -54,7 +64,7 @@ public class User {
     public User() {}
 
     //This constructor is for creating sample users
-    public User(String email, String username, String name, String surname, String encodedPassword, String...roles) {
+    public User(String email, String username, String name, String surname, String encodedPassword, String...roles){
         super();
         this.email = email;
         this.username = username;
@@ -62,16 +72,14 @@ public class User {
         this.surname = surname;
         this.encodedPassword = encodedPassword;
         this.roles = List.of(roles);
-        this.trees=new ArrayList<Tree>();
-    }
-
-    public void initializeAllTrees(CategoryService categoryService, TreeService treeService){
-        for (Category category: categoryService.findAll()) {
-            treeService.save(new Tree(this, category));
+        this.trees= new ArrayList<>();
+        try{
+            Resource resource = new ClassPathResource("/static/images/defaultProfileImage.png");
+            setImageFile(BlobProxy.generateProxy(resource.getInputStream()
+                    ,resource.contentLength()));
+        }catch (IOException e){
+            e.printStackTrace();
         }
-    }
-    public void addCategoryTree(Category category,TreeService treeService){
-        treeService.save(new Tree(this, category));
     }
 
     public void FavoriteCategory(Category category) {
@@ -105,6 +113,10 @@ public class User {
 
     public String getEncodedPassword() {
         return encodedPassword;
+    }
+
+    public void setEncodedPassword(String encodedPassword) {
+        this.encodedPassword = encodedPassword;
     }
 
     public void setPassword(String encodedPassword) {
@@ -165,5 +177,13 @@ public class User {
 
     public void setRoles(List<String> roles) {
         this.roles = roles;
+    }
+
+    public Blob getImageFile() {
+        return imageFile;
+    }
+
+    public void setImageFile(Blob imageFile) {
+        this.imageFile = imageFile;
     }
 }

@@ -101,6 +101,10 @@ form.sign-in-form {
   font-weight: 500;
 }
 
+.input-field .image-signUp{
+  padding-top: 13px;
+}
+
 
 .btn {
   width: 150px;

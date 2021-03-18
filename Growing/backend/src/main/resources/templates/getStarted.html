@@ -64,7 +64,7 @@
                     <input type="submit" value="Login" class="btn solid"/>
                 </form>
                 <!-- Sign UP-->
-                <form action="getStarted/signUp" method="post" class="sign-up-form">
+                <form action="getStarted/signUp" method="post" class="sign-up-form" enctype="multipart/form-data">
                     <h2 class="title">Sign up</h2>
                     <!-- Username -->
                     <div class="input-field">
@@ -97,6 +97,11 @@
                         <input type="password" name="confirmPassword" placeholder="Confirm Password"/>
                     </div>
                     <input type="hidden" name="_csrf" value="{{token}}"/>
+                    <div class="input-field">
+                        <i class="fas fa-image"></i>
+                        <input type="file" name="imageFile" class="image-signUp"/>
+                    </div>
+
                     <input type="submit" class="btn" value="Sign up"/>
                 </form>
             </div>

@@ -31,19 +31,6 @@ public class PlanService {
     @Autowired
     private Completed_planRepository completed_planRepository;
 
-    @PostConstruct
-    public void init() {
-
-        Plan plan1 = new Plan("Meditation", "This is for meditate", 3);
-        Plan plan2 = new Plan("Football", "This is for football", 1);
-
-        plan1.setCategory(categoryService.findByName("Mental health").orElseThrow());
-        plan2.setCategory(categoryService.findByName("Mental health").orElseThrow());
-
-        planRepository.save(plan1);
-        planRepository.save(plan2);
-
-    }
 
     public void save(Plan plan){
         planRepository.save(plan);

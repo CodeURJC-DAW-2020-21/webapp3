@@ -20,10 +20,14 @@ body{
     -webkit-text-fill-color: transparent;
     text-align: center;
 }
+
+.profile-background{
+    background-color: #12a294;
+    border-radius: 50px;
+}
 .profilePhoto{
-    width: 150px;
-    height: 150px;
-    margin-bottom: 2em;
+    width: 250px;
+    height: 250px;
     border-radius: 50px;
 }
 
@@ -67,11 +71,6 @@ body{
     transition: transform 0.2s ease-in-out;
 }
 
-.contact-form .custom-file{
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-left: 8px;
-}
 
 .contact-form .btn-submit{
     display: inline-block;
@@ -81,6 +80,7 @@ body{
     letter-spacing: 2px;
     font-size: 16px;
     padding: 8px 16px;
+    margin-top: 10px;
     margin-left: 20px;
     border: none;
     width: 200px;

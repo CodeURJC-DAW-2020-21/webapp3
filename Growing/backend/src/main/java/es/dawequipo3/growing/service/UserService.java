@@ -28,17 +28,6 @@ public class UserService {
     @Autowired
     private EmailService emailService;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
-    @PostConstruct
-    private void initDatabase() {
-        // USER
-        userRepository.save(new User("user@gmail","user","Evarist","Oh", passwordEncoder.encode("pass"), "USER"));
-        // ADMIN
-        userRepository.save(new User("admin@gmail","admin","Naomi","Watts", passwordEncoder.encode("pass"), "ADMIN","USER"));
-
-    }
 
     public void save(User user){
         userRepository.save(user);
@@ -57,5 +46,8 @@ public class UserService {
     }
     public Optional<User> findUserByEmail(String email){
         return userRepository.findById(email);
+    }
+    public Optional<User> findUserByName(String name){
+        return userRepository.findByUsername(name);
     }
 }

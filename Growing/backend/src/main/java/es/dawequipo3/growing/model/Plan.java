@@ -11,6 +11,8 @@ public class Plan {
     private String name;
     private String description;
     private int difficulty;
+    @Transient
+    private boolean likedUser;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Category category;
@@ -68,4 +70,22 @@ public class Plan {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+    public boolean isLikedUser() {
+        return likedUser;
+    }
+
+    public void setLikedUser(boolean likedUser) {
+        this.likedUser = likedUser;
+    }
+
+    public List<User> getLikedPlans() {
+        return likedPlans;
+    }
+
+    public void setLikedPlans(List<User> likedPlans) {
+        this.likedPlans = likedPlans;
+    }
+
+
 }

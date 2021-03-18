@@ -28,7 +28,7 @@ public class TreeService {
     public Optional<Tree> findTree(String email, String categoryName){
         User user = userService.findUserByEmail(email).orElseThrow();
         Category category = categoryService.findByName(categoryName).orElseThrow();
-        return treeRepository.findTreeByTreePK(new TreePK(user.getEmail(), category.getName()));
+        return treeRepository.findTreeByTreePK(category.getName(), user.getEmail());
     }
 
     public void save(Tree tree){

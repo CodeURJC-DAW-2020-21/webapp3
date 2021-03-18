@@ -12,6 +12,12 @@ public class ChartData {
         this.data = data;
     }
 
+    public ChartData(String name, String color) {
+        this.name = name;
+        this.color = color;
+        this.data = 0;
+    }
+
     public String getName() {
         return name;
     }

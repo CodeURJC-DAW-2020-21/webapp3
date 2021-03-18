@@ -57,7 +57,7 @@ public class CompletedPlanPK implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CompletedPlanPK that = (CompletedPlanPK) o;
-        return datePK == that.datePK && user_Pk.equals(that.user_Pk) && planPK.equals(that.planPK);
+        return datePK.equals(that.datePK) && user_Pk.equals(that.user_Pk) && planPK.equals(that.planPK);
     }
 
     @Override

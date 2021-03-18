@@ -15,7 +15,19 @@ public class Category {
     private String icon;
     private String color;
     private Date date;
+    @Transient
+    private int likes;
 
+    @Transient
+    private boolean likedByUser;
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "category")
     private List<Plan> plans;
@@ -111,6 +123,14 @@ public class Category {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public boolean isLikedByUser() {
+        return likedByUser;
+    }
+
+    public void setLikedByUser(boolean likedByUser) {
+        this.likedByUser = likedByUser;
     }
 
     @Override

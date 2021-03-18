@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Growing - NewCategory</title>
+
+    {{>head}}
+
+<body>
+    <div class="col-form-label">
+        <label class="label">New Category</label>
+        <form action="/newCategory" method="post" enctype="multipart/form-data">
+            <input type="text" id="name" name="name" placeholder="CategoryName" />
+            <input type="text" id="description" name="description" placeholder="Description" />
+            <input type="image" id="icon" name="icon" placeholder="icon" />
+            <input type="text" id="color" name="color" placeholder="color" />
+        </form>
+    </div>
+</body>
+</html>

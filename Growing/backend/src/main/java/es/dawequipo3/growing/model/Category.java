@@ -109,8 +109,7 @@ public class Category {
         return date;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDate(Date date) { this.date = date;
     }
 
     @Override

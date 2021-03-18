@@ -49,46 +49,52 @@
 
     <div class="container">
         <!-- Photo -->
+
         <div class="d-flex justify-content-center">
-            <img class="profilePhoto" src="/assets/img/team/team-3.PNG">
+            <div class="profile-background">
+                <img class="profilePhoto" src="/profile/image" alt="profileImage">
+            </div>
         </div>
-        <div class="contact-form row">
-            <!-- Email-->
-            <div class="d-flex justify-content-center">
-                <input type="text" readonly class="form-control-plaintext" id="staticEmail" value={{user.email}}>
+        <form method="post" action="/editProfileAction" enctype="multipart/form-data">
+            <div class="contact-form row">
+                <!-- Email-->
+                <div class="d-flex justify-content-center">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value={{user.email}}>
+                </div>
+                <!-- Username -->
+                <div class="form-field col-lg-8">
+                    <input id="userName" class="form-control" name="username" type="text" placeholder={{user.username}}>
+                    <label for="userName" class="form-label">Username</label>
+                </div>
+                <!-- Name-->
+                <div class="form-field col-lg-6">
+                    <input id="name" class="form-control" name="name" type="text" placeholder={{user.name}}>
+                    <label for="name" class="form-label">Name</label>
+                </div>
+                <!--Surname-->
+                <div class="form-field col-lg-6">
+                    <input id="email" class="form-control" name="surname" type="text" placeholder={{user.surname}}>
+                    <label for="email" class="form-label">Surname</label>
+                </div>
+                <!-- Password -->
+                <div class="form-field col-lg-6">
+                    <input type="password" id="password" name="encodedPassword" class="form-control"
+                           placeholder="*******">
+                    <label for="password" class="form-label">Password</label>
+                </div>
+                <!-- Confirm Password -->
+                <div class="form-field col-lg-6">
+                    <input type="password" id="repeatPassword" class="form-control" name="confirmEncodedPassword"
+                           placeholder="*******">
+                    <label for="repeatPassword" class="form-label">Repeat Password</label>
+                </div>
+                <!-- Change photo -->
+                <input type="file" name="imageFile" id="customFile">
+                <input type="hidden" name="_csrf" value="{{token}}"/>
+                <!-- Submit button-->
+                <button type="submit" class="btn-submit">Confirm</button>
             </div>
-            <!-- Username -->
-            <div class="form-field col-lg-8">
-                <input id ="userName" class="form-control" type="text" placeholder={{user.username}}>
-                <label for="userName" class="form-label">Username</label>
-            </div>
-            <!-- Name-->
-            <div class="form-field col-lg-6">
-                <input id ="name" class="form-control" type="text" placeholder={{user.name}}>
-                <label for="name" class="form-label">Name</label>
-            </div>
-            <!--Surname-->
-            <div class="form-field col-lg-6">
-                <input id ="email" class="form-control" type="text" placeholder={{user.surname}}>
-                <label for="email" class="form-label">Surname</label>
-            </div>
-            <!-- Password -->
-            <div class="form-field col-lg-6">
-                <input type="password" id ="password" class="form-control" placeholder="*******">
-                <label for="password" class="form-label">Password</label>
-            </div>
-            <!-- Confirm Password -->
-            <div class="form-field col-lg-6">
-                <input type="password" id ="repeatPassword" class="form-control" placeholder="*******">
-                <label for="repeatPassword" class="form-label">Repeat Password</label>
-            </div>
-            <!-- Change photo -->
-            <div class="custom-file col-lg-12">
-                <input type="file" class="custom-file-input" id="customFile">
-            </div>
-            <!-- Submit button-->
-            <button type="submit" class="btn-submit">Confirm</button>
-        </div>
+        </form>
     </div>
 </section>
 <!-- ======= Footer ======= -->

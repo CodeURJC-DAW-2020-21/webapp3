@@ -24,11 +24,6 @@ public class GrowingController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private PlanService planService;
-
-    @Autowired
-    private UserRepository userRepository;
 
     public void EmailFavoritesCategoryName(String email, String categoryName) {
         //Retrieve posible entities

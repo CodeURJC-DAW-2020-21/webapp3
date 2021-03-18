@@ -2,7 +2,7 @@ package es.dawequipo3.growing.controller;
 
 import es.dawequipo3.growing.model.Category;
 import es.dawequipo3.growing.model.ChartData;
-import es.dawequipo3.growing.model.CompletedPlanPK;
+import es.dawequipo3.growing.model.User;
 import es.dawequipo3.growing.repository.Completed_planRepository;
 import es.dawequipo3.growing.service.CategoryService;
 import es.dawequipo3.growing.service.PlanService;
@@ -12,8 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
-import java.util.Random;
+
 
 @RestController
 public class RestCharts {
@@ -28,36 +29,44 @@ public class RestCharts {
     private TreeService treeService;
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private Completed_planRepository completed_planRepository;
 
 
 
     @RequestMapping("/generateBarChart")
-    public ArrayList<ChartData> getBarChart(){
+    public ArrayList<ChartData> getBarChart(HttpServletRequest request){
         ArrayList<ChartData> categories = new ArrayList<>();
-
+        String username = request.getUserPrincipal().getName();
+        User user = userService.findUserByName(username).orElseThrow();
         for (Category category: categoryService.findAll()){
             categories.add(new ChartData(category.getName(), category.getColor(),
-                    treeService.findTree("p1@gmail.com", category.getName()).orElseThrow().getHeight()));
+                    treeService.findTree(user.getEmail(), category.getName()).orElseThrow().getHeight()));
         }
         return categories;
     }
 
     @RequestMapping("/generateDoughnutChart")
-    public ArrayList<ChartData> getDouhnutChart(){
+    public ArrayList<ChartData> getDouhnutChart(HttpServletRequest request){
         ArrayList<ChartData> categories = new ArrayList<>();
+        String username = request.getUserPrincipal().getName();
+        User user = userService.findUserByName(username).orElseThrow();
         for (Category category: categoryService.findAll()){
-            categories.add(new ChartData(category.getName(), category.getColor(),planService.likedplans("p1@gmail.com",category.getName()).size()));
+            categories.add(new ChartData(category.getName(), category.getColor(),planService.likedplans(user.getEmail(),category.getName()).size()));
         }
         return categories;
     }
 
     @RequestMapping("/generateRadarChart")
-    public ArrayList<ChartData> getRadarChart(){
+    public ArrayList<ChartData> getRadarChart(HttpServletRequest request){
         ArrayList<ChartData> categories = new ArrayList<>();
+        String username = request.getUserPrincipal().getName();
+        User user = userService.findUserByName(username).orElseThrow();
         for (Category category: categoryService.findAll()){
             categories.add(new ChartData(category.getName(), category.getColor(),
-                   completed_planRepository.countTasksDoneByUserAndCategory("p1@gmail.com", category.getName())));
+                   completed_planRepository.countTasksDoneByUserAndCategory(user.getEmail(), category.getName())));
         }
         return categories;
     }

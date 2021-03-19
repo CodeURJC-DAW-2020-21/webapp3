@@ -4,6 +4,7 @@ import es.dawequipo3.growing.model.Category;
 import es.dawequipo3.growing.model.Plan;
 import es.dawequipo3.growing.model.Tree;
 import es.dawequipo3.growing.model.User;
+import es.dawequipo3.growing.repository.UserRepository;
 import es.dawequipo3.growing.service.CategoryService;
 import es.dawequipo3.growing.service.PlanService;
 import es.dawequipo3.growing.service.TreeService;
@@ -33,6 +34,9 @@ public class CategoryController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private UserRepository userRepository;
+
 
     @PostMapping("/complete/{name}")
     public String updateTree(Model model, @PathVariable String name, HttpServletRequest request) {
@@ -42,7 +46,6 @@ public class CategoryController {
         User user = userService.findUserByName(request.getUserPrincipal().getName()).orElseThrow();
         Tree tree = treeService.findTree(user.getEmail(), category.getName()).orElseThrow();
         treeService.updateHeight(tree, plan, user.getEmail());
-
         planService.saveCompletedPlan(user, plan);
         categoryService.refreshDate(category);
 
@@ -80,7 +83,7 @@ public class CategoryController {
         String username = request.getUserPrincipal().getName();
         User user = userService.findUserByName(username).orElseThrow();
         user.getUserFavoritesCategory().add(category);
-        userService.save(user);
+        userRepository.save(user);
         return "redirect:/categoryInfo/{name}";
     }
 
@@ -90,7 +93,7 @@ public class CategoryController {
         String username = request.getUserPrincipal().getName();
         User user = userService.findUserByName(username).orElseThrow();
         user.getUserFavoritesCategory().remove(category);
-        userService.save(user);
+        userRepository.save(user);
         return "redirect:/categoryInfo/{name}";
     }
 

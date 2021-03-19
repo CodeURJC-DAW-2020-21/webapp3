@@ -27,10 +27,9 @@
                         <div class="col-9">
                             <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
                             <form method="post" action="/complete/{{name}}">
+                                <input type="submit" class="finish"  value="I did it!">
                                 <input type="hidden" name="_csrf" value="{{token}}"/>
-                                <input type="submit" value="I did it">
                             </form>
-                            <button onclick="ChangeButtonsStatus(this)" class="finish" value="I did it!">I did it!</button>
                             <button onclick="ChangeButtonsStatus(this)" class="leave">I won't finish</button>
                         </div>
                         {{/registered}}
@@ -39,11 +38,13 @@
                                 {{#registered}}
                                 {{^likedUser}}
                                 <form action="/categoryInfo/{{category.name}}/{{name}}/like" method="post" class="like icon mini">
+                                    <input type="hidden" name="_csrf" value="{{token}}"/>
                                     <input type="image" name="submit" src="/assets/img/level/EmptyHeart.svg" class="like icon mini" alt="emptyHeart">
                                 </form>
                                 {{/likedUser}}
                                 {{#likedUser}}
                                 <form action="/categoryInfo/{{category.name}}/{{name}}/dislike" method="post">
+                                    <input type="hidden" name="_csrf" value="{{token}}"/>
                                     <input type="image" name="submit" src ="/assets/img/level/FullHeart.svg" class="like icon mini" alt="filledHeart">
                                 </form>
                                 {{/likedUser}}

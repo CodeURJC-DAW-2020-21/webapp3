@@ -187,7 +187,7 @@
                                     <div class="service-box blue">
                                         <i class="ri-mental-health-line icon"></i>
                                         <h3>Mental Health</h3>
-                                        <a href="/categoryInfo" class="read-more"><span>Watch</span> <i
+                                        <a href="/categoryInfo/Mental Health" class="read-more"><span>Watch</span> <i
                                                 class="bi bi-arrow-right"></i></a>
                                     </div>
                                 </div>
@@ -196,7 +196,7 @@
                                     <div class="service-box red">
                                         <i class="ri-run-line icon"></i>
                                         <h3>Physical Health</h3>
-                                        <a href="/categoryInfo" class="read-more"><span>Watch</span> <i
+                                        <a href="/categoryInfo/Physical Health" class="read-more"><span>Watch</span> <i
                                                 class="bi bi-arrow-right"></i></a>
                                     </div>
                                 </div>
@@ -205,7 +205,7 @@
                                     <div class="service-box green">
                                         <i class="ri-money-euro-circle-line icon"></i>
                                         <h3>Savings</h3>
-                                        <a href="/categoryInfo" class="read-more"><span>Watch</span> <i
+                                        <a href="/categoryInfo/Savings" class="read-more"><span>Watch</span> <i
                                                 class="bi bi-arrow-right"></i></a>
                                     </div>
                                 </div>
@@ -214,7 +214,7 @@
                                     <div class="service-box bluenavy">
                                         <i class="ri-hotel-bed-fill icon"></i>
                                         <h3>Good Night</h3>
-                                        <a href="/categoryInfo" class="read-more"><span>Watch</span> <i
+                                        <a href="/categoryInfo/Good Night" class="read-more"><span>Watch</span> <i
                                                 class="bi bi-arrow-right"></i></a>
                                     </div>
                                 </div>
@@ -223,7 +223,7 @@
                                     <div class="service-box orange">
                                         <i class="ri-home-2-line icon"></i>
                                         <h3>Home</h3>
-                                        <a href="/categoryInfo" class="read-more"><span>Watch</span> <i
+                                        <a href="/categoryInfo/Home" class="read-more"><span>Watch</span> <i
                                                 class="bi bi-arrow-right"></i></a>
                                     </div>
                                 </div>
@@ -232,7 +232,7 @@
                                     <div class="service-box purple">
                                         <i class="ri-focus-2-line icon"></i>
                                         <h3>Focus and Effort</h3>
-                                        <a href="#" class="read-more"><span>Watch</span> <i
+                                        <a href="/categoryInfo/Focus and Effort" class="read-more"><span>Watch</span> <i
                                                 class="bi bi-arrow-right"></i></a>
                                     </div>
                                 </div>
@@ -275,6 +275,7 @@
                         <br>
                         <div class="field" id="searchform">
                             <input type="text" id="searchterm" placeholder="User that you are looking for"/>
+                            <input type="hidden" name="_csrf" value="{{token}}"/>
                             <button type="button" id="search">Find!</button>
                         </div>
 

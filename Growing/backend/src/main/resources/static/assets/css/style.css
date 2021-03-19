@@ -1853,9 +1853,10 @@ section .team{
   float: right;
 }
 
-#progress {
-  max-width: 100%;
+.progress {
+  width: 100%;
   overflow: hidden;
+  height: auto;
 }
 
 .section-header.plan{

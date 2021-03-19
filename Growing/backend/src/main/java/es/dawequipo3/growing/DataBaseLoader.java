@@ -3,6 +3,7 @@ package es.dawequipo3.growing;
 import es.dawequipo3.growing.model.Category;
 import es.dawequipo3.growing.model.Plan;
 import es.dawequipo3.growing.model.User;
+import es.dawequipo3.growing.repository.UserRepository;
 import es.dawequipo3.growing.service.CategoryService;
 import es.dawequipo3.growing.service.PlanService;
 import es.dawequipo3.growing.service.UserService;

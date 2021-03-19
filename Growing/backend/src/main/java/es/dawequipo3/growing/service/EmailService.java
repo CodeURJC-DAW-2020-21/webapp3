@@ -28,7 +28,7 @@ public class EmailService {
             mailMessage.setFrom("dawequipo3sup@gmail.com");
             mailMessage.setTo(to);
             mailMessage.setSubject("Need to confirm your identity");
-            javaMailSender.send(mimeMessage);
+            //javaMailSender.send(mimeMessage);
         }
         catch (MessagingException ignored){
         }
@@ -41,7 +41,7 @@ public class EmailService {
         mailMessage.setSubject("Congratulations");
         mailMessage.setText("We are delighted to tell you that you have achieved the increible score of "+height+"cm on the " +
                 category+" category!\n Keep pushing mate!\n\nDo not try to reply this message\n\n\nGrowing team");
-        javaMailSender.send(mailMessage);
+        //javaMailSender.send(mailMessage);
     }
 
 }

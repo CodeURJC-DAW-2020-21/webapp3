@@ -63,11 +63,13 @@
                 {{#registered}}
                 {{^category.likedByUser}}
                 <form method="post" action="/categoryInfo/{{name}}/like">
+                    <input type="hidden" name="_csrf" value="{{token}}"/>
                     <input type="image" name="submit" src="/assets/img/level/EmptyHeart.svg" class="like icon mini" alt="emptyHeart">
                 </form>
                 {{/category.likedByUser}}
                 {{#category.likedByUser}}
                 <form method="post" action="/categoryInfo/{{name}}/dislike">
+                    <input type="hidden" name="_csrf" value="{{token}}"/>
                     <input type="image" name="submit" src ="/assets/img/level/FullHeart.svg" class="like icon mini" alt="filledHeart">
                 </form>
                 {{/category.likedByUser}}
@@ -76,6 +78,7 @@
                 {{#admin}}
                 <!-- Add button for Admin User -->
                 <div class="editCategory">
+                    <input type="hidden" name="_csrf" value="{{token}}"/>
                     <button class="btnEditCategory" formmethod="post" type="submit" >Edit<i class="icon fas fas fa-pencil-alt"></i></button>
                 </div>
                 <!-- End add button for Admin User -->
@@ -91,12 +94,13 @@
                     <h3>Your progress</h3>
                 </header>
                 <div class="imagenArbol">
-                    <img id="progress" src="/assets/img/progress/fase5.png"/>
-                    {{^registered}}
-                    <p class="update">To see your real progress: <a href="/getStarted">log in</a></p>
-                    {{/registered}}
                     {{#registered}}
+                    <img class="progress" src="/assets/img/progress/fase5.png"/>
                     <p class="update"> Last updated: {{category.date}} </p>
+                    {{/registered}}
+                    {{^registered}}
+                    <img class="progress" src="/assets/img/progress/fase5.png"/>
+                    <p class="update">To see your real progress: <a href="/getStarted">log in</a></p>
                     {{/registered}}
                 </div>
             </div>

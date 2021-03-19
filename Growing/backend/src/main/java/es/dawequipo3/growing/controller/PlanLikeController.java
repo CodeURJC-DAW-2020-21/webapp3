@@ -23,14 +23,16 @@ public class PlanLikeController {
     @Autowired
     private PlanService planService;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @PostMapping("/categoryInfo/{name}/{planName}/like")
     public String likePlan(@PathVariable String name, @PathVariable String planName, HttpServletRequest request){
         String username = request.getUserPrincipal().getName();
         User user = userService.findUserByName(username).orElseThrow();
         user.getLikedPlans().add(planService.findPlanByName(planName).orElseThrow());
-        userService.save(user);
-
-        return "redirect:/categoryInfo/name";
+        userRepository.save(user);
+        return "redirect:/categoryInfo/"+ name;
     }
 
     @PostMapping("/categoryInfo/{name}/{planName}/dislike")
@@ -38,9 +40,8 @@ public class PlanLikeController {
         String username = request.getUserPrincipal().getName();
         User user = userService.findUserByName(username).orElseThrow();
         user.getLikedPlans().remove(planService.findPlanByName(planName).orElseThrow());
-        userService.save(user);
-
-        return "redirect:/categoryInfo/{name}";
+        userRepository.save(user);
+        return "redirect:/categoryInfo/"+ name;
     }
 
 }

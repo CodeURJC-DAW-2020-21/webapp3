@@ -289,8 +289,10 @@
 })();
 
 function ChangeButtonsStatus(obj){
-  $(obj).fadeToggle("fast", () =>
-      $(obj).siblings("button").fadeToggle("slow"));
+  $(obj).fadeToggle("fast", () => {
+    $(obj).siblings("button").fadeToggle("slow");
+    $(obj).siblings("form").children("input[type=submit]").fadeToggle("slow").css({"display": "inline-block"});
+  });
 }
 
 function ChangeHeart(obj){

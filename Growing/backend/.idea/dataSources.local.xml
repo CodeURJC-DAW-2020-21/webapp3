@@ -12,9 +12,8 @@
       <schema-mapping>
         <introspection-scope>
           <node kind="schema">
-            <name qname="@" />
-            <name qname="sys" />
-            <name qname="mysql" />
+            <name qname="growing" />
+            <name qname="information_schema" />
           </node>
         </introspection-scope>
       </schema-mapping>

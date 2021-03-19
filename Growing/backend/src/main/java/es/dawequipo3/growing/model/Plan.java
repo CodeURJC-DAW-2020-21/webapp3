@@ -4,6 +4,7 @@ package es.dawequipo3.growing.model;
 import javax.persistence.*;
 import java.util.List;
 
+@Table(name = "plan")
 @Entity
 public class Plan {
 

@@ -1,10 +1,12 @@
 package es.dawequipo3.growing.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import es.dawequipo3.growing.service.CategoryService;
 import es.dawequipo3.growing.service.TreeService;
 
 import javax.persistence.*;
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +29,10 @@ public class User {
 
     @Transient
     private String confirmPassword;
+
+    @Lob
+    @JsonIgnore
+    private Blob profileImage;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -159,6 +165,14 @@ public class User {
 
     public String getConfirmPassword() {
         return confirmPassword;
+    }
+
+    public Blob getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(Blob profileImage) {
+        this.profileImage = profileImage;
     }
 
     public void setConfirmPassword(String confirmPassword) {

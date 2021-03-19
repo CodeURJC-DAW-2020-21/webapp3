@@ -3,6 +3,7 @@ package es.dawequipo3.growing;
 import es.dawequipo3.growing.model.*;
 import es.dawequipo3.growing.service.CategoryService;
 import es.dawequipo3.growing.service.PlanService;
+import es.dawequipo3.growing.service.CompletedPlanService;
 import es.dawequipo3.growing.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,9 +13,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,6 +28,8 @@ import java.util.Optional;
 @Controller
 public class GrowingController {
 
+    @Autowired
+    private CompletedPlanService completedPlanService;
     @Autowired
     private CategoryService categoryService;
 
@@ -103,6 +111,49 @@ public class GrowingController {
         model.addAttribute("admin", false);
         return "profile";
     }
+
+
+    @GetMapping("/profileAdmin")
+    public String profileAdmin(Model model) {
+        List<Completed_plan> completed_planList = completedPlanService.getCompletedPlanPageByEmailSortedByDate("");
+        model.addAttribute("admin", true);
+        model.addAttribute("CompletedPlan", completed_planList);
+        return "profileAdmin";
+    }
+
+    @GetMapping("/profileAdmin/{email}")
+    public String profileAdminTableRequest(Model model, @PathVariable String email) {
+        List<Completed_plan> completed_planList = completedPlanService.getCompletedPlanPageByEmailSortedByDate(email);
+        model.addAttribute("admin", true);
+        model.addAttribute("CompletedPlan", completed_planList);
+        return "profileAdmin";
+    }
+
+    @GetMapping("/RemoveCompletedPlan/")
+    public String RemoveCompletedPlan(Model model,@RequestParam String email, @RequestParam String name, @RequestParam String date) {
+        name=name.replace("+"," ");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss:SSS");
+        try {
+            Date dateObject = format.parse(date);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(dateObject);
+            long milisecs = calendar.getTimeInMillis();
+            completedPlanService.DeleteCompletedPlan(email, name, milisecs);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        List<Completed_plan> completed_planList = completedPlanService.getCompletedPlanPageByEmailSortedByDate(email);
+        model.addAttribute("admin", true);
+        model.addAttribute("CompletedPlan", completed_planList);
+        return "profileAdmin";
+    }
+
+
+    @GetMapping("/editProfile")
+    public String Editprofile(Model model) {
+        return "editProfile";
+    }
+
 
     @GetMapping("/categoryInfo/{name}")
     public String categoryInfo(Model model, @PathVariable String name) {

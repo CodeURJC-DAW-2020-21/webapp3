@@ -303,6 +303,23 @@ section .services{
     color: white;
 }
 
+#UsersTableTitle{
+    font-family: "Nunito", sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+#UsersTableTitle td, #UsersTableTitle th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+#UsersTableTitle th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(26, 188, 156);
+    color: white;
+}
+
 #UsersTable {
     font-family: "Nunito", sans-serif;
     border-collapse: collapse;
@@ -319,7 +336,6 @@ section .services{
 #UsersTable tr:hover {background-color: #ddd;}
 
 #UsersTable th {
-
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;

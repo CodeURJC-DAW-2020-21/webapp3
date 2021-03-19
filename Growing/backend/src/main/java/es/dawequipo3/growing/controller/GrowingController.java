@@ -103,7 +103,7 @@ public class GrowingController {
         return "addCategory";
     }
 
-    @PostMapping("/newCategory")
+    @PostMapping("/addNewCategory")
     public String addCategory(@RequestParam String name, @RequestParam String description, @RequestParam String icon, @RequestParam String color){
         Category category = new Category();
         category.setName(name);

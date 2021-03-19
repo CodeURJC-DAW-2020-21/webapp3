@@ -110,7 +110,7 @@
   /**
    * Mobile nav toggle
    */
-  on('click', '.mobile-nav-toggle', function(e) {
+  on('click', '.mobile-nav-toggle', function() {
     select('#navbar').classList.toggle('navbar-mobile')
     this.classList.toggle('bi-list')
     this.classList.toggle('bi-x')
@@ -302,3 +302,34 @@ function ChangeHeart(obj){
     $(obj).attr("src","/assets/img/level/EmptyHeart.svg");
   }
 }
+
+// PDF Converter
+
+document.addEventListener("DOMContentLoaded", () => {
+  var day = new Date();
+  const $boton = document.querySelector("#PDF");
+  $boton.addEventListener("click", () => {
+    const $item2convert = document.getElementById("chartsPDF");
+    html2pdf()
+        .set({
+          margin: 1,
+          filename: 'progress'+day.getMonth()+'-'+day.getDate()+'-'+day.getFullYear()+'.pdf',
+          image: {
+            type: 'jpeg',
+            quality: 0.98
+          },
+          html2canvas: {
+            scale: 3,
+            letterRendering: true,
+          },
+          jsPDF: {
+            unit: "in",
+            format: "a4",
+            orientation: 'portrait'
+          }
+        })
+        .from($item2convert)
+        .save()
+        .catch(err => console.log(err));
+  });
+});

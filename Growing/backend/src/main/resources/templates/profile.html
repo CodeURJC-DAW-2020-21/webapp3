@@ -13,18 +13,18 @@
     {{>head}}
     <link href="assets/css/profileStylesheet.css" rel="stylesheet">
 
-
     <!-- Scripts for ChartJS representation-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="assets/js/graphics.js"></script>
-
+    <script src="assets/vendor/html2pdf/html2pdf.bundle.min.js"></script>
 
 </head>
 
 <body>
 
 <!-- ======= Header ======= -->
+
 <section>
     <header id="header" class="header fixed-top">
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
@@ -57,23 +57,15 @@
 </section>
 
 <main>
-
     <div class="container-fluid">
-
         <div class="row">
-
             <div class="col-lg-1 d-md-block borderScreen"></div>
-
             <div class="col-lg-10 col-md-12 main">
                 <h1 class="title" data-aos="fade-left"> Your account</h1>
                 <div class="container-fluid" data-aos="fade-up">
-
                     <section class="profileContainer d-flex align-items-center">
-
                         <div class="container-fluid">
-
                             <div class="row">
-
                                 <div class="col-lg-3 col-md-4">
                                     <header class="section-header">
                                         <h1>About you</h1>
@@ -84,7 +76,6 @@
                                             <div class="pic">
                                                 <img src="/profile/image" alt="">
                                             </div>
-
                                             <div class="item">
                                                 Name:
                                                 <div class="name">{{user.name}} {{user.surname}}</div>
@@ -95,12 +86,10 @@
                                                 Email:
                                                 <div class="email"><p>{{user.email}}</p></div>
                                             </div>
-
                                             <!-- Button trigger-->
                                             <a href="/editProfile">
                                                 <i class="fas fa-user-edit"></i>
                                             </a>
-
                                         </div>
                                     </div>
                                     {{/admin}}
@@ -137,7 +126,7 @@
                                         <h1>Your progress</h1>
                                     </header>
                                     <!-- DOUGHNUT CHART-->
-                                    <div class="row wrapper">
+                                    <div class="row wrapper" id="chartsPDF">
                                         <div class="col-lg-6 col-md-12 chartSeparation">
                                             <div id="doughnut">
                                                 <canvas id="Doughnut-chart"></canvas>
@@ -154,11 +143,9 @@
                                             <div id="radar-chart">
                                                 <canvas id="radarChart"></canvas>
                                             </div>
-
                                         </div>
-
                                     </div>
-
+                                    <button id="PDF">Download your progress in PDF</button>
                                 </div>
                                 <!-- END CHARTS -->
 
@@ -324,5 +311,7 @@
     </div>
 
 </main>
+
 <!-- ======= Footer ======= -->
+
 {{>footer}}

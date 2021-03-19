@@ -2,7 +2,6 @@ var color = Chart.helpers.color;
 
 // Start of the Bar chart development
 
-
 (function () {
     $.getJSON('/generateBarChart/')
         .done(function (ans) {
@@ -33,8 +32,6 @@ var color = Chart.helpers.color;
             })
         })
 })();
-
-
 
 (function () {
     $.getJSON('/generateDoughnutChart/')
@@ -68,9 +65,6 @@ var color = Chart.helpers.color;
             });
         })
 })();
-
-
-
 
 // Start of the Radar's chart development
 
@@ -112,6 +106,5 @@ var color = Chart.helpers.color;
             });
         })
 })();
-
 
 // Ending of the Radar's chart development

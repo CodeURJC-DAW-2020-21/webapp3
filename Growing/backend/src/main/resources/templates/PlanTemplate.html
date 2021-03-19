@@ -1,0 +1,37 @@
+{{#Plan}}
+<div class="col-lg-6">
+    <div class="accordion accordion-flush" id="{{name}}">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#faq-content-{{name}}">
+                    <div class="service-box orange">
+                        <i class=" {{getIcon}} icon"></i>
+                    </div>
+                    {{name}}<img src="/assets/img/level/{{getUrlToFlag}}" class="icon mini"/>
+                </button>
+            </h2>
+            <div id="faq-content-{{name}}" class="accordion-collapse collapse" data-bs-parent="#{{name}}">
+                <div class="accordion-body">
+                    {{description}}
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-9">
+                                <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
+                                <button onclick="ChangeButtonsStatus(this)" class="finish">I did it!
+                                </button>
+                                <button onclick="ChangeButtonsStatus(this)" class="leave">I won't finish
+                                </button>
+                            </div>
+                            <div class="col-3">
+                                <h2><img src="/assets/img/level/EmptyHeart.svg" class="like icon mini"
+                                         onclick="ChangeHeart(this)"/></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{/Plan}}

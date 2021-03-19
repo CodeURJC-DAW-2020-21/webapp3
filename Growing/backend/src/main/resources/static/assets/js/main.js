@@ -300,3 +300,12 @@ function ChangeHeart(obj){
     $(obj).attr("src","/assets/img/level/EmptyHeart.svg");
   }
 }
+
+let Global=0;
+function LoadMore(){
+  $.get("/explore/"+Global)
+      .done(function (data){
+        $("#PlanList").append(data);
+      });
+  Global++;
+}

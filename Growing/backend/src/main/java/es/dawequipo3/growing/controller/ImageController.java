@@ -22,15 +22,12 @@ public class ImageController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private UserRepository userRepository;
-
 
     @GetMapping("/profile/image")
     public ResponseEntity<Object> downloadImage(HttpServletRequest request) throws SQLException {
 
-        String username = request.getUserPrincipal().getName();
-        User user = userService.findUserByName(username).orElseThrow();
+        String email = request.getUserPrincipal().getName();
+        User user = userService.findUserByEmail(email).orElseThrow();
 
         if (user.getImageFile() != null) {
 

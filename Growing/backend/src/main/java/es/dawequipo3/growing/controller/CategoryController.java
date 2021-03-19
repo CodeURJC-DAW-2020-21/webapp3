@@ -43,7 +43,7 @@ public class CategoryController {
         Plan plan = planService.findPlanByName(name).orElseThrow();
         Category category = plan.getCategory();
         request.getUserPrincipal().getName();
-        User user = userService.findUserByName(request.getUserPrincipal().getName()).orElseThrow();
+        User user = userService.findUserByEmail(request.getUserPrincipal().getName()).orElseThrow();
         Tree tree = treeService.findTree(user.getEmail(), category.getName()).orElseThrow();
         treeService.updateHeight(tree, plan, user.getEmail());
         planService.saveCompletedPlan(user, plan);
@@ -65,8 +65,8 @@ public class CategoryController {
         model.addAttribute("admin",request.isUserInRole("ADMIN"));
         Category category = categoryService.findByName(name).orElseThrow();
         if(request.isUserInRole("USER")) {
-            String username = request.getUserPrincipal().getName();
-            User user = userService.findUserByName(username).orElseThrow();
+            String email = request.getUserPrincipal().getName();
+            User user = userService.findUserByEmail(email).orElseThrow();
             for (Plan plan : category.getPlans()) {
                 plan.setLikedUser(planService.existsLiked(plan.getName(), user.getEmail()));
             }
@@ -80,8 +80,8 @@ public class CategoryController {
     @PostMapping("/categoryInfo/{name}/like")
     public String categoryLike(@PathVariable String name, HttpServletRequest request){
         Category category = categoryService.findByName(name).orElseThrow();
-        String username = request.getUserPrincipal().getName();
-        User user = userService.findUserByName(username).orElseThrow();
+        String email = request.getUserPrincipal().getName();
+        User user = userService.findUserByEmail(email).orElseThrow();
         user.getUserFavoritesCategory().add(category);
         userRepository.save(user);
         return "redirect:/categoryInfo/{name}";
@@ -90,8 +90,8 @@ public class CategoryController {
     @PostMapping("/categoryInfo/{name}/dislike")
     public String categoryDislike(@PathVariable String name, HttpServletRequest request){
         Category category = categoryService.findByName(name).orElseThrow();
-        String username = request.getUserPrincipal().getName();
-        User user = userService.findUserByName(username).orElseThrow();
+        String email = request.getUserPrincipal().getName();
+        User user = userService.findUserByEmail(email).orElseThrow();
         user.getUserFavoritesCategory().remove(category);
         userRepository.save(user);
         return "redirect:/categoryInfo/{name}";

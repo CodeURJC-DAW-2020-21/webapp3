@@ -39,11 +39,10 @@ public class RestCharts {
     @RequestMapping("/generateBarChart")
     public ArrayList<ChartData> getBarChart(HttpServletRequest request){
         ArrayList<ChartData> categories = new ArrayList<>();
-        String username = request.getUserPrincipal().getName();
-        User user = userService.findUserByName(username).orElseThrow();
+        String email = request.getUserPrincipal().getName();
         for (Category category: categoryService.findAll()){
             categories.add(new ChartData(category.getName(), category.getColor(),
-                    treeService.findTree(user.getEmail(), category.getName()).orElseThrow().getHeight()));
+                    treeService.findTree(email, category.getName()).orElseThrow().getHeight()));
         }
         return categories;
     }
@@ -51,10 +50,9 @@ public class RestCharts {
     @RequestMapping("/generateDoughnutChart")
     public ArrayList<ChartData> getDouhnutChart(HttpServletRequest request){
         ArrayList<ChartData> categories = new ArrayList<>();
-        String username = request.getUserPrincipal().getName();
-        User user = userService.findUserByName(username).orElseThrow();
+        String email = request.getUserPrincipal().getName();
         for (Category category: categoryService.findAll()){
-            categories.add(new ChartData(category.getName(), category.getColor(),planService.likedplans(user.getEmail(),category.getName()).size()));
+            categories.add(new ChartData(category.getName(), category.getColor(), planService.likedplans(email,category.getName()).size()));
         }
         return categories;
     }
@@ -62,11 +60,10 @@ public class RestCharts {
     @RequestMapping("/generateRadarChart")
     public ArrayList<ChartData> getRadarChart(HttpServletRequest request){
         ArrayList<ChartData> categories = new ArrayList<>();
-        String username = request.getUserPrincipal().getName();
-        User user = userService.findUserByName(username).orElseThrow();
+        String email = request.getUserPrincipal().getName();
         for (Category category: categoryService.findAll()){
             categories.add(new ChartData(category.getName(), category.getColor(),
-                   completed_planRepository.countTasksDoneByUserAndCategory(user.getEmail(), category.getName())));
+                   completed_planRepository.countTasksDoneByUserAndCategory(email, category.getName())));
         }
         return categories;
     }

@@ -28,8 +28,8 @@ public class PlanLikeController {
 
     @PostMapping("/categoryInfo/{name}/{planName}/like")
     public String likePlan(@PathVariable String name, @PathVariable String planName, HttpServletRequest request){
-        String username = request.getUserPrincipal().getName();
-        User user = userService.findUserByName(username).orElseThrow();
+        String email = request.getUserPrincipal().getName();
+        User user = userService.findUserByEmail(email).orElseThrow();
         user.getLikedPlans().add(planService.findPlanByName(planName).orElseThrow());
         userRepository.save(user);
         return "redirect:/categoryInfo/"+ name;
@@ -37,8 +37,8 @@ public class PlanLikeController {
 
     @PostMapping("/categoryInfo/{name}/{planName}/dislike")
     public String dislikePlan(@PathVariable String name, @PathVariable String planName, HttpServletRequest request){
-        String username = request.getUserPrincipal().getName();
-        User user = userService.findUserByName(username).orElseThrow();
+        String email = request.getUserPrincipal().getName();
+        User user = userService.findUserByEmail(email).orElseThrow();
         user.getLikedPlans().remove(planService.findPlanByName(planName).orElseThrow());
         userRepository.save(user);
         return "redirect:/categoryInfo/"+ name;

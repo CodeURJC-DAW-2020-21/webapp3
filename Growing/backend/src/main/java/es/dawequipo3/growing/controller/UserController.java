@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.security.Principal;
 
 
 @Controller
@@ -58,9 +59,8 @@ public class UserController {
 
     @GetMapping("/profile")
     public String profile(Model model, HttpServletRequest request){
-        String username = request.getUserPrincipal().getName();
-        User user = userRepository.findByUsername(username).orElseThrow();
-
+        String email = request.getUserPrincipal().getName();
+        User user = userService.findUserByEmail(email).orElseThrow();
         model.addAttribute("user", user);
         model.addAttribute("admin", request.isUserInRole("ADMIN"));
         return "profile";
@@ -68,8 +68,8 @@ public class UserController {
 
     @GetMapping("/editProfile")
     public String editProfile(Model model, HttpServletRequest request){
-        String username = request.getUserPrincipal().getName();
-        User user = userRepository.findByUsername(username).orElseThrow();
+        String email = request.getUserPrincipal().getName();
+        User user = userService.findUserByEmail(email).orElseThrow();
 
         model.addAttribute("user", user);
         return "editProfile";
@@ -81,8 +81,8 @@ public class UserController {
                                  @RequestParam String confirmEncodedPassword, MultipartFile imageFile,
                                  HttpServletRequest request) throws IOException {
 
-        String actualUsername = request.getUserPrincipal().getName();
-        User user = userRepository.findByUsername(actualUsername).orElseThrow();
+        String actualEmail = request.getUserPrincipal().getName();
+        User user = userService.findUserByEmail(actualEmail).orElseThrow();
         if (!username.isBlank()){
             user.setUsername(username);
         }

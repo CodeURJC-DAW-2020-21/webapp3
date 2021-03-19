@@ -1,23 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-    <title>Growing - NewCategory</title>
-
-    {{>head}}
-
-<body>
-    <div class="col-form-label">
-        <label class="label">New Category</label>
-        <form action="/newCategory" method="post" enctype="multipart/form-data">
-            <input type="text" id="name" name="name" placeholder="CategoryName" />
-            <input type="text" id="description" name="description" placeholder="Description" />
-            <input type="image" id="icon" name="icon" placeholder="icon" />
-            <input type="text" id="color" name="color" placeholder="color" />
-        </form>
+<form action="/explore/newCategory" method="post" class="sign-up-form">
+    <h2 class="title">New Category</h2>
+    <!-- Name -->
+    <div class="input-field">
+        <i class="fas fa-user"></i>
+        <input type="text" name="name" placeholder="name"/>
     </div>
-</body>
-</html>
+    <!-- Description-->
+    <div class="input-field">
+        <i class="fas fa-user"></i>
+        <input type="text" name="description" placeholder="description"/>
+    </div>
+    <!-- Icon -->
+    <div class="input-field">
+        <i class="fas fa-user"></i>
+        <input type="image" name="icon" placeholder="icon"/>
+    </div>
+    <!-- Color -->
+    <div class="input-field">
+        <i class="fas fa-envelope"></i>
+        <input type="color" name="color" placeholder="color"/>
+    </div>
+    <input type="hidden" name="_csrf" value="{{token}}"/>
+    <input type="submit" class="btn" value="Add category"/>
+</form>

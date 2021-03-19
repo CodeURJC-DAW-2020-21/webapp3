@@ -89,6 +89,7 @@ section .services{
 
 .pic{
     display: inline-block;
+    max-height: 30vh;
     margin: 10%;
     background-size: 200% 200%;
     animation: animated-gradient 2s linear infinite;

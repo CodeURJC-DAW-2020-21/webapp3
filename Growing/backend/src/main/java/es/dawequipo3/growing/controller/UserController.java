@@ -52,7 +52,6 @@ public class UserController {
 
     @GetMapping("/getStarted")
     public String getStarted(Model model, HttpServletRequest request){
-        model.addAttribute("registered",request.isUserInRole("USER"));
         model.addAttribute("error", request.isRequestedSessionIdFromCookie());
         return "getStarted";
     }

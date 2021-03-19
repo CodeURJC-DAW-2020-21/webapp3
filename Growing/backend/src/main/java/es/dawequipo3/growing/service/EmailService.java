@@ -21,9 +21,9 @@ public class EmailService {
         MimeMessageHelper mailMessage = new MimeMessageHelper(mimeMessage, "utf-8");
         try {
             String message = "<h1> Welcome to Growing! </h1>" +
-                    "<p> Este correo sirve para poder confirmar tu identidad. Para ello ponga el enlace que puedes encontrar a continuación:<br>" +
+                    "<p> This email is used to confirm your identity. To do this, put the link that you can find below:<br>" +
                     "<a href =\"https://www.urjc.es\"> this will be a link </a><br>" +
-                    "<strong>Gracias por confiar en nosotros</strong><br><br>Atentamente, el equipo de Growing <br><br> <p style=\"color: grey;\"</p>";
+                    "<strong>Thank you very much for trusting us.</strong><br><br>Sincerely, the team of Growing <br><br> <p style=\"color: grey;\"</p>";
             mailMessage.setText(message, true);
             mailMessage.setFrom("dawequipo3sup@gmail.com");
             mailMessage.setTo(to);

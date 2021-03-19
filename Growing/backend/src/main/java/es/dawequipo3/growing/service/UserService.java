@@ -5,7 +5,6 @@ import es.dawequipo3.growing.model.Tree;
 import es.dawequipo3.growing.model.User;
 import es.dawequipo3.growing.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -28,7 +27,6 @@ public class UserService {
     @Autowired
     private EmailService emailService;
 
-
     public void save(User user){
         userRepository.save(user);
         for (Category category: categoryService.findAll()) {
@@ -45,7 +43,7 @@ public class UserService {
         return userRepository.findAll();
     }
     public Optional<User> findUserByEmail(String email){
-        return userRepository.findById(email);
+        return userRepository.findByEmail(email);
     }
     public Optional<User> findUserByName(String name){
         return userRepository.findByUsername(name);

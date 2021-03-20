@@ -80,11 +80,11 @@ public class Plan {
 
     public String getUrlToFlag() {
         if (this.difficulty == 1) {
-            return "greenFlag.png";
+            return "level1.png";
         } else if (this.difficulty == 2) {
-            return "yellowFlag.png";
+            return "level2.png";
         } else {
-            return "redFlag.png";
+            return "level3.png";
         }
     }
 

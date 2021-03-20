@@ -353,8 +353,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-let Global=0;
-function LoadMore(){
+function LoadMore(Global){
   $.get("/explore/"+Global)
       .done(function (data){
         $("#PlanList").append(data);

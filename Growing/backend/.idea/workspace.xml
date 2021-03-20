@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83c00b7c-64de-4c2c-a7b9-d0498b57839c" name="Default Changelist" comment="Fixed explore file">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/model/Plan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/model/Plan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/assets/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/explore.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/explore.html" afterDir="false" />
     </list>
     <list id="2b823ea8-0cd4-4937-ad72-b8a3713737f5" name="Revert &quot;Adding plans to some categories&quot;" comment="Revert &quot;Adding plans to some categories&quot;&#10;&#10;This reverts commit 5b2cb873" />
@@ -25,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/../.." value="Stage-2" />
+        <entry key="$PROJECT_DIR$/../.." value="FixExplore" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -249,6 +252,11 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="es.dawequipo3.growing.model.Tree" memberName="treePK" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/backend$GrowingApplication.ic" NAME="GrowingApplication Coverage Results" MODIFIED="1615145086058" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

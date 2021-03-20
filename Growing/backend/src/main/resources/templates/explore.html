@@ -64,7 +64,12 @@
         <header class="section-header category">
             <div class="justify-content-center">
                 <h1>Explore</h1>
+                {{#registered}}
+                <h2 class="subtitle">A specific selection of our plans according to your likes</h2>
+                {{/registered}}
+                {{^registered}}
                 <h2 class="subtitle">A random selection of our plans for your pleasure</h2>
+                {{/registered}}
             </div>
         </header>
         <div class="row">

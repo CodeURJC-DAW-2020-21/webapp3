@@ -54,7 +54,7 @@ public class DataBaseLoader {
         categoryService.save(new Category("Home", "Do you have to do home tasks but you leave them to the end or you even make them? This is your\n" +
                 "category! You won't forget them and finish them quickly", "ri-home-2-line icon", "orange"));
 
-        categoryService.save(new Category("Focus and Effort", "Do you want to be challenged daily? I challenge you to follow the pace of this category and\n" +
+        categoryService.save(new Category("Focus-Effort", "Do you want to be challenged daily? I challenge you to follow the pace of this category and\n" +
                 "complete the refreshing daily challenge", "ri-focus-2-line icon", "purple"));
 
         // PLANS
@@ -70,9 +70,11 @@ public class DataBaseLoader {
 
 
 
-        plan1 = new Plan("oSjp80p0c5", "This is for meditate", 3,categoryService.findByName("Focus and Effort").orElseThrow());
-        plan2 = new Plan("I57eaMlMHq", "This is for football", 1,categoryService.findByName("Focus and Effort").orElseThrow());
+        plan1 = new Plan("Meditation", "This is for meditate", 3);
+        plan2 = new Plan("Football", "This is for football", 1);
 
+        plan1.setCategory(categoryService.findByName("Focus-Effort").orElseThrow());
+        plan2.setCategory(categoryService.findByName("Focus-Effort").orElseThrow());
 
         planService.save(plan1);
         planService.save(plan2);
@@ -95,6 +97,13 @@ public class DataBaseLoader {
 
         plan1 = new Plan("oSjp80p0c5", "This is for meditate", 3,categoryService.findByName("Physical Health").orElseThrow());
         plan2 = new Plan("I57eaMlMHq", "This is for football", 1,categoryService.findByName("Physical Health").orElseThrow());
+
+
+        planService.save(plan1);
+        planService.save(plan2);
+
+        plan1 = new Plan("oSjp80p0c5", "This is for meditate", 3,categoryService.findByName("Good night").orElseThrow());
+        plan2 = new Plan("I57eaMlMHq", "This is for football", 1,categoryService.findByName("Good night").orElseThrow());
 
 
         planService.save(plan1);

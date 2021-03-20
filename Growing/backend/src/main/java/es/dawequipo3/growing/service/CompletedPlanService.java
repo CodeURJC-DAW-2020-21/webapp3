@@ -27,20 +27,7 @@ public class CompletedPlanService {
     @Autowired
     PlanService planService;
 
-    @PostConstruct
-    public void init() throws InterruptedException {
-        Plan plan = planService.findAll().get(0);
-        User user = userService.findAll().get(0);
 
-        Completed_plan cp = new Completed_plan(user,plan);
-        completed_planRepository.save(cp);
-        Thread.sleep(4000);
-        cp = new Completed_plan(user,plan);
-        completed_planRepository.save(cp);
-
-        List<Completed_plan> results= getCompletedPlanPageByNameSortedByDate(user.getEmail());
-
-    }
     public void save(Completed_plan completed_plan){
         this.save(completed_plan);
     }

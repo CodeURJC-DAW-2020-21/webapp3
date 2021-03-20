@@ -45,9 +45,8 @@ public class CategoryController {
         request.getUserPrincipal().getName();
         User user = userService.findUserByEmail(request.getUserPrincipal().getName()).orElseThrow();
         Tree tree = treeService.findTree(user.getEmail(), category.getName()).orElseThrow();
-        treeService.updateHeight(tree, plan, user.getEmail());
+        treeService.UpdateTreeNewPlan(tree, plan, user.getEmail());
         planService.saveCompletedPlan(user, plan);
-        categoryService.refreshDate(category);
 
         return "redirect:/categories";
     }

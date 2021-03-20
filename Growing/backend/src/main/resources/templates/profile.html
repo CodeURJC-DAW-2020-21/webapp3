@@ -261,42 +261,27 @@
                         <h1>Users and Categories</h1>
                         <br>
                         <div class="field" id="searchform">
-                            <input type="text" id="searchterm" placeholder="User that you are looking for"/>
-                            <input type="hidden" name="_csrf" value="{{token}}"/>
-                            <button type="button" id="search">Find!</button>
+                            <input id="searchterm" placeholder="User that you are looking for" type="text"/>
+                            <button id="search" type="button" onclick="LoadTable()">Find!</button>
                         </div>
 
                         <table id="UsersTable">
-                            <tr>
-                                <th>User</th>
+                            <tr id="UsersTableTitle">
                                 <th>Email</th>
-                                <th>Plans Completed</th>
+                                <th>Plan Completed</th>
+                                <th>Date</th>
                                 <th>Remove</th>
                             </tr>
+                            {{#CompletedPlan}}
                             <tr>
-                                <td>Alfreds Futterkiste</td>
-                                <td>...</td>
-                                <td>...</td>
+                                <td class="email">{{getEmail}}</td>
+                                <td class="name">{{getPlanName}}</td>
+                                <td class="date">{{getDate}}</td>
                                 <td>
-                                    <button>Remove</button>
+                                    <button class="displayed leave " onclick="RemoveCompletedPlan(this)">Remove</button>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>Berglunds snabbköp</td>
-                                <td>...</td>
-                                <td>...</td>
-                                <td>
-                                    <button>Remove</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Centro comercial Moctezuma</td>
-                                <td>...</td>
-                                <td>...</td>
-                                <td>
-                                    <button>Remove</button>
-                                </td>
-                            </tr>
+                            {{/CompletedPlan}}
                         </table>
                     </section>
                     {{/admin}}

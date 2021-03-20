@@ -1,22 +1,22 @@
 package es.dawequipo3.growing.controller;
 
-import es.dawequipo3.growing.model.Category;
-import es.dawequipo3.growing.model.Plan;
-import es.dawequipo3.growing.model.Tree;
-import es.dawequipo3.growing.model.User;
+import es.dawequipo3.growing.model.*;
 import es.dawequipo3.growing.repository.UserRepository;
-import es.dawequipo3.growing.service.CategoryService;
-import es.dawequipo3.growing.service.PlanService;
-import es.dawequipo3.growing.service.TreeService;
-import es.dawequipo3.growing.service.UserService;
+import es.dawequipo3.growing.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 
 @Controller
@@ -37,6 +37,9 @@ public class CategoryController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private CompletedPlanService completedPlanService;
+
 
     @PostMapping("/complete/{name}")
     public String updateTree(Model model, @PathVariable String name, HttpServletRequest request) {
@@ -49,6 +52,25 @@ public class CategoryController {
         planService.saveCompletedPlan(user, plan);
 
         return "redirect:/categories";
+    }
+
+    @GetMapping("/RemoveCompletedPlan/")
+    public String RemoveCompletedPlan(Model model, @RequestParam String email, @RequestParam String name, @RequestParam String date) {
+        name=name.replace("+"," ");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss:SSS");
+        try {
+            Date dateObject = format.parse(date);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(dateObject);
+            long milisecs = calendar.getTimeInMillis();
+            completedPlanService.DeleteCompletedPlan(email, name, milisecs);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        List<Completed_plan> completed_planList = completedPlanService.getCompletedPlanPageByEmailSortedByDate(email);
+        model.addAttribute("admin", true);
+        model.addAttribute("CompletedPlan", completed_planList);
+        return "profile";
     }
 
     @GetMapping("/categories")
@@ -66,6 +88,7 @@ public class CategoryController {
         if(request.isUserInRole("USER")) {
             String email = request.getUserPrincipal().getName();
             User user = userService.findUserByEmail(email).orElseThrow();
+            model.addAttribute("date", treeService.findTree(email, category.getName()).orElseThrow().getDate());
             for (Plan plan : category.getPlans()) {
                 plan.setLikedUser(planService.existsLiked(plan.getName(), user.getEmail()));
             }

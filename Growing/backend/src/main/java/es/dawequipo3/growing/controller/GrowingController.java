@@ -61,9 +61,17 @@ public class GrowingController {
     @GetMapping("/explore")
     public String explore(Model model, HttpServletRequest request){
         model.addAttribute("registered", request.isUserInRole("USER"));
+        List<Plan> pages = planService.GetPageable(0);
+        model.addAttribute("Plan",pages);
         return "explore";
     }
 
+    @GetMapping("/explore/{pageNumber}")
+    public String ExploreRequestPlanPage(Model model, @PathVariable int pageNumber) {
+        List<Plan> pages = planService.GetPageable(pageNumber);
+        model.addAttribute("Plan", pages);
+        return "PlanTemplate";
+    }
 
     @GetMapping("/aboutUs")
     public String aboutUs(Model model, HttpServletRequest request){

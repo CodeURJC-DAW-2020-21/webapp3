@@ -38,52 +38,6 @@ public class PlanService {
     @Autowired
     private Completed_planRepository completed_planRepository;
 
-    @PostConstruct
-    public void init() {
-        Category mentalHealth=categoryService.findByName("Mental health").orElseThrow();
-        Plan plan1 = new Plan("Meditation", "This is for meditate", 3,mentalHealth);
-        Plan plan2 = new Plan("Football", "This is for football", 1,mentalHealth);
-
-
-        planRepository.save(plan1);
-        planRepository.save(plan2);
-
-        plan1 = new Plan("oSjp80p0c5", "This is for meditate", 3,mentalHealth);
-        plan2 = new Plan("I57eaMlMHq", "This is for football", 1,mentalHealth);
-
-
-        planRepository.save(plan1);
-        planRepository.save(plan2);
-
-        plan1 = new Plan("9a2thgSdiM", "This is for meditate", 3,mentalHealth);
-        plan2 = new Plan("CwFqHsDCjN", "This is for football", 1,mentalHealth);
-
-
-        planRepository.save(plan1);
-        planRepository.save(plan2);
-
-        plan1 = new Plan("fPWxhAUw1U", "This is for meditate", 3,mentalHealth);
-        plan2 = new Plan("6hDtymXPIe", "This is for football", 1,mentalHealth);
-
-
-        planRepository.save(plan1);
-        planRepository.save(plan2);
-
-        plan1 = new Plan("oDFkp02Osb", "This is for meditate", 3,mentalHealth);
-        plan2 = new Plan("bluNuqJV90", "This is for football", 1,mentalHealth);
-
-
-        planRepository.save(plan1);
-        planRepository.save(plan2);
-
-        plan1 = new Plan("vivDTTZe3h", "This is for meditate", 3,mentalHealth);
-        plan2 = new Plan("5mQOCUnDPv", "This is for football", 1,mentalHealth);
-
-
-        planRepository.save(plan1);
-        planRepository.save(plan2);
-
-    }
 
     public void save(Plan plan){
         planRepository.save(plan);

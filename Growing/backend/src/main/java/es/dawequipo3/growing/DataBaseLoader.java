@@ -37,6 +37,7 @@ public class DataBaseLoader {
         // ADMIN
         userService.save(new User("admin@gmail","admin","Naomi","Watts", passwordEncoder.encode("pass"), "ADMIN","USER"));
 
+        // CATEGORIES
         categoryService.save(new Category("Mental health", "Because we know that having a good mental health is fundamental, we want to share with you some\n" +
                 "tasks for helping you to achieve it", "ri-mental-health-line icon", "blue"));
 
@@ -56,11 +57,45 @@ public class DataBaseLoader {
         categoryService.save(new Category("Focus and Effort", "Do you want to be challenged daily? I challenge you to follow the pace of this category and\n" +
                 "complete the refreshing daily challenge", "ri-focus-2-line icon", "purple"));
 
+        // PLANS
+
         Plan plan1 = new Plan("Meditation", "This is for meditate", 3);
         Plan plan2 = new Plan("Football", "This is for football", 1);
 
         plan1.setCategory(categoryService.findByName("Mental health").orElseThrow());
         plan2.setCategory(categoryService.findByName("Mental health").orElseThrow());
+
+        planService.save(plan1);
+        planService.save(plan2);
+
+
+
+        plan1 = new Plan("oSjp80p0c5", "This is for meditate", 3,categoryService.findByName("Focus and Effort").orElseThrow());
+        plan2 = new Plan("I57eaMlMHq", "This is for football", 1,categoryService.findByName("Focus and Effort").orElseThrow());
+
+
+        planService.save(plan1);
+        planService.save(plan2);
+
+        plan1 = new Plan("oSjp8rthtyhdrtsg0p0c5", "This is for meditate", 3,categoryService.findByName("Savings").orElseThrow());
+        plan2 = new Plan("I57eaMgsfdrtgfrlMHq", "This is for football", 1,categoryService.findByName("Savings").orElseThrow());
+
+
+        planService.save(plan1);
+        planService.save(plan2);
+
+
+        plan1 = new Plan("oSjp80erhgrfagrep0c5", "This is for meditate", 3,categoryService.findByName("Home").orElseThrow());
+        plan2 = new Plan("I57eaMlerahrfhbrtMHq", "This is for football", 2,categoryService.findByName("Home").orElseThrow());
+
+
+        planService.save(plan1);
+        planService.save(plan2);
+
+
+        plan1 = new Plan("oSjp80p0c5", "This is for meditate", 3,categoryService.findByName("Physical Health").orElseThrow());
+        plan2 = new Plan("I57eaMlMHq", "This is for football", 1,categoryService.findByName("Physical Health").orElseThrow());
+
 
         planService.save(plan1);
         planService.save(plan2);

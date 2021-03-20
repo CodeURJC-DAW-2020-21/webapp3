@@ -44,4 +44,6 @@ public class PlanLikeController {
         return "redirect:/categoryInfo/"+ name;
     }
 
+
+
 }

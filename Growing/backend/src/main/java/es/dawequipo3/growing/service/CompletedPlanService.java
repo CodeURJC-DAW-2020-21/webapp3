@@ -31,12 +31,12 @@ public class CompletedPlanService {
 
 
     public void save(Completed_plan completed_plan){
-        this.save(completed_plan);
+        completed_planRepository.save(completed_plan);
     }
 
     public void DeleteCompletedPlan(String email,String name,long date){
-        User user= userService.findUserByEmail(email).get();
-        Plan plan= planService.findPlansByName(name).get();
+        User user= userService.findUserByEmail(email).orElseThrow();
+        Plan plan= planService.findPlanByName(name).orElseThrow();
         completed_planRepository.deleteCompleted_planByUserAndPlanAndDate(user,plan,date);
     }
 

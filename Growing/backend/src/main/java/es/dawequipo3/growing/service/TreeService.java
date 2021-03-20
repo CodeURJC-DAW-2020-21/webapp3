@@ -41,6 +41,8 @@ public class TreeService {
         if (tree.getHeight() < 100 && tree.getHeight()+ newHeight >= 100)
             emailService.sendEmailHeight(email, tree.getTreePK().getCategoryPK(), tree.getHeight() + newHeight);
         tree.setHeight(newHeight);
+        tree.setLast_update(Calendar.getInstance().getTimeInMillis());
+        save(tree);
     }
 
     public void UpdateTreeRemovePlan(Tree tree,Plan plan){

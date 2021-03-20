@@ -331,7 +331,7 @@ document.addEventListener("DOMContentLoaded", () => {
     html2pdf()
         .set({
           margin: 1,
-          filename: 'progress'+day.getMonth()+'-'+day.getDate()+'-'+day.getFullYear()+'.pdf',
+          filename: 'progress-'+(day.getMonth()+1)+'-'+day.getDate()+'-'+day.getFullYear()+'.pdf',
           image: {
             type: 'jpeg',
             quality: 0.98

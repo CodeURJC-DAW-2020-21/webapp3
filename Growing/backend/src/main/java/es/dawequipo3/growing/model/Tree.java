@@ -2,6 +2,7 @@ package es.dawequipo3.growing.model;
 
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -82,6 +83,13 @@ public class Tree {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public String getDate() {
+        Calendar date = Calendar.getInstance();
+        date.setTimeInMillis(this.last_update);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss:SSS");
+        return format.format(date.getTime());
     }
 }
 

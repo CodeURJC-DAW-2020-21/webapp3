@@ -49,65 +49,85 @@ public class DataBaseLoader {
                 "to increase your savings and not wasting them.", "ri-money-euro-circle-line icon", "green"));
 
         categoryService.save(new Category("Good night", "Do you have insomnia? Here you will see multiple tasks that you can do to sleep like a baby\n" +
-                "during the night", "ri-hotel-bed-fill icon", "bluenavy"));
+                "during the night", "ri-hotel-bed-fill icon", "darkblue"));
 
         categoryService.save(new Category("Home", "Do you have to do home tasks but you leave them to the end or you even make them? This is your\n" +
                 "category! You won't forget them and finish them quickly", "ri-home-2-line icon", "orange"));
 
-        categoryService.save(new Category("Focus-Effort", "Do you want to be challenged daily? I challenge you to follow the pace of this category and\n" +
+        categoryService.save(new Category("Focus and Effort", "Do you want to be challenged daily? I challenge you to follow the pace of this category and\n" +
                 "complete the refreshing daily challenge", "ri-focus-2-line icon", "purple"));
 
         // PLANS
 
-        Plan plan1 = new Plan("Meditation", "This is for meditate", 3);
-        Plan plan2 = new Plan("Football", "This is for football", 1);
+        // Mental Health
+        planService.save(new Plan("Yoga", "You don't like yoga? Come on! This is because you didn't" +
+                " start doing it. Play a class in YouTube and get into this healthy world!", 1,
+                categoryService.findByName("Mental health").orElseThrow()));
 
-        plan1.setCategory(categoryService.findByName("Mental health").orElseThrow());
-        plan2.setCategory(categoryService.findByName("Mental health").orElseThrow());
+        planService.save(new Plan("Puzzle", "We are sure you have a small puzzle. " +
+                "Remove the dust of the box and chain 20 pieces. Let's go!", 1, categoryService.findByName("Mental health").orElseThrow()));
 
-        planService.save(plan1);
-        planService.save(plan2);
+        planService.save(new Plan("Puzzle level 2", "We know you can be good at this. Get a bigger puzzle and complete it. " +
+                "Trust us, it is going to be good for your health", 2, categoryService.findByName("Mental health").orElseThrow()));
 
-
-
-        plan1 = new Plan("Meditation", "This is for meditate", 3);
-        plan2 = new Plan("Football", "This is for football", 1);
-
-        plan1.setCategory(categoryService.findByName("Focus-Effort").orElseThrow());
-        plan2.setCategory(categoryService.findByName("Focus-Effort").orElseThrow());
-
-        planService.save(plan1);
-        planService.save(plan2);
-
-        plan1 = new Plan("oSjp8rthtyhdrtsg0p0c5", "This is for meditate", 3,categoryService.findByName("Savings").orElseThrow());
-        plan2 = new Plan("I57eaMgsfdrtgfrlMHq", "This is for football", 1,categoryService.findByName("Savings").orElseThrow());
+        planService.save(new Plan("Rubik", "Next level, the puzzle is easy for you, Buy a rubik cube in your nearest shop and" +
+                "is time to make magic", 3, categoryService.findByName("Mental health").orElseThrow()));
 
 
-        planService.save(plan1);
-        planService.save(plan2);
+        // Physical Health
+        planService.save(new Plan("Walk!", "This is the easiest one. Stop staring in front of the computer" +
+                " screen and get out even to buy the bread. But walk a little more, 500 feet minimum, don't be lazy",
+                1, categoryService.findByName("Physical health").orElseThrow()));
+
+        planService.save(new Plan("Cycling", "Who doesn't have a bicycle helmet and bike? Call your first" +
+                " friend on the agenda and go for a ride! Take care, road is dangerous. We hope you can mark this task as done", 2, categoryService.findByName("Physical health").orElseThrow()));
+
+        planService.save(new Plan("Running", "At this level you are an athlete, so the challenge is run " +
+                "10 kilometers, mark this task as done for each 10 you achieve", 2, categoryService.findByName("Physical health").orElseThrow()));
+
+        // Savings
+        planService.save(new Plan("Candy savings", "Candys are beautiful, but they are not healthy. Remember" +
+                " this sentence: \"a moment on the lips, forever on the hips\"" +
+                " so the challenge is save 10 euros in a week that were spent on chocolate or sugar candys", 2,categoryService.findByName("Savings").orElseThrow()));
 
 
-        plan1 = new Plan("oSjp80erhgrfagrep0c5", "This is for meditate", 3,categoryService.findByName("Home").orElseThrow());
-        plan2 = new Plan("I57eaMlerahrfhbrtMHq", "This is for football", 2,categoryService.findByName("Home").orElseThrow());
+        planService.save(new Plan("Swear jar", "Is awful to people hear rudeness, so the challenge is for" +
+                " each mean word, you have to put into a jar 1 euro.\nIf you don't collect more than 7 euros in a week, " +
+                "don't bother to mark this as done, don't lie to yourself", 2,categoryService.findByName("Savings").orElseThrow()));
+
+        // Home
+        planService.save(new Plan("Do your bed!", "We know cleaning the room is boring and there is always one person who tells you:" +
+                "clean the room, looks like a pigsty, so start doing your bed, you can listen to music meanwhile", 1,categoryService.findByName("Home").orElseThrow()));
+
+        planService.save(new Plan("Bed is not the only thing to clean up", "You broke the ice and start " +
+                "cleaning, so keep up the pace and clean your desk, because it is your workstation, you will be thankful with us", 2,categoryService.findByName("Home").orElseThrow()));
+
+        planService.save(new Plan("Cook something", "Every chef starts from the bottom, preparing eggs" +
+                " or pasta. Approach the high amount of time at home to cook something", 3,categoryService.findByName("Home").orElseThrow()));
 
 
-        planService.save(plan1);
-        planService.save(plan2);
+        // Good night
+        planService.save(new Plan("Watch Netflix", "After a stressful day in the office or studies,it is" +
+                " not good to sleep inmediately!, you will be thinking of it and you won't sleep. So this task is watch " +
+                "one or two Netflix or streaming content. You can watch it with your partner, double joy!", 2,categoryService.findByName("Good night").orElseThrow()));
+
+        planService.save(new Plan("Read a book", "Search a book of your most liked topic and read at least" +
+                " two chapters or 40 pages, we are sure you will disconnect", 2,categoryService.findByName("Good night").orElseThrow()));
+
+        planService.save(new Plan("Paint mandalas", "This one is very easy, buy a mandalas book and paint" +
+                " one", 1,categoryService.findByName("Good night").orElseThrow()));
 
 
-        plan1 = new Plan("oSjp80p0c5", "This is for meditate", 3,categoryService.findByName("Physical Health").orElseThrow());
-        plan2 = new Plan("I57eaMlMHq", "This is for football", 1,categoryService.findByName("Physical Health").orElseThrow());
+        // Focus and effort
+        planService.save(new Plan("Push ups", "Come on buddy! This is the easiest one, but you are advised," +
+                " this is the most difficult category. This challenge is to achieve 3 series of 10 push ups, with 30 second breaks!", 3,categoryService.findByName("Focus and Effort").orElseThrow()));
+
+        planService.save(new Plan("Lunges", "You have to complete 5 series of 20 lunges, with 30 second breaks!" +
+                " Don't mark this activity two consecutive days! we won't trust you, you need to rest one day minimum", 3,categoryService.findByName("Focus and Effort").orElseThrow()));
 
 
-        planService.save(plan1);
-        planService.save(plan2);
-
-        plan1 = new Plan("oSjp80p0c5", "This is for meditate", 3,categoryService.findByName("Good night").orElseThrow());
-        plan2 = new Plan("I57eaMlMHq", "This is for football", 1,categoryService.findByName("Good night").orElseThrow());
-
-
-        planService.save(plan1);
-        planService.save(plan2);
+        planService.save(new Plan("Abs", "You have to complete 4 series of 20 abs, with 30 second breaks!" +
+                " This is the most difficult one, at the moment!", 3,categoryService.findByName("Focus and Effort").orElseThrow()));
 
     }
 

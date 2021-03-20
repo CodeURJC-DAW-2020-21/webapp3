@@ -164,4 +164,8 @@ public class User {
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
     }
+
+    public void addLikedPlan(Plan plan){
+        this.likedPlans.add(plan);
+    }
 }

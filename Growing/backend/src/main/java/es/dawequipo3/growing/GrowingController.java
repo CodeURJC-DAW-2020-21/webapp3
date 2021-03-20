@@ -2,6 +2,7 @@ package es.dawequipo3.growing;
 
 import es.dawequipo3.growing.model.*;
 import es.dawequipo3.growing.service.CategoryService;
+import es.dawequipo3.growing.service.PlanService;
 import es.dawequipo3.growing.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.annotation.PostConstruct;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,10 +23,14 @@ import java.util.Optional;
 public class GrowingController {
 
     @Autowired
+    private PlanService planService;
+
+    @Autowired
     private CategoryService categoryService;
 
     @Autowired
     private UserService userService;
+
 
 
     public void EmailFavoritesCategoryName(String email, String categoryName) {
@@ -42,6 +50,8 @@ public class GrowingController {
 
     @GetMapping("/")
     public String index() {
+        User user = userService.findAll().get(0);
+        userService.GetTopPlans(user);
         return "index";
     }
 

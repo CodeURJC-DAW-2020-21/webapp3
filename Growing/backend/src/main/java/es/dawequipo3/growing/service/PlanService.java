@@ -1,11 +1,14 @@
 package es.dawequipo3.growing.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
+import es.dawequipo3.growing.model.Category;
 import es.dawequipo3.growing.model.Plan;
+import es.dawequipo3.growing.model.User;
 import es.dawequipo3.growing.repository.PlanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +30,7 @@ public class PlanService {
         Plan plan1 = new Plan("Meditation", "This is for meditate", 3);
         Plan plan2 = new Plan("Football", "This is for football", 1);
 
+
         plan1.setCategory(categoryService.findByName("Mental health").orElseThrow());
         plan2.setCategory(categoryService.findByName("Mental health").orElseThrow());
 
@@ -43,8 +47,14 @@ public class PlanService {
         return planRepository.findPlansByCategory_Name(name);
     }
 
-
     public List<Plan> findAll() {
         return planRepository.findAll();
+    }
+    public List<Plan> findPlanFromLikedCategories(User user){
+        List<String> categoryNames= new ArrayList<>();
+        for (Category category: user.getUserFavoritesCategory()){
+            categoryNames.add(category.getName());
+        }
+        return this.planRepository.getLikedPlanFromCategory(categoryNames);
     }
 }

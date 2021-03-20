@@ -1,9 +1,6 @@
 package es.dawequipo3.growing.service;
 
-import es.dawequipo3.growing.model.Category;
-import es.dawequipo3.growing.model.Tree;
-import es.dawequipo3.growing.model.TreePK;
-import es.dawequipo3.growing.model.User;
+import es.dawequipo3.growing.model.*;
 import es.dawequipo3.growing.repository.TreeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,5 +31,15 @@ public class TreeService {
         treeRepository.save(tree);
     }
 
+    public void UpdateTreeNewPlan(Tree tree,Plan plan){
+        int increase = (int) Math.pow(plan.getDifficulty(),2);
+        int newHeight= tree.getHeight()+increase;
+        tree.setHeight(newHeight);
+    }
 
+    public void UpdateTreeRemovePlan(Tree tree,Plan plan){
+        int decrease = (int) Math.pow(plan.getDifficulty(),2);
+        int newHeight= tree.getHeight()-decrease;
+        tree.setHeight(newHeight);
+    }
 }

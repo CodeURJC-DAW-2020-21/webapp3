@@ -1,18 +1,16 @@
 package es.dawequipo3.growing.service;
 
 
-import java.util.List;
-import java.util.Optional;
 import es.dawequipo3.growing.model.Category;
 import es.dawequipo3.growing.model.Tree;
 import es.dawequipo3.growing.model.User;
 import es.dawequipo3.growing.repository.CategoryRepository;
-import es.dawequipo3.growing.repository.TreeRepository;
-import es.dawequipo3.growing.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -28,7 +26,7 @@ public class CategoryService {
     private TreeService treeService;
 
     @PostConstruct
-    public void init(){
+    public void init() {
 
         Category mentalHealth = new Category("Mental health", "Because we know that having a good mental health is fundamental, we want to share with you some\n" +
                 "                        tasks for helping you to achieve it", "ri-mental-health-line icon", "blue");
@@ -55,22 +53,20 @@ public class CategoryService {
                 "                        complete the refreshing daily challenge", "ri-focus-2-line icon", "purple"));
     }
 
-    public void save(Category category){
-            categoryRepository.save(category);
-            for (User user: userService.findAll()) {
-                treeService.save(new Tree(user, category));
-            }
+    public void save(Category category) {
+        categoryRepository.save(category);
+        for (User user : userService.findAll()) {
+            treeService.save(new Tree(user, category));
         }
-
-
-    public List<Category> findAll(){return categoryRepository.findAll();}
-
-    public Optional<Category> findByName(String name){
-        return categoryRepository.findCategoryByName(name);
     }
 
-    public void deleteById(String name){
-        categoryRepository.deleteById(name);
+
+    public List<Category> findAll() {
+        return categoryRepository.findAll();
+    }
+
+    public Optional<Category> findByName(String name) {
+        return categoryRepository.findCategoryByName(name);
     }
 
 

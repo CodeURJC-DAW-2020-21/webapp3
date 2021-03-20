@@ -10,5 +10,4 @@ import java.util.Optional;
 public interface TreeRepository extends JpaRepository<Tree,TreePK> {
 
     Optional<Tree> findTreeByTreePK(TreePK treePK);
-
 }

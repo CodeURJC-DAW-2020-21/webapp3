@@ -6,6 +6,12 @@ import es.dawequipo3.growing.repository.UserRepository;
 import es.dawequipo3.growing.service.CompletedPlanService;
 import es.dawequipo3.growing.service.UserService;
 import org.hibernate.engine.jdbc.BlobProxy;
+import es.dawequipo3.growing.model.User;
+import es.dawequipo3.growing.repository.UserRepository;
+import es.dawequipo3.growing.service.UserService;
+import org.hibernate.engine.jdbc.BlobProxy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -40,27 +46,39 @@ public class UserController {
     private CompletedPlanService completedPlanService;
 
 
+    private static final Logger log = LoggerFactory.getLogger(UserController.class);
 
     @PostMapping("/getStarted/signUp")
-    public String signUp(@RequestParam String username, @RequestParam String surname, @RequestParam String email,
-                         @RequestParam String name,@RequestParam String password, @RequestParam String confirmPassword, MultipartFile imageFile) throws IOException {
-
+    public String signUp(Model model,HttpServletRequest request, @RequestParam String username, @RequestParam String surname, @RequestParam String email,
+                         @RequestParam String name,@RequestParam String password, @RequestParam String confirmPassword, MultipartFile imageFile
+    ) throws IOException {
+        boolean error = false;
         User user = new User(email, username, name, surname, password, "USER");
-        if (password.equals(confirmPassword)) {
+        error=!password.equals(confirmPassword);
+        if (error) {
             user.setPassword(passwordEncoder.encode(user.getEncodedPassword()));
         }
 
         if (!imageFile.isEmpty()) {
-                user.setImageFile(BlobProxy.generateProxy(
-                        imageFile.getInputStream(), imageFile.getSize()));
+            user.setImageFile(BlobProxy.generateProxy(
+                    imageFile.getInputStream(), imageFile.getSize()));
         }
+        error=userService.findUserByEmail(user.getEmail()).isPresent();
+        if (error) {
+            return "getStarted";
+        } else {
+            userService.save(user);
+            User userName = userRepository.findByUsername(user.getName()).orElseThrow();
 
-        userService.save(user);
-        return "redirect:/getStarted";
+            model.addAttribute("user",userName);
+            model.addAttribute("admin",request.isUserInRole(("ADMIN")));
+            return "redirect:/profile";
+        }
     }
 
     @GetMapping("/getStarted")
     public String getStarted(Model model, HttpServletRequest request){
+        model.addAttribute("registered",request.isUserInRole("USER"));
         model.addAttribute("error", request.isRequestedSessionIdFromCookie());
         return "getStarted";
     }

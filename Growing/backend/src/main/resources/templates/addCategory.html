@@ -1,0 +1,25 @@
+<form action="/addNewCategory" method="post" class="sign-up-form">
+    <h2 class="title">New Category</h2>
+    <!-- Name -->
+    <div class="input-field">
+        <i class="fas fa-user"></i>
+        <input type="text" name="name" placeholder="name" alt="Name"/>
+    </div>
+    <!-- Description-->
+    <div class="input-field">
+        <i class="fas fa-user"></i>
+        <input type="text" name="description" placeholder="description" alt="Description"/>
+    </div>
+    <!-- Icon -->
+    <div class="input-field">
+        <i class="fas fa-user"></i>
+        <input type="image" name="icon" placeholder="icon" alt="Icon"/>
+    </div>
+    <!-- Color -->
+    <div class="input-field">
+        <i class="fas fa-envelope"></i>
+        <input type="color" name="color" placeholder="color" alt="Color"/>
+    </div>
+    <input type="hidden" name="_csrf" value="{{token}}"/>
+    <input type="submit" class="btn" value="Add category"/>
+</form>

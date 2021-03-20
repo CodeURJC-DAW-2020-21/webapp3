@@ -39,7 +39,6 @@ public class Category {
         this.icon = icon;
         this.color = color;
         this.plans = plans;
-        this.plans = new ArrayList<>();
     }
 
     public Category(String name, String description, String icon, String color) {

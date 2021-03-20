@@ -71,15 +71,26 @@ public class UserController {
         User user = userService.findUserByEmail(email).orElseThrow();
         model.addAttribute("user", user);
         model.addAttribute("admin", request.isUserInRole("ADMIN"));
-        List<Completed_plan> completed_planList = completedPlanService.getCompletedPlanPageByEmailSortedByDate("");
+        List<Completed_plan> completed_planList = completedPlanService.getAllCompletedPlans(request);
         model.addAttribute("CompletedPlan", completed_planList);
         return "profile";
     }
 
-    @GetMapping("/profile/{email}")
-    public String profileAdminTableRequest(Model model, @PathVariable String email,  HttpServletRequest request) {
-        List<Completed_plan> completed_planList = completedPlanService.getCompletedPlanPageByEmailSortedByDate(email);
+    @PostMapping("/profile/searchEmail")
+    public String profileAdminTableRequest(@RequestParam String emailSearched) {
+        if (emailSearched.isBlank()){
+            return "redirect:/profile";
+        }
+        else return "redirect:/profile/"+emailSearched;
+    }
+
+    @GetMapping("/profile/{emailSearched}")
+    public String profileAdminTableRequestResult(Model model, @PathVariable String emailSearched, HttpServletRequest request) {
+        String email = request.getUserPrincipal().getName();
+        User user = userService.findUserByEmail(email).orElseThrow();
+        model.addAttribute("user", user);
         model.addAttribute("admin", request.isUserInRole("ADMIN"));
+        List<Completed_plan> completed_planList = completedPlanService.getCompletedPlanPageByEmailSortedByDate(emailSearched);
         model.addAttribute("CompletedPlan", completed_planList);
         return "profile";
     }

@@ -279,19 +279,21 @@ section .services{
 ;
 }
 
-.field>input[type=text], .field>button {
+#searchform {
     display:block;
-    font:1.2em 'Montserrat Alternates';
+    font:1.2em 'Nunito', sans-serif;
 }
 
-.field>input[type=text] {
-    flex:1;
-    padding:0.6em;
-    border:0.2em solid rgb(26, 188, 156);
+#searchterm {
+    flex: 1;
+    padding: 0.6em;
+    width: 88%;
+    border: 0.2em solid rgb(26, 188, 156);
 }
 
-.field>button {
-    padding: 0.6em 0.8em;
+#search{
+    width: auto;
+    padding: 0.8em;
     background-color: rgb(26, 188, 156);
     color: white;
 }

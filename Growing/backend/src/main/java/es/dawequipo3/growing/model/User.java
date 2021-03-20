@@ -187,4 +187,8 @@ public class User{
     public void setImageFile(Blob imageFile) {
         this.imageFile = imageFile;
     }
+
+    public void addLikedPlan(Plan plan){
+        this.likedPlans.add(plan);
+    }
 }

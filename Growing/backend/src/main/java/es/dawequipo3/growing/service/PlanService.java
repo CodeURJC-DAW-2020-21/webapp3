@@ -1,5 +1,6 @@
 package es.dawequipo3.growing.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -10,9 +11,11 @@ import java.util.zip.DataFormatException;
 
 import es.dawequipo3.growing.model.Category;
 import es.dawequipo3.growing.model.Completed_plan;
+import es.dawequipo3.growing.model.Category;
 import es.dawequipo3.growing.model.Plan;
 import es.dawequipo3.growing.model.User;
 import es.dawequipo3.growing.repository.Completed_planRepository;
+import es.dawequipo3.growing.model.User;
 import es.dawequipo3.growing.repository.PlanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,4 +57,14 @@ public class PlanService {
         return planRepository.existsLiked(plan, user) == 1;
     }
 
+    public List<Plan> findAll() {
+        return planRepository.findAll();
+    }
+    public List<Plan> findPlanFromLikedCategories(User user){
+        List<String> categoryNames= new ArrayList<>();
+        for (Category category: user.getUserFavoritesCategory()){
+            categoryNames.add(category.getName());
+        }
+        return this.planRepository.getLikedPlanFromCategory(categoryNames);
+    }
 }

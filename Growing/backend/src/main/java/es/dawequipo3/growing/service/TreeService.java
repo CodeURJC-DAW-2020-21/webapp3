@@ -35,12 +35,17 @@ public class TreeService {
         treeRepository.save(tree);
     }
 
-    public void updateHeight(Tree tree, Plan plan, String email){
-        int increment = plan.getDifficulty() * 5;
-        if (tree.getHeight() < 45 && tree.getHeight()+ increment >= 45)
-            emailService.sendEmailHeight(email, tree.getTreePK().getCategoryPK(), tree.getHeight() + increment);
-        tree.setHeight(tree.getHeight() + increment);
-        treeRepository.save(tree);
+    public void UpdateTreeNewPlan(Tree tree,Plan plan, String email){
+        int increase = (int) Math.pow(plan.getDifficulty(),2);
+        int newHeight= tree.getHeight()+increase;
+        if (tree.getHeight() < 100 && tree.getHeight()+ newHeight >= 100)
+            emailService.sendEmailHeight(email, tree.getTreePK().getCategoryPK(), tree.getHeight() + newHeight);
+        tree.setHeight(newHeight);
     }
 
+    public void UpdateTreeRemovePlan(Tree tree,Plan plan){
+        int decrease = (int) Math.pow(plan.getDifficulty(),2);
+        int newHeight= tree.getHeight()-decrease;
+        tree.setHeight(newHeight);
+    }
 }

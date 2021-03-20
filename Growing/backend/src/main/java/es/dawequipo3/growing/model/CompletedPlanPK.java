@@ -11,7 +11,7 @@ import java.util.Objects;
 public class CompletedPlanPK implements Serializable {
 
     @Column
-    private String user_Pk;
+    private String user_PK;
 
     @Column
     private String planPK;
@@ -22,18 +22,18 @@ public class CompletedPlanPK implements Serializable {
     public CompletedPlanPK() {
     }
 
-    public CompletedPlanPK(String user_Pk, String planPK) {
-        this.user_Pk = user_Pk;
+    public CompletedPlanPK(String user_PK, String planPK) {
+        this.user_PK = user_PK;
         this.planPK = planPK;
         this.datePK = Calendar.getInstance().getTimeInMillis();
     }
 
-    public String getUser_Pk() {
-        return user_Pk;
+    public String getUser_PK() {
+        return user_PK;
     }
 
-    public void setUser_Pk(String user) {
-        this.user_Pk = user;
+    public void setUser_PK(String user) {
+        this.user_PK = user;
     }
 
     public String getPlanPK() {
@@ -57,11 +57,11 @@ public class CompletedPlanPK implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CompletedPlanPK that = (CompletedPlanPK) o;
-        return datePK.equals(that.datePK) && user_Pk.equals(that.user_Pk) && planPK.equals(that.planPK);
+        return datePK.equals(that.datePK) && user_PK.equals(that.user_PK) && planPK.equals(that.planPK);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(user_Pk, planPK, datePK);
+        return Objects.hash(user_PK, planPK, datePK);
     }
 }

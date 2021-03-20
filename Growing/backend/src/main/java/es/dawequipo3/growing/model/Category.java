@@ -5,6 +5,8 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
+
 
 @Entity
 public class Category {
@@ -14,20 +16,9 @@ public class Category {
     private String des;
     private String icon;
     private String color;
-    private Date date;
-    @Transient
-    private int likes;
 
     @Transient
     private boolean likedByUser;
-
-    public int getLikes() {
-        return likes;
-    }
-
-    public void setLikes(int likes) {
-        this.likes = likes;
-    }
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "category")
     private List<Plan> plans;
@@ -48,7 +39,7 @@ public class Category {
         this.icon = icon;
         this.color = color;
         this.plans = plans;
-        this.date = new Date();
+        this.plans = new ArrayList<>();
     }
 
     public Category(String name, String description, String icon, String color) {
@@ -57,8 +48,6 @@ public class Category {
         this.des = description;
         this.icon = icon;
         this.color = color;
-        this.date = new Date();
-        this.plans = new ArrayList<>();
     }
 
     public String getName() {
@@ -117,14 +106,6 @@ public class Category {
         this.plans = plans;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
     public boolean isLikedByUser() {
         return likedByUser;
     }
@@ -141,5 +122,18 @@ public class Category {
                 ", icon='" + icon + '\'' +
                 ", color='" + color + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Category category = (Category) o;
+        return Objects.equals(name, category.name) && Objects.equals(des, category.des) && Objects.equals(icon, category.icon) && Objects.equals(color, category.color);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, des, icon, color);
     }
 }

@@ -6,6 +6,8 @@ import es.dawequipo3.growing.model.Tree;
 import es.dawequipo3.growing.model.User;
 import es.dawequipo3.growing.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.support.PagedListHolder;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 
@@ -34,6 +36,19 @@ public class UserService {
     @Autowired
     private PlanService planService;
 
+
+    public Page<Plan> GetPageOfTopPlans(User user){
+        List<Plan> plans = GetTopPlans(user);
+        // Creation
+        PagedListHolder page = new PagedListHolder(plans);
+        page.setPageSize(10);
+        page.setPage(0);
+
+        // Retrieval
+        page.getPageCount();
+        page.getPageList();
+        page.setPage();
+    }
     public List<Plan> GetTopPlans(User user) {
         //First goes the liked plans
         List<Plan> firstResult = user.getLikedPlans();

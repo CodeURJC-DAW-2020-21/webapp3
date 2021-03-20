@@ -352,12 +352,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
-let Global=0;
-function LoadMore(){
+function LoadMore(ob){
+    Global=ob();
   $.get("/explore/"+Global)
       .done(function (data){
         $("#PlanList").append(data);
       });
-  Global++;
 }
+

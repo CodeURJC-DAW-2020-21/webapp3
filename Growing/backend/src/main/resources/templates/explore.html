@@ -18,8 +18,16 @@
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
 </head>
+<script>
+    var increment = function() {
+        var i = 0;
+        return function() { return i += 1; };
+    };
+    var ob = increment();
+</script>
 
 <body>
+
 
 <!-- ======= Header ======= -->
 <header id="header" class="header fixed-top">
@@ -127,7 +135,8 @@
         </div>
 
 
-        <button onclick="LoadMore(0)">Load more plans</button>
+
+        <button onclick="LoadMore(ob)">Load more plans</button>
     </div>
 </section><!-- End F.A.Q Section -->
 

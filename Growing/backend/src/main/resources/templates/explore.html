@@ -77,19 +77,19 @@
             <div class="row" id="PlanList">
                 {{#Plan}}
                 <div class="col-lg-6">
-                    <div class="accordion accordion-flush" id="{{name}}">
+                    <div class="accordion accordion-flush" id="{{abv}}">
                         <div class="accordion-item">
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#faq-content-{{name}}">
+                                        data-bs-target="#faq-content-{{abv}}">
                                     <div class="service-box orange">
                                         <i class=" {{getIcon}} icon"></i>
                                     </div>
                                     {{name}}<img src="/assets/img/level/{{getUrlToFlag}}" class="icon mini"/>
                                 </button>
                             </h2>
-                            <div id="faq-content-{{name}}" class="accordion-collapse collapse"
-                                 data-bs-parent="#{{name}}">
+                            <div id="faq-content-{{abv}}" class="accordion-collapse collapse"
+                                 data-bs-parent="#{{abv}}">
                                 <div class="accordion-body">
                                     {{description}}
                                     {{#registered}}
@@ -126,7 +126,6 @@
                         </div>
                     </div>
                 </div>
-
                 {{/Plan}}
             </div>
         </div>

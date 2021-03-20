@@ -1,6 +1,7 @@
 package es.dawequipo3.growing.controller;
 
 import es.dawequipo3.growing.model.*;
+import es.dawequipo3.growing.repository.CategoryRepository;
 import es.dawequipo3.growing.repository.UserRepository;
 import es.dawequipo3.growing.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,9 @@ public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @Autowired
     private PlanService planService;
@@ -76,6 +80,7 @@ public class CategoryController {
     @GetMapping("/categories")
     public String categories(Model model, HttpServletRequest request){
         model.addAttribute("registered",request.isUserInRole("USER"));
+        model.addAttribute("admin",request.isUserInRole("ADMIN"));
         model.addAttribute("category", categoryService.findAll());
         return "categories";
     }
@@ -117,6 +122,41 @@ public class CategoryController {
         user.getUserFavoritesCategory().remove(category);
         userRepository.save(user);
         return "redirect:/categoryInfo/{name}";
+    }
+
+    @PostMapping("/categories/addCategory")
+    public String addCategory(@RequestParam String name,@RequestParam String des,
+                                 @RequestParam String icon, @RequestParam String color){
+
+
+        boolean error = false;
+        Category category = new Category(name,des,icon,color);
+        error = categoryService.findByName(category.getName()).isPresent();
+
+        if(!error){
+            categoryService.save(category);
+        }
+
+        return "redirect:/categories";
+
+    }
+
+    @PostMapping("/categories/{name}/addPlan")
+    public String createPlan(@RequestParam String planName, @RequestParam String description,
+                            @RequestParam int difficulty,@PathVariable String name){
+
+
+        boolean error = false;
+        Plan newPlan = new Plan(planName,description,difficulty,name);
+        Category category = categoryService.findByName(name).orElseThrow();
+        List<Plan> planList = category.getPlans();
+        error = categoryService.findByName(newPlan.getName()).isPresent();
+        if(!error){
+            planList.add(newPlan);
+            categoryRepository.save(category);
+        }
+
+        return "redirect:/categories";
     }
 
 }

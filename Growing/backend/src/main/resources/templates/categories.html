@@ -42,7 +42,42 @@
         </nav><!-- .navbar -->
     </div>
 </header><!-- End Header -->
+{{#admin}}
+<!-- Add button for Admin User -->
+<br>
+<br>
+<br>
+<br>
+<div class="editCategory align-items-center">
+    <form action="/addCategory" method="post" class="sign-up-form" enctype="multipart/form-data">
+        <h2 class="title">Create Category</h2>
+        <!-- Username -->
+        <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" name="name" placeholder="name" required/>
+        </div>
+        <!-- Name-->
+        <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" name="des" placeholder="description" required/>
+        </div>
+        <!-- Surname -->
+        <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" name="icon" placeholder="icon" required/>
+        </div>
 
+        <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" name="color" placeholder="color" required/>
+        </div>
+
+        <input type="submit" class="btn" value="Create plan"/>
+    </form>
+    <input type="hidden" name="_csrf" value="{{token}}"/>
+</div>
+<!-- End add button for Admin User -->
+{{/admin}}
 <!-- ======= Categories ======= -->
 {{>categoryList}}
 

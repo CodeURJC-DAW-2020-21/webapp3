@@ -42,10 +42,17 @@ public class UserController {
 
 
     @PostMapping("/getStarted/signUp")
-    public String signUp(@RequestParam String username, @RequestParam String surname, @RequestParam String email,
-                         @RequestParam String name,@RequestParam String password, @RequestParam String confirmPassword, MultipartFile imageFile) throws IOException {
+    public String signUp(Model model,HttpServletRequest request,
+            @RequestParam String username, @RequestParam String surname, @RequestParam String email,
+            @RequestParam String name,@RequestParam String password, @RequestParam String confirmPassword, MultipartFile imageFile) throws IOException {
+
+
+        boolean error = false;
 
         User user = new User(email, username, name, surname, password, "USER");
+
+
+
         if (password.equals(confirmPassword)) {
             user.setPassword(passwordEncoder.encode(user.getEncodedPassword()));
         }
@@ -55,8 +62,19 @@ public class UserController {
                         imageFile.getInputStream(), imageFile.getSize()));
         }
 
+        error = userService.findUserByEmail(user.getEmail()).isPresent();
+
+        if(error){
+            return "redirect:/getStarted";
+        }
+
         userService.save(user);
-        return "redirect:/getStarted";
+        User userName = userRepository.findByUsername(user.getName()).orElseThrow();
+        model.addAttribute("user",userName);
+        model.addAttribute("registered",request.isUserInRole("USER"));
+        model.addAttribute("error", request.isRequestedSessionIdFromCookie());
+
+        return "redirect:/profile";
     }
 
     @GetMapping("/getStarted")

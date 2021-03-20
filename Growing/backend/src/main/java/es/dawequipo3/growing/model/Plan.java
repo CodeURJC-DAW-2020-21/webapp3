@@ -13,6 +13,8 @@ public class Plan {
     private String name;
     private String description;
     private int difficulty;
+    private String abv;
+
     @Transient
     private boolean likedUser;
 
@@ -28,17 +30,19 @@ public class Plan {
 
     protected Plan(){}
 
-    public Plan(String name, String description, int difficulty, Category category) {
+    public Plan(String name, String description, int difficulty, Category category, String abv) {
         this.name = name;
         this.description = description;
         this.difficulty = difficulty;
         this.category = category;
+        this.abv = abv;
     }
 
-    public Plan(String name, String description, int difficulty) {
+    public Plan(String name, String description, int difficulty, String abv) {
         this.name = name;
         this.description = description;
         this.difficulty = difficulty;
+        this.abv = abv;
     }
 
     public String getName() {
@@ -80,11 +84,11 @@ public class Plan {
 
     public String getUrlToFlag() {
         if (this.difficulty == 1) {
-            return "greenFlag.png";
+            return "level1.png";
         } else if (this.difficulty == 2) {
-            return "yellowFlag.png";
+            return "level2.png";
         } else {
-            return "redFlag.png";
+            return "level3.png";
         }
     }
 
@@ -104,5 +108,11 @@ public class Plan {
         this.likedPlans = likedPlans;
     }
 
+    public String getAbv() {
+        return abv;
+    }
 
+    public void setAbv(String abv) {
+        this.abv = abv;
+    }
 }

@@ -12,6 +12,31 @@
                 {{#registered}}
                 {{#admin}}
                 <button class="btn-edit"><i class="icon fas fas fa-pencil-alt"></i></button>
+                <form action="/newPlan" method="post" class="sign-up-form">
+                    <h2 class="title">new Plan</h2>
+                    <!-- Plan Name -->
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" name="name" placeholder="Name"/>
+                    </div>
+                    <!-- Description-->
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" name="description" placeholder="description"/>
+                    </div>
+                    <!-- Difficulty -->
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="number" name="difficulty" placeholder="difficulty"/>
+                    </div>
+                    <!-- Category -->
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" name="category" placeholder="category"/>
+                    </div>
+                    <input type="submit" class="btn" value="add Plan"/>
+                </form>
+
                 {{/admin}}
                 {{/registered}}
 

@@ -45,8 +45,7 @@ public class UserService {
         Set<Plan> planSet = new LinkedHashSet<>(firstResult);
         planSet.addAll(secondResult);
         planSet.addAll(thirdResults);
-        List<Plan> finalList = new ArrayList<>(planSet);
-        return finalList;
+        return new ArrayList<>(planSet);
     }
 
     public void save(User user) {

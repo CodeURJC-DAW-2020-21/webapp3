@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.annotation.PostConstruct;
@@ -18,6 +19,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.List;
+import java.util.Date;
 import java.util.Optional;
 
 
@@ -80,6 +82,24 @@ public class GrowingController {
     }
 
 
+
+    @GetMapping("/newCategory")
+    public String newCategory(Model model){
+        model.addAttribute("category",new Category());
+        return "addCategory";
+    }
+
+    @PostMapping("/addNewCategory")
+    public String addCategory(@RequestParam String name, @RequestParam String description, @RequestParam String icon, @RequestParam String color){
+        Category category = new Category();
+        category.setName(name);
+        category.setDescription(description);
+        category.setColor(color);
+        category.setIcon(icon);
+        category.setDate(new Date());
+
+        return "redirect:/explore";
+    }
 
     @GetMapping("/404-NotFound")
     public String notFound(Model model, HttpServletRequest request){

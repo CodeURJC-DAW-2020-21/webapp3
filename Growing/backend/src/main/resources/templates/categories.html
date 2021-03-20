@@ -25,11 +25,14 @@
                 <li><a class="nav-link scrollto " href="/explore">Explore</a></li>
                 <li><a class="nav-link scrollto" href="/aboutUs">About us</a></li>
                 {{#registered}}
-                <li><a class="nav-link scrollto active" href="/profile"><i class="fas fa-user"></i></a>
+                <li><a class="nav-link scrollto" href="/profile"><i class="fas fa-user"></i></a>
                 </li>
-                <form action="/logout" method="post" >
-                    <input type="submit" value="Sign out" class="sign_out scrollto"/>
-                </form>
+                <li>
+                    <form action="/logout" method="post" >
+                        <input type="hidden" name="_csrf" value="{{token}}"/>
+                        <input type="submit" value="Sign out" class="sign_out scrollto"/>
+                    </form>
+                </li>
                 {{/registered}}
                 {{^registered}}
                 <li><a class="getstarted scrollto" href="/getStarted">Get Started</a></li>
@@ -39,6 +42,43 @@
         </nav><!-- .navbar -->
     </div>
 </header><!-- End Header -->
+{{#admin}}
+<div>
+    <div class="align-items-center">
+        <form action="/addCategory" method="post" class="sign-up-form" enctype="multipart/form-data">
+            <h2 class="title">Add Category</h2>
+            <!-- Name -->
+            <div class="input-field">
+                <i class="fas fa-user"></i>
+                <input type="text" name="name" placeholder="name" required/>
+            </div>
+            <!-- Name-->
+            <div class="input-field">
+                <i class="fas fa-user"></i>
+                <input type="text" name="description" placeholder="description" />
+            </div>
+            <!-- Surname -->
+            <div class="input-field">
+                <i class="fas fa-user"></i>
+                <input type="text" name="color" placeholder="color" />
+            </div>
+            <input type="hidden" name="_csrf" value="{{token}}"/>
+            <div class="input-field">
+                <i class="fas fa-image"></i>
+                <input type="file" name="icon" class="image-signUp"/>
+            </div>
+
+            <input type="submit" class="btn" value="Create category"/>
+        </form>
+    </div>
+</div>
+<!-- Add button for Admin User -->
+<div class="editCategory">
+    <input type="hidden" name="_csrf" value="{{token}}"/>
+    <button class="btnEditCategory" formmethod="post" type="submit" >Edit<i class="icon fas fas fa-pencil-alt"></i></button>
+</div>
+<!-- End add button for Admin User -->
+{{/admin}}
 
 <!-- ======= Categories ======= -->
 {{>categoryList}}

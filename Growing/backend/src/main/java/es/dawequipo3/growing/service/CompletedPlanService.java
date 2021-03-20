@@ -9,12 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 @Service
 public class CompletedPlanService {
 
@@ -32,9 +34,15 @@ public class CompletedPlanService {
         this.save(completed_plan);
     }
 
-    public List<Completed_plan> getCompletedPlanPageByNameSortedByDate(String name) {
-        Pageable pageable = PageRequest.of(0, 1);
-        Optional<User> user = userService.findUserByEmail(name);
+    public void DeleteCompletedPlan(String email,String name,long date){
+        User user= userService.findUserByEmail(email).get();
+        Plan plan= planService.findPlansByName(name).get();
+        completed_planRepository.deleteCompleted_planByUserAndPlanAndDate(user,plan,date);
+    }
+
+    public List<Completed_plan> getCompletedPlanPageByEmailSortedByDate(String email) {
+        Pageable pageable = PageRequest.of(0, 10);
+        Optional<User> user = userService.findUserByEmail(email);
         if (user.isPresent()) {
             return completed_planRepository.getCompleted_planByUserOrderByDateDesc(user.get(), pageable);
         }else{

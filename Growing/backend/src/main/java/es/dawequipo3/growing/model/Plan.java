@@ -1,10 +1,11 @@
 package es.dawequipo3.growing.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
-@Table(name = "plan")
 @Entity
 public class Plan {
 
@@ -18,7 +19,7 @@ public class Plan {
     @ManyToOne(cascade = CascadeType.ALL)
     private Category category;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "plan")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "plan")
     List<Completed_plan> completed_plans;
 
     @ManyToMany(mappedBy = "likedPlans")
@@ -70,6 +71,21 @@ public class Plan {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public String getIcon() {
+        return this.category.getIcon();
+    }
+
+
+    public String getUrlToFlag() {
+        if (this.difficulty == 1) {
+            return "greenFlag.png";
+        } else if (this.difficulty == 2) {
+            return "yellowFlag.png";
+        } else {
+            return "redFlag.png";
+        }
     }
 
     public boolean isLikedUser() {

@@ -1909,7 +1909,9 @@ section .team{
   border-radius: 8px;
   box-shadow: 0 5px #999;
 }
-
+.displayed {
+  display: inherit !important;
+}
 .finish:hover {background-color: #15bc1e
 }
 
@@ -1954,7 +1956,12 @@ section .team{
   }
 
 }
-
+td.email{
+  color: #000000;
+}
+td.name{
+  color: #000000;
+}
 .faq{
   background-color: #ffffff;
 }

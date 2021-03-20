@@ -28,7 +28,7 @@ public class User{
     @Column(nullable = false)
     private String surname;
 
-
+    @Column(nullable = false)
     private String encodedPassword;
 
     @Lob

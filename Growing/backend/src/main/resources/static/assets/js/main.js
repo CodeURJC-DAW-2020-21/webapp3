@@ -364,9 +364,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function LoadMore(ob){
     Global=ob();
-  $.get("/explore/"+Global)
-      .done(function (data){
-        $("#PlanList").append(data);
-      });
+    $("#PlanList").append("<img src=\"/assets/img/spinner.gif\" id=\"spinner\" class=\"mini\" alt=\"spinner\"/>");
+    $.get("/explore/"+Global)
+        .done(function (data){
+            $("#PlanList").append(data);
+            $("#spinner").remove();
+        });
 }
 

@@ -1952,6 +1952,30 @@ section .team{
   transform: translateY(4px);
 }
 
+.loadmore {
+  margin: 10px;
+  display: inline-block;
+  padding: 5px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #000000;
+  background-color: #98a212;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 5px #999;
+}
+
+.start:hover {background-color: #abb428
+}
+
+.start:active {
+  background-color: #98a212;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
 @media (max-width: 770px) {
   .imagenArbol{
     margin-left: 1em;

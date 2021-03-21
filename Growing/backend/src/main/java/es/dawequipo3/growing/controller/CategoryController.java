@@ -1,8 +1,10 @@
 package es.dawequipo3.growing.controller;
 
 import es.dawequipo3.growing.model.*;
+import es.dawequipo3.growing.repository.CategoryRepository;
 import es.dawequipo3.growing.repository.UserRepository;
 import es.dawequipo3.growing.service.*;
+import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,8 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -24,6 +28,9 @@ public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @Autowired
     private PlanService planService;
@@ -113,6 +120,42 @@ public class CategoryController {
         user.getUserFavoritesCategory().remove(category);
         userRepository.save(user);
         return "redirect:/categoryInfo/{name}";
+    }
+
+    @PostMapping("/editCategory/{categoryName}")
+    public String goToeditCategory(Model model, @PathVariable String categoryName, HttpServletRequest request){
+        Category category = categoryService.findByName(categoryName).orElseThrow();
+        model.addAttribute("category", category);
+        model.addAttribute("isProfile", false);
+        model.addAttribute("isCategory", true);
+        model.addAttribute("isPlan", false);
+        return "EditScreen";
+    }
+
+    @PostMapping("/editCategory/{categoryName}/completed")
+    public String goToeditCategory(Model model, @PathVariable String categoryName, @RequestParam String newName,
+                                   @RequestParam String newDescription, @RequestParam String color, MultipartFile imageFile) throws IOException {
+
+        Category category = categoryService.findByName(categoryName).orElseThrow();
+        if (!newName.isBlank()){
+            category.setName(newName);
+        }
+        if (!newDescription.isBlank()){
+            category.setDescription(newDescription);
+        }
+        if (!color.isBlank()){
+            category.setColor(color);
+        }
+
+        if (imageFile != null) {
+            if (!imageFile.isEmpty()) {
+                category.setIcon(BlobProxy.generateProxy(
+                        imageFile.getInputStream(), imageFile.getSize()));
+            }
+        }
+        categoryRepository.save(category);
+        return "redirect:/profile";
+
     }
 
 }

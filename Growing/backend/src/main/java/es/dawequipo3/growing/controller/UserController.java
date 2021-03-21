@@ -1,14 +1,16 @@
 package es.dawequipo3.growing.controller;
 
+import es.dawequipo3.growing.model.Category;
 import es.dawequipo3.growing.model.Completed_plan;
+import es.dawequipo3.growing.model.Plan;
 import es.dawequipo3.growing.model.User;
 import es.dawequipo3.growing.repository.UserRepository;
+import es.dawequipo3.growing.service.CategoryService;
 import es.dawequipo3.growing.service.CompletedPlanService;
+import es.dawequipo3.growing.service.PlanService;
 import es.dawequipo3.growing.service.UserService;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +22,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.security.Principal;
 import java.util.List;
 
 
@@ -39,6 +40,11 @@ public class UserController {
     @Autowired
     private CompletedPlanService completedPlanService;
 
+    @Autowired
+    private PlanService planService;
+
+    @Autowired
+    private CategoryService categoryService;
 
 
     @PostMapping("/getStarted/signUp")
@@ -68,6 +74,7 @@ public class UserController {
     @GetMapping("/profile")
     public String profile(Model model, HttpServletRequest request){
         String email = request.getUserPrincipal().getName();
+        model.addAttribute("category", categoryService.findAll());
         User user = userService.findUserByEmail(email).orElseThrow();
         model.addAttribute("user", user);
         model.addAttribute("admin", request.isUserInRole("ADMIN"));
@@ -87,6 +94,7 @@ public class UserController {
     @GetMapping("/profile/{emailSearched}")
     public String profileAdminTableRequestResult(Model model, @PathVariable String emailSearched, HttpServletRequest request) {
         String email = request.getUserPrincipal().getName();
+        model.addAttribute("category", categoryService.findAll());
         User user = userService.findUserByEmail(email).orElseThrow();
         model.addAttribute("user", user);
         model.addAttribute("admin", request.isUserInRole("ADMIN"));
@@ -100,8 +108,22 @@ public class UserController {
         String email = request.getUserPrincipal().getName();
         User user = userService.findUserByEmail(email).orElseThrow();
         model.addAttribute("user", user);
-        return "editProfile";
+        model.addAttribute("isProfile", true);
+        model.addAttribute("isCategory", false);
+        model.addAttribute("isPlan", false);
+        return "EditScreen";
     }
+
+    @PostMapping("/editPlan/{planName}")
+    public String editPlan(Model model, @PathVariable String planName, HttpServletRequest request){
+        Plan plan = planService.findPlanByName(planName).orElseThrow();
+        model.addAttribute("plan", plan);
+        model.addAttribute("isProfile", false);
+        model.addAttribute("isCategory", false);
+        model.addAttribute("isPlan", true);
+        return "EditScreen";
+    }
+
 
     @PostMapping("/editProfileAction")
     public String changeUserData(@RequestParam String username, @RequestParam String name,

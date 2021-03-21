@@ -4,6 +4,7 @@ package es.dawequipo3.growing.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.sql.Blob;
 import java.util.List;
 
 @Entity
@@ -77,7 +78,7 @@ public class Plan {
         this.category = category;
     }
 
-    public String getIcon() {
+    public Blob getIcon() {
         return this.category.getIcon();
     }
 

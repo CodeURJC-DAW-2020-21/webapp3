@@ -9,7 +9,7 @@
     {{>head}}
 
     <!-- Own CSS -->
-    <link rel="stylesheet" href="assets/css/editProfileStyle.css">
+    <link rel="stylesheet" href="/assets/css/editProfileStyle.css">
 </head>
 
 <body>
@@ -30,7 +30,7 @@
                     <li><a class="nav-link scrollto" href="/profile"><i class="fas fa-user"></i></a>
                     </li>
                     <li>
-                        <form action="/logout" method="post" >
+                        <form action="/logout" method="post">
                             <input type="hidden" name="_csrf" value="{{token}}"/>
                             <input type="submit" value="Sign out" class="sign_out scrollto"/>
                         </form>
@@ -52,26 +52,52 @@
         <div class="d-flex justify-content-center">
             <div class="container photo">
                 <div class="profile-background">
-                    <img class="profilePhoto" src="/profile/image" alt="profileImage">
+                    {{#isProfile}}
+                    <img class="photo" src="/image/profile" alt="profileImage">
+                    {{/isProfile}}
+                    {{#isCategory}}
+                    <img class="photo" src="/image/category/{{category.name}}" alt="profileImage">
+                    {{/isCategory}}
                 </div>
             </div>
         </div>
+        {{#isProfile}}
         <form method="post" action="/editProfileAction" enctype="multipart/form-data">
+            {{/isProfile}}
+            {{#isCategory}}
+            <form method="post" action="/editCategory/{{category.name}}/completed" enctype="multipart/form-data">
+            {{/isCategory}}
             <div class="contact-form row">
                 <!-- Email-->
                 <div class="d-flex justify-content-center">
+                    {{#isProfile}}
                     <input type="text" readonly class="form-control-plaintext" id="staticEmail" value={{user.email}}>
+                    {{/isProfile}}
                 </div>
-                <!-- Username -->
-                <div class="form-field col-lg-8">
+                <!-- Username or Category Name-->
+                <div class="form-field col-lg-12">
+                    {{#isProfile}}
                     <input id="userName" class="form-control" name="username" type="text" placeholder={{user.username}}>
                     <label for="userName" class="form-label">Username</label>
+                    {{/isProfile}}
+                    {{#isCategory}}
+                    <input id="categoryName" class="form-control" name="newName" type="text" placeholder={{category.name}}>
+                    <label for="categoryName" class="form-label">Name</label>
+                    {{/isCategory}}
                 </div>
                 <!-- Name-->
                 <div class="form-field col-lg-6">
+                    {{#isProfile}}
                     <input id="name" class="form-control" name="name" type="text" placeholder={{user.name}}>
                     <label for="name" class="form-label">Name</label>
+                    {{/isProfile}}
+                    {{#isCategory}}
+                    <label for="newDescription">
+                        <textarea id="newDescription" name='newDescription' rows=5 cols=40></textarea>
+                    </label>
+                    {{/isCategory}}
                 </div>
+                {{#isProfile}}
                 <!--Surname-->
                 <div class="form-field col-lg-6">
                     <input id="email" class="form-control" name="surname" type="text" placeholder={{user.surname}}>
@@ -89,6 +115,19 @@
                            placeholder="*******">
                     <label for="repeatPassword" class="form-label">Repeat Password</label>
                 </div>
+                {{/isProfile}}
+                {{#isCategory}}
+                <label for="color">Choose a color:</label>
+
+                <select name="color" id="color">
+                    <option value="orange">Orange</option>
+                    <option value="darkblue">Dark blue</option>
+                    <option value="purple">Purple</option>
+                    <option value="blue">Blue</option>
+                    <option value="red">Red</option>
+                    <option value="green">Green</option>
+                </select>
+                {{/isCategory}}
                 <!-- Change photo -->
                 <input type="file" name="imageFile" id="customFile">
                 <input type="hidden" name="_csrf" value="{{token}}"/>

@@ -1,16 +1,16 @@
 {{#Plan}}
 <div class="col-lg-6">
-    <div class="accordion accordion-flush" id="{{name}}">
+    <div class="accordion accordion-flush" id="{{abv}}">
         <div class="accordion-item">
             <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#faq-content-{{abv}}">
                     <div class="service-box orange">
                         <div class="profile-background explore">
-                            <img src="/image/category/{{category.name}}" class="photo icon">
+                            <img src="/image/category/{{category.name}}" class="mini">
                         </div>
                     </div>
-                    {{name}}<img src="/assets/img/level/{{getUrlToFlag}}" class="icon mini"/>
+                    {{name}}<img src="/assets/img/level/level{{difficulty}}.png" class="mini"/>
                     {{#admin}}
                     <a href="/editPlan/{{name}}"><i class="editIcon fas fa-pencil-alt fa-lg"></i></a>
                     {{/admin}}
@@ -21,20 +21,22 @@
                 <div class="accordion-body">
                     {{description}}
                     {{#registered}}
-                    <div class="col-9">
+                    <div class="col-7">
                         <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
-                        {{^likedUser}}
-                        <h2><img src="./assets/img/level/EmptyHeart.svg" class="like icon mini" onclick="ChangeHeart(this)"/></h2>
-                        {{/likedUser}}
-                        {{#likedUser}}
-                        <h2><img src="./assets/img/level/FullHeart.svg" class="like icon mini" onclick="ChangeHeart(this)"/></h2>
-                        {{/likedUser}}
                         <form method="post" action="/complete/{{name}}">
                             <input type="submit" class="finish" value="I did it!">
                             <input type="hidden" name="_csrf" value="{{token}}"/>
                         </form>
                         <button onclick="ChangeButtonsStatus(this)" class="leave">I won't finish
                         </button>
+                    </div>
+                    <div class="col-3">
+                        {{^likedUser}}
+                        <h2><img src="./assets/img/level/EmptyHeart.svg" class="like mini" onclick="ChangeHeart(this)"/></h2>
+                        {{/likedUser}}
+                        {{#likedUser}}
+                        <h2><img src="./assets/img/level/FullHeart.svg" class="like  mini" onclick="ChangeHeart(this)"/></h2>
+                        {{/likedUser}}
 
                     </div>
                     {{/registered}}
@@ -44,5 +46,4 @@
         </div>
     </div>
 </div>
-
 {{/Plan}}

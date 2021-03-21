@@ -1816,7 +1816,7 @@ section .team{
   color: #012970;
 }
 .mini{
-  height:3em;
+  height:1.5em;
   width:auto;
 }
 
@@ -2043,6 +2043,9 @@ td.name{
   max-width: 30vh;
 }
 
+.icon{
+  max-width: 20%;
+}
 
 .profile-background .photo{
   display: inline-block;

@@ -92,10 +92,10 @@
                                         data-bs-target="#faq-content-{{abv}}">
                                     <div class="service-box orange">
                                         <div class="profile-background explore">
-                                            <img src="/image/category/{{category.name}}" class="photo icon">
+                                            <img src="/image/category/{{category.name}}" class="mini">
                                         </div>
                                     </div>
-                                    {{name}}<img src="/assets/img/level/level{{difficulty}}.png" class="icon mini"/>
+                                    {{name}}<img src="/assets/img/level/level{{difficulty}}.png" class="mini"/>
                                     {{#admin}}
                                     <a href="/editPlan/{{name}}"><i class="editIcon fas fa-pencil-alt fa-lg"></i></a>
                                     {{/admin}}
@@ -117,10 +117,10 @@
                                     </div>
                                     <div class="col-3">
                                         {{^likedUser}}
-                                        <h2><img src="./assets/img/level/EmptyHeart.svg" class="like icon mini" onclick="ChangeHeart(this)"/></h2>
+                                        <h2><img src="./assets/img/level/EmptyHeart.svg" class="like mini" onclick="ChangeHeart(this)"/></h2>
                                         {{/likedUser}}
                                         {{#likedUser}}
-                                        <h2><img src="./assets/img/level/FullHeart.svg" class="like icon mini" onclick="ChangeHeart(this)"/></h2>
+                                        <h2><img src="./assets/img/level/FullHeart.svg" class="like  mini" onclick="ChangeHeart(this)"/></h2>
                                         {{/likedUser}}
 
                                     </div>

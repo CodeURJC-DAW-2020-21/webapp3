@@ -37,7 +37,7 @@ public class UserService {
 
         // Creation
         PagedListHolder<Plan> page = new PagedListHolder<>(plans);
-        page.setPageSize(4);
+        page.setPageSize(10);
         // Retrieval
         page.setPage(pageNum);
         return page.getPageList();

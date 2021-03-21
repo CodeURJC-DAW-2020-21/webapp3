@@ -45,7 +45,7 @@ public class EmailService {
             mailMessage.setFrom("dawequipo3sup@gmail.com");
             mailMessage.setTo(to);
             mailMessage.setSubject("Need to confirm your identity");
-            javaMailSender.send(mimeMessage);
+            //javaMailSender.send(mimeMessage);
         }
         catch (MessagingException ignored){
         }
@@ -79,7 +79,7 @@ public class EmailService {
             mailMessage.setFrom("dawequipo3sup@gmail.com");
             mailMessage.setTo(to);
             mailMessage.setSubject("Congratulations!");
-            javaMailSender.send(mimeMessage);
+            //javaMailSender.send(mimeMessage);
         } catch (MessagingException ignored) {
         }
     }

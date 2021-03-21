@@ -372,3 +372,15 @@ function LoadMore(ob){
         });
 }
 
+function openCloseForm() {
+    if (document.getElementById("myForm").style.display==="block"){
+        document.getElementById("myForm").style.display = "none";
+    }else{
+        document.getElementById("myForm").style.display = "block";
+    }
+}
+
+function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+}
+

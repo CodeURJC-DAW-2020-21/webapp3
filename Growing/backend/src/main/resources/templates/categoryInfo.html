@@ -77,10 +77,12 @@
                 <h2 class="subtitle">{{category.des}}</h2>
                 {{#admin}}
                 <!-- Add button for Admin User -->
-                <div class="editCategory">
+                <form class="editCategory" method="post" action="/editCategory/{{category.name}}">
+
                     <input type="hidden" name="_csrf" value="{{token}}"/>
-                    <button class="btnEditCategory" formmethod="post" type="submit" >Edit<i class="icon fas fas fa-pencil-alt"></i></button>
-                </div>
+
+                    <input class="btnEditCategory" type="submit" value="Edit">
+                </form>
                 <!-- End add button for Admin User -->
                 {{/admin}}
             </div>

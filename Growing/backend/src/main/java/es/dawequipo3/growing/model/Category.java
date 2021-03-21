@@ -1,7 +1,14 @@
 package es.dawequipo3.growing.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.engine.jdbc.BlobProxy;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+
 import javax.persistence.*;
+import java.io.IOException;
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,8 +21,12 @@ public class Category {
     @Id
     private String name;
     private String des;
-    private String icon;
+
+    @Lob
+    @JsonIgnore
+    private Blob icon;
     private String color;
+
 
     @Transient
     private boolean likedByUser;
@@ -32,22 +43,20 @@ public class Category {
     public Category() {
     }
 
-    public Category(String name, String des, String icon, String color, List<Plan> plans) {
-        super();
-        this.name = name;
-        this.des = des;
-        this.icon = icon;
-        this.color = color;
-        this.plans = plans;
-        this.plans = new ArrayList<>();
-    }
 
     public Category(String name, String description, String icon, String color) {
         super();
         this.name = name;
         this.des = description;
-        this.icon = icon;
         this.color = color;
+        this.plans = new ArrayList<>();
+        try{
+            Resource resource = new ClassPathResource("/static/images/"+icon+".png");
+            setIcon(BlobProxy.generateProxy(resource.getInputStream()
+                    ,resource.contentLength()));
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public String getName() {
@@ -66,7 +75,7 @@ public class Category {
         this.des = description;
     }
 
-    public String getIcon() {
+    public Blob getIcon() {
         return icon;
     }
 
@@ -86,7 +95,7 @@ public class Category {
         this.userFavoritesCategory = favorited_by;
     }
 
-    public void setIcon(String icon) {
+    public void setIcon(Blob icon) {
         this.icon = icon;
     }
 
@@ -136,4 +145,6 @@ public class Category {
     public int hashCode() {
         return Objects.hash(name, des, icon, color);
     }
+
+
 }

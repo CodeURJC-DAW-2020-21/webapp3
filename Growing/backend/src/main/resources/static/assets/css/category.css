@@ -42,11 +42,10 @@
     background-color: transparent;
 }
 
-.btn-edit{
-    color: #fa09d9;
-    font: 20px/1px FontAwesome ;
-    background-color: transparent;
+.editIcon{
+    padding-left: 10px;
 }
+
 
 a {
     color: #12a294;

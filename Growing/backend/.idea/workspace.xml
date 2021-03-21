@@ -6,10 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="83c00b7c-64de-4c2c-a7b9-d0498b57839c" name="Default Changelist" comment="Fixed explore file">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/model/Plan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/model/Plan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/assets/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/explore.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/explore.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/backend.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/es/dawequipo3/growing/model/User.java" afterDir="false" />
     </list>
     <list id="2b823ea8-0cd4-4937-ad72-b8a3713737f5" name="Revert &quot;Adding plans to some categories&quot;" comment="Revert &quot;Adding plans to some categories&quot;&#10;&#10;This reverts commit 5b2cb873" />
     <option name="SHOW_DIALOG" value="false" />
@@ -141,7 +142,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d91309e3-4583-42e1-b0c1-518c2e3bc484" name="Default Changelist" comment="" />
+      <changelist id="83c00b7c-64de-4c2c-a7b9-d0498b57839c" name="Default Changelist" comment="Fixed explore file" />
       <created>1614716751996</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -164,6 +165,8 @@
       <workItem from="1615984505209" duration="15082000" />
       <workItem from="1616113678145" duration="2142000" />
       <workItem from="1616154847598" duration="15158000" />
+      <workItem from="1616291247391" duration="1948000" />
+      <workItem from="1616329352620" duration="2936000" />
     </task>
     <task id="LOCAL-00001" summary="Port 8080 changed to 8443">
       <created>1614901668584</created>
@@ -214,7 +217,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616178117539</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Fixed explore flags and message">
+      <created>1616266054440</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1616266054440</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,7 +251,8 @@
     <MESSAGE value="Login via email" />
     <MESSAGE value="Edited the email message" />
     <MESSAGE value="Added PDF converter" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added PDF converter" />
+    <MESSAGE value="Fixed explore flags and message" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed explore flags and message" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

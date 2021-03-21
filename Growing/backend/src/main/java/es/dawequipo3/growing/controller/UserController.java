@@ -121,7 +121,7 @@ public class UserController {
             user.setSurname(surname);
         }
         if (!encodedPassword.isBlank() && (encodedPassword.equals(confirmEncodedPassword))){
-            user.setEncodedPassword(encodedPassword);
+            user.setEncodedPassword(passwordEncoder.encode(encodedPassword));
         }
         if (imageFile != null) {
             if (!imageFile.isEmpty()) {

@@ -13,39 +13,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class User{
+public class User {
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    List<Tree> trees;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    List<Completed_plan> completed_plans;
     @Id
     private String email;
-
     @Column(nullable = false, unique = true)
     private String username;
-
     @Column(nullable = false)
     private String name;
-
     @Column(nullable = false)
     private String surname;
-
     @Column(nullable = false)
     private String encodedPassword;
-
     @Lob
     @JsonIgnore
     private Blob imageFile;
-
     @Transient
     private String confirmEncodedPassword;
-
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles;
-
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "user_liked_plans",
             joinColumns = @JoinColumn(name = "liked_by_email"),
             inverseJoinColumns = @JoinColumn(name = "liked_plans_name"))
     private List<Plan> likedPlans;
-
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
             name = "category_user_liked",
@@ -53,16 +48,11 @@ public class User{
             inverseJoinColumns = @JoinColumn(name = "liked_categories_name"))
     private List<Category> userFavoritesCategory;
 
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-    List<Tree> trees;
-
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
-    List<Completed_plan> completed_plans;
-
-    public User() {}
+    public User() {
+    }
 
     //This constructor is for creating sample users
-    public User(String email, String username, String name, String surname, String encodedPassword, String...roles){
+    public User(String email, String username, String name, String surname, String encodedPassword, String... roles) {
         super();
         this.email = email;
         this.username = username;
@@ -70,12 +60,12 @@ public class User{
         this.surname = surname;
         this.encodedPassword = encodedPassword;
         this.roles = List.of(roles);
-        this.trees= new ArrayList<>();
-        try{
+        this.trees = new ArrayList<>();
+        try {
             Resource resource = new ClassPathResource("/static/images/defaultProfileImage.png");
             setImageFile(BlobProxy.generateProxy(resource.getInputStream()
-                    ,resource.contentLength()));
-        }catch (IOException e){
+                    , resource.contentLength()));
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -84,15 +74,16 @@ public class User{
         this.userFavoritesCategory.add(category);
     }
 
-    public boolean CategoryNameInTrees(Category category){
-        String name= category.getName();
-        for (Tree tree:this.trees){
-            if (tree.getCategory().getName().equals(name)){
+    public boolean CategoryNameInTrees(Category category) {
+        String name = category.getName();
+        for (Tree tree : this.trees) {
+            if (tree.getCategory().getName().equals(name)) {
                 return true;
             }
         }
         return false;
     }
+
     public String getEmail() {
         return email;
     }
@@ -185,7 +176,7 @@ public class User{
         this.imageFile = imageFile;
     }
 
-    public void addLikedPlan(Plan plan){
+    public void addLikedPlan(Plan plan) {
         this.likedPlans.add(plan);
     }
 }

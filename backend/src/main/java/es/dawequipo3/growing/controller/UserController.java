@@ -30,19 +30,15 @@ import java.util.List;
 @Controller
 public class UserController {
 
+    Logger logger = LoggerFactory.getLogger(UserController.class);
     @Autowired
     private UserService userService;
-
     @Autowired
     private UserRepository userRepository;
-
     @Autowired
     private PasswordEncoder passwordEncoder;
-
     @Autowired
     private CompletedPlanService completedPlanService;
-
-    Logger logger = LoggerFactory.getLogger(UserController.class);
     @Autowired
     private PlanService planService;
 
@@ -51,20 +47,21 @@ public class UserController {
 
     /**
      * This method allows the user to sign up after completing some parameters
-     * @param username the username
-     * @param surname the surname
-     * @param email the primary key, unique for each user
-     * @param name the name
-     * @param password the password
+     *
+     * @param username        the username
+     * @param surname         the surname
+     * @param email           the primary key, unique for each user
+     * @param name            the name
+     * @param password        the password
      * @param confirmPassword to check and prevent user mistakes
-     * @param imageFile profile image, can be empty. In this case, it will be provided with a default one
+     * @param imageFile       profile image, can be empty. In this case, it will be provided with a default one
      * @return
      * @throws IOException
      */
     @PostMapping("/getStarted/signUp")
-    public String signUp(Model model,HttpServletRequest request,
-            @RequestParam String username, @RequestParam String surname, @RequestParam String email,
-            @RequestParam String name,@RequestParam String password, @RequestParam String confirmPassword, MultipartFile imageFile) throws IOException {
+    public String signUp(Model model, HttpServletRequest request,
+                         @RequestParam String username, @RequestParam String surname, @RequestParam String email,
+                         @RequestParam String name, @RequestParam String password, @RequestParam String confirmPassword, MultipartFile imageFile) throws IOException {
 
 
         User user = new User(email, username, name, surname, password, "USER");
@@ -76,13 +73,13 @@ public class UserController {
         boolean error = !password.equals(confirmPassword);
 
         if (!imageFile.isEmpty()) {
-                user.setImageFile(BlobProxy.generateProxy(
-                        imageFile.getInputStream(), imageFile.getSize()));
+            user.setImageFile(BlobProxy.generateProxy(
+                    imageFile.getInputStream(), imageFile.getSize()));
         }
 
         error = userService.findUserByEmail(user.getEmail()).isPresent() || error;
 
-        if(error){
+        if (error) {
             return "redirect:/getStarted";
         }
 
@@ -93,13 +90,14 @@ public class UserController {
 
     /**
      * Redirect to the login and sign up page
+     *
      * @param model
      * @param request
      * @return getStarted.html
      */
 
     @GetMapping("/getStarted")
-    public String getStarted(Model model, HttpServletRequest request){
+    public String getStarted(Model model, HttpServletRequest request) {
         model.addAttribute("error", request.isRequestedSessionIdFromCookie());
         return "getStarted";
     }
@@ -107,12 +105,13 @@ public class UserController {
     /**
      * This get the user to its profile. If is admin, the profile card will be different and a historic table will appear
      * In that table, it can filter the users and remove tasks done by users.
+     *
      * @param model
      * @param request
      * @return
      */
     @GetMapping("/profile")
-    public String profile(Model model, HttpServletRequest request){
+    public String profile(Model model, HttpServletRequest request) {
         String email = request.getUserPrincipal().getName();
         model.addAttribute("category", categoryService.findAll());
         User user = userService.findUserByEmail(email).orElseThrow();
@@ -125,19 +124,20 @@ public class UserController {
 
     /**
      * This method receives the apply of the find button and charges the screen with the data
+     *
      * @param emailSearched
      * @return
      */
     @PostMapping("/profile/searchEmail")
     public String profileAdminTableRequest(@RequestParam String emailSearched) {
-        if (emailSearched.isBlank()){
+        if (emailSearched.isBlank()) {
             return "redirect:/profile";
-        }
-        else return "redirect:/profile/"+emailSearched;
+        } else return "redirect:/profile/" + emailSearched;
     }
 
     /**
      * This method charges the table with filtered results
+     *
      * @param model
      * @param emailSearched will be the parameter to filter its plans on the admin's table
      * @param request
@@ -157,12 +157,13 @@ public class UserController {
 
     /**
      * This method charges the edit screen with profile settings
+     *
      * @param model
      * @param request
      * @return
      */
     @GetMapping("/editProfile")
-    public String editProfile(Model model, HttpServletRequest request){
+    public String editProfile(Model model, HttpServletRequest request) {
         String email = request.getUserPrincipal().getName();
         User user = userService.findUserByEmail(email).orElseThrow();
         model.addAttribute("user", user);
@@ -174,27 +175,28 @@ public class UserController {
 
     /**
      * This method charges the edit screen with plan settings. Page only allowed to admin
+     *
      * @param model
      * @param request
      * @return
      */
     @GetMapping("/editPlan/{planName}")
-    public String goToeditPlan(Model model, @PathVariable String planName, HttpServletRequest request){
+    public String goToeditPlan(Model model, @PathVariable String planName, HttpServletRequest request) {
         Plan plan = planService.findPlanByName(planName).orElseThrow();
-        if (request.isUserInRole("ADMIN")){
+        if (request.isUserInRole("ADMIN")) {
             model.addAttribute("plan", plan);
             model.addAttribute("isProfile", false);
             model.addAttribute("isCategory", false);
             model.addAttribute("isPlan", true);
             return "EditScreen";
-        }
-        else return "redirect:/";
+        } else return "redirect:/";
     }
 
 
     /**
      * This method applies the change of the actual Plan parameters to the new ones filled on the forms only if the text
      * area is not blank
+     *
      * @param planName
      * @param newDescription
      * @param abv
@@ -203,17 +205,17 @@ public class UserController {
      */
     @PostMapping("/editCategory/{categoryName}/{planName}/completed")
     public String editPlan(@PathVariable String planName,
-                                   @RequestParam String newDescription, @RequestParam String abv, @RequestParam int difficulty){
+                           @RequestParam String newDescription, @RequestParam String abv, @RequestParam int difficulty) {
 
         Plan plan = planService.findPlanByName(planName).orElseThrow();
 
-        if (!newDescription.isBlank()){
+        if (!newDescription.isBlank()) {
             plan.setDescription(newDescription);
         }
 
         plan.setDifficulty(difficulty);
 
-        if (!abv.isBlank()){
+        if (!abv.isBlank()) {
             plan.setAbv(abv);
         }
 
@@ -222,20 +224,28 @@ public class UserController {
 
     }
 
-
+    /**
+     *
+     * @param category
+     * @param planName
+     * @param abv
+     * @param description
+     * @param difficulty
+     * @return
+     */
     @PostMapping("/categoryInfo/{category}/addPlan")
-    public String createPlan(@PathVariable String category ,@RequestParam String planName,@RequestParam String abv, @RequestParam String description,
-                             @RequestParam int difficulty){
+    public String createPlan(@PathVariable String category, @RequestParam String planName, @RequestParam String abv, @RequestParam String description,
+                             @RequestParam int difficulty) {
 
         boolean planExist = planService.findPlanByName(planName).isPresent();
         Category planCategory = categoryService.findByName(category).orElseThrow();
-        if(planExist){
-            editPlan(planName,description,abv,difficulty);
+        if (planExist) {
+            editPlan(planName, description, abv, difficulty);
         }
 
         logger.info(category);
 
-        Plan plan = new Plan(planName,description,difficulty,planCategory,abv);
+        Plan plan = new Plan(planName, description, difficulty, planCategory, abv);
         planService.save(plan);
 
         return "redirect:/categories";
@@ -243,6 +253,7 @@ public class UserController {
 
     /**
      * This method receives the data charged on the editProfile forms and saves the new user parameters
+     *
      * @param username
      * @param name
      * @param surname
@@ -262,16 +273,16 @@ public class UserController {
 
         String actualEmail = request.getUserPrincipal().getName();
         User user = userService.findUserByEmail(actualEmail).orElseThrow();
-        if (!username.isBlank()){
+        if (!username.isBlank()) {
             user.setUsername(username);
         }
-        if (!name.isBlank()){
+        if (!name.isBlank()) {
             user.setName(name);
         }
-        if (!surname.isBlank()){
+        if (!surname.isBlank()) {
             user.setSurname(surname);
         }
-        if (!encodedPassword.isBlank() && (encodedPassword.equals(confirmEncodedPassword))){
+        if (!encodedPassword.isBlank() && (encodedPassword.equals(confirmEncodedPassword))) {
             user.setEncodedPassword(passwordEncoder.encode(encodedPassword));
         }
         if (imageFile != null) {

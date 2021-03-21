@@ -10,7 +10,6 @@ import javax.persistence.*;
 import java.io.IOException;
 import java.sql.Blob;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,43 +17,43 @@ import java.util.Objects;
 @Entity
 public class Category {
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+    List<Tree> trees;
     @Id
     private String name;
     private String des;
-
     @Lob
     @JsonIgnore
     private Blob icon;
     private String color;
-
-
     @Transient
     private boolean likedByUser;
-
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "category")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     private List<Plan> plans;
-
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "category")
-    List<Tree> trees;
-
     @ManyToMany(mappedBy = "userFavoritesCategory")
     private List<User> userFavoritesCategory;
 
     public Category() {
     }
 
-
+    /**
+     *
+     * @param name
+     * @param description
+     * @param icon
+     * @param color
+     */
     public Category(String name, String description, String icon, String color) {
         super();
         this.name = name;
         this.des = description;
         this.color = color;
         this.plans = new ArrayList<>();
-        try{
-            Resource resource = new ClassPathResource("/static/images/"+icon+".png");
+        try {
+            Resource resource = new ClassPathResource("/static/images/" + icon + ".png");
             setIcon(BlobProxy.generateProxy(resource.getInputStream()
-                    ,resource.contentLength()));
-        }catch (IOException e){
+                    , resource.contentLength()));
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -79,6 +78,10 @@ public class Category {
         return icon;
     }
 
+    public void setIcon(Blob icon) {
+        this.icon = icon;
+    }
+
     public List<Tree> getTrees() {
         return trees;
     }
@@ -93,10 +96,6 @@ public class Category {
 
     public void setUserFavoritesCategory(List<User> favorited_by) {
         this.userFavoritesCategory = favorited_by;
-    }
-
-    public void setIcon(Blob icon) {
-        this.icon = icon;
     }
 
     public String getColor() {

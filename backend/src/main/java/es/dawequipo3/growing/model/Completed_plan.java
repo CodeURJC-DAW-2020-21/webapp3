@@ -47,6 +47,10 @@ public class Completed_plan {
         return plan.getName();
     }
 
+    /**
+     * The date is returned in the format:yyyy-MM-dd-HH:mm:ss:SSS
+     * @return
+     */
     public String getDate() {
         Calendar date = Calendar.getInstance();
         date.setTimeInMillis(this.date);

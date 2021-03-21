@@ -1,3 +1,5 @@
+//We use this script for change between the pages of sign in and sign up
+
 const sign_in_btn = document.querySelector("#sign-in-btn");
 const sign_up_btn = document.querySelector("#sign-up-btn");
 const container = document.querySelector(".container-login");

@@ -34,14 +34,14 @@ public class CompletedPlanService {
     private TreeService treeService;
 
 
-    public void save(Completed_plan completed_plan){
+    public void save(Completed_plan completed_plan) {
         completed_planRepository.save(completed_plan);
     }
 
-    public void deleteCompletedPlan(String email,String name,long date){
-        User user= userService.findUserByEmail(email).orElseThrow();
-        Plan plan= planService.findPlanByName(name).orElseThrow();
-        completed_planRepository.deleteCompleted_planByUserAndPlanAndDate(user,plan,date);
+    public void deleteCompletedPlan(String email, String name, long date) {
+        User user = userService.findUserByEmail(email).orElseThrow();
+        Plan plan = planService.findPlanByName(name).orElseThrow();
+        completed_planRepository.deleteCompleted_planByUserAndPlanAndDate(user, plan, date);
         Tree tree = treeService.findTree(email, plan.getCategory().getName()).orElseThrow();
         treeService.UpdateTreeRemovePlan(tree, plan);
     }
@@ -51,7 +51,7 @@ public class CompletedPlanService {
         Optional<User> user = userService.findUserByEmail(email);
         if (user.isPresent()) {
             return completed_planRepository.getCompleted_planByUserOrderByDateDesc(user.get(), pageable);
-        }else{
+        } else {
             return Collections.emptyList();
         }
     }
@@ -61,7 +61,7 @@ public class CompletedPlanService {
         Optional<User> user = userService.findUserByEmail(request.getUserPrincipal().getName());
         if (user.isPresent()) {
             return completed_planRepository.findAll();
-        }else{
+        } else {
             return Collections.emptyList();
         }
     }

@@ -2,12 +2,10 @@ package es.dawequipo3.growing.controller;
 
 import es.dawequipo3.growing.model.Category;
 import es.dawequipo3.growing.model.ChartData;
-import es.dawequipo3.growing.model.User;
 import es.dawequipo3.growing.repository.Completed_planRepository;
 import es.dawequipo3.growing.service.CategoryService;
 import es.dawequipo3.growing.service.PlanService;
 import es.dawequipo3.growing.service.TreeService;
-import es.dawequipo3.growing.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,6 +33,7 @@ public class RestCharts {
     /**
      * It loads the bar chart with real current user's data. In this case, the height achieved by the user on
      * each category
+     *
      * @param request
      * @return
      */
@@ -52,6 +51,7 @@ public class RestCharts {
     /**
      * It loads the doughnut chart with real current user's data. In this case, the number of likes given by the user on
      * each category
+     *
      * @param request
      * @return
      */
@@ -68,6 +68,7 @@ public class RestCharts {
     /**
      * It loads the radar chart with real current user's data. In this case, the number of tasks done by the user on
      * each category
+     *
      * @param request
      * @return
      */

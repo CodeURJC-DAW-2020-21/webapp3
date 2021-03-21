@@ -29,7 +29,12 @@ public class UserService {
     @Autowired
     private PlanService planService;
 
-
+    /**
+     *
+     * @param user
+     * @param pageNum
+     * @return
+     */
     public List<Plan> GetPageOfTopPlans(User user, int pageNum) {
 
 
@@ -40,14 +45,19 @@ public class UserService {
         page.setPageSize(10);
         // Retrieval
         page.setPage(pageNum);
-        if (pageNum>=page.getPageCount()){
+        if (pageNum >= page.getPageCount()) {
             return Collections.emptyList();
-        }else{
+        } else {
             return page.getPageList();
         }
 
     }
 
+    /**
+     *
+     * @param user
+     * @return
+     */
     public List<Plan> GetTopPlans(User user) {
         //First goes the liked plans
         List<Plan> firstResult = user.getLikedPlans();
@@ -62,6 +72,10 @@ public class UserService {
         return new ArrayList<>(planSet);
     }
 
+    /**
+     *
+     * @param user
+     */
     public void save(User user) {
         userRepository.save(user);
         for (Category category : categoryService.findAll()) {

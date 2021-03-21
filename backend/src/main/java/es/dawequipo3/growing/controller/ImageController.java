@@ -2,7 +2,6 @@ package es.dawequipo3.growing.controller;
 
 import es.dawequipo3.growing.model.Category;
 import es.dawequipo3.growing.model.User;
-import es.dawequipo3.growing.repository.UserRepository;
 import es.dawequipo3.growing.service.CategoryService;
 import es.dawequipo3.growing.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.Blob;
 import java.sql.SQLException;
 
 @Controller
@@ -30,6 +28,7 @@ public class ImageController {
 
     /**
      * This method allows the page to display the correspondent image, getting it from the user profile image (user.getImageFile())
+     *
      * @param request
      * @return ResponseEntity<Object>
      * @throws SQLException if image not found
@@ -54,6 +53,7 @@ public class ImageController {
 
     /**
      * This one is almost the same, only changes the origin of the photo, getting it from the category icon
+     *
      * @param categoryName name of the category which its icon will be displayed
      * @param request
      * @return ResponseEntity<Object>

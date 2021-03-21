@@ -14,16 +14,23 @@ import javax.servlet.http.HttpServletResponse;
 public class CSRFHandlerConfiguration extends WebMvcConfigurerAdapter {
 
     @Override
-    public void addInterceptors (InterceptorRegistry registry) {
+    public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new CSRFHandlerInterceptor());
     }
 }
 
 class CSRFHandlerInterceptor implements HandlerInterceptor {
-
+    /**
+     *
+     * @param request
+     * @param response
+     * @param handler
+     * @param modelAndView
+     * @throws Exception
+     */
     @Override
     public void postHandle(final HttpServletRequest request, final HttpServletResponse response, final Object handler, final ModelAndView modelAndView) throws Exception {
-        if (modelAndView != null){
+        if (modelAndView != null) {
             CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
             if (token != null) {
                 modelAndView.addObject("token", token.getToken());

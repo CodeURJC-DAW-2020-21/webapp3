@@ -4,7 +4,6 @@ package es.dawequipo3.growing.model;
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 @Entity
 public class Tree {
@@ -53,7 +52,7 @@ public class Tree {
             path = "/assets/img/progress/fase3.png";
         } else if (this.height < 80) {
             path = "/assets/img/progress/fase4.png";
-        }else{
+        } else {
             path = "/assets/img/progress/fase5.png";
         }
         return path;

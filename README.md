@@ -240,6 +240,39 @@ Finally, I also worked in the merges with the rest of the team and helped in the
 -getStarted.html
 
 ---
+**Marcos Robles Rodríguez**
+ #### Description
+In this Stage I have been the responsible of most of the database related tasks, this are:
+
+- Desing of the database
+- Modeling of the database
+- Development of the database
+- Development of needed methods for other functions
+
+I have been also the responsible of the algorithms, therefore, I designed and programmed them.
+
+I also changed the templates and the JS code when needed.
+
+Finally, I also worked in the merges with the rest of the team and helped in the conflicts and bugs the merges generated.
+
+---
+ #### Top 5 commits
+
+- https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/2d1e1c158c7b814daf8fa67a74fb6ad6e7cd206b
+- https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/fa0080491f453d966673ca0447faf363b2deffe8
+- https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/44485090f4a0ad7f9b6d80d2c85c9893f76ee7c8
+- https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/f610f9b37c7ed2f29fde61049d6e26a680cdfb6c
+- https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/650f7844b2169d6394b4b1f3649969e4ee647d6b
+
+---
+#### Top 5 files
+1. Growing/backend/src/main/java/es/dawequipo3/growing/repository/Completed_planReposiory.java
+2. Growing/backend/src/main/java/es/dawequipo3/growing/model/Completed_plan.java
+3. Growing/backend/src/main/java/es/dawequipo3/growing/model/Plan.java
+4. Growing/backend/src/main/java/es/dawequipo3/growing/model/Tree.java
+5. Growing/backend/src/main/java/es/dawequipo3/growing/model/User.java
+
+--
 ### Diagrams
 - ### Entity Relationship Diagram
  <img src="Stage 2 images/relationDB.svg" height="800px">

@@ -88,7 +88,7 @@
                                     <div class="service-box orange">
                                         <i class=" {{getIcon}} icon"></i>
                                     </div>
-                                    {{name}}<img src="/assets/img/level/{{getUrlToFlag}}" class="icon mini"/>
+                                    {{name}}<img src="/assets/img/level/level{{difficulty}}.png" class="icon mini"/>
                                 </button>
                             </h2>
                             <div id="faq-content-{{name}}" class="accordion-collapse collapse"
@@ -96,19 +96,22 @@
                                 <div class="accordion-body">
                                     {{description}}
                                     {{#registered}}
-                                    <div class="col-9">
+                                    <div class="col-7">
                                         <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
-                                        {{^likedUser}}
-                                        <h2><img src="./assets/img/level/EmptyHeart.svg" class="like icon mini" onclick="ChangeHeart(this)"/></h2>
-                                        {{/likedUser}}
-                                        {{#likedUser}}
-                                        <h2><img src="./assets/img/level/FullHeart.svg" class="like icon mini" onclick="ChangeHeart(this)"/></h2>{{/likedUser}}
                                         <form method="post" action="/complete/{{name}}">
                                             <input type="submit" class="finish" value="I did it!">
                                             <input type="hidden" name="_csrf" value="{{token}}"/>
                                         </form>
                                         <button onclick="ChangeButtonsStatus(this)" class="leave">I won't finish
                                         </button>
+                                    </div>
+                                    <div class="col-3">
+                                        {{^likedUser}}
+                                        <h2><img src="./assets/img/level/EmptyHeart.svg" class="like icon mini" onclick="ChangeHeart(this)"/></h2>
+                                        {{/likedUser}}
+                                        {{#likedUser}}
+                                        <h2><img src="./assets/img/level/FullHeart.svg" class="like icon mini" onclick="ChangeHeart(this)"/></h2>
+                                        {{/likedUser}}
 
                                     </div>
                                     {{/registered}}

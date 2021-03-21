@@ -61,15 +61,35 @@ public class GrowingController {
     @GetMapping("/explore")
     public String explore(Model model, HttpServletRequest request){
         model.addAttribute("registered", request.isUserInRole("USER"));
-        List<Plan> pages = planService.GetPageable(0);
-        model.addAttribute("Plan",pages);
+        List<Plan> page;
+        if(request.isUserInRole("USER")) {
+            String email = request.getUserPrincipal().getName();
+            User user = userService.findUserByEmail(email).orElseThrow();
+            page = userService.GetPageOfTopPlans(user,0);
+            for (Plan plan : page) {
+                plan.setLikedUser(planService.existsLiked(plan.getName(), user.getEmail()));
+            }
+        }else{
+            page = planService.GetPageable(0);
+        }
+        model.addAttribute("Plan",page);
         return "explore";
     }
 
     @GetMapping("/explore/{pageNumber}")
-    public String ExploreRequestPlanPage(Model model, @PathVariable int pageNumber) {
-        List<Plan> pages = planService.GetPageable(pageNumber);
-        model.addAttribute("Plan", pages);
+    public String ExploreRequestPlanPage(Model model, @PathVariable int pageNumber, HttpServletRequest request) {
+        model.addAttribute("registered", request.isUserInRole("USER"));
+        List<Plan> page;
+        if(request.isUserInRole("USER")) {
+            String email = request.getUserPrincipal().getName();
+            User user = userService.findUserByEmail(email).orElseThrow();
+            page = userService.GetPageOfTopPlans(user,pageNumber);
+            for (Plan plan : page) {
+                plan.setLikedUser(planService.existsLiked(plan.getName(), user.getEmail()));
+            }
+        }else{
+            page = planService.GetPageable(pageNumber);
+        }model.addAttribute("Plan", page);
         return "PlanTemplate";
     }
 

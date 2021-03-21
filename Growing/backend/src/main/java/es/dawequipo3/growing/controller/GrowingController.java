@@ -75,6 +75,7 @@ public class GrowingController {
 
     @GetMapping("/explore/{pageNumber}")
     public String ExploreRequestPlanPage(Model model, @PathVariable int pageNumber, HttpServletRequest request) {
+        model.addAttribute("registered", request.isUserInRole("USER"));
         List<Plan> page;
         if(request.isUserInRole("USER")) {
             String email = request.getUserPrincipal().getName();

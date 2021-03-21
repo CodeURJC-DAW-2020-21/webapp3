@@ -19,21 +19,10 @@
                     <div class="col-9">
                         <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
                         {{^likedUser}}
-                        <form action="/categoryInfo/{{category.name}}/{{name}}/like" method="post"
-                              class="like icon mini">
-                            <input type="hidden" name="_csrf" value="{{token}}"/>
-                            <input type="image" name="submit" src="/assets/img/level/EmptyHeart.svg"
-                                   class="like icon mini" alt="emptyHeart">
-                        </form>
+                        <h2><img src="./assets/img/level/EmptyHeart.svg" class="like icon mini" onclick="ChangeHeart(this)"/></h2>
                         {{/likedUser}}
                         {{#likedUser}}
-                        <form action="/categoryInfo/{{category.name}}/{{name}}/dislike"
-                              method="post">
-                            <input type="hidden" name="_csrf" value="{{token}}"/>
-                            <input type="image" name="submit" src="/assets/img/level/FullHeart.svg"
-                                   class="like icon mini" alt="filledHeart">
-                        </form>
-                        {{/likedUser}}
+                        <h2><img src="./assets/img/level/FullHeart.svg" class="like icon mini" onclick="ChangeHeart(this)"/></h2>{{/likedUser}}
                         <form method="post" action="/complete/{{name}}">
                             <input type="submit" class="finish" value="I did it!">
                             <input type="hidden" name="_csrf" value="{{token}}"/>

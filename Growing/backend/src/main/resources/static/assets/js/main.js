@@ -314,10 +314,20 @@ function RemoveCompletedPlan(row) {
 }
 
 function ChangeHeart(obj) {
-    if ($(obj).attr("src") === "/assets/img/level/EmptyHeart.svg") {
-        $(obj).attr("src", "/assets/img/level/FullHeart.svg");
+    var original=obj;
+    var planName=$(obj).attr("id");
+    while (planName===undefined){
+        obj=$(obj).parent();
+        planName=$(obj).attr("id");
+    }
+    planName=planName.substring(12);
+    console.log($(original).attr("src"));
+    if ($(original).attr("src") === "./assets/img/level/EmptyHeart.svg") {
+        $(original).attr("src", "./assets/img/level/FullHeart.svg");
+        $.get("/categoryInfo/"+planName+"/like");
     } else {
-        $(obj).attr("src", "/assets/img/level/EmptyHeart.svg");
+        $(original).attr("src", "./assets/img/level/EmptyHeart.svg");
+        $.get("/categoryInfo/"+planName+"/dislike");
     }
 }
 

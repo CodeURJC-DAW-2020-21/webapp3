@@ -40,7 +40,12 @@ public class UserService {
         page.setPageSize(10);
         // Retrieval
         page.setPage(pageNum);
-        return page.getPageList();
+        if (pageNum>=page.getPageCount()){
+            return Collections.emptyList();
+        }else{
+            return page.getPageList();
+        }
+
     }
 
     public List<Plan> GetTopPlans(User user) {

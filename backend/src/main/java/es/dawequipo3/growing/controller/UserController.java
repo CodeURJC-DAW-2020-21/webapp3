@@ -199,7 +199,6 @@ public class UserController {
     /**
      * This method applies the change of the actual Plan parameters to the new ones filled on the forms only if the text
      * area is not blank
-     * @param model
      * @param planName
      * @param newDescription
      * @param abv
@@ -207,7 +206,7 @@ public class UserController {
      * @return
      */
     @PostMapping("/editCategory/{categoryName}/{planName}/completed")
-    public String editPlan(Model model, @PathVariable String planName,
+    public String editPlan(@PathVariable String planName,
                                    @RequestParam String newDescription, @RequestParam String abv, @RequestParam int difficulty){
 
         Plan plan = planService.findPlanByName(planName).orElseThrow();
@@ -225,6 +224,25 @@ public class UserController {
         planService.save(plan);
         return "redirect:/";
 
+    }
+
+
+    @PostMapping("/categoryInfo/{category}/addPlan")
+    public String createPlan(@PathVariable String category ,@RequestParam String planName,@RequestParam String abv, @RequestParam String description,
+                             @RequestParam int difficulty){
+
+        boolean planExist = planService.findPlanByName(planName).isPresent();
+        Category planCategory = categoryService.findByName(category).orElseThrow();
+        if(planExist){
+            editPlan(planName,description,abv,difficulty);
+        }
+
+        logger.info(category);
+
+        Plan plan = new Plan(planName,description,difficulty,planCategory,abv);
+        planService.save(plan);
+
+        return "redirect:/categories";
     }
 
     /**

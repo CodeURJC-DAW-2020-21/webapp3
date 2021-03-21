@@ -186,23 +186,7 @@ public class CategoryController {
 
     }
 
-    @PostMapping("/categoryInfo/{category}/addPlan")
-    public String createPlan(@PathVariable String category,@RequestParam String planName, @RequestParam String description,
-                            @RequestParam int difficulty){
 
-
-        boolean error;
-        Plan newPlan = new Plan(planName,description,difficulty,category);
-        Category categoryName = categoryService.findByName(category).orElseThrow();
-        List<Plan> planList = categoryName.getPlans();
-        error = categoryService.findByName(newPlan.getName()).isPresent();
-        if(!error){
-            planList.add(newPlan);
-            categoryRepository.save(categoryName);
-        }
-
-        return "redirect:/categories";
-    }
 
     /**
      * This is the controller that receives the button signal and charges the Edit Screen correspondent

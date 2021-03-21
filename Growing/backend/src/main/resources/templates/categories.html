@@ -8,6 +8,7 @@
     <title>Growing - Categories</title>
 
     {{>head}}
+    <link href="/assets/css/category.css" rel="stylesheet">
 
 </head>
 <body>
@@ -44,37 +45,38 @@
 </header><!-- End Header -->
 {{#admin}}
 <!-- Add button for Admin User -->
-<br>
-<br>
-<br>
-<br>
 <div class="editCategory align-items-center">
-    <form action="/addCategory" method="post" class="sign-up-form" enctype="multipart/form-data">
-        <h2 class="title">Create Category</h2>
-        <!-- Category name -->
-        <div class="input-field">
-            <i class="fas fa-user"></i>
-            <input type="text" name="name" placeholder="name" required/>
-        </div>
-        <!-- Description-->
-        <div class="input-field">
-            <i class="fas fa-user"></i>
-            <input type="text" name="des" placeholder="description" required/>
-        </div>
-        <!-- Icon -->
-        <div class="input-field">
-            <i class="fas fa-user"></i>
-            <input type="text" name="icon" placeholder="icon" required/>
-        </div>
-        <!-- color -->
-        <div class="input-field">
-            <i class="fas fa-user"></i>
-            <input type="text" name="color" placeholder="color" required/>
-        </div>
+    <button class="addNew cat" onclick="javascript:openCloseForm()"  data-aos="fade-left">Add category</button>
+    <div class="form-popup" id="myForm">
+        <form action="/addCategory" method="post" class="sign-up-form form-container" enctype="multipart/form-data">
+            <h2 class="title">Create Category</h2>
+            <!-- Category name -->
+            <div class="input-field">
+                <i class="fas fa-signature"></i>
+                <input type="text" name="name" placeholder="name" required/>
+            </div>
+            <!-- Description-->
+            <div class="input-field">
+                <i class="far fa-comments"></i>
+                <input type="text" name="des" placeholder="description" required/>
+            </div>
+            <!-- Icon -->
+            <div class="input-field">
+                <i class="far fa-image"></i>
+                <input type="text" name="icon" placeholder="icon" required/>
+            </div>
+            <!-- color -->
+            <div class="input-field">
+                <i class="fas fa-palette"></i>
+                <input type="text" name="color" placeholder="color" required/>
+            </div>
 
-        <input type="submit" class="btn" value="Create plan"/>
-        <input type="hidden" name="_csrf" value="{{token}}"/>
-    </form>
+            <input type="submit" id="create" value="Create category"/>
+            <button type="button" id="cancel" onclick="javascript:closeForm()">Cancel</button>
+            <input type="hidden" name="_csrf" value="{{token}}"/>
+        </form>
+    </div>
+
 
 </div>
 <!-- End add button for Admin User -->

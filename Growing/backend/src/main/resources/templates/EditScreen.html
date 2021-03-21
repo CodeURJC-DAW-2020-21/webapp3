@@ -78,100 +78,102 @@
                 {{/isCategory}}
                 {{#isPlan}}
                 <form method="post" action="/editCategory/{{plan.category.name}}/{{plan.name}}/completed">
-                {{/isPlan}}
-                <div class="contact-form row">
-                    <!-- Email-->
-                    <div class="d-flex justify-content-center">
+                    {{/isPlan}}
+                    <div class="contact-form row">
+                        <!-- Email-->
+                        <div class="d-flex justify-content-center">
+                            {{#isProfile}}
+                            <input type="text" readonly class="form-control-plaintext" id="staticEmail"
+                                   value="{{user.email}}">
+                            {{/isProfile}}
+                            {{#isCategory}}
+                            <input type="text" readonly class="form-control-plaintext" id="staticCategoryName"
+                                   value="{{category.getName}}">
+                            {{/isCategory}}
+                            {{#isPlan}}
+                            <input type="text" readonly class="form-control-plaintext" id="staticPlanName"
+                                   value="{{plan.name}}">
+                            {{/isPlan}}
+                        </div>
+                        <!-- Username or Category or Plan Name-->
+                        <div class="form-field col-lg-12">
+                            {{#isProfile}}
+                            <input id="userName" class="form-control" name="username" type="text"
+                                   placeholder="{{user.username}}">
+                            <label for="userName" class="form-label">Username</label>
+                            {{/isProfile}}
+                            {{#isPlan}}
+                            <input id="abv" class="form-control" name="abv" type="text"
+                                   placeholder="{{plan.abv}}">
+                            <label for="abv" class="form-label">Abbreviation</label>
+                            {{/isPlan}}
+
+                        </div>
+                        <!-- Name-->
+
+                        <div class="form-field col-lg-6">
+                            {{#isProfile}}
+                            <input id="name" class="form-control" name="name" type="text" placeholder={{user.name}}>
+                            <label for="name" class="form-label">Name</label>
+                            {{/isProfile}}
+                            {{^isProfile}}
+                            <label for="newDescription">Description</label>
+                            <textarea id="newDescription" name="newDescription" rows="5" cols="80"></textarea>
+                            {{/isProfile}}
+
+                        </div>
                         {{#isProfile}}
-                        <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                               value="{{user.email}}">
+                        <!--Surname-->
+                        <div class="form-field col-lg-6">
+                            <input id="email" class="form-control" name="surname" type="text"
+                                   placeholder="{{user.surname}}">
+                            <label for="email" class="form-label">Surname</label>
+                        </div>
+                        <!-- Password -->
+                        <div class="form-field col-lg-6">
+                            <input type="password" id="password" name="encodedPassword" class="form-control"
+                                   placeholder="*******">
+                            <label for="password" class="form-label">Password</label>
+                        </div>
+                        <!-- Confirm Password -->
+                        <div class="form-field col-lg-6">
+                            <input type="password" id="repeatPassword" class="form-control"
+                                   name="confirmEncodedPassword"
+                                   placeholder="*******">
+                            <label for="repeatPassword" class="form-label">Repeat Password</label>
+                        </div>
                         {{/isProfile}}
+
                         {{#isCategory}}
-                        <input type="text" readonly class="form-control-plaintext" id="staticCategoryName"
-                               value="{{category.getName}}">
+                        <label for="color">Choose a color:</label>
+
+                        <select name="color" id="color">
+                            <option value="orange">Orange</option>
+                            <option value="darkblue">Dark blue</option>
+                            <option value="purple">Purple</option>
+                            <option value="blue">Blue</option>
+                            <option value="red">Red</option>
+                            <option value="green">Green</option>
+                        </select>
                         {{/isCategory}}
                         {{#isPlan}}
-                        <input type="text" readonly class="form-control-plaintext" id="staticPlanName"
-                               value="{{plan.name}}">
+                        <select name="difficulty" id="difficulty">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
                         {{/isPlan}}
-                    </div>
-                    <!-- Username or Category or Plan Name-->
-                    <div class="form-field col-lg-12">
-                        {{#isProfile}}
-                        <input id="userName" class="form-control" name="username" type="text"
-                               placeholder="{{user.username}}">
-                        <label for="userName" class="form-label">Username</label>
-                        {{/isProfile}}
-                        {{#isPlan}}
-                        <input id="abv" class="form-control" name="abv" type="text"
-                               placeholder="{{plan.abv}}">
-                        <label for="abv" class="form-label">Abbreviation</label>
+                        <!-- Change photo -->
+                        {{^isPlan}}
+                        <input type="file" name="imageFile" id="customFile">
                         {{/isPlan}}
-
+                        <input type="hidden" name="_csrf" value="{{token}}"/>
+                        <!-- Submit button-->
+                        <button type="submit" class="btn-submit">Confirm</button>
                     </div>
-                    <!-- Name-->
-
-                    <div class="form-field col-lg-6">
-                        {{#isProfile}}
-                        <input id="name" class="form-control" name="name" type="text" placeholder={{user.name}}>
-                        <label for="name" class="form-label">Name</label>
-                        {{/isProfile}}
-                        {{^isProfile}}
-                        <label for="newDescription">Description</label>
-                            <textarea id="newDescription" name="newDescription" rows="5" cols="80"></textarea>
-                        {{/isProfile}}
-
-                    </div>
-                    {{#isProfile}}
-                    <!--Surname-->
-                    <div class="form-field col-lg-6">
-                        <input id="email" class="form-control" name="surname" type="text"
-                               placeholder="{{user.surname}}">
-                        <label for="email" class="form-label">Surname</label>
-                    </div>
-                    <!-- Password -->
-                    <div class="form-field col-lg-6">
-                        <input type="password" id="password" name="encodedPassword" class="form-control"
-                               placeholder="*******">
-                        <label for="password" class="form-label">Password</label>
-                    </div>
-                    <!-- Confirm Password -->
-                    <div class="form-field col-lg-6">
-                        <input type="password" id="repeatPassword" class="form-control"
-                               name="confirmEncodedPassword"
-                               placeholder="*******">
-                        <label for="repeatPassword" class="form-label">Repeat Password</label>
-                    </div>
-                    {{/isProfile}}
-
-                    {{#isCategory}}
-                    <label for="color">Choose a color:</label>
-
-                    <select name="color" id="color">
-                        <option value="orange">Orange</option>
-                        <option value="darkblue">Dark blue</option>
-                        <option value="purple">Purple</option>
-                        <option value="blue">Blue</option>
-                        <option value="red">Red</option>
-                        <option value="green">Green</option>
-                    </select>
-                    {{/isCategory}}
-                    {{#isPlan}}
-                    <select name="difficulty" id="difficulty">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                    {{/isPlan}}
-                    <!-- Change photo -->
-                    {{^isPlan}}
-                    <input type="file" name="imageFile" id="customFile">
-                    {{/isPlan}}
-                    <input type="hidden" name="_csrf" value="{{token}}"/>
-                    <!-- Submit button-->
-                    <button type="submit" class="btn-submit">Confirm</button>
-                </div>
+                </form>
             </form>
+        </form>
     </div>
 </section>
 

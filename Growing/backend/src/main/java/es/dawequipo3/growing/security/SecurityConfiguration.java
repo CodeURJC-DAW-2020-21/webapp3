@@ -31,7 +31,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         // Public pages
-        http.authorizeRequests().antMatchers("/assets/**").permitAll();
+        http.authorizeRequests().antMatchers("/static/**").permitAll();
         http.authorizeRequests().antMatchers("/").permitAll();
         http.authorizeRequests().antMatchers("/categories").permitAll();
         http.authorizeRequests().antMatchers("/explore").permitAll();
@@ -50,7 +50,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/profile/image").hasAnyRole("USER");
         http.authorizeRequests().antMatchers("/complete/**").hasAnyRole("USER");
         http.authorizeRequests().antMatchers("/editProfile").hasAnyRole("USER");
-
+        http.authorizeRequests().antMatchers("/editCategory/**").hasAnyRole("ADMIN");
         // Login form
         http.formLogin().loginPage("/getStarted");
         http.formLogin().usernameParameter("email");

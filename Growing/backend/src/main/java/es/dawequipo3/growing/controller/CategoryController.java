@@ -133,19 +133,15 @@ public class CategoryController {
     }
 
     @PostMapping("/editCategory/{categoryName}/completed")
-    public String goToeditCategory(Model model, @PathVariable String categoryName, @RequestParam String newName,
+    public String editCategory(Model model, @PathVariable String categoryName,
                                    @RequestParam String newDescription, @RequestParam String color, MultipartFile imageFile) throws IOException {
 
         Category category = categoryService.findByName(categoryName).orElseThrow();
-        if (!newName.isBlank()){
-            category.setName(newName);
-        }
+
         if (!newDescription.isBlank()){
             category.setDescription(newDescription);
         }
-        if (!color.isBlank()){
-            category.setColor(color);
-        }
+        category.setColor(color);
 
         if (imageFile != null) {
             if (!imageFile.isEmpty()) {

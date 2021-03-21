@@ -114,14 +114,34 @@ public class UserController {
         return "EditScreen";
     }
 
-    @PostMapping("/editPlan/{planName}")
-    public String editPlan(Model model, @PathVariable String planName, HttpServletRequest request){
+    @GetMapping("/editPlan/{planName}")
+    public String goToeditPlan(Model model, @PathVariable String planName, HttpServletRequest request){
         Plan plan = planService.findPlanByName(planName).orElseThrow();
-        model.addAttribute("plan", plan);
-        model.addAttribute("isProfile", false);
-        model.addAttribute("isCategory", false);
-        model.addAttribute("isPlan", true);
-        return "EditScreen";
+        if (request.isUserInRole("ADMIN")){
+            model.addAttribute("plan", plan);
+            model.addAttribute("isProfile", false);
+            model.addAttribute("isCategory", false);
+            model.addAttribute("isPlan", true);
+            return "EditScreen";
+        }
+        else return "redirect:/";
+    }
+
+    @PostMapping("/editCategory/{categoryName}/{planName}/completed")
+    public String editPlan(Model model, @PathVariable String planName,
+                                   @RequestParam String newDescription, @RequestParam int difficulty){
+
+        Plan plan = planService.findPlanByName(planName).orElseThrow();
+
+        if (!newDescription.isBlank()){
+            plan.setDescription(newDescription);
+        }
+
+        plan.setDifficulty(difficulty);
+
+        planService.save(plan);
+        return "redirect:/";
+
     }
 
 

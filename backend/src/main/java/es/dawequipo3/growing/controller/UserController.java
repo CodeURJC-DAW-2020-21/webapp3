@@ -67,22 +67,20 @@ public class UserController {
             @RequestParam String name,@RequestParam String password, @RequestParam String confirmPassword, MultipartFile imageFile) throws IOException {
 
 
-        boolean error = false;
-
         User user = new User(email, username, name, surname, password, "USER");
-
-
 
         if (password.equals(confirmPassword)) {
             user.setPassword(passwordEncoder.encode(user.getEncodedPassword()));
         }
+
+        boolean error = !password.equals(confirmPassword);
 
         if (!imageFile.isEmpty()) {
                 user.setImageFile(BlobProxy.generateProxy(
                         imageFile.getInputStream(), imageFile.getSize()));
         }
 
-        error = userService.findUserByEmail(user.getEmail()).isPresent();
+        error = userService.findUserByEmail(user.getEmail()).isPresent() || error;
 
         if(error){
             return "redirect:/getStarted";
@@ -94,7 +92,7 @@ public class UserController {
         model.addAttribute("registered",request.isUserInRole("USER"));
         model.addAttribute("error", request.isRequestedSessionIdFromCookie());
 
-        return "redirect:/profile";
+        return "redirect:/";
     }
 
     /**

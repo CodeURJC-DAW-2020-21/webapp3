@@ -159,3 +159,37 @@ This page can only be accessed from the registered user / admin profile screen a
 Finally, in the following diagram, you can see all the navigation map inside the webapp:
 
 <img src="Stage 1 images/navigationDiagram.png">
+
+## PHASE 2
+
+### Participation of each member
+ 
+**Jorge Adame Prudencio**
+ #### Description
+- Mustache application in most of the screens
+- Chart adaptation to dynamic values
+- Edition of profile, category and plan data
+- Like functionality of plans and category (includes some queries to achieve it and modifying the chart)
+- Complete task functionality and adapting the correspondent chart
+- Email sending configuration
+- Error screens
+- Image display and its modification in each entity that have it (category, plan(only display) and user)
+
+---
+ #### Top 5 commits
+
+- https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/c5da51e324ed3abe663a0328aaf469dc8c13c9d7
+- https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/de17f8cc32c408b19d2d8574b3450b23afa9480b
+- https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/f785b6e1b34f690fe437e6fbe3fcbb74659d1a25#diff-2c43d4aeb1f25e53ee076b2e1299ecb65375904a1c13aed7d8e95cb9c5982e45
+- https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/69c5600b3c2280174e25515ac2eec04e686e777e#diff-342d230187298e3d544a13c39767b235c26ab6ab35213260dee9487c3e6ffef7 (the continuation of the previous one)
+- https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/794f4723820f51b3a5ef5982f3dc1bd9a629d3af
+- https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/1687d92368c5f789f2712d9a6b9a18c1652a6bdd
+
+---
+#### Top 5 files
+
+- EditScreen.html
+- controller/CategoryController.java
+- controller/UserController.java
+- dataBaseLoader.java
+- controller/PlanLikeController.java

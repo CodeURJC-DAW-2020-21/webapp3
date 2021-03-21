@@ -217,6 +217,27 @@ Finally, in the following diagram, you can see all the navigation map inside the
 - dataBaseLoader.java
 - controller/PlanLikeController.java
 
+**Antonio Agudo Esperanza**
+#### Description
+In this Stage, I have been doing the mustache configuration, unit test, Sign up of users and the validations of the forms and the creation of categories and plans:
+Finally, I also worked in the merges with the rest of the team and helped in the conflicts and bugs the merges generated.
+
+---
+#### Top 5 commits
+-https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/c0a9cb3f19103523f4a42bb14134bd16a49bf3a3
+-https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/fa65d283c77cf3fa4dd98032b84ff70ca01ea94f
+-https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/03a40b496ec6bd8e2d5e68e5dbd14c859670090c
+-https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/c8b879a8866e231362b96def99f2348a72d1d167
+-https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/ba988652ce750b10a962b632d52462ec0947838a
+
+---
+#### Top 5 files 
+
+-UserController.java
+-GrowingController.java
+-accordionCategories.html
+-GrowingApplicationTests.java
+-getStarted.html
 
 ---
 ### Diagrams

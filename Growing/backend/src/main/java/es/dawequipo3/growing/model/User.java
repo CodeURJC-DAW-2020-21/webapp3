@@ -2,8 +2,6 @@ package es.dawequipo3.growing.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import es.dawequipo3.growing.service.CategoryService;
-import es.dawequipo3.growing.service.TreeService;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -40,7 +38,6 @@ public class User{
 
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles;
-
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(

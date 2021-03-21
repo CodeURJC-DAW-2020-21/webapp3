@@ -54,23 +54,19 @@ public class CategoryController {
         return "redirect:/categories";
     }
 
-    @GetMapping("/RemoveCompletedPlan/")
-    public String RemoveCompletedPlan(Model model, @RequestParam String email, @RequestParam String name, @RequestParam String date) {
-        name=name.replace("+"," ");
+    @PostMapping("/removeCompletedPlan/{email}/{plan}/{date}")
+    public String removeCompletedPlan(@PathVariable String email, @PathVariable String plan, @PathVariable String date) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss:SSS");
         try {
             Date dateObject = format.parse(date);
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(dateObject);
             long milisecs = calendar.getTimeInMillis();
-            completedPlanService.DeleteCompletedPlan(email, name, milisecs);
+            completedPlanService.deleteCompletedPlan(email, plan, milisecs);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        List<Completed_plan> completed_planList = completedPlanService.getCompletedPlanPageByEmailSortedByDate(email);
-        model.addAttribute("admin", true);
-        model.addAttribute("CompletedPlan", completed_planList);
-        return "profile";
+        return "redirect:/profile";
     }
 
     @GetMapping("/categories")

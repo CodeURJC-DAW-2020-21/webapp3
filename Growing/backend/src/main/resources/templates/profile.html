@@ -11,13 +11,13 @@
 
     <!-- Delaration of vendor CSS. Put the self-made CSS down below -->
     {{>head}}
-    <link href="assets/css/profileStylesheet.css" rel="stylesheet">
+    <link href="/assets/css/profileStylesheet.css" rel="stylesheet">
 
     <!-- Scripts for ChartJS representation-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="assets/js/graphics.js"></script>
-    <script src="assets/vendor/html2pdf/html2pdf.bundle.min.js"></script>
+    <script src="/assets/js/graphics.js"></script>
+    <script src="/assets/vendor/html2pdf/html2pdf.bundle.min.js"></script>
 
 </head>
 
@@ -30,7 +30,7 @@
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
             <a href="/" class="logo d-flex align-items-center">
-                <img src="images/growingLogo.png" alt="">
+                <img src="/images/growingLogo.png" alt="">
             </a>
 
             <nav id="navbar" class="navbar">
@@ -198,7 +198,7 @@
                                 </div>
 
                                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-                                    <div class="service-box bluenavy">
+                                    <div class="service-box darkblue">
                                         <i class="ri-hotel-bed-fill icon"></i>
                                         <h3>Good Night</h3>
                                         <a href="/categoryInfo/Good Night" class="read-more"><span>Watch</span> <i
@@ -230,30 +230,7 @@
 
                     </section>
                     <!-- End CategoriesSection -->
-
-                    <!-- ======= Tasks completed Section ======= -->
-                    <section id="taskscompleted" class="taskscompleted">
-
-                        <div class="container">
-
-                            <header class="section-header" data-aos="fade-left">
-                                <h1>Tasks completed with like</h1>
-                                <h2>Here you have the tasks you liked of the seleted category</h2>
-                            </header>
-
-                            <div class="row completedTasks" data-aos="fade-up">
-                                <div class="col-lg-6">
-                                    <!-- Tasks completed List 1-->
-                                    {{>accordionCategories}}
-                                </div>
-
-                                <div class="col-lg-6">
-                                    <!-- Tasks completed List 2-->
-                                    {{>accordionCategories}}
-                                </div>
-                            </div>
-                        </div>
-                    </section><!-- End Tasks completed Section -->
+                    
 
                     <!-- Search Record of tasks completed by users and categories -->
                     {{#admin}}
@@ -261,8 +238,11 @@
                         <h1>Users and Categories</h1>
                         <br>
                         <div class="field" id="searchform">
-                            <input id="searchterm" placeholder="User that you are looking for" type="text"/>
-                            <button id="search" type="button" onclick="LoadTable()">Find!</button>
+                            <form method="post" action="/profile/searchEmail">
+                                <input type="hidden" name="_csrf" value="{{token}}"/>
+                                <input id="searchterm" name="emailSearched" placeholder="User that you are looking for" type="text"/>
+                                <input id="search" type="submit" value="Find!" onclick="LoadTable()">
+                            </form>
                         </div>
 
                         <table id="UsersTable">
@@ -278,7 +258,10 @@
                                 <td class="name">{{getPlanName}}</td>
                                 <td class="date">{{getDate}}</td>
                                 <td>
-                                    <button class="displayed leave " onclick="RemoveCompletedPlan(this)">Remove</button>
+                                    <form method="post" action="/removeCompletedPlan/{{email}}/{{getPlanName}}/{{date}}">
+                                        <input type="hidden" name="_csrf" value="{{token}}"/>
+                                        <input type="submit" value="Remove" class="displayed leave">
+                                    </form>
                                 </td>
                             </tr>
                             {{/CompletedPlan}}

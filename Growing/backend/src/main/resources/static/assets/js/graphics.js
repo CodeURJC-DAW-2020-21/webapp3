@@ -22,6 +22,14 @@ var color = Chart.helpers.color;
                     ]
                 },
                 options: {
+                    scales:{
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                min:0
+                            }
+                        }]
+                    },
                     legend: {display: false},
                     title: {
                         display: true,
@@ -80,6 +88,7 @@ var color = Chart.helpers.color;
                 data: {
                     labels: labels,
                     datasets: [{
+                        label: 'Your activity',
                         backgroundColor: color('rgba(18, 162, 148, 0.2)').rgbString(),
                         borderColor: "rgba(18, 162, 148, 0.8)",
                         pointBackgroundColor: "rgba(18, 162, 148, 1)",
@@ -90,16 +99,14 @@ var color = Chart.helpers.color;
                 options: {
                     bezierCurve: false,
                     responsive: true,
-                    legend: {
-                        position: 'top',
-                    },
                     title: {
                         display: true,
                         text: 'Number of tasks done by category'
                     },
                     scale: {
                         ticks: {
-                            beginAtZero: true
+                            beginAtZero: true,
+                            min:0
                         }
                     }
                 }

@@ -37,9 +37,9 @@
                                 <!-- This is to diferentiate if the like icon is appearing because the user is logged-->
                                 {{#registered}}
                                 {{^likedUser}}
-                                <form action="/categoryInfo/{{category.name}}/{{name}}/like" method="post" class="like icon mini">
+                                <form action="/categoryInfo/{{category.name}}/{{name}}/like" method="post">
                                     <input type="hidden" name="_csrf" value="{{token}}"/>
-                                    <input type="image" name="submit" src="/assets/img/level/EmptyHeart.svg" class="like icon mini" alt="emptyHeart">
+                                    <input type="image" name="submit" src="/assets/img/level/EmptyHeart.svg" class="like" alt="emptyHeart">
                                 </form>
                                 {{/likedUser}}
                                 {{#likedUser}}

@@ -14,6 +14,7 @@ public class Plan {
     private String name;
     private String description;
     private int difficulty;
+    @Column(unique = true)
     private String abv;
 
     @Transient

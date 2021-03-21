@@ -27,6 +27,12 @@ public class PlanLikeController {
     @Autowired
     private UserRepository userRepository;
 
+
+    /**
+     * Added to the user_liked_plans the relationship between the current user and the plan which has its abbreviation
+     * @param abbrev the abbreviation
+     * @param request
+     */
     @GetMapping("/categoryInfo/{abbrev}/like")
     public void likePlan(@PathVariable String abbrev, HttpServletRequest request){
         String email = request.getUserPrincipal().getName();
@@ -60,9 +66,5 @@ public class PlanLikeController {
         userRepository.save(user);
         return "redirect:/categoryInfo/"+ name;
     }
-
-
-
-
 
 }

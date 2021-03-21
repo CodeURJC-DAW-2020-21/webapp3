@@ -796,9 +796,8 @@ section {
 }
 
 .services .service-box .icon {
-  font-size: 36px;
   padding: 20px 20px;
-  max-height: 150px;
+  height: 150px;
   border-radius: 50px;
   position: relative;
   margin-bottom: 22px;

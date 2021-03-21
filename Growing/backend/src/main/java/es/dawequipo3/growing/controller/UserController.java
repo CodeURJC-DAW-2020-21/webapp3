@@ -49,7 +49,18 @@ public class UserController {
     @Autowired
     private CategoryService categoryService;
 
-
+    /**
+     * This method allows the user to sign up after completing some parameters
+     * @param username the username
+     * @param surname the surname
+     * @param email the primary key, unique for each user
+     * @param name the name
+     * @param password the password
+     * @param confirmPassword to check and prevent user mistakes
+     * @param imageFile profile image, can be empty. In this case, it will be provided with a default one
+     * @return
+     * @throws IOException
+     */
     @PostMapping("/getStarted/signUp")
     public String signUp(Model model,HttpServletRequest request,
             @RequestParam String username, @RequestParam String surname, @RequestParam String email,
@@ -86,12 +97,26 @@ public class UserController {
         return "redirect:/profile";
     }
 
+    /**
+     * Redirect to the login and sign up page
+     * @param model
+     * @param request
+     * @return getStarted.html
+     */
+
     @GetMapping("/getStarted")
     public String getStarted(Model model, HttpServletRequest request){
         model.addAttribute("error", request.isRequestedSessionIdFromCookie());
         return "getStarted";
     }
 
+    /**
+     * This get the user to its profile. If is admin, the profile card will be different and a historic table will appear
+     * In that table, it can filter the users and remove tasks done by users.
+     * @param model
+     * @param request
+     * @return
+     */
     @GetMapping("/profile")
     public String profile(Model model, HttpServletRequest request){
         String email = request.getUserPrincipal().getName();
@@ -104,6 +129,11 @@ public class UserController {
         return "profile";
     }
 
+    /**
+     * This method receives the apply of the find button and charges the screen with the data
+     * @param emailSearched
+     * @return
+     */
     @PostMapping("/profile/searchEmail")
     public String profileAdminTableRequest(@RequestParam String emailSearched) {
         if (emailSearched.isBlank()){
@@ -112,6 +142,13 @@ public class UserController {
         else return "redirect:/profile/"+emailSearched;
     }
 
+    /**
+     * This method charges the table with filtered results
+     * @param model
+     * @param emailSearched will be the parameter to filter its plans on the admin's table
+     * @param request
+     * @return
+     */
     @GetMapping("/profile/{emailSearched}")
     public String profileAdminTableRequestResult(Model model, @PathVariable String emailSearched, HttpServletRequest request) {
         String email = request.getUserPrincipal().getName();
@@ -124,6 +161,12 @@ public class UserController {
         return "profile";
     }
 
+    /**
+     * This method charges the edit screen with profile settings
+     * @param model
+     * @param request
+     * @return
+     */
     @GetMapping("/editProfile")
     public String editProfile(Model model, HttpServletRequest request){
         String email = request.getUserPrincipal().getName();
@@ -135,6 +178,12 @@ public class UserController {
         return "EditScreen";
     }
 
+    /**
+     * This method charges the edit screen with plan settings. Page only allowed to admin
+     * @param model
+     * @param request
+     * @return
+     */
     @GetMapping("/editPlan/{planName}")
     public String goToeditPlan(Model model, @PathVariable String planName, HttpServletRequest request){
         Plan plan = planService.findPlanByName(planName).orElseThrow();
@@ -148,6 +197,17 @@ public class UserController {
         else return "redirect:/";
     }
 
+
+    /**
+     * This method applies the change of the actual Plan parameters to the new ones filled on the forms only if the text
+     * area is not blank
+     * @param model
+     * @param planName
+     * @param newDescription
+     * @param abv
+     * @param difficulty
+     * @return
+     */
     @PostMapping("/editCategory/{categoryName}/{planName}/completed")
     public String editPlan(Model model, @PathVariable String planName,
                                    @RequestParam String newDescription, @RequestParam String abv, @RequestParam int difficulty){
@@ -169,6 +229,18 @@ public class UserController {
 
     }
 
+    /**
+     * This method receives the data charged on the editProfile forms and saves the new user parameters
+     * @param username
+     * @param name
+     * @param surname
+     * @param encodedPassword
+     * @param confirmEncodedPassword
+     * @param imageFile
+     * @param request
+     * @return
+     * @throws IOException if there is an error with the image
+     */
 
     @PostMapping("/editProfileAction")
     public String changeUserData(@RequestParam String username, @RequestParam String name,

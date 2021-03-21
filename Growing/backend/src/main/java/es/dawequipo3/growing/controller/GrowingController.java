@@ -50,6 +50,13 @@ public class GrowingController {
         }
     }
 
+    /**
+     * Inex page, only differentiated by the user log status on the getStarted or Sign Out button
+     * @param model
+     * @param request
+     * @return
+     */
+
     @GetMapping("/")
     public String index(Model model, HttpServletRequest request){
         model.addAttribute("registered",request.isUserInRole("USER"));
@@ -57,6 +64,13 @@ public class GrowingController {
         return "index";
     }
 
+    /**
+     * This method loads the first 10 random plans for the anonymous users and the recommended plans to registered ones
+     * If the user is admin, buttons of edit plans and category will appear.
+     * @param model
+     * @param request
+     * @return
+     */
 
     @GetMapping("/explore")
     public String explore(Model model, HttpServletRequest request){
@@ -77,6 +91,13 @@ public class GrowingController {
         return "explore";
     }
 
+    /**
+     * This method is the pagination, which loads the correspondent {pageNumber} page
+     * @param model
+     * @param request
+     * @param pageNumber this is the actual page loaded, which contains the elements inside it
+     * @return PlanTemplate.html
+     */
     @GetMapping("/explore/{pageNumber}")
     public String ExploreRequestPlanPage(Model model, @PathVariable int pageNumber, HttpServletRequest request) {
         model.addAttribute("registered", request.isUserInRole("USER"));
@@ -95,13 +116,24 @@ public class GrowingController {
         return "PlanTemplate";
     }
 
+    /**
+     * This loads the about us page
+     * @param model
+     * @param request
+     * @return
+     */
     @GetMapping("/aboutUs")
     public String aboutUs(Model model, HttpServletRequest request){
         model.addAttribute("registered", request.isUserInRole("USER"));
         return "AboutUs";
     }
 
-
+    /**
+     * This loads the resource not found page
+     * @param model
+     * @param request
+     * @return
+     */
 
     @GetMapping("/404-NotFound")
     public String notFound(Model model, HttpServletRequest request){
@@ -109,6 +141,12 @@ public class GrowingController {
         return "error/404";
     }
 
+    /**
+     * This loads the server error page
+     * @param model
+     * @param request
+     * @return
+     */
     @GetMapping("/500-ServerError")
     public String serverError(Model model, HttpServletRequest request){
         model.addAttribute("registered",request.isUserInRole("USER"));

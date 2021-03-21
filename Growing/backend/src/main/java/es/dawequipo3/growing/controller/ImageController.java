@@ -28,6 +28,12 @@ public class ImageController {
     private CategoryService categoryService;
 
 
+    /**
+     * This method allows the page to display the correspondent image, getting it from the user profile image (user.getImageFile())
+     * @param request
+     * @return ResponseEntity<Object>
+     * @throws SQLException if image not found
+     */
     @GetMapping("/image/profile")
     public ResponseEntity<Object> downloadProfileImage(HttpServletRequest request) throws SQLException {
 
@@ -46,6 +52,13 @@ public class ImageController {
         }
     }
 
+    /**
+     * This one is almost the same, only changes the origin of the photo, getting it from the category icon
+     * @param categoryName name of the category which its icon will be displayed
+     * @param request
+     * @return ResponseEntity<Object>
+     * @throws SQLException if image not found
+     */
     @GetMapping("/image/category/{categoryName}")
     public ResponseEntity<Object> downloadCategoryImage(@PathVariable String categoryName, HttpServletRequest request) throws SQLException {
 

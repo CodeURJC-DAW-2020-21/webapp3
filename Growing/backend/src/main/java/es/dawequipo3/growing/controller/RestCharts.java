@@ -28,42 +28,56 @@ public class RestCharts {
     @Autowired
     private TreeService treeService;
 
-    @Autowired
-    private UserService userService;
 
     @Autowired
     private Completed_planRepository completed_planRepository;
 
-
-
+    /**
+     * It loads the bar chart with real current user's data. In this case, the height achieved by the user on
+     * each category
+     * @param request
+     * @return
+     */
     @RequestMapping("/generateBarChart")
-    public ArrayList<ChartData> getBarChart(HttpServletRequest request){
+    public ArrayList<ChartData> getBarChart(HttpServletRequest request) {
         ArrayList<ChartData> categories = new ArrayList<>();
         String email = request.getUserPrincipal().getName();
-        for (Category category: categoryService.findAll()){
+        for (Category category : categoryService.findAll()) {
             categories.add(new ChartData(category.getName(), category.getColor(),
                     treeService.findTree(email, category.getName()).orElseThrow().getHeight()));
         }
         return categories;
     }
 
+    /**
+     * It loads the doughnut chart with real current user's data. In this case, the number of likes given by the user on
+     * each category
+     * @param request
+     * @return
+     */
     @RequestMapping("/generateDoughnutChart")
-    public ArrayList<ChartData> getDouhnutChart(HttpServletRequest request){
+    public ArrayList<ChartData> getDouhnutChart(HttpServletRequest request) {
         ArrayList<ChartData> categories = new ArrayList<>();
         String email = request.getUserPrincipal().getName();
-        for (Category category: categoryService.findAll()){
-            categories.add(new ChartData(category.getName(), category.getColor(), planService.likedplans(email,category.getName()).size()));
+        for (Category category : categoryService.findAll()) {
+            categories.add(new ChartData(category.getName(), category.getColor(), planService.likedplans(email, category.getName()).size()));
         }
         return categories;
     }
 
+    /**
+     * It loads the radar chart with real current user's data. In this case, the number of tasks done by the user on
+     * each category
+     * @param request
+     * @return
+     */
     @RequestMapping("/generateRadarChart")
-    public ArrayList<ChartData> getRadarChart(HttpServletRequest request){
+    public ArrayList<ChartData> getRadarChart(HttpServletRequest request) {
         ArrayList<ChartData> categories = new ArrayList<>();
         String email = request.getUserPrincipal().getName();
-        for (Category category: categoryService.findAll()){
+        for (Category category : categoryService.findAll()) {
             categories.add(new ChartData(category.getName(), category.getColor(),
-                   completed_planRepository.countTasksDoneByUserAndCategory(email, category.getName())));
+                    completed_planRepository.countTasksDoneByUserAndCategory(email, category.getName())));
         }
         return categories;
     }

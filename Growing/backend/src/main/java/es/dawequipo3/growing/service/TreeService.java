@@ -38,7 +38,7 @@ public class TreeService {
     public void UpdateTreeNewPlan(Tree tree,Plan plan, String email){
         int increase = (int) Math.pow(plan.getDifficulty(),2);
         int newHeight= tree.getHeight()+increase;
-        if (tree.getHeight() < 100 && tree.getHeight()+ newHeight >= 100)
+         if (tree.getHeight() < 40 && tree.getHeight()+ newHeight >= 40)
             emailService.sendEmailHeight(email, tree.getTreePK().getCategoryPK(), tree.getHeight() + newHeight);
         tree.setHeight(newHeight);
         tree.setLast_update(Calendar.getInstance().getTimeInMillis());

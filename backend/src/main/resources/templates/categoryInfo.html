@@ -35,7 +35,7 @@
                 <li><a class="nav-link scrollto" href="/profile"><i class="fas fa-user"></i></a>
                 </li>
                 <li>
-                    <form action="/logout" method="post" >
+                    <form action="/logout" method="post">
                         <input type="hidden" name="_csrf" value="{{token}}"/>
                         <input type="submit" value="Sign out" class="sign_out scrollto"/>
                     </form>
@@ -57,6 +57,12 @@
     <div class="container">
         <!-- Container of the header-->
         <header class="section-header category" data-aos="fade-left">
+            {{#admin}}
+            <form class="editCategory" method="post" action="/editCategory/{{category.name}}">
+                <input type="hidden" name="_csrf" value="{{token}}"/>
+                <input class="edit" type="submit" value="Edit category">
+            </form>
+            {{/admin}}
             <div class="justify-content-center">
                 <h1>{{category.name}}</h1>
 
@@ -75,48 +81,43 @@
                 {{/category.likedByUser}}
                 {{/registered}}
                 <h2 class="subtitle">{{category.des}}</h2>
-                {{#admin}}
-                <!-- Add button for Admin User -->
-                <div class="editCategory">
-                    <form action="/categoryInfo/{{name}}/addPlan" method="post" class="sign-up-form" enctype="multipart/form-data">
-                        <h2 class="title">Create plan</h2>
-                        <!-- Username -->
-                        <div class="input-field">
-                            <i class="fas fa-user"></i>
-                            <input type="text" name="planName" placeholder="name" required/>
-                        </div>
-                        <!-- Username -->
-                        <div class="input-field">
-                            <i class="fas fa-user"></i>
-                            <input type="text" name="abv" placeholder="name" required/>
-                        </div>
-                        <!-- Name-->
-                        <div class="input-field">
-                            <i class="fas fa-user"></i>
-                            <input type="text" name="description" placeholder="description" required/>
-                        </div>
-                        <!-- Surname -->
-                        <div class="input-field">
-                            <i class="fas fa-user"></i>
-                            <input type="number" name="difficulty" placeholder="difficulty" required/>
-                        </div>
-                        <input type="submit" class="btn" value="Create plan"/>
-                        <input type="hidden" name="_csrf" value="{{token}}"/>
-                    </form>
-
-                </div>
-                <form class="editCategory" method="post" action="/editCategory/{{category.name}}">
-
-                    <input type="hidden" name="_csrf" value="{{token}}"/>
-
-                    <input class="btnEditCategory" type="submit" value="Edit">
-                </form>
-                <!-- End add button for Admin User -->
-                {{/admin}}
             </div>
         </header>
         <!-- End of the container of the header-->
+        {{#admin}}
+        <!-- Add button for Admin User -->
+        <div class="editCategory align-items-center">
+            <button class="addNew" onclick="javascript:openCloseForm()" data-aos="fade-up">Add plan</button>
+            <div class="form-popup" id="myForm">
+                <form action="/categoryInfo/{{name}}/addPlan" method="post"
+                      class="sign-up-form form-container" enctype="multipart/form-data">
+                    <h2 class="title">Create new plan</h2>
+                    <!-- Plan name -->
+                    <div class="input-field">
+                        <i class="fas fa-signature"></i>
+                        <input type="text" name="planName" placeholder="name" required/>
+                    </div>
+                    <!-- Description-->
+                    <div class="input-field">
+                        <i class="far fa-comments"></i>
+                        <input type="text" name="description" placeholder="description" required/>
+                    </div>
+                    <!-- Difficulty -->
+                    <div class="input-field">
+                        <i class="fas fa-traffic-light"></i>
+                        <input type="number" min="1" max="3" name="difficulty" placeholder="level"
+                               required/>
+                    </div>
+                    <input type="submit" id="create" value="Create plan"/>
+                    <button type="button" id="cancel" onclick="javascript:closeForm()">Cancel</button>
+                    <input type="hidden" name="_csrf" value="{{token}}"/>
+                </form>
 
+            </div>
+        </div>
+
+        <!-- End add button for Admin User -->
+        {{/admin}}
         <div class="row" data-aos="fade-up">
             <!-- Tree section-->
             <div class="col-md-5">
@@ -140,15 +141,6 @@
             <div class="col-md-7 list">
                 <header class="section-header plan">
                     <h3>Task</h3>
-                    {{#admin}}
-                    <!-- Add button for Admin User -->
-                    <div class="add">
-
-                        <button id="btnAdd" class="btn-add"><i class="fas fa-plus-circle"></i></button>
-                    </div>
-                    <!-- End add button for Admin User -->
-                    {{/admin}}
-
                 </header>
 
                 {{>accordionCategories}}

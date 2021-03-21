@@ -2,6 +2,7 @@ package es.dawequipo3.growing.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,7 @@ public class EmailService {
                     "<h1 style=\"padding-top: 20px; color: white; font-size: 35px\">Confirm your email</h1>" +
                     "<p style=\"padding: 5px; color: white; font-size: 25px\">" +
                     "Welcome to Growing! Thank you very much for trusting us.<br> With Growing you will achieve your goals and see your progress.<br>" +
-                    "To confirm your email, click the button below:<br>" +
+                    "<br>" +
                     "<a href =\"https://localhost:8443/\" style=\"padding: 10px; border-radius: 10px; background-color: white; margin: 10px\">Confirm my account →</a>" +
                     "<br>" +
                     "Sincerely, the team of Growing <br><br>" +

@@ -44,21 +44,15 @@
                 <!-- Sign IN-->
                 <form action="/getStarted" method="post" class="sign-in-form">
                     <h2 class="title">Sign in</h2>
-                    {{#error}}
-                    <!--Error Message-->
-                    <div class="errorMessage error">
-                        <p class="textError">Incorrect email or password</p>
-                    </div>
-                    {{/error}}
                     <!--Email-->
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" name="email" placeholder="Email"/>
+                        <input type="email" name="email" placeholder="Email" required/>
                     </div>
                     <!-- Password -->
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" name="password" placeholder="Password"/>
+                        <input type="password" name="password" placeholder="Password" required/>
                     </div>
                     <input type="hidden" name="_csrf" value="{{token}}"/>
                     <input type="submit" value="Login" class="btn solid"/>
@@ -89,12 +83,12 @@
                     <!-- Password -->
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" name="password" placeholder="Password" required/>
+                        <input type="password" name="password" placeholder="Password" min="3" max="20"  required/>
                     </div>
                     <!-- Confirm Password -->
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" name="confirmPassword" placeholder="Confirm Password" required/>
+                        <input type="password" name="confirmPassword" placeholder="Confirm Password" min="3" max="20" required/>
                     </div>
                     <input type="hidden" name="_csrf" value="{{token}}"/>
                     <div class="input-field">

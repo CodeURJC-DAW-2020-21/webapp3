@@ -4,7 +4,9 @@
 }
 
 .editCategory{
+    float: right;
     align-items: center;
+    text-align: right;
     margin-top: 10px;
     height: 30%;
 }
@@ -20,6 +22,7 @@
     border-color: #ffffff;
     border-width: 5px;
 }
+
 .btnEditCategory i{
     padding-left: 10px;
 }
@@ -46,7 +49,6 @@
     padding-left: 10px;
 }
 
-
 a {
     color: #12a294;
     text-decoration: none;
@@ -54,4 +56,68 @@ a {
 a:hover {
     color: #717ff5;
     text-decoration: none;
+}
+
+.addNew {
+    background: #3169cd;
+    color: white;
+    border-radius: 8px;
+    margin-right: 15px;
+}
+
+.form-popup {
+    display: none;
+    position: fixed;
+    bottom: 35px;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+}
+
+.form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+}
+
+.form-container .btn {
+    background-color: #12a294;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+    text-color: white;
+}
+
+#create {
+    background-color: #12a294;
+    color: white;
+    padding:5px;
+    margin: 10px;
+    border-radius: 8px;
+    border: none;
+}
+
+#cancel {
+    background-color: red;
+    color: white;
+    padding:5px;
+    margin: 10px;
+    border-radius: 8px;
+    border: none;
+}
+
+.edit {
+    background: #11e03a;
+    color: white;
+    border-radius: 8px;
+    margin-right: 15px;
+    border: none;
+}
+
+.cat {
+    margin-top: 150px;
 }

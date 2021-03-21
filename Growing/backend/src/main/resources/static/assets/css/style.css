@@ -797,13 +797,15 @@ section {
 
 .services .service-box .icon {
   font-size: 36px;
-  padding: 40px 20px;
-  border-radius: 4px;
+  padding: 20px 20px;
+  max-height: 150px;
+  border-radius: 50px;
   position: relative;
-  margin-bottom: 25px;
+  margin-bottom: 22px;
   display: inline-block;
   line-height: 0;
   transition: 0.3s;
+  width: 150px;
 }
 
 .services .service-box h3 {
@@ -1818,6 +1820,10 @@ section .team{
   width:auto;
 }
 
+.icon{
+  height:1.5em;
+  width:1.5em;
+}
 #loading {
   position: absolute;
   top: 0;
@@ -1841,7 +1847,6 @@ section .team{
 }
 
 .like{
-  float: right;
   padding: 10px;
 }
 
@@ -2035,4 +2040,19 @@ td.name{
 
 .col-6{
   padding-top: 5px;
+}
+
+.photo{
+  max-width: 30vh;
+}
+
+
+.profile-background .photo{
+  display: inline-block;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.explore{
+  max-width: 80px;
 }

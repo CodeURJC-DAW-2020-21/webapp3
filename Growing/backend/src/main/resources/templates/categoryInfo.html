@@ -102,6 +102,12 @@
                     <button class="btnEditCategory" formmethod="post" type="submit" >Edit<i class="icon fas fas fa-pencil-alt"></i></button>
 
                 </div>
+                <form class="editCategory" method="post" action="/editCategory/{{category.name}}">
+
+                    <input type="hidden" name="_csrf" value="{{token}}"/>
+
+                    <input class="btnEditCategory" type="submit" value="Edit">
+                </form>
                 <!-- End add button for Admin User -->
                 {{/admin}}
             </div>
@@ -116,11 +122,11 @@
                 </header>
                 <div class="imagenArbol">
                     {{#registered}}
-                    <img class="progress" src="/assets/img/progress/fase5.png"/>
+                    <img class="progress" src="{{image}}"/>
                     <p class="update"> Last updated: {{date}} </p>
                     {{/registered}}
                     {{^registered}}
-                    <img class="progress" src="/assets/img/progress/fase5.png"/>
+                    <img class="progress" src="{{image}}"/>
                     <p class="update">To see your real progress: <a href="/getStarted">log in</a></p>
                     {{/registered}}
                 </div>

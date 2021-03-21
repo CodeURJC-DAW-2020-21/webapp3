@@ -87,7 +87,7 @@ public class UserController {
         }
 
         userService.save(user);
-        User userName = userRepository.findByUsername(user.getName()).orElseThrow();
+        User userName = userService.findUserByName(user.getName()).orElseThrow();
         model.addAttribute("user",userName);
         model.addAttribute("registered",request.isUserInRole("USER"));
         model.addAttribute("error", request.isRequestedSessionIdFromCookie());

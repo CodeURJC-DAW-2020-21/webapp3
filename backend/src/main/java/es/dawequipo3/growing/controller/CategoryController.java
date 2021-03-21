@@ -192,7 +192,7 @@ public class CategoryController {
         Category category = new Category(name, des, icon, color);
         error = categoryService.findByName(category.getName()).isPresent();
         if (!error) {
-            categoryRepository.save(category);
+            categoryService.save(category);
         }
 
         return "redirect:/categories";

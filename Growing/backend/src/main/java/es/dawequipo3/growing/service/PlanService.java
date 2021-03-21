@@ -57,7 +57,7 @@ public class PlanService {
     }
 
     public List<Plan> GetPageable(int page){
-        Pageable pageable = PageRequest.of(page, 4);
+        Pageable pageable = PageRequest.of(page, 10);
         return planRepository.findAll(pageable).getContent();
     }
 

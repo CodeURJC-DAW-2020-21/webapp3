@@ -6,6 +6,8 @@ import es.dawequipo3.growing.repository.UserRepository;
 import es.dawequipo3.growing.service.CompletedPlanService;
 import es.dawequipo3.growing.service.UserService;
 import org.hibernate.engine.jdbc.BlobProxy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -39,7 +41,7 @@ public class UserController {
     @Autowired
     private CompletedPlanService completedPlanService;
 
-
+    Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @PostMapping("/getStarted/signUp")
     public String signUp(Model model,HttpServletRequest request,

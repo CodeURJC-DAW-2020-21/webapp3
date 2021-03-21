@@ -4,6 +4,8 @@ import es.dawequipo3.growing.model.*;
 import es.dawequipo3.growing.repository.CategoryRepository;
 import es.dawequipo3.growing.repository.UserRepository;
 import es.dawequipo3.growing.service.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -128,13 +130,16 @@ public class CategoryController {
     public String addCategory(@RequestParam String name,@RequestParam String des,
                                  @RequestParam String icon, @RequestParam String color){
 
+        Logger logger = LoggerFactory.getLogger(UserController.class);
 
         boolean error = false;
+
+        logger.info("Entramos en el metododo");
         Category category = new Category(name,des,icon,color);
         error = categoryService.findByName(category.getName()).isPresent();
-
+        logger.info(category.getName());
         if(!error){
-            categoryService.save(category);
+            categoryRepository.save(category);
         }
 
         return "redirect:/categories";

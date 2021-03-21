@@ -52,26 +52,27 @@
     <form action="/addCategory" method="post" class="sign-up-form" enctype="multipart/form-data">
         <h2 class="title">Create Category</h2>
         <!-- Category name -->
+        <label for="newDescription">Name</label>
         <div class="input-field">
-            <i class="fas fa-user"></i>
             <input type="text" name="name" placeholder="name" required/>
         </div>
         <!-- Description-->
+        <label for="newDescription">Description</label>
         <div class="input-field">
-            <i class="fas fa-user"></i>
-            <input type="text" name="des" placeholder="description" required/>
-        </div>
-        <!-- Icon -->
-        <div class="input-field">
-            <i class="fas fa-user"></i>
-            <input type="text" name="icon" placeholder="icon" required/>
+            <textarea id="newDescription" name="des" rows="5" cols="80"></textarea>
         </div>
         <!-- color -->
-        <div class="input-field">
-            <i class="fas fa-user"></i>
-            <input type="text" name="color" placeholder="color" required/>
-        </div>
+        <label for="color">Choose a color:</label>
 
+        <select name="color" id="color">
+            <option value="orange">Orange</option>
+            <option value="darkblue">Dark blue</option>
+            <option value="purple">Purple</option>
+            <option value="blue">Blue</option>
+            <option value="red">Red</option>
+            <option value="green">Green</option>
+        </select>
+        <br>
         <input type="submit" class="btn" value="Create plan"/>
         <input type="hidden" name="_csrf" value="{{token}}"/>
     </form>

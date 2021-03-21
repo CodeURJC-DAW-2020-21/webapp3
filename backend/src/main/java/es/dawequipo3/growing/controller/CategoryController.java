@@ -172,18 +172,17 @@ public class CategoryController {
     }
 
     @PostMapping("/addCategory")
-    public String addCategory(@RequestParam String name,@RequestParam String des,
-                                 @RequestParam String icon, @RequestParam String color){
+    public String addCategory(@RequestParam String name,@RequestParam String des, @RequestParam String color){
 
         boolean error;
-
+        String icon = "defaultProfileImage";
         Category category = new Category(name,des,icon,color);
         error = categoryService.findByName(category.getName()).isPresent();
         if(!error){
             categoryRepository.save(category);
         }
 
-        return "categories";
+        return "redirect:/categories";
 
     }
 

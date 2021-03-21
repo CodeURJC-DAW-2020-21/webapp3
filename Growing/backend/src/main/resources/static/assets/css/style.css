@@ -1816,10 +1816,14 @@ section .team{
   color: #012970;
 }
 .mini{
-  height:1.5em;
+  height:3em;
   width:auto;
 }
 
+.icon{
+  height:1.5em;
+  width:1.5em;
+}
 #loading {
   position: absolute;
   top: 0;
@@ -1843,7 +1847,6 @@ section .team{
 }
 
 .like{
-  float: right;
   padding: 10px;
 }
 
@@ -2043,9 +2046,6 @@ td.name{
   max-width: 30vh;
 }
 
-.icon{
-  max-width: 20%;
-}
 
 .profile-background .photo{
   display: inline-block;

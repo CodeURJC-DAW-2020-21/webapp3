@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    {{#isCategory}}
+    <title>Growing - Edit category</title>
+    {{/isCategory}}
+
+    {{#isProfile}}
+    <title>Growing - Edit profile</title>
+    {{/isProfile}}
+
+    {{>head}}
+
+    <!-- Own CSS -->
+    <link rel="stylesheet" href="/assets/css/editProfileStyle.css">
+</head>
+
+<body>
+<section>
+    <header id="header" class="header fixed-top">
+        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+            <a href="/" class="logo d-flex align-items-center">
+                <img src="/images/growingLogo.png" alt="">
+            </a>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto" href="/">Home</a></li>
+                    <li><a class="nav-link scrollto" href="/categories">Categories</a></li>
+                    <li><a class="nav-link scrollto" href="/explore">Explore</a></li>
+                    <li><a class="nav-link scrollto" href="/aboutUs">About us</a></li>
+                    <li><a class="nav-link scrollto" href="/profile"><i class="fas fa-user"></i></a>
+                    </li>
+                    <li>
+                        <form action="/logout" method="post">
+                            <input type="hidden" name="_csrf" value="{{token}}"/>
+                            <input type="submit" value="Sign out" class="sign_out scrollto"/>
+                        </form>
+                    </li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+        </div>
+    </header><!-- End Header -->
+</section>
+
+<section class="edit_data">
+
+    <h1 class="title"> Edit your data</h1>
+
+    <div class="container">
+        <!-- Photo -->
+        <div class="d-flex justify-content-center">
+            <div class="container photo">
+                <div class="profile-background">
+                    {{#isProfile}}
+                    <img class="photo" src="/image/profile" alt="profileImage">
+                    {{/isProfile}}
+                    {{#isCategory}}
+                    <img class="photo" src="/image/category/{{category.name}}" alt="profileImage">
+                    {{/isCategory}}
+                    {{#isPlan}}
+                    <img class="photo" src="/image/category/{{plan.category.name}}" alt="profileImage">
+                    {{/isPlan}}
+                </div>
+            </div>
+        </div>
+        {{#isProfile}}
+        <form method="post" action="/editProfileAction" enctype="multipart/form-data">
+            {{/isProfile}}
+            {{#isCategory}}
+            <form method="post" action="/editCategory/{{category.name}}/completed" enctype="multipart/form-data">
+                {{/isCategory}}
+                {{#isPlan}}
+                <form method="post" action="/editCategory/{{plan.category.name}}/{{plan.name}}/completed">
+                {{/isPlan}}
+                <div class="contact-form row">
+                    <!-- Email-->
+                    <div class="d-flex justify-content-center">
+                        {{#isProfile}}
+                        <input type="text" readonly class="form-control-plaintext" id="staticEmail"
+                               value="{{user.email}}">
+                        {{/isProfile}}
+                        {{#isCategory}}
+                        <input type="text" readonly class="form-control-plaintext" id="staticCategoryName"
+                               value="{{category.getName}}">
+                        {{/isCategory}}
+                        {{#isPlan}}
+                        <input type="text" readonly class="form-control-plaintext" id="staticPlanName"
+                               value="{{plan.name}}">
+                        {{/isPlan}}
+                    </div>
+                    <!-- Username or Category or Plan Name-->
+                    <div class="form-field col-lg-12">
+                        {{#isProfile}}
+                        <input id="userName" class="form-control" name="username" type="text"
+                               placeholder="{{user.username}}">
+                        <label for="userName" class="form-label">Username</label>
+                        {{/isProfile}}
+                        {{#isPlan}}
+                        <input id="abv" class="form-control" name="abv" type="text"
+                               placeholder="{{plan.abv}}">
+                        <label for="abv" class="form-label">Abbreviation</label>
+                        {{/isPlan}}
+
+                    </div>
+                    <!-- Name-->
+
+                    <div class="form-field col-lg-6">
+                        {{#isProfile}}
+                        <input id="name" class="form-control" name="name" type="text" placeholder={{user.name}}>
+                        <label for="name" class="form-label">Name</label>
+                        {{/isProfile}}
+                        {{^isProfile}}
+                        <label for="newDescription">Description</label>
+                            <textarea id="newDescription" name="newDescription" rows="5" cols="80"></textarea>
+                        {{/isProfile}}
+
+                    </div>
+                    {{#isProfile}}
+                    <!--Surname-->
+                    <div class="form-field col-lg-6">
+                        <input id="email" class="form-control" name="surname" type="text"
+                               placeholder="{{user.surname}}">
+                        <label for="email" class="form-label">Surname</label>
+                    </div>
+                    <!-- Password -->
+                    <div class="form-field col-lg-6">
+                        <input type="password" id="password" name="encodedPassword" class="form-control"
+                               placeholder="*******">
+                        <label for="password" class="form-label">Password</label>
+                    </div>
+                    <!-- Confirm Password -->
+                    <div class="form-field col-lg-6">
+                        <input type="password" id="repeatPassword" class="form-control"
+                               name="confirmEncodedPassword"
+                               placeholder="*******">
+                        <label for="repeatPassword" class="form-label">Repeat Password</label>
+                    </div>
+                    {{/isProfile}}
+
+                    {{#isCategory}}
+                    <label for="color">Choose a color:</label>
+
+                    <select name="color" id="color">
+                        <option value="orange">Orange</option>
+                        <option value="darkblue">Dark blue</option>
+                        <option value="purple">Purple</option>
+                        <option value="blue">Blue</option>
+                        <option value="red">Red</option>
+                        <option value="green">Green</option>
+                    </select>
+                    {{/isCategory}}
+                    {{#isPlan}}
+                    <select name="difficulty" id="difficulty">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                    {{/isPlan}}
+                    <!-- Change photo -->
+                    {{^isPlan}}
+                    <input type="file" name="imageFile" id="customFile">
+                    {{/isPlan}}
+                    <input type="hidden" name="_csrf" value="{{token}}"/>
+                    <!-- Submit button-->
+                    <button type="submit" class="btn-submit">Confirm</button>
+                </div>
+            </form>
+    </div>
+</section>
+
+<!-- ======= Footer ======= -->
+{{>footer}}

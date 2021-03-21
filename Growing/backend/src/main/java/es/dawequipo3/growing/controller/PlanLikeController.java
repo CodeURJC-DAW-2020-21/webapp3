@@ -27,19 +27,19 @@ public class PlanLikeController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/categoryInfo/{planName}/like")
-    public void likePlan(@PathVariable String planName, HttpServletRequest request){
+    @GetMapping("/categoryInfo/{abbrev}/like")
+    public void likePlan(@PathVariable String abbrev, HttpServletRequest request){
         String email = request.getUserPrincipal().getName();
         User user = userService.findUserByEmail(email).orElseThrow();
-        user.getLikedPlans().add(planService.findPlanByName(planName).orElseThrow());
+        user.getLikedPlans().add(planService.findPlanByAbbr(abbrev));
         userRepository.save(user);
     }
 
-    @GetMapping("/categoryInfo/{planName}/dislike")
-    public void dislikePlan( @PathVariable String planName, HttpServletRequest request){
+    @GetMapping("/categoryInfo/{abbrev}/dislike")
+    public void dislikePlan( @PathVariable String abbrev, HttpServletRequest request){
         String email = request.getUserPrincipal().getName();
         User user = userService.findUserByEmail(email).orElseThrow();
-        user.getLikedPlans().remove(planService.findPlanByName(planName).orElseThrow());
+        user.getLikedPlans().remove(planService.findPlanByAbbr(abbrev));
         userRepository.save(user);
     }
 

@@ -49,6 +49,9 @@ public class PlanService {
 
     public Optional<Plan> findPlanByName(String name){return planRepository.findPlansByName(name);}
 
+    public Plan findPlanByAbbr(String abbr){
+        return planRepository.findPlansByAbv(abbr).orElseThrow();
+    }
     public void saveCompletedPlan(User user, Plan plan){
         completed_planRepository.save(new Completed_plan(user, plan));
     }

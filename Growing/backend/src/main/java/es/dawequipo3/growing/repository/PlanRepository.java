@@ -18,7 +18,7 @@ public interface PlanRepository extends JpaRepository<Plan,String> {
     @Query(value = "select count(*) from user_liked_plans where liked_plans_name= :plan and liked_by_email= :user", nativeQuery = true)
     Long existsLiked(String plan, String user);
 
-
+    public Optional<Plan> findPlansByAbv(String abv);
 
     @Query(value = "select * from plan where plan.category_name in ?1", nativeQuery = true)
     public List<Plan> getLikedPlanFromCategory(List<String> categoryList);

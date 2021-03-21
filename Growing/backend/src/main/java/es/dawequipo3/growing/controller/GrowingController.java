@@ -66,6 +66,9 @@ public class GrowingController {
             String email = request.getUserPrincipal().getName();
             User user = userService.findUserByEmail(email).orElseThrow();
             page = userService.GetPageOfTopPlans(user,0);
+            for (Plan plan : page) {
+                plan.setLikedUser(planService.existsLiked(plan.getName(), user.getEmail()));
+            }
         }else{
             page = planService.GetPageable(0);
         }
@@ -81,6 +84,9 @@ public class GrowingController {
             String email = request.getUserPrincipal().getName();
             User user = userService.findUserByEmail(email).orElseThrow();
             page = userService.GetPageOfTopPlans(user,pageNumber);
+            for (Plan plan : page) {
+                plan.setLikedUser(planService.existsLiked(plan.getName(), user.getEmail()));
+            }
         }else{
             page = planService.GetPageable(pageNumber);
         }model.addAttribute("Plan", page);

@@ -166,7 +166,8 @@ Finally, in the following diagram, you can see all the navigation map inside the
 - Requisites
  * Git
  * Maven
- * MySQL
+ * MySQL 8.0.23
+ * Java JDK 11
 
 ### Steps
 1. MySQL
@@ -222,5 +223,9 @@ Finally, in the following diagram, you can see all the navigation map inside the
 - ### Entity Relationship Diagram
  <img src="Stage 2 images/relationDB.svg" height="800px">
  
+- ### Classes and Templates Diagram
+<img src="Stage 2 images/classAndTemplatesDiagram.svg">
+
+***Note:*** For a better visualization, the image is an SVG file.
  - ### Navigation Diagram
  <img src="Stage 2 images/NavigationDiagramDAW.svg" height="800px">

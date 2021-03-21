@@ -39,13 +39,13 @@
                                 {{^likedUser}}
                                 <form action="/categoryInfo/{{category.name}}/{{name}}/like" method="post">
                                     <input type="hidden" name="_csrf" value="{{token}}"/>
-                                    <input type="image" name="submit" src="/assets/img/level/EmptyHeart.svg" class="like" alt="emptyHeart">
+                                    <input type="image" name="submit" src="/assets/img/level/EmptyHeart.svg" class="photoHeart like" alt="emptyHeart">
                                 </form>
                                 {{/likedUser}}
                                 {{#likedUser}}
                                 <form action="/categoryInfo/{{category.name}}/{{name}}/dislike" method="post">
                                     <input type="hidden" name="_csrf" value="{{token}}"/>
-                                    <input type="image" name="submit" src ="/assets/img/level/FullHeart.svg" class="like icon mini" alt="filledHeart">
+                                    <input type="image" name="submit" src ="/assets/img/level/FullHeart.svg" class="photoHeart like" alt="filledHeart">
                                 </form>
                                 {{/likedUser}}
                                 {{/registered}}

@@ -97,11 +97,11 @@
                 </header>
                 <div class="imagenArbol">
                     {{#registered}}
-                    <img class="progress" src="/assets/img/progress/fase5.png"/>
+                    <img class="progress" src="{{image}}"/>
                     <p class="update"> Last updated: {{date}} </p>
                     {{/registered}}
                     {{^registered}}
-                    <img class="progress" src="/assets/img/progress/fase5.png"/>
+                    <img class="progress" src="{{image}}"/>
                     <p class="update">To see your real progress: <a href="/getStarted">log in</a></p>
                     {{/registered}}
                 </div>

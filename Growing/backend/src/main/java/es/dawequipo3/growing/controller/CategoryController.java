@@ -92,6 +92,7 @@ public class CategoryController {
             String email = request.getUserPrincipal().getName();
             User user = userService.findUserByEmail(email).orElseThrow();
             model.addAttribute("date", treeService.findTree(email, category.getName()).orElseThrow().getDate());
+            model.addAttribute("image", treeService.findTree(email, category.getName()).orElseThrow().getImagePath());
             for (Plan plan : category.getPlans()) {
                 plan.setLikedUser(planService.existsLiked(plan.getName(), user.getEmail()));
             }

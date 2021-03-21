@@ -8,24 +8,22 @@ import java.util.Date;
 
 @Entity
 public class Tree {
-    @EmbeddedId
-    private TreePK treePK;
-    private int height;
-
-    @Column
-    private long last_update; //Stored as ms since epoch
-
     @ManyToOne
     @MapsId("userPK")
     User user;
-
     @ManyToOne
     @MapsId("categoryPK")
     Category category;
+    @EmbeddedId
+    private TreePK treePK;
+    private int height;
+    @Column
+    private long last_update; //Stored as ms since epoch
 
-    public Tree(User PKUser, Category PKCategory,int height, long last_update) {
+
+    public Tree(User PKUser, Category PKCategory, int height, long last_update) {
         super();
-        this.treePK = new TreePK(PKUser.getEmail(),PKCategory.getName());
+        this.treePK = new TreePK(PKUser.getEmail(), PKCategory.getName());
         this.height = height;
         this.last_update = last_update;
         this.user = PKUser;
@@ -33,16 +31,32 @@ public class Tree {
     }
 
     public Tree() {
-
     }
+
 
     public Tree(User PKUser, Category PKCategory) {
         super();
-        this.treePK = new TreePK(PKUser.getEmail(),PKCategory.getName());
+        this.treePK = new TreePK(PKUser.getEmail(), PKCategory.getName());
         this.height = 0;
         this.last_update = Calendar.getInstance().getTimeInMillis();
         this.user = PKUser;
         this.category = PKCategory;
+    }
+
+    public String getImagePath() {
+        String path;
+        if (this.height < 10) {
+            path = "/assets/img/progress/fase1.png";
+        } else if (this.height < 30) {
+            path = "/assets/img/progress/fase2.png";
+        } else if (this.height < 50) {
+            path = "/assets/img/progress/fase3.png";
+        } else if (this.height < 80) {
+            path = "/assets/img/progress/fase4.png";
+        }else{
+            path = "/assets/img/progress/fase5.png";
+        }
+        return path;
     }
 
     public TreePK getTreePK() {

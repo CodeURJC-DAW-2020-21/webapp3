@@ -19,7 +19,7 @@ import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-class GrowingApplicationTests {
+class GrowingApplicationTests extends GrowingApplication {
 
     @Autowired
     private UserService service;

@@ -193,3 +193,9 @@ Finally, in the following diagram, you can see all the navigation map inside the
 - controller/UserController.java
 - dataBaseLoader.java
 - controller/PlanLikeController.java
+
+
+---
+### Diagrams
+- ### Entity Relationship Diagram
+ <img src="Stage 2 images/relationDB.svg" height="800px">

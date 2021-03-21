@@ -22,14 +22,13 @@ public class EmailService {
         try {
             String message = "<section style=\"border-style:groove; border-color: #12a294; align-self: center\">"+
                     "<div style=\"text-align: center; margin: 25px;\">"+
-                    "<img alt= \"GROWING\" onclick=\"/\" src='cid:image'/>"+
                     "</div>"+
                     "<div style=\"background-color: #12a292; text-align: center; margin: 25px; border-radius: 8px\">"+
                     "<h1 style=\"padding-top: 20px; color: white; font-size: 35px\">Confirm your email</h1>"+
                     "<p style=\"padding: 5px; color: white; font-size: 25px\">"+
                     "Welcome to Growing! Thank you very much for trusting us.<br> With Growing you will achieve your goals and see your progress.<br>"+
                     "To confirm your email, click the button below:<br>"+
-                    "<button src =\"https://localhost:8443/\" style=\"padding: 10px; border-radius: 10px; background-color: white; margin: 10px\">Confirm my account →</button>"+
+                    "<a href =\"https://localhost:8443/\" style=\"padding: 10px; border-radius: 10px; background-color: white; margin: 10px\">Confirm my account →</a>"+
                     "<br>"+
                     "Sincerely, the team of Growing <br><br>"+
                     "</p>"+

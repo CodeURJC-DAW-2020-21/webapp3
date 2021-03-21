@@ -96,6 +96,9 @@
                                         </div>
                                     </div>
                                     {{name}}<img src="/assets/img/level/level{{difficulty}}.png" class="icon mini"/>
+                                    {{#admin}}
+                                    <a href="/editPlan/{{name}}"><i class="editIcon fas fa-pencil-alt fa-lg"></i></a>
+                                    {{/admin}}
                                 </button>
                             </h2>
                             <div id="faq-content-{{abv}}" class="accordion-collapse collapse"

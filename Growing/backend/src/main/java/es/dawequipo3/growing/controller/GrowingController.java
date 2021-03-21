@@ -63,6 +63,7 @@ public class GrowingController {
         model.addAttribute("registered", request.isUserInRole("USER"));
         List<Plan> page;
         if(request.isUserInRole("USER")) {
+            model.addAttribute("admin", request.isUserInRole("ADMIN"));
             String email = request.getUserPrincipal().getName();
             User user = userService.findUserByEmail(email).orElseThrow();
             page = userService.GetPageOfTopPlans(user,0);
@@ -84,6 +85,7 @@ public class GrowingController {
             String email = request.getUserPrincipal().getName();
             User user = userService.findUserByEmail(email).orElseThrow();
             page = userService.GetPageOfTopPlans(user,pageNumber);
+            model.addAttribute("admin", request.isUserInRole("ADMIN"));
             for (Plan plan : page) {
                 plan.setLikedUser(planService.existsLiked(plan.getName(), user.getEmail()));
             }

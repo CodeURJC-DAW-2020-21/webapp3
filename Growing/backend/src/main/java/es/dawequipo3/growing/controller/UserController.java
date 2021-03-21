@@ -129,7 +129,7 @@ public class UserController {
 
     @PostMapping("/editCategory/{categoryName}/{planName}/completed")
     public String editPlan(Model model, @PathVariable String planName,
-                                   @RequestParam String newDescription, @RequestParam int difficulty){
+                                   @RequestParam String newDescription, @RequestParam String abv, @RequestParam int difficulty){
 
         Plan plan = planService.findPlanByName(planName).orElseThrow();
 
@@ -138,6 +138,10 @@ public class UserController {
         }
 
         plan.setDifficulty(difficulty);
+
+        if (!abv.isBlank()){
+            plan.setAbv(abv);
+        }
 
         planService.save(plan);
         return "redirect:/";

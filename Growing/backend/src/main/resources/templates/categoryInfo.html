@@ -78,8 +78,29 @@
                 {{#admin}}
                 <!-- Add button for Admin User -->
                 <div class="editCategory">
-                    <input type="hidden" name="_csrf" value="{{token}}"/>
+                    <form action="/categoryInfo/{{category}}/addPlan" method="post" class="sign-up-form" enctype="multipart/form-data">
+                        <h2 class="title">Create plan</h2>
+                        <!-- Username -->
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <input type="text" name="planName" placeholder="name" required/>
+                        </div>
+                        <!-- Name-->
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <input type="text" name="description" placeholder="description" required/>
+                        </div>
+                        <!-- Surname -->
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <input type="number" name="difficulty" placeholder="difficulty" required/>
+                        </div>
+                        <input type="submit" class="btn" value="Create plan"/>
+                        <input type="hidden" name="_csrf" value="{{token}}"/>
+                    </form>
+
                     <button class="btnEditCategory" formmethod="post" type="submit" >Edit<i class="icon fas fas fa-pencil-alt"></i></button>
+
                 </div>
                 <!-- End add button for Admin User -->
                 {{/admin}}
@@ -113,6 +134,7 @@
                     {{#admin}}
                     <!-- Add button for Admin User -->
                     <div class="add">
+
                         <button id="btnAdd" class="btn-add"><i class="fas fa-plus-circle"></i></button>
                     </div>
                     <!-- End add button for Admin User -->

@@ -1,8 +1,11 @@
 package es.dawequipo3.growing.controller;
 
 import es.dawequipo3.growing.model.*;
+import es.dawequipo3.growing.repository.CategoryRepository;
 import es.dawequipo3.growing.repository.UserRepository;
 import es.dawequipo3.growing.service.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +29,9 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @Autowired
+    private CategoryRepository categoryRepository;
+
+    @Autowired
     private PlanService planService;
 
     @Autowired
@@ -40,9 +46,10 @@ public class CategoryController {
     @Autowired
     private CompletedPlanService completedPlanService;
 
+    Logger logger = LoggerFactory.getLogger(CategoryController.class);
 
     @PostMapping("/complete/{name}")
-    public String updateTree(Model model, @PathVariable String name, HttpServletRequest request) {
+    public String updateTree(@PathVariable String name, HttpServletRequest request) {
         Plan plan = planService.findPlanByName(name).orElseThrow();
         Category category = plan.getCategory();
         request.getUserPrincipal().getName();
@@ -71,7 +78,9 @@ public class CategoryController {
 
     @GetMapping("/categories")
     public String categories(Model model, HttpServletRequest request){
+        model.addAttribute("error",request.isRequestedSessionIdFromCookie());
         model.addAttribute("registered",request.isUserInRole("USER"));
+        model.addAttribute("admin",request.isUserInRole("ADMIN"));
         model.addAttribute("category", categoryService.findAll());
         return "categories";
     }
@@ -113,6 +122,41 @@ public class CategoryController {
         user.getUserFavoritesCategory().remove(category);
         userRepository.save(user);
         return "redirect:/categoryInfo/{name}";
+    }
+
+    @PostMapping("/addCategory")
+    public String addCategory(@RequestParam String name,@RequestParam String des,
+                                 @RequestParam String icon, @RequestParam String color){
+
+        boolean error;
+
+        Category category = new Category(name,des,icon,color);
+        error = categoryService.findByName(category.getName()).isPresent();
+        if(!error){
+            categoryRepository.save(category);
+        }
+
+        return "categories";
+
+    }
+
+    @PostMapping("/categoryInfo/{category}/addPlan")
+    public String createPlan(@PathVariable String category,@RequestParam String planName, @RequestParam String description,
+                            @RequestParam int difficulty){
+
+
+        boolean error;
+        logger.info(category);
+        Plan newPlan = new Plan(planName,description,difficulty,category);
+        Category categoryName = categoryService.findByName(category).orElseThrow();
+        List<Plan> planList = categoryName.getPlans();
+        error = categoryService.findByName(newPlan.getName()).isPresent();
+        if(!error){
+            planList.add(newPlan);
+            categoryRepository.save(categoryName);
+        }
+
+        return "redirect:/categories";
     }
 
 }

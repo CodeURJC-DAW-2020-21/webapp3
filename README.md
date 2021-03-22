@@ -165,7 +165,10 @@ Finally, in the following diagram, you can see all the navigation map inside the
 ### Executing instructions
 - Requisites
  * Git
- * Maven
+ * Spring Boot 2.4.3 
+ * Spring Security Web 5.4.2
+ * Spring Beans 5.3.4
+ * Maven 4.0.0
  * MySQL 8.0.23
  * Java JDK 11
 
@@ -217,6 +220,7 @@ Finally, in the following diagram, you can see all the navigation map inside the
 - dataBaseLoader.java
 - controller/PlanLikeController.java
 
+---
 **Antonio Agudo Esperanza**
 #### Description
 In this Stage, I have been doing the mustache configuration, unit test, Sign up of users and the validations of the forms and the creation of categories and plans:
@@ -271,6 +275,33 @@ Finally, I also worked in the merges with the rest of the team and helped in the
 3. Growing/backend/src/main/java/es/dawequipo3/growing/model/Plan.java
 4. Growing/backend/src/main/java/es/dawequipo3/growing/model/Tree.java
 5. Growing/backend/src/main/java/es/dawequipo3/growing/model/User.java
+
+---
+**Flavia Vásquez Gutiérrez**
+ #### Description
+In this second stage, I have done most of the security of our application. Doing taks like: change port 8080 to 8443, add https, encrypt user passwords and add CSRF security. 
+
+I have also added the technology to convert to PDF and edited some styles of the pages to make them much more visual for our users.
+
+Finally, I worked with my team in the merges and I helped to resolve some conflicts.
+
+---
+ #### Top 5 commits
+- [Port 8080 changed to 8443](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/d06557b2a00837dd74aa01cda494f0e85b411232)
+- [Added user database](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/66cf16e8fcd6280195cfb30f8bd1d50a72156524)
+- [Added 2 users in database](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/fde5f2b0cbacf1c3ef48056311a9169c87b33b3c)
+- [Added csrf security](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/db4fa3ede4591ee0e3a83590111214e50c32221f)
+- [Added PDF converter](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/ba3e04779ac330f2dce055dce460e7bb083c3f90)
+
+---
+#### Top 5 files
+1. [Growing/backend/src/main/resources/static/assets/js/main.js](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/Stage2GoodOne/Growing/backend/src/main/resources/static/assets/js/main.js)
+2. [Growing/backend/src/main/java/es/dawequipo3/growing/security/SecurityConfiguration.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/Stage2GoodOne/Growing/backend/src/main/java/es/dawequipo3/growing/security/SecurityConfiguration.java)
+3. [Growing/backend/src/main/java/es/dawequipo3/growing/security/RepositoryUserDetailsService.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/Stage2GoodOne/Growing/backend/src/main/java/es/dawequipo3/growing/security/RepositoryUserDetailsService.java)
+4. [Growing/backend/src/main/resources/keystore.jks](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/Stage2GoodOne/Growing/backend/src/main/resources/keystore.jks)
+5. [Growing/backend/src/main/java/es/dawequipo3/growing/security/CSRFHandlerConfiguration.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/dbUser/Growing/backend/src/main/java/es/dawequipo3/growing/security/CSRFHandlerConfiguration.java)
+
+*Postscript: as we have organized our project, the previous commits do not appear in the main branch, so I put the links of the branches prior to the change, where the commits appear*
 
 ---
 ### Diagrams

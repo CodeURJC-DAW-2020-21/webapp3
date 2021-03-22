@@ -141,6 +141,7 @@ Complementary technologies to be used are:
 
   - An algorithm will be used to recommend plans to the user based on their data such as their *likes* and their favorite category.
 
+---
 ## PHASE 1 <a name="phase1"></a>  
 ## Screenshots <a name="screenshots"></a>  
 ### Principal page <a name="ss1"></a>  
@@ -198,6 +199,7 @@ Finally, in the following diagram, you can see all the navigation map inside the
 
 <img src="Stage 1 images/navigationDiagram.png">
 
+---
 ## PHASE 2 <a name="phase2"></a>  
 
 ## Executing instructions <a name="execute"></a>  

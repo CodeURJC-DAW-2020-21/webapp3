@@ -60,11 +60,8 @@ public class CategoryController {
     @PostMapping("/complete/{name}")
     public String updateTree(@PathVariable String name, HttpServletRequest request) {
         Plan plan = planService.findPlanByName(name).orElseThrow();
-        Category category = plan.getCategory();
         request.getUserPrincipal().getName();
         User user = userService.findUserByEmail(request.getUserPrincipal().getName()).orElseThrow();
-        Tree tree = treeService.findTree(user.getEmail(), category.getName()).orElseThrow();
-        treeService.UpdateTreeNewPlan(tree, plan, user.getEmail());
         planService.saveCompletedPlan(user, plan);
 
         return "redirect:/categories";

@@ -1,9 +1,11 @@
 package es.dawequipo3.growing;
 
 import es.dawequipo3.growing.model.Category;
+import es.dawequipo3.growing.model.Completed_plan;
 import es.dawequipo3.growing.model.Plan;
 import es.dawequipo3.growing.model.User;
 import es.dawequipo3.growing.service.CategoryService;
+import es.dawequipo3.growing.service.CompletedPlanService;
 import es.dawequipo3.growing.service.PlanService;
 import es.dawequipo3.growing.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ public class DataBaseLoader {
     @Autowired
     private PlanService planService;
 
+    @Autowired
+    private CompletedPlanService completedPlanService;
+
     @PostConstruct
     public void dataInitialization() {
 
@@ -34,7 +39,8 @@ public class DataBaseLoader {
         // USER
         userService.save(new User("user@gmail", "user", "Evarist", "Oh", passwordEncoder.encode("pass"), "USER"));
         // ADMIN
-        userService.save(new User("admin@gmail", "admin", "Naomi", "Watts", passwordEncoder.encode("pass"), "ADMIN", "USER"));
+        User admin = new User("admin@gmail", "admin", "Naomi", "Watts", passwordEncoder.encode("pass"), "ADMIN", "USER");
+        userService.save(admin);
 
         // CATEGORIES
         categoryService.save(new Category("Mental health", "Because we know that having a good mental health is fundamental, we want to share with you some\n" +
@@ -59,9 +65,10 @@ public class DataBaseLoader {
         // PLANS
 
         // Mental Health
-        planService.save(new Plan("Yoga", "You don't like yoga? Come on! This is because you didn't" +
+        Plan yoga = new Plan("Yoga", "You don't like yoga? Come on! This is because you didn't" +
                 " start doing it. Play a class in YouTube and get into this healthy world!", 1,
-                categoryService.findByName("Mental health").orElseThrow(), "yoga"));
+                categoryService.findByName("Mental health").orElseThrow(), "yoga");
+        planService.save(yoga);
 
         planService.save(new Plan("Puzzle", "We are sure you have a small puzzle. " +
                 "Remove the dust of the box and chain 20 pieces. Let's go!", 1, categoryService.findByName("Mental health").orElseThrow(), "puzzle"));
@@ -81,8 +88,9 @@ public class DataBaseLoader {
         planService.save(new Plan("Cycling", "Who doesn't have a bicycle helmet and bike? Call your first" +
                 " friend on the agenda and go for a ride! Take care, road is dangerous. We hope you can mark this task as done", 2, categoryService.findByName("Physical health").orElseThrow(), "cycl"));
 
-        planService.save(new Plan("Running", "At this level you are an athlete, so the challenge is run " +
-                "10 kilometers, mark this task as done for each 10 you achieve", 2, categoryService.findByName("Physical health").orElseThrow(), "run"));
+        Plan running = new Plan("Running", "At this level you are an athlete, so the challenge is run " +
+                "10 kilometers, mark this task as done for each 10 you achieve", 2, categoryService.findByName("Physical health").orElseThrow(), "run");
+        planService.save(running);
 
         // Savings
         planService.save(new Plan("Candy savings", "Candys are beautiful, but they are not healthy. Remember" +
@@ -113,8 +121,9 @@ public class DataBaseLoader {
         planService.save(new Plan("Read a book", "Search a book of your most liked topic and read at least" +
                 " two chapters or 40 pages, we are sure you will disconnect", 2, categoryService.findByName("Good night").orElseThrow(), "read"));
 
-        planService.save(new Plan("Paint mandalas", "This one is very easy, buy a mandalas book and paint" +
-                " one", 1, categoryService.findByName("Good night").orElseThrow(), "mandala"));
+        Plan mandala = new Plan("Paint mandalas", "This one is very easy, buy a mandalas book and paint" +
+                " one", 1, categoryService.findByName("Good night").orElseThrow(), "mandala");
+        planService.save(mandala);
 
 
         // Focus and effort
@@ -124,10 +133,23 @@ public class DataBaseLoader {
         planService.save(new Plan("Lunges", "You have to complete 5 series of 20 lunges, with 30 second breaks!" +
                 " Don't mark this activity two consecutive days! we won't trust you, you need to rest one day minimum", 3, categoryService.findByName("Focus and Effort").orElseThrow(), "lunges"));
 
+        Plan abs = new Plan("Abs", "You have to complete 4 series of 20 abs, with 30 second breaks!" +
+                " This is the most difficult one, at the moment!", 3, categoryService.findByName("Focus and Effort").orElseThrow(), "abs");
+        planService.save(abs);
 
-        planService.save(new Plan("Abs", "You have to complete 4 series of 20 abs, with 30 second breaks!" +
-                " This is the most difficult one, at the moment!", 3, categoryService.findByName("Focus and Effort").orElseThrow(), "abs"));
-
+        planService.saveCompletedPlan(admin, abs);
+        planService.saveCompletedPlan(admin, abs);
+        planService.saveCompletedPlan(admin, abs);
+        planService.saveCompletedPlan(admin, abs);
+        planService.saveCompletedPlan(admin, mandala);
+        planService.saveCompletedPlan(admin, mandala);
+        planService.saveCompletedPlan(admin, running);
+        planService.saveCompletedPlan(admin, running);
+        planService.saveCompletedPlan(admin, running);
+        planService.saveCompletedPlan(admin, running);
+        planService.saveCompletedPlan(admin, running);
+        planService.saveCompletedPlan(admin, yoga);
+        planService.saveCompletedPlan(admin, yoga);
     }
 
 }

@@ -1,9 +1,6 @@
 package es.dawequipo3.growing.service;
 
-import es.dawequipo3.growing.model.Category;
-import es.dawequipo3.growing.model.Completed_plan;
-import es.dawequipo3.growing.model.Plan;
-import es.dawequipo3.growing.model.User;
+import es.dawequipo3.growing.model.*;
 import es.dawequipo3.growing.repository.Completed_planRepository;
 import es.dawequipo3.growing.repository.PlanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +20,9 @@ public class PlanService {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private TreeService treeService;
 
     @Autowired
     private Completed_planRepository completed_planRepository;
@@ -45,6 +45,8 @@ public class PlanService {
     }
 
     public void saveCompletedPlan(User user, Plan plan) {
+        Tree tree = treeService.findTree(user.getEmail(), plan.getCategory().getName()).orElseThrow();
+        treeService.UpdateTreeNewPlan(tree, plan, user.getEmail());
         completed_planRepository.save(new Completed_plan(user, plan));
     }
 

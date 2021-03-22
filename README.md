@@ -1,7 +1,43 @@
 <img src="Stage 0 images/Growing logo.png" width="350" height="100">
 
-## PHASE 0
-### Team Members
+# Table of Contents
+
+[**Phase 0**](#phase0)
+* [Team members](#team)
+* [Team Coordination Tools](#tools)
+* [Users permission](#users)
+* [Images](#images)
+* [Charts](#charts)
+* [Complementary Technologies](#technologies)
+* [Algorithm or advanced query](#algorithm)
+
+[**Phase 1**](#phase1)
+* [Screenshots](#screenshots)
+  * [Principal page](#ss1)
+  * [Categories](#ss2)
+  * [Explore](#ss3)
+  * [About us](#ss4)
+  * [GetStarted](#ss5)
+  * [Profile](#ss6)
+  * [Administrator profile](#ss7)
+  * [Edit profile](#ss8)
+* [Navigation diagram](#navigation1)
+
+[**Phase 2**](#phase2)
+* [Executing instructions](#execute)
+* [Participation of each member](#participation)
+  * [Jorge Adame Prudencio](#jorge)
+  * [Antonio Agudo Esperanza](#antonio)
+  * [Marcos Robles Rodríguez](#marcos)
+  * [Flavia Vásquez Gutiérrez](#flavia)
+* [Diagrams](#diagrams)
+  * [Entity Relationship Diagram](#entity)
+  * [Classes and Templates Diagram](#templates)
+  * [Navigation Diagram](#navigation2)
+
+---
+## PHASE 0  <a name="phase0"></a>  
+## Team Members  <a name="team"></a>  
 
  |    Name and Surname      |             Email              |  Git account  |
  |--------------------------|--------------------------------|---------------|
@@ -10,12 +46,12 @@
  | Marcos Robles Rodríguez  | m.roblesr.2018@alumnos.urjc.es |    mrcsrobles |
  | Flavia Vásquez Gutiérrez | f.vasquez.2018@alumnos.urjc.es |    flavia29   |
 
-### Team Coordination Tools
+## Team Coordination Tools <a name="tools"></a>  
 *Trello:* [DAW Equipo 3](https://trello.com/b/97ygOHja/daw-equipo3)
 ___
 Welcome to ***Growing***! In this application you can improve yourself by making good activities for your mental and physical health.
 
-## Entities
+## Entities <a name="entities"></a> 
 
   * **Users:** Users are the main entity of the application. They will be characterized by the following data:
     - User name.
@@ -53,7 +89,7 @@ As a result from the fact that an instance of the Plan entity can be associated 
 
 Because of users can have some favorite plans expressed with *like*, the relationship between this entities will be reflected in an N:M relationship, since a User can have several favorite plans and a Plan can be the favorite of more than one user.
 
-## Users permission
+## Users permission <a name="users"></a>  
 
 The application has three types of users, which are:
 
@@ -63,7 +99,7 @@ The application has three types of users, which are:
 
   * **Administrator user:** This user is allowed, in addition to the functionalities described for the previous type of user, to control the record of plans made by users marking them as incompleted, and adding / editing categories and plans.
 
-## Images
+## Images <a name="images"></a>  
 The web application will contain one or more images for each entity to increase user satisfaction and making UI more intuitive. These are defined to:
 
   * **User:** The user will have a profile photo / avatar that can be customized by selecting a file from their own device.
@@ -74,7 +110,7 @@ The web application will contain one or more images for each entity to increase 
 
   * **Category:** Each category is defined by an icon / image that can be chosen only by the *Administrator users* in order to graphically show the user the purpose of each one.
 
-## Charts
+## Charts <a name="charts"></a>  
 The application will have four charts. These will only be visible to *Registered users* and *Administrator users*.
 
 
@@ -91,25 +127,25 @@ The application will have four charts. These will only be visible to *Registered
     <img src="Stage 0 images/Radar Chart.png" width="350" height="300">
 
 
- ## Complementary Technologies
+ ## Complementary Technologies <a name="technologies"></a>  
 Complementary technologies to be used are:
 
   * **Sending emails to users:** Registered users will receive an email when they register in the application to confirm said email and also they will receive an email when a tree in a category achieve a specific height.
 
   * **PDFs Generation:** The user may require the system to view and save all their profile information and progress in the application in PDF format. **(Optional)**
 
- ## Algorithm or advanced query
+ ## Algorithm or advanced query <a name="algorithm"></a>  
   - An algorithm will be used to calculate the height of the tree, which it increases in relation to the plan's completion. Their new height will be defined by calculating its increase proportionally to the difficulty of the task and decreasing when the plans are uncompleted.
 
   - An algorithm will be used to recommend plans to the user based on their data such as their *likes* and their favorite category.
 
-## PHASE 1
-## Screenshots
-### Principal page
+## PHASE 1 <a name="phase1"></a>  
+## Screenshots <a name="screenshots"></a>  
+### Principal page <a name="ss1"></a>  
 This screen is the first one that all users see when they access the webapp. In this one, they can see basic information about the initiative, some info about the team like our values and finally some preview of the rest of funtionalities like the categories or a portfolio where they can see a snapshot of every screen.
  <img src="Stage 1 images/indexScreen.png">
 
-### Categories
+### Categories <a name="ss2"></a>
 Because of the main purpose of the webapp is encourage users to make activities, for the UX is a good practice separate them into categories defined by their finality. This ends in a main screen where all the web visitors can differentiate the principal classes. The main interaction lies in some boxes where each one has a title, a short description and finally a *Read More* button, arriving in the next screen explained. Finally, the admin will have visible a button where it can create new ones.
 
  <img src="Stage 1 images/categoriesScreen.png">
@@ -123,46 +159,46 @@ Because of the main purpose of the webapp is encourage users to make activities,
 
  <img src="Stage 1 images/mentalHealthScreen.png">
 
-### Explore
+### Explore <a name="ss3"></a>
 In this screen, all the users can see a random selection of plans that are included on the webpage.
 
  <img src="Stage 1 images/exploreScreen.png">
 
-### About us
+### About us <a name="ss4"></a>
 This screen only contains the main information about the team membership. This information is composed by a representative photography, the member's full name and its role inside the project.
 
  <img src="Stage 1 images/aboutUsScreen.png">
 
-### GetStarted
+### GetStarted <a name="ss5"></a>
 This screen has the main purpose to create new users or sign in users. When users came to this page, they will se the sign in (first picture), but easily can be transfered into the sign up section by clicking the *Sign Up* button.
 
  <img src="Stage 1 images/signInScreen.png">
  <img src="Stage 1 images/signUpScreen.png">
 
-### Profile
+### Profile <a name="ss6"></a>
 This screen is only visible to the registered users. Inside, users can see an information card, which has a button for traveling to the edition page, explained on a later snapshot; three charts that represents the progress they made and see by category all the plans they did and *dislike* them.
 
 <img src="Stage 1 images/profileScreen.png">  
 
-### Administrator profile
+### Administrator profile <a name="ss7"></a>
 This screen is almost the same screen than the previous one explained. The main differences are ubicated on the information card with the tag: *Admin account* and a table at the end of the page which allows the user to search the record of plans made searching for users and category.
 
 <img src="Stage 1 images/adminProfileScreen.png">
 
-### Edit profile
+### Edit profile <a name="ss8"></a>
 This page can only be accessed from the registered user / admin profile screen and is composed by a form with some inputs to change the personal information of the actual user.
 
 <img src="Stage 1 images/editProfileScreen.png">
 
 
-## Navigation diagram
+## Navigation diagram <a name="navigation1"></a>
 Finally, in the following diagram, you can see all the navigation map inside the webapp:
 
 <img src="Stage 1 images/navigationDiagram.png">
 
-## PHASE 2
+## PHASE 2 <a name="phase2"></a>  
 
-### Executing instructions
+## Executing instructions <a name="execute"></a>  
 - Requisites
  * Git
  * Spring Boot 2.4.3 
@@ -188,9 +224,9 @@ Finally, in the following diagram, you can see all the navigation map inside the
 
  * Go to *https://localhost:8443*
  
-### Participation of each member
+## Participation of each member <a name="participation"></a>  
  
-**Jorge Adame Prudencio**
+**Jorge Adame Prudencio** <a name="jorge"></a>
  #### Description
 - Mustache application in most of the screens
 - Chart adaptation to dynamic values
@@ -204,23 +240,24 @@ Finally, in the following diagram, you can see all the navigation map inside the
 ---
  #### Top 5 commits
 
-- [Tree update and email](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/c5da51e324ed3abe663a0328aaf469dc8c13c9d7)
-- [User profile image functionality.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/de17f8cc32c408b19d2d8574b3450b23afa9480b)
-- [Like functionality](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/f785b6e1b34f690fe437e6fbe3fcbb74659d1a25#diff-2c43d4aeb1f25e53ee076b2e1299ecb65375904a1c13aed7d8e95cb9c5982e45) - [Continuation of the commit](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/69c5600b3c2280174e25515ac2eec04e686e777e#diff-342d230187298e3d544a13c39767b235c26ab6ab35213260dee9487c3e6ffef7) (the continuation of the previous one, the IDE splitted in two)
-- [Category editing](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/794f4723820f51b3a5ef5982f3dc1bd9a629d3af)
-- [Adding more mustache](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/1687d92368c5f789f2712d9a6b9a18c1652a6bdd)
+- https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/c5da51e324ed3abe663a0328aaf469dc8c13c9d7
+- https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/de17f8cc32c408b19d2d8574b3450b23afa9480b
+- https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/f785b6e1b34f690fe437e6fbe3fcbb74659d1a25#diff-2c43d4aeb1f25e53ee076b2e1299ecb65375904a1c13aed7d8e95cb9c5982e45
+- https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/69c5600b3c2280174e25515ac2eec04e686e777e#diff-342d230187298e3d544a13c39767b235c26ab6ab35213260dee9487c3e6ffef7 (the continuation of the previous one)
+- https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/794f4723820f51b3a5ef5982f3dc1bd9a629d3af
+- https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/1687d92368c5f789f2712d9a6b9a18c1652a6bdd
 
 ---
 #### Top 5 files
 
-- [EditScreen.html](https://github.com/CodeURJC-DAW-2020-21/webapp3/blame/main/backend/src/main/resources/templates/EditScreen.html)
-- [CategoryController.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/controller/CategoryController.java)
-- [UserController.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/controller/UserController.java)
-- [dataBaseLoader.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/DataBaseLoader.java)
-- [PlanLikeController.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blame/main/backend/src/main/java/es/dawequipo3/growing/controller/PlanLikeController.java)
+- EditScreen.html
+- controller/CategoryController.java
+- controller/UserController.java
+- dataBaseLoader.java
+- controller/PlanLikeController.java
 
 ---
-**Antonio Agudo Esperanza**
+**Antonio Agudo Esperanza** <a name="antonio"></a>
 #### Description
 In this Stage, I have been doing the mustache configuration, unit test, Sign up of users and the validations of the forms and the creation of categories and plans:
 Finally, I also worked in the merges with the rest of the team and helped in the conflicts and bugs the merges generated.
@@ -243,7 +280,7 @@ Finally, I also worked in the merges with the rest of the team and helped in the
 - getStarted.html
 
 ---
-**Marcos Robles Rodríguez**
+**Marcos Robles Rodríguez** <a name="marcos"></a>
  #### Description
 In this Stage I have been the responsible of most of the database related tasks, this are:
 
@@ -276,7 +313,7 @@ Finally, I also worked in the merges with the rest of the team and helped in the
 5. Growing/backend/src/main/java/es/dawequipo3/growing/model/User.java
 
 ---
-**Flavia Vásquez Gutiérrez**
+**Flavia Vásquez Gutiérrez** <a name="flavia"></a>
  #### Description
 In this second stage, I have done most of the security of our application. Doing taks like: change port 8080 to 8443, add https, encrypt user passwords and add CSRF security. 
 
@@ -303,13 +340,13 @@ Finally, I worked with my team in the merges and I helped to resolve some confli
 *Postscript: as we have organized our project, the previous commits do not appear in the main branch, so I put the links of the branches prior to the change, where the commits appear*
 
 ---
-### Diagrams
-- ### Entity Relationship Diagram
+## Diagrams <a name="diagrams"></a>  
+- ### Entity Relationship Diagram <a name="entity"></a>
  <img src="Stage 2 images/relationDB.svg" height="800px">
  
-- ### Classes and Templates Diagram
+- ### Classes and Templates Diagram <a name="templates"></a>
 <img src="Stage 2 images/classAndTemplatesDiagram.svg">
 
 ***Note:*** For a better visualization, the image is an SVG file.
- - ### Navigation Diagram
+ - ### Navigation Diagram <a name="navigation2"></a>
  <img src="Stage 2 images/NavigationDiagramDAW.svg" height="800px">

@@ -25,6 +25,8 @@
 
 [**Phase 2**](#phase2)
 * [Executing instructions](#execute)
+  * [Requisites](#requisites) 
+  * [Steps](#steps)
 * [Participation of each member](#participation)
   * [Jorge Adame Prudencio](#jorge)
   * [Antonio Agudo Esperanza](#antonio)
@@ -199,7 +201,7 @@ Finally, in the following diagram, you can see all the navigation map inside the
 ## PHASE 2 <a name="phase2"></a>  
 
 ## Executing instructions <a name="execute"></a>  
-- Requisites
+### Requisites <a name="requisites"></a>
  * Git
  * Spring Boot 2.4.3 
  * Spring Security Web 5.4.2
@@ -208,7 +210,7 @@ Finally, in the following diagram, you can see all the navigation map inside the
  * MySQL 8.0.23
  * Java JDK 11
 
-### Steps
+### Steps <a name="steps"></a>
 1. MySQL
 
  * Initialize MySQL
@@ -340,6 +342,9 @@ Finally, I worked with my team in the merges and I helped to resolve some confli
 
 ---
 ## Diagrams <a name="diagrams"></a>  
+- ### Navigation Diagram <a name="navigation2"></a>
+ <img src="Stage 2 images/NavigationDiagramDAW.svg" height="800px">
+
 - ### Entity Relationship Diagram <a name="entity"></a>
  <img src="Stage 2 images/relationDB.svg" height="800px">
  
@@ -347,5 +352,3 @@ Finally, I worked with my team in the merges and I helped to resolve some confli
 <img src="Stage 2 images/classAndTemplatesDiagram.svg">
 
 ***Note:*** For a better visualization, the image is an SVG file.
- - ### Navigation Diagram <a name="navigation2"></a>
- <img src="Stage 2 images/NavigationDiagramDAW.svg" height="800px">

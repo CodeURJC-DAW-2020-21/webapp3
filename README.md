@@ -70,7 +70,7 @@ Welcome to ***Growing***! In this application you can improve yourself by making
     - Category.
     - Photo.
     - Height.
-    - Last Update
+    - Last Update.
 
      **(Primary Key)**: User and Category.
 
@@ -244,11 +244,11 @@ Finally, in the following diagram, you can see all the navigation map inside the
 ---
  #### Top 5 commits
 
-- [Tree update and email](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/c5da51e324ed3abe663a0328aaf469dc8c13c9d7)
+- [Tree update and email.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/c5da51e324ed3abe663a0328aaf469dc8c13c9d7)
 - [User profile image functionality.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/de17f8cc32c408b19d2d8574b3450b23afa9480b)
-- [Like functionality](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/f785b6e1b34f690fe437e6fbe3fcbb74659d1a25#diff-2c43d4aeb1f25e53ee076b2e1299ecb65375904a1c13aed7d8e95cb9c5982e45) - [Continuation of the commit](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/69c5600b3c2280174e25515ac2eec04e686e777e#diff-342d230187298e3d544a13c39767b235c26ab6ab35213260dee9487c3e6ffef7) (the continuation of the previous one, the IDE splitted in two)
-- [Category editing](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/794f4723820f51b3a5ef5982f3dc1bd9a629d3af)
-- [Adding more mustache](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/1687d92368c5f789f2712d9a6b9a18c1652a6bdd)
+- [Like functionality.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/f785b6e1b34f690fe437e6fbe3fcbb74659d1a25#diff-2c43d4aeb1f25e53ee076b2e1299ecb65375904a1c13aed7d8e95cb9c5982e45) - [Continuation of the commit.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/69c5600b3c2280174e25515ac2eec04e686e777e#diff-342d230187298e3d544a13c39767b235c26ab6ab35213260dee9487c3e6ffef7) (the continuation of the previous one, the IDE splitted in two)
+- [Category editing.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/794f4723820f51b3a5ef5982f3dc1bd9a629d3af)
+- [Adding more mustache.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/1687d92368c5f789f2712d9a6b9a18c1652a6bdd)
 
 ---
 #### Top 5 files
@@ -267,11 +267,11 @@ Finally, I also worked in the merges with the rest of the team and helped in the
 
 ---
 #### Top 5 commits
-- [Sign Up, create plan and category form](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/c0a9cb3f19103523f4a42bb14134bd16a49bf3a3)
-- [User create validation](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/fa65d283c77cf3fa4dd98032b84ff70ca01ea94f)
-- [User test in dataBase](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/03a40b496ec6bd8e2d5e68e5dbd14c859670090c)
-- [Added mustache conficuration](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/c8b879a8866e231362b96def99f2348a72d1d167)
-- [Create plan and category](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/ba988652ce750b10a962b632d52462ec0947838a)
+- [Sign Up, create plan and category form.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/c0a9cb3f19103523f4a42bb14134bd16a49bf3a3)
+- [User create validation.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/fa65d283c77cf3fa4dd98032b84ff70ca01ea94f)
+- [User test in dataBase.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/03a40b496ec6bd8e2d5e68e5dbd14c859670090c)
+- [Added mustache conficuration.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/c8b879a8866e231362b96def99f2348a72d1d167)
+- [Create plan and category.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/ba988652ce750b10a962b632d52462ec0947838a)
 
 ---
 #### Top 5 files 
@@ -301,11 +301,11 @@ Finally, I also worked in the merges with the rest of the team and helped in the
 ---
  #### Top 5 commits
 
-- [Implement the admin's page table](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/2d1e1c158c7b814daf8fa67a74fb6ad6e7cd206b)
-- [Implement the alogorithm](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/fa0080491f453d966673ca0447faf363b2deffe8)
-- [Create the pagination on explore page](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/44485090f4a0ad7f9b6d80d2c85c9893f76ee7c8)
-- [Complete the modeling of the database](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/f610f9b37c7ed2f29fde61049d6e26a680cdfb6c)
-- [Implement the algorithm in the explore page](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/650f7844b2169d6394b4b1f3649969e4ee647d6b)
+- [Implement the admin's page table.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/2d1e1c158c7b814daf8fa67a74fb6ad6e7cd206b)
+- [Implement the alogorithm.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/fa0080491f453d966673ca0447faf363b2deffe8)
+- [Create the pagination on explore page.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/44485090f4a0ad7f9b6d80d2c85c9893f76ee7c8)
+- [Complete the modeling of the database.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/f610f9b37c7ed2f29fde61049d6e26a680cdfb6c)
+- [Implement the algorithm in the explore page.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/650f7844b2169d6394b4b1f3649969e4ee647d6b)
 
 ---
 #### Top 5 files
@@ -326,11 +326,11 @@ Finally, I worked with my team in the merges and I helped to resolve some confli
 
 ---
  #### Top 5 commits
-- [Port 8080 changed to 8443](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/d06557b2a00837dd74aa01cda494f0e85b411232)
-- [Added user database](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/66cf16e8fcd6280195cfb30f8bd1d50a72156524)
-- [Added 2 users in database](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/fde5f2b0cbacf1c3ef48056311a9169c87b33b3c)
-- [Added csrf security](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/db4fa3ede4591ee0e3a83590111214e50c32221f)
-- [Added PDF converter](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/ba3e04779ac330f2dce055dce460e7bb083c3f90)
+- [Port 8080 changed to 8443.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/d06557b2a00837dd74aa01cda494f0e85b411232)
+- [Added user database.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/66cf16e8fcd6280195cfb30f8bd1d50a72156524)
+- [Added 2 users in database.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/fde5f2b0cbacf1c3ef48056311a9169c87b33b3c)
+- [Added csrf security.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/db4fa3ede4591ee0e3a83590111214e50c32221f)
+- [Added PDF converter.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/ba3e04779ac330f2dce055dce460e7bb083c3f90)
 
 ---
 #### Top 5 files
@@ -340,7 +340,7 @@ Finally, I worked with my team in the merges and I helped to resolve some confli
 4. [Growing/backend/src/main/resources/keystore.jks](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/Stage2GoodOne/Growing/backend/src/main/resources/keystore.jks)
 5. [Growing/backend/src/main/java/es/dawequipo3/growing/security/CSRFHandlerConfiguration.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/dbUser/Growing/backend/src/main/java/es/dawequipo3/growing/security/CSRFHandlerConfiguration.java)
 
-*Postscript: as we have organized our project, the previous commits do not appear in the main branch, so I put the links of the branches prior to the change, where the commits appear*
+*Postscript: as we have organized our project, the previous commits do not appear in the main branch, so I put the links of the branches prior to the change, where the commits appear.*
 
 ---
 ## Diagrams <a name="diagrams"></a>  

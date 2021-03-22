@@ -175,18 +175,18 @@ Finally, in the following diagram, you can see all the navigation map inside the
 ### Steps
 1. MySQL
 
- - 1. Initialize MySQL
- - 2. CREATE USER IF NOT EXISTS 'growingUser'@'localhost' IDENTIFIED WITH mysql_native_password BY 'dawEquipo3-2021';
-       GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, FILE, INDEX, ALTER, CREATE TEMPORARY TABLES, CREATE VIEW, EVENT, TRIGGER, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, EXECUTE, REFERENCES ON *.* TO 'growingUser'@'localhost';
+ * Initialize MySQL
+ * ``CREATE USER IF NOT EXISTS 'growingUser'@'localhost' IDENTIFIED WITH mysql_native_password BY 'dawEquipo3-2021';
+       GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, FILE, INDEX, ALTER, CREATE TEMPORARY TABLES, CREATE VIEW, EVENT, TRIGGER, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, EXECUTE, REFERENCES ON *.* TO 'growingUser'@'localhost';``
 2. CLI
 
- - 1.	git clone https://github.com/CodeURJC-DAW-2020-21/webapp3.git
- - 2.	cd backend/
- - 3.	mvn org.springframework.boot:spring-boot-maven-plugin:run
+ *	``git clone https://github.com/CodeURJC-DAW-2020-21/webapp3.git``
+ *	``cd backend/``
+ *	``mvn org.springframework.boot:spring-boot-maven-plugin:run``
 
 3. Browser
 
- - 1. Go to *https://localhost:8443*
+ * Go to *https://localhost:8443*
  
 ### Participation of each member
  

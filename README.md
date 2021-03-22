@@ -267,11 +267,11 @@ Finally, I also worked in the merges with the rest of the team and helped in the
 
 ---
 #### Top 5 commits
-- https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/c0a9cb3f19103523f4a42bb14134bd16a49bf3a3
-- https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/fa65d283c77cf3fa4dd98032b84ff70ca01ea94f
-- https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/03a40b496ec6bd8e2d5e68e5dbd14c859670090c
-- https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/c8b879a8866e231362b96def99f2348a72d1d167
-- https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/ba988652ce750b10a962b632d52462ec0947838a
+- [Sign Up, create plan and category form](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/c0a9cb3f19103523f4a42bb14134bd16a49bf3a3)
+- [User create validation](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/fa65d283c77cf3fa4dd98032b84ff70ca01ea94f)
+- [User test in dataBase](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/03a40b496ec6bd8e2d5e68e5dbd14c859670090c)
+- [Added mustache conficuration](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/c8b879a8866e231362b96def99f2348a72d1d167)
+- [Create plan and category](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/ba988652ce750b10a962b632d52462ec0947838a)
 
 ---
 #### Top 5 files 
@@ -301,19 +301,19 @@ Finally, I also worked in the merges with the rest of the team and helped in the
 ---
  #### Top 5 commits
 
-- [ Implement the admin's page table ](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/2d1e1c158c7b814daf8fa67a74fb6ad6e7cd206b)
-- [ Implement the algorithms ](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/fa0080491f453d966673ca0447faf363b2deffe8)
-- [ Create the pagination on explore page ](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/44485090f4a0ad7f9b6d80d2c85c9893f76ee7c8)
-- [ Complete the modeling of the database ](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/f610f9b37c7ed2f29fde61049d6e26a680cdfb6c)
-- [ Implement the algorithm in the explore page ](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/650f7844b2169d6394b4b1f3649969e4ee647d6b)
+- https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/2d1e1c158c7b814daf8fa67a74fb6ad6e7cd206b
+- https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/fa0080491f453d966673ca0447faf363b2deffe8
+- https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/44485090f4a0ad7f9b6d80d2c85c9893f76ee7c8
+- https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/f610f9b37c7ed2f29fde61049d6e26a680cdfb6c
+- https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/650f7844b2169d6394b4b1f3649969e4ee647d6b
 
 ---
 #### Top 5 files
-- [Growing/backend/src/main/java/es/dawequipo3/growing/repository/Completed_planReposiory.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/repository/Completed_planRepository.java)
-- [Growing/backend/src/main/java/es/dawequipo3/growing/model/Completed_plan.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/model/Completed_plan.java)
-- [Growing/backend/src/main/java/es/dawequipo3/growing/model/Plan.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/model/Plan.java)
-- [Growing/backend/src/main/java/es/dawequipo3/growing/model/Tree.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/model/Tree.java)
-- [Growing/backend/src/main/java/es/dawequipo3/growing/model/User.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/model/User.java)
+1. Growing/backend/src/main/java/es/dawequipo3/growing/repository/Completed_planReposiory.java
+2. Growing/backend/src/main/java/es/dawequipo3/growing/model/Completed_plan.java
+3. Growing/backend/src/main/java/es/dawequipo3/growing/model/Plan.java
+4. Growing/backend/src/main/java/es/dawequipo3/growing/model/Tree.java
+5. Growing/backend/src/main/java/es/dawequipo3/growing/model/User.java
 
 ---
 **Flavia Vásquez Gutiérrez** <a name="flavia"></a>

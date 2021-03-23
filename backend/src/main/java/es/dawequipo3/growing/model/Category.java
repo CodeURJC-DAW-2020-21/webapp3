@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.io.IOException;
@@ -56,6 +57,22 @@ public class Category {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     *
+     * @param name
+     * @param description
+     * @param icon
+     * @param color
+     */
+    public Category(String name, String description, MultipartFile icon, String color) throws IOException {
+        super();
+        this.name = name;
+        this.des = description;
+        this.color = color;
+        this.plans = new ArrayList<>();
+        this.icon = BlobProxy.generateProxy(icon.getInputStream(), icon.getSize());
     }
 
     public String getName() {

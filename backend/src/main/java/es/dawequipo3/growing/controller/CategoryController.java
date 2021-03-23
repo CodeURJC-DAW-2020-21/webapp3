@@ -182,10 +182,9 @@ public class CategoryController {
      * @return
      */
     @PostMapping("/addCategory")
-    public String addCategory(@RequestParam String name, @RequestParam String des, @RequestParam String color) {
+    public String addCategory(@RequestParam String name, @RequestParam String des, @RequestParam MultipartFile icon, @RequestParam String color) throws IOException {
 
         boolean error;
-        String icon = "defaultProfileImage";
         Category category = new Category(name, des, icon, color);
         error = categoryService.findByName(category.getName()).isPresent();
         if (!error) {

@@ -103,7 +103,7 @@ public class DataBaseLoader {
                 "don't bother to mark this as done, don't lie to yourself", 2, categoryService.findByName("Savings").orElseThrow(), "swrJ"));
 
         // Home
-        planService.save(new Plan("Do your bed!", "We know cleaning the room is boring and there is always one person who tells you:" +
+        planService.save(new Plan("Do your bed!", "We know cleaning the room is boring and there is always one person who tells you: " +
                 "clean the room, looks like a pigsty, so start doing your bed, you can listen to music meanwhile", 1, categoryService.findByName("Home").orElseThrow(), "dbed"));
 
         planService.save(new Plan("Bed is not the only thing to clean up", "You broke the ice and start " +

@@ -65,7 +65,7 @@ public class PlanLikeController {
         User user = userService.findUserByEmail(email).orElseThrow();
         user.getLikedPlans().add(planService.findPlanByName(planName).orElseThrow());
         userRepository.save(user);
-        return "redirect:/categoryInfo/" + name;
+        return "redirect:/categoryInfo/{name}";
     }
 
     /**
@@ -81,7 +81,7 @@ public class PlanLikeController {
         User user = userService.findUserByEmail(email).orElseThrow();
         user.getLikedPlans().remove(planService.findPlanByName(planName).orElseThrow());
         userRepository.save(user);
-        return "redirect:/categoryInfo/" + name;
+        return "redirect:/categoryInfo/{name}";
     }
 
 }

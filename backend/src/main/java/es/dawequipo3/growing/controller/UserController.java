@@ -248,7 +248,7 @@ public class UserController {
         Plan plan = new Plan(planName, description, difficulty, planCategory, abv);
         planService.save(plan);
 
-        return "redirect:/categories";
+        return "redirect:/categoryInfo/{category}";
     }
 
     /**

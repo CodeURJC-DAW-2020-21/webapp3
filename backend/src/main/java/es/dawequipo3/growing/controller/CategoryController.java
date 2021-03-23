@@ -63,8 +63,8 @@ public class CategoryController {
         request.getUserPrincipal().getName();
         User user = userService.findUserByEmail(request.getUserPrincipal().getName()).orElseThrow();
         planService.saveCompletedPlan(user, plan);
-
-        return "redirect:/categories";
+        String categoryName = plan.getCategory().getName();
+        return "redirect:/categoryInfo/" + categoryName;
     }
 
     /**
@@ -195,7 +195,6 @@ public class CategoryController {
         return "redirect:/categories";
 
     }
-
 
     /**
      * This is the controller that receives the button signal and charges the Edit Screen correspondent

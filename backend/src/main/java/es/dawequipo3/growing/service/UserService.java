@@ -100,4 +100,5 @@ public class UserService {
         return userRepository.findByUsername(name);
     }
 
+    public void update(User user){userRepository.save(user);}
 }

@@ -2,6 +2,7 @@ package es.dawequipo3.growing.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -18,32 +19,65 @@ import java.util.Objects;
 @Entity
 public class Category {
 
+    public interface Basico {}
+    public interface Trees {}
+
+    @JsonView(Trees.class)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     List<Tree> trees;
+
+    @JsonView(Basico.class)
     @Id
     private String name;
+    @JsonView(Basico.class)
     private String des;
+
     @Lob
     @JsonIgnore
     private Blob icon;
+
+    @JsonView(Basico.class)
     private String color;
+
+    @JsonView(Basico.class)
     @Transient
     private boolean likedByUser;
+
+    @JsonView(Basico.class)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     private List<Plan> plans;
+
     @ManyToMany(mappedBy = "userFavoritesCategory")
     private List<User> userFavoritesCategory;
 
     public Category() {
     }
 
-    /**
-     *
-     * @param name
-     * @param description
-     * @param icon
-     * @param color
-     */
+    public Category(String name, String description, String color) {
+        super();
+        this.name = name;
+        this.des = description;
+        this.color = color;
+        this.plans = new ArrayList<>();
+        try {
+            Resource resource = new ClassPathResource("/static/images/defaultCategoryIcon.png");
+            setIcon(BlobProxy.generateProxy(resource.getInputStream()
+                    , resource.contentLength()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public Category(String name, String description, MultipartFile icon, String color) throws IOException {
+        super();
+        this.name = name;
+        this.des = description;
+        this.color = color;
+        this.plans = new ArrayList<>();
+        this.icon = BlobProxy.generateProxy(icon.getInputStream(), icon.getSize());
+    }
+
     public Category(String name, String description, String icon, String color) {
         super();
         this.name = name;
@@ -59,21 +93,6 @@ public class Category {
         }
     }
 
-    /**
-     *
-     * @param name
-     * @param description
-     * @param icon
-     * @param color
-     */
-    public Category(String name, String description, MultipartFile icon, String color) throws IOException {
-        super();
-        this.name = name;
-        this.des = description;
-        this.color = color;
-        this.plans = new ArrayList<>();
-        this.icon = BlobProxy.generateProxy(icon.getInputStream(), icon.getSize());
-    }
 
     public String getName() {
         return name;

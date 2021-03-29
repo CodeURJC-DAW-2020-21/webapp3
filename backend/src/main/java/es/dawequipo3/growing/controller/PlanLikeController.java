@@ -36,7 +36,7 @@ public class PlanLikeController {
         String email = request.getUserPrincipal().getName();
         User user = userService.findUserByEmail(email).orElseThrow();
         user.getLikedPlans().add(planService.findPlanByAbbr(abbrev));
-        userRepository.save(user);
+        userService.update(user);
     }
 
     /**
@@ -49,7 +49,7 @@ public class PlanLikeController {
         String email = request.getUserPrincipal().getName();
         User user = userService.findUserByEmail(email).orElseThrow();
         user.getLikedPlans().remove(planService.findPlanByAbbr(abbrev));
-        userRepository.save(user);
+        userService.update(user);
     }
 
     /**
@@ -64,7 +64,7 @@ public class PlanLikeController {
         String email = request.getUserPrincipal().getName();
         User user = userService.findUserByEmail(email).orElseThrow();
         user.getLikedPlans().add(planService.findPlanByName(planName).orElseThrow());
-        userRepository.save(user);
+        userService.save(user);
         return "redirect:/categoryInfo/{name}";
     }
 
@@ -80,7 +80,7 @@ public class PlanLikeController {
         String email = request.getUserPrincipal().getName();
         User user = userService.findUserByEmail(email).orElseThrow();
         user.getLikedPlans().remove(planService.findPlanByName(planName).orElseThrow());
-        userRepository.save(user);
+        userService.update(user);
         return "redirect:/categoryInfo/{name}";
     }
 

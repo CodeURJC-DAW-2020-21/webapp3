@@ -23,6 +23,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Optional;
 
 
 @Controller
@@ -153,7 +154,7 @@ public class CategoryController {
         String email = request.getUserPrincipal().getName();
         User user = userService.findUserByEmail(email).orElseThrow();
         user.getUserFavoritesCategory().add(category);
-        userRepository.save(user);
+        userService.update(user);
         return "redirect:/categoryInfo/{name}";
     }
 
@@ -171,16 +172,12 @@ public class CategoryController {
         String email = request.getUserPrincipal().getName();
         User user = userService.findUserByEmail(email).orElseThrow();
         user.getUserFavoritesCategory().remove(category);
-        userRepository.save(user);
+        category.setLikedByUser(false);
+        userService.save(user);
         return "redirect:/categoryInfo/{name}";
     }
 
-    /**
-     * @param name
-     * @param des
-     * @param color
-     * @return
-     */
+
     @PostMapping("/addCategory")
     public String addCategory(@RequestParam String name, @RequestParam String des, @RequestParam MultipartFile icon, @RequestParam String color) throws IOException {
 
@@ -229,22 +226,14 @@ public class CategoryController {
     public String editCategory(Model model, @PathVariable String categoryName,
                                @RequestParam String newDescription, @RequestParam String color, MultipartFile imageFile) throws IOException {
 
-        Category category = categoryService.findByName(categoryName).orElseThrow();
 
-        if (!newDescription.isBlank()) {
-            category.setDescription(newDescription);
+        Optional<Category> op = categoryService.findByName(categoryName);
+        if (op.isPresent()) {
+            Category category = op.get();
+            categoryService.editCategory(category, newDescription, color, imageFile);
+            return "redirect:/profile";
+
         }
-        category.setColor(color);
-
-        if (imageFile != null) {
-            if (!imageFile.isEmpty()) {
-                category.setIcon(BlobProxy.generateProxy(
-                        imageFile.getInputStream(), imageFile.getSize()));
-            }
-        }
-        categoryRepository.save(category);
-        return "redirect:/profile";
-
+            return "redirect:/categories";
     }
-
 }

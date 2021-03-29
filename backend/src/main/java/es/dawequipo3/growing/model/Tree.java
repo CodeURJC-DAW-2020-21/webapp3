@@ -1,15 +1,23 @@
 package es.dawequipo3.growing.model;
 
 
+
+
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 @Entity
 public class Tree {
+
+    public interface Basico {}
+    public interface Categories {}
+
+
     @ManyToOne
     @MapsId("userPK")
     User user;
+
     @ManyToOne
     @MapsId("categoryPK")
     Category category;
@@ -105,4 +113,3 @@ public class Tree {
         return format.format(date.getTime());
     }
 }
-

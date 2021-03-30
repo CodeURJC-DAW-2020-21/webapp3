@@ -173,7 +173,7 @@ public class CategoryController {
         User user = userService.findUserByEmail(email).orElseThrow();
         user.getUserFavoritesCategory().remove(category);
         category.setLikedByUser(false);
-        userService.save(user);
+        userService.update(user);
         return "redirect:/categoryInfo/{name}";
     }
 

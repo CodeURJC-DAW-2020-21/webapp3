@@ -3,6 +3,7 @@ package es.dawequipo3.growing.security;
 
 import es.dawequipo3.growing.security.jwt.JwtRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -50,8 +51,9 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 		// URLs that need authentication to access to it
-
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/profile/**").hasRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/profile/**").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/profile/**").hasRole("ADMIN");
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/categories/**").hasRole("ADMIN");
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/categories/**").hasRole("ADMIN");
 		

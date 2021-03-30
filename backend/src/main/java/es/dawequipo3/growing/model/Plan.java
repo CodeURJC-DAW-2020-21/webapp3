@@ -1,6 +1,8 @@
 package es.dawequipo3.growing.model;
 
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.*;
 import java.sql.Blob;
 import java.util.List;
@@ -8,21 +10,36 @@ import java.util.List;
 @Entity
 public class Plan {
 
+    public interface Basico {}
+    public interface Categories {}
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "plan")
     List<Completed_plan> completed_plans;
+
+    @JsonView(Basico.class)
     @Id
     private String name;
+
+    @JsonView(Basico.class)
     private String description;
+
+    @JsonView(Basico.class)
     private int difficulty;
+
+    @JsonView(Basico.class)
     @Column(unique = true)
     private String abv;
+
+    @JsonView(Basico.class)
     @Transient
     private boolean likedUser;
+
+    @JsonView(Category.class)
     @ManyToOne(cascade = CascadeType.ALL)
     private Category category;
+
     @ManyToMany(mappedBy = "likedPlans")
     private List<User> likedPlans;
-
 
     protected Plan() {
     }

@@ -64,7 +64,7 @@ public class PlanLikeController {
         String email = request.getUserPrincipal().getName();
         User user = userService.findUserByEmail(email).orElseThrow();
         user.getLikedPlans().add(planService.findPlanByName(planName).orElseThrow());
-        userService.save(user);
+        userService.update(user);
         return "redirect:/categoryInfo/{name}";
     }
 

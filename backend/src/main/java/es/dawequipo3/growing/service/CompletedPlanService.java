@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -36,6 +37,17 @@ public class CompletedPlanService {
 
     public void save(Completed_plan completed_plan) {
         completed_planRepository.save(completed_plan);
+    }
+
+    public Collection<Completed_plan> findall(){return completed_planRepository.findAll();}
+
+    public Optional<Completed_plan> findCompletedPlan(String email, Plan plan, long date){
+        Optional<User> op = userService.findUserByEmail(email);
+        if (op.isPresent()){
+            User user = op.get();
+            return completed_planRepository.findCompleted_planByUserAndPlanAndDate(user, plan, date);
+        }
+        return Optional.empty();
     }
 
     public void deleteCompletedPlan(String email, String name, long date) {

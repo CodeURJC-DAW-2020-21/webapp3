@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface Completed_planRepository extends JpaRepository<Completed_plan, Integer> {
 
@@ -18,4 +19,7 @@ public interface Completed_planRepository extends JpaRepository<Completed_plan, 
     List<Completed_plan> getCompleted_planByUserOrderByDateDesc(User user, Pageable pageable);
 
     void deleteCompleted_planByUserAndPlanAndDate(User user, Plan plan, long date);
+
+    Optional<Completed_plan> findCompleted_planByUserAndPlanAndDate(User user, Plan planName, long date);
+
 }

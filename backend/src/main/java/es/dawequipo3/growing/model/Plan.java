@@ -34,7 +34,7 @@ public class Plan {
     @Transient
     private boolean likedUser;
 
-    @JsonView(Category.class)
+    @JsonView(Categories.class)
     @ManyToOne(cascade = CascadeType.ALL)
     private Category category;
 

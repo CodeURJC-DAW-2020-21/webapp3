@@ -2,6 +2,7 @@ package es.dawequipo3.growing.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -14,10 +15,15 @@ import java.util.List;
 
 @Entity
 public class User {
+
+    public interface Basico{}
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     List<Tree> trees;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     List<Completed_plan> completed_plans;
+
+    @JsonView(Basico.class)
     @Id
     private String email;
     @Column(nullable = false, unique = true)

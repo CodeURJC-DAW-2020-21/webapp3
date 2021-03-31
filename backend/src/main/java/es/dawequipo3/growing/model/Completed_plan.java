@@ -1,6 +1,8 @@
 package es.dawequipo3.growing.model;
 
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -9,17 +11,22 @@ import java.util.Calendar;
 @Entity
 public class Completed_plan {
 
+    public interface Basico{}
+
     @EmbeddedId
     private CompletedPlanPK completedPlanPK;
 
+    @JsonView(Basico.class)
     @ManyToOne
     @MapsId("user_PK")
     private User user;
 
+    @JsonView(Basico.class)
     @ManyToOne
     @MapsId("planPK")
     private Plan plan;
 
+    @JsonView(Basico.class)
     @Column(updatable = false)
     private long date;
 

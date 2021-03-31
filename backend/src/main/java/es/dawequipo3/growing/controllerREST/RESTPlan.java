@@ -30,24 +30,40 @@ public class RESTPlan {
     }
 
     @JsonView(RESTPlan.PlanDetails.class)
-    @PutMapping("/dislike")
-    public ResponseEntity<Plan> dislikePlan(@RequestParam String planName, HttpServletRequest request){
-        String email = request.getUserPrincipal().getName();
-        User user = userService.findUserByEmail(email).orElseThrow();
+    @GetMapping("")
+    public ResponseEntity<Plan> getPlan(@RequestParam String planName) {
         Optional<Plan> op = planService.findPlanByName(planName);
-        if (op.isPresent()){
+        if (op.isPresent()) {
             Plan plan = op.get();
-            user.getLikedPlans().remove(plan);
-            plan.setLikedUser(false);
-            userService.update(user);
             return new ResponseEntity<>(plan, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @JsonView(RESTPlan.PlanDetails.class)
     @PutMapping("/like")
-    public ResponseEntity<Plan> likePlan(@RequestParam String planName, HttpServletRequest request){
+    public void likePlan(@RequestParam String abbrev, HttpServletRequest request){
+        String email = request.getUserPrincipal().getName();
+        User user = userService.findUserByEmail(email).orElseThrow();
+        user.getLikedPlans().add(planService.findPlanByAbbr(abbrev));
+        planService.findPlanByAbbr(abbrev).setLikedUser(true);
+        userService.update(user);
+    }
+
+    @JsonView(RESTPlan.PlanDetails.class)
+    @PutMapping("/dislike")
+    public void dislikePlan(@RequestParam String abbrev, HttpServletRequest request){
+        String email = request.getUserPrincipal().getName();
+        User user = userService.findUserByEmail(email).orElseThrow();
+        user.getLikedPlans().remove(planService.findPlanByAbbr(abbrev));
+        planService.findPlanByAbbr(abbrev).setLikedUser(false);
+        userService.update(user);
+    }
+
+    @JsonView(RESTPlan.PlanDetails.class)
+    @PutMapping("/likeC")
+    public ResponseEntity<Plan> likePlanC(@RequestParam String planName, HttpServletRequest request){
         String email = request.getUserPrincipal().getName();
         User user = userService.findUserByEmail(email).orElseThrow();
         Optional<Plan> op = planService.findPlanByName(planName);
@@ -55,6 +71,22 @@ public class RESTPlan {
             Plan plan = op.get();
             user.getLikedPlans().add(plan);
             plan.setLikedUser(true);
+            userService.update(user);
+            return new ResponseEntity<>(plan, HttpStatus.OK);
+        }
+        else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @JsonView(RESTPlan.PlanDetails.class)
+    @PutMapping("/dislikeC")
+    public ResponseEntity<Plan> dislikePlanC(@RequestParam String planName, HttpServletRequest request){
+        String email = request.getUserPrincipal().getName();
+        User user = userService.findUserByEmail(email).orElseThrow();
+        Optional<Plan> op = planService.findPlanByName(planName);
+        if (op.isPresent()){
+            Plan plan = op.get();
+            user.getLikedPlans().remove(plan);
+            plan.setLikedUser(false);
             userService.update(user);
             return new ResponseEntity<>(plan, HttpStatus.OK);
         }

@@ -10,8 +10,6 @@ import es.dawequipo3.growing.service.CompletedPlanService;
 import es.dawequipo3.growing.service.PlanService;
 import es.dawequipo3.growing.service.UserService;
 import org.hibernate.engine.jdbc.BlobProxy;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -30,7 +28,7 @@ import java.util.List;
 @Controller
 public class UserController {
 
-    Logger logger = LoggerFactory.getLogger(UserController.class);
+
     @Autowired
     private UserService userService;
     @Autowired
@@ -243,7 +241,6 @@ public class UserController {
             editPlan(planName, description, abv, difficulty);
         }
 
-        logger.info(category);
 
         Plan plan = new Plan(planName, description, difficulty, planCategory, abv);
         planService.save(plan);

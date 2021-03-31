@@ -43,7 +43,7 @@ public class Category {
     @Transient
     private boolean likedByUser;
 
-    @JsonView(Basico.class)
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     private List<Plan> plans;
 

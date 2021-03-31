@@ -49,7 +49,7 @@ var color = Chart.helpers.color;
             let color = []
             let data = []
             ans.forEach(el => {labels.push(el.name); color.push(el.color); data.push(el.data)})
-            new Chart(document.getElementById("Doughnut-chart").getContext('2d'), {
+            new Chart(document.getElementById("Doughnut-chart"), {
                 data: {
                     labels: labels,
                     datasets: [{

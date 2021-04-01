@@ -11,22 +11,22 @@ import java.util.Calendar;
 @Entity
 public class Completed_plan {
 
-    public interface Basico{}
+    public interface Basic{}
 
     @EmbeddedId
     private CompletedPlanPK completedPlanPK;
 
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     @ManyToOne
     @MapsId("user_PK")
     private User user;
 
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     @ManyToOne
     @MapsId("planPK")
     private Plan plan;
 
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     @Column(updatable = false)
     private long date;
 

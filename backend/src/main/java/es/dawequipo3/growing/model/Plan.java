@@ -1,6 +1,7 @@
 package es.dawequipo3.growing.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.*;
@@ -10,27 +11,28 @@ import java.util.List;
 @Entity
 public class Plan {
 
-    public interface Basico {}
+    public interface Basic {}
     public interface Categories {}
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "plan")
     List<Completed_plan> completed_plans;
 
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     @Id
     private String name;
 
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     private String description;
 
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     private int difficulty;
 
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     @Column(unique = true)
     private String abv;
 
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     @Transient
     private boolean likedUser;
 
@@ -38,6 +40,7 @@ public class Plan {
     @ManyToOne(cascade = CascadeType.ALL)
     private Category category;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "likedPlans")
     private List<User> likedPlans;
 
@@ -91,11 +94,12 @@ public class Plan {
         this.category = category;
     }
 
+    @JsonIgnore
     public Blob getIcon() {
         return this.category.getIcon();
     }
 
-
+    @JsonIgnore
     public String getUrlToFlag() {
         if (this.difficulty == 1) {
             return "level1.png";

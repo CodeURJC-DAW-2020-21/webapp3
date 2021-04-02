@@ -118,19 +118,6 @@ public class RESTPlan {
         return ResponseEntity.notFound().build();
     }
 
-
-    @JsonView(RESTPlan.PlanDetails.class)
-    @GetMapping("")
-    public ResponseEntity<Plan> getPlan(@RequestParam String planName) {
-        Optional<Plan> op = planService.findPlanByName(planName);
-        if (op.isPresent()) {
-            Plan plan = op.get();
-            return new ResponseEntity<>(plan, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
     @JsonView(RESTPlan.PlanDetails.class)
     @PutMapping("/like")
     public void likePlan(@RequestParam String abbrev, HttpServletRequest request){

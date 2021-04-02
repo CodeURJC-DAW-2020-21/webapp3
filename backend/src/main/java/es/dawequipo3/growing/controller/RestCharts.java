@@ -26,7 +26,6 @@ public class RestCharts {
     @Autowired
     private TreeService treeService;
 
-
     @Autowired
     private Completed_planRepository completed_planRepository;
 
@@ -82,6 +81,5 @@ public class RestCharts {
         }
         return categories;
     }
-
 
 }

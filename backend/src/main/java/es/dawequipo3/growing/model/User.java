@@ -17,6 +17,8 @@ import java.util.List;
 public class User {
 
     public interface Basico{}
+    public interface Categories {}
+    public interface Plans {}
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     List<Tree> trees;
@@ -26,27 +28,42 @@ public class User {
     @JsonView(Basico.class)
     @Id
     private String email;
+
+    @JsonView(Basico.class)
     @Column(nullable = false, unique = true)
     private String username;
+
+    @JsonView(Basico.class)
     @Column(nullable = false)
     private String name;
+
+    @JsonView(Basico.class)
     @Column(nullable = false)
     private String surname;
+
     @Column(nullable = false)
     private String encodedPassword;
+
     @Lob
     @JsonIgnore
     private Blob imageFile;
+
     @Transient
     private String confirmEncodedPassword;
+
+    @JsonView(Basico.class)
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles;
+
+    @JsonView(Plans.class)
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "user_liked_plans",
             joinColumns = @JoinColumn(name = "liked_by_email"),
             inverseJoinColumns = @JoinColumn(name = "liked_plans_name"))
     private List<Plan> likedPlans;
+
+    @JsonView(Categories.class)
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
             name = "category_user_liked",

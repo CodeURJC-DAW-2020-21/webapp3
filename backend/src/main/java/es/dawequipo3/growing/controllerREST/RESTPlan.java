@@ -48,6 +48,17 @@ public class RESTPlan {
         return planService.findAll();
     }
 
+    @JsonView(PlanDetails.class)
+    @GetMapping("")
+    public ResponseEntity<Plan> getSpecificPlan(@RequestParam String planName) {
+        Optional<Plan> op = planService.findPlanByName(planName);
+        if (op.isPresent()) {
+            Plan plan = op.get();
+            return new ResponseEntity<>(plan, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
     @JsonView(PlanDetails.class)
     @PostMapping("/new")

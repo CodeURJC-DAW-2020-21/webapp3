@@ -1,10 +1,7 @@
 package es.dawequipo3.growing.controllerREST;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import es.dawequipo3.growing.model.Category;
-import es.dawequipo3.growing.model.Completed_plan;
-import es.dawequipo3.growing.model.Tree;
-import es.dawequipo3.growing.model.User;
+import es.dawequipo3.growing.model.*;
 import es.dawequipo3.growing.repository.Completed_planRepository;
 import es.dawequipo3.growing.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,10 +28,25 @@ public class RESTUser {
     @Autowired
     private CompletedPlanService completedPlanService;
 
+    @Autowired
+    private CategoryService categoryService;
+
+    @Autowired
+    private PlanService planService;
+
+    @Autowired
+    private TreeService treeService;
+
+    @Autowired
+    private Completed_planRepository completed_planRepository;
+
     interface UserDetails extends User.Basico {
     }
 
     interface CompletedPlanDetails extends Completed_plan.Basico {
+    }
+
+    interface Charts extends ChartData.Basico {
     }
 
     @JsonView(RESTUser.UserDetails.class)
@@ -91,7 +104,7 @@ public class RESTUser {
         } else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @JsonView(RESTPlan.CompletedPlanDetails.class)
+    @JsonView(RESTUser.CompletedPlanDetails.class)
     @GetMapping("/completedPlans")
     public ResponseEntity<List> getCompletedTasks(@RequestParam String email, HttpServletRequest request) {
         Optional<User> op = userService.findUserByEmail(email);
@@ -102,4 +115,51 @@ public class RESTUser {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    //BarChart
+    @JsonView(RESTUser.Charts.class)
+    @GetMapping("/treeHeight")
+    public ResponseEntity<ArrayList> getHeight(HttpServletRequest request) {
+        String email = request.getUserPrincipal().getName();
+        Optional<User> op = userService.findUserByEmail(email);
+        if (op.isPresent()) {
+            ArrayList<ChartData> list = new ArrayList<>();
+            for (Category category : categoryService.findAll()) {
+                list.add(new ChartData(email, category.getName(), category.getColor(), treeService.findTree(email, category.getName()).orElseThrow().getHeight()));
+            }
+            return new ResponseEntity<> (list, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    //DoughnutChart
+    @JsonView(RESTUser.Charts.class)
+    @GetMapping("/favPlans")
+    public ResponseEntity<ArrayList> getFavPlans(HttpServletRequest request) {
+        String email = request.getUserPrincipal().getName();
+        Optional<User> op = userService.findUserByEmail(email);
+        if (op.isPresent()) {
+            ArrayList<ChartData> list = new ArrayList<>();
+            for (Category category : categoryService.findAll()) {
+                list.add(new ChartData(email, category.getName(), category.getColor(), planService.likedplans(email, category.getName()).size()));
+            }
+            return new ResponseEntity<> (list, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    //RadarChart
+    @JsonView(RESTUser.Charts.class)
+    @GetMapping("/finishedPlans")
+    public ResponseEntity<ArrayList> getFinishedPlans(HttpServletRequest request) {
+        String email = request.getUserPrincipal().getName();
+        Optional<User> op = userService.findUserByEmail(email);
+        if (op.isPresent()) {
+            ArrayList<ChartData> list = new ArrayList<>();
+            for (Category category : categoryService.findAll()) {
+                list.add(new ChartData(email, category.getName(), category.getColor(), completed_planRepository.countTasksDoneByUserAndCategory(email, category.getName())));
+            }
+            return new ResponseEntity<> (list, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 }

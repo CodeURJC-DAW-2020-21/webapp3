@@ -1,9 +1,20 @@
 package es.dawequipo3.growing.model;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 public class ChartData {
 
+    public interface Basico{}
+
+    @JsonView(Basico.class)
+    private String email;
+
+    @JsonView(Basico.class)
     private String name;
+
     private String color;
+
+    @JsonView(Basico.class)
     private int data;
 
     public ChartData(String name, String color, int data) {
@@ -16,6 +27,13 @@ public class ChartData {
         this.name = name;
         this.color = color;
         this.data = 0;
+    }
+
+    public ChartData(String email, String name, String color, int data) {
+        this.email = email;
+        this.name = name;
+        this.color = color;
+        this.data = data;
     }
 
     public String getName() {

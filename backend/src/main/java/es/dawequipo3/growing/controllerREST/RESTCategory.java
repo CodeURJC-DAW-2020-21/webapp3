@@ -33,7 +33,6 @@ public class RESTCategory {
     @Autowired
     private UserService userService;
 
-
     interface CategoryDetails extends Category.Trees, Category.Basico, Tree.Basico {
     }
 
@@ -42,7 +41,6 @@ public class RESTCategory {
     public Collection<Category> getCategories() {
         return categoryService.findAll();
     }
-
 
     @JsonView(CategoryDetails.class)
     @GetMapping("")
@@ -55,7 +53,6 @@ public class RESTCategory {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
 
     @JsonView(CategoryDetails.class)
     @PostMapping("/new")

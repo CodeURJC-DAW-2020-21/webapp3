@@ -37,6 +37,13 @@
   * [Classes and Templates Diagram](#templatesP2)
   * [Navigation Diagram](#navigationP2)
 
+[**Phase 3**](#phase3)
+* [Participation of each member](#participationP3)
+  * [Jorge Adame Prudencio](#jorgeP3)
+  * [Antonio Agudo Esperanza](#antonioP3)
+  * [Marcos Robles Rodríguez](#marcosP3)
+  * [Flavia Vásquez Gutiérrez](#flaviaP3)
+
 ---
 ## PHASE 0  <a name="phase0"></a>  
 ## Team Members  <a name="team"></a>  
@@ -354,3 +361,95 @@ Finally, I worked with my team in the merges and I helped to resolve some confli
 <img src="Stage 2 images/classAndTemplatesDiagram.svg">
 
 ***Note:*** For a better visualization, the image is an SVG file.
+
+---
+
+## PHASE 3 <a name="phase3"></a>  
+
+## Participation of each member <a name="participationP3"></a>  
+ 
+**Jorge Adame Prudencio** <a name="jorgeP3"></a>
+  #### Description
+In this stage I made the following tasks:
+
+- Implement the Category Rest Controller
+- Complete half of the RESTPlan
+- REST Pagination
+---
+ #### Top 5 commits
+- [Category REST Controller.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/bae22f74c24bde618d46f6e61b105a605ccac4ca)
+- [Completing the other part of RESTPlan.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/e4120181dbdca6099be3f2a85d2c34cf4d4e6fe3)
+- [Explore pagination and ResponseEntity answers consistency.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/30e7f2c8d06715ae481f936de07646845f4ec190)
+- 
+- 
+
+---
+#### Top 5 files
+1. 
+2. 
+3. 
+4.
+5. 
+
+
+---
+**Antonio Agudo Esperanza** <a name="antonioP3"></a>
+ #### Description
+
+---
+ #### Top 5 commits
+1. 
+2. 
+3. 
+4. 
+5.
+
+---
+#### Top 5 files
+1. -
+2. -
+3. -
+4. -
+5. -
+
+
+---
+**Marcos Robles Rodríguez** <a name="marcosP3"></a>
+  #### Description
+
+---
+ #### Top 5 commits
+1. 
+2. 
+3. 
+4. 
+5.
+
+---
+#### Top 5 files
+1. 
+2. 
+3. 
+4. 
+5.
+
+
+---
+**Flavia Vásquez Gutiérrez** <a name="flaviaP3"></a>
+ #### Description
+
+---
+ #### Top 5 commits
+1. 
+2. 
+3. 
+4. 
+5. 
+
+---
+#### Top 5 files
+1. 
+2. 
+3. 
+4. 
+5. 

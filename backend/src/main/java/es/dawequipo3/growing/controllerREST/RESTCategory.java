@@ -34,16 +34,13 @@ public class RESTCategory {
     @Autowired
     private UserService userService;
 
-
-    interface CategoryDetails extends Category.Trees, Category.Basic, Tree.Basic {
-    }
+    interface CategoryDetails extends Category.Trees, Category.Basic, Tree.Basic {}
 
     @JsonView(CategoryDetails.class)
     @GetMapping("/")
     public ResponseEntity<Collection<Category>> getCategories() {
         return ResponseEntity.ok(categoryService.findAll());
     }
-
 
     @JsonView(CategoryDetails.class)
     @GetMapping("")
@@ -61,7 +58,6 @@ public class RESTCategory {
             return ResponseEntity.notFound().build();
         }
     }
-
 
     @JsonView(CategoryDetails.class)
     @PostMapping("/new")

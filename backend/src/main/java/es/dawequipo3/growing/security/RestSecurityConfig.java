@@ -21,6 +21,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Order(1)
 public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 
+	@Qualifier("repositoryUserDetailsService")
 	@Autowired
 	private UserDetailsService userDetailsService;
 
@@ -49,16 +50,20 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http.antMatcher("/api/**");
 
-
 		// URLs that need authentication to access to it
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/plan/**").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/plan/**").hasRole("ADMIN");
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/profile/**").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/profile/**").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/profile/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/plans/**").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/plans/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/plans/**").hasRole("ADMIN");
+
+		//		RESTUser
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/profile/**").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/profile/**").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/completedPlans").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/users/new").anonymous();
+
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/categories/**").hasRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/categories/**").hasRole("ADMIN");
-		
+
 		// Other URLs can be accessed without authentication
 		http.authorizeRequests().anyRequest().permitAll();
 

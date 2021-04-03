@@ -72,7 +72,6 @@ public class RESTPlan {
         }
         else
         return ResponseEntity.ok(planService.findAll(page));
-    }
 
     @JsonView(PlanDetails.class)
     @PostMapping("/new")
@@ -150,6 +149,7 @@ public class RESTPlan {
         }
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
+
 
 
     @JsonView(RESTPlan.PlanDetails.class)

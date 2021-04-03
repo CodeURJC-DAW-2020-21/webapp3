@@ -3,6 +3,8 @@ package es.dawequipo3.growing.model;
 
 
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -13,7 +15,6 @@ public class Tree {
     public interface Basic {}
     public interface Categories {}
 
-
     @ManyToOne
     @MapsId("userPK")
     User user;
@@ -21,9 +22,14 @@ public class Tree {
     @ManyToOne
     @MapsId("categoryPK")
     Category category;
+
+    @JsonView(Basico.class)
     @EmbeddedId
     private TreePK treePK;
+
+    @JsonView(Basico.class)
     private int height;
+
     @Column
     private long last_update; //Stored as ms since epoch
 

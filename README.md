@@ -21,21 +21,21 @@
   * [Profile](#ss6)
   * [Administrator profile](#ss7)
   * [Edit profile](#ss8)
-* [Navigation diagram](#navigation1)
+* [Navigation diagram](#navigationP1)
 
 [**Phase 2**](#phase2)
-* [Executing instructions](#execute)
-  * [Requisites](#requisites) 
-  * [Steps](#steps)
-* [Participation of each member](#participation)
-  * [Jorge Adame Prudencio](#jorge)
-  * [Antonio Agudo Esperanza](#antonio)
-  * [Marcos Robles Rodríguez](#marcos)
-  * [Flavia Vásquez Gutiérrez](#flavia)
-* [Diagrams](#diagrams)
+* [Executing instructions](#executeP2)
+  * [Requisites](#requisitesP2) 
+  * [Steps](#stepsP2)
+* [Participation of each member](#participationP2)
+  * [Jorge Adame Prudencio](#jorgeP2)
+  * [Antonio Agudo Esperanza](#antonioP2)
+  * [Marcos Robles Rodríguez](#marcosP2)
+  * [Flavia Vásquez Gutiérrez](#flaviaP2)
+* [Diagrams](#diagramsP2)
   * [Entity Relationship Diagram](#entity)
-  * [Classes and Templates Diagram](#templates)
-  * [Navigation Diagram](#navigation2)
+  * [Classes and Templates Diagram](#templatesP2)
+  * [Navigation Diagram](#navigationP2)
 
 ---
 ## PHASE 0  <a name="phase0"></a>  
@@ -194,7 +194,7 @@ This page can only be accessed from the registered user / admin profile screen a
 <img src="Stage 1 images/editProfileScreen.png">
 
 
-## Navigation diagram <a name="navigation1"></a>
+## Navigation diagram <a name="navigationP1"></a>
 Finally, in the following diagram, you can see all the navigation map inside the webapp:
 
 <img src="Stage 1 images/navigationDiagram.png">
@@ -202,8 +202,8 @@ Finally, in the following diagram, you can see all the navigation map inside the
 ---
 ## PHASE 2 <a name="phase2"></a>  
 
-## Executing instructions <a name="execute"></a>  
-### Requisites <a name="requisites"></a>
+## Executing instructions <a name="executeP2"></a>  
+### Requisites <a name="requisitesP2"></a>
  * Git
  * Spring Boot 2.4.3 
  * Spring Security Web 5.4.2
@@ -212,7 +212,7 @@ Finally, in the following diagram, you can see all the navigation map inside the
  * MySQL 8.0.23
  * Java JDK 11
 
-### Steps <a name="steps"></a>
+### Steps <a name="stepsP2"></a>
 1. MySQL
 
  * Initialize MySQL
@@ -228,9 +228,9 @@ Finally, in the following diagram, you can see all the navigation map inside the
 
  * Go to *https://localhost:8443*
  
-## Participation of each member <a name="participation"></a>  
+## Participation of each member <a name="participationP2"></a>  
  
-**Jorge Adame Prudencio** <a name="jorge"></a>
+**Jorge Adame Prudencio** <a name="jorgeP2"></a>
  #### Description
 - Mustache application in most of the screens
 - Chart adaptation to dynamic values
@@ -260,7 +260,7 @@ Finally, in the following diagram, you can see all the navigation map inside the
 - [PlanLikeController.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blame/main/backend/src/main/java/es/dawequipo3/growing/controller/PlanLikeController.java)
 
 ---
-**Antonio Agudo Esperanza** <a name="antonio"></a>
+**Antonio Agudo Esperanza** <a name="antonioP2"></a>
 #### Description
 In this Stage, I have been doing the mustache configuration, unit test, Sign up of users and the validations of the forms and the creation of categories and plans:
 Finally, I also worked in the merges with the rest of the team and helped in the conflicts and bugs the merges generated.
@@ -283,7 +283,7 @@ Finally, I also worked in the merges with the rest of the team and helped in the
 - getStarted.html
 
 ---
-**Marcos Robles Rodríguez** <a name="marcos"></a>
+**Marcos Robles Rodríguez** <a name="marcosP2"></a>
  #### Description
 In this Stage I have been the responsible of most of the database related tasks, this are:
 
@@ -316,7 +316,7 @@ Finally, I also worked in the merges with the rest of the team and helped in the
 5. Growing/backend/src/main/java/es/dawequipo3/growing/model/User.java
 
 ---
-**Flavia Vásquez Gutiérrez** <a name="flavia"></a>
+**Flavia Vásquez Gutiérrez** <a name="flaviaP2"></a>
  #### Description
 In this second stage, I have done most of the security of our application. Doing taks like: change port 8080 to 8443, add https, encrypt user passwords and add CSRF security. 
 
@@ -343,14 +343,14 @@ Finally, I worked with my team in the merges and I helped to resolve some confli
 *Postscript: as we have organized our project, the previous commits do not appear in the main branch, so I put the links of the branches prior to the change, where the commits appear.*
 
 ---
-## Diagrams <a name="diagrams"></a>  
-- ### Navigation Diagram <a name="navigation2"></a>
+## Diagrams <a name="diagramsP2"></a>  
+- ### Navigation Diagram <a name="navigationP2"></a>
  <img src="Stage 2 images/NavigationDiagramDAW.svg" height="800px">
 
 - ### Entity Relationship Diagram <a name="entity"></a>
  <img src="Stage 2 images/relationDB.svg" height="800px">
  
-- ### Classes and Templates Diagram <a name="templates"></a>
+- ### Classes and Templates Diagram <a name="templatesP2"></a>
 <img src="Stage 2 images/classAndTemplatesDiagram.svg">
 
 ***Note:*** For a better visualization, the image is an SVG file.

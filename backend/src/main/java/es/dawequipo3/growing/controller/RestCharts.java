@@ -27,7 +27,6 @@ public class RestCharts {
     @Autowired
     private TreeService treeService;
 
-
     @Autowired
     private CompletedPlanService completedPlanService;
 
@@ -83,6 +82,5 @@ public class RestCharts {
         }
         return categories;
     }
-
 
 }

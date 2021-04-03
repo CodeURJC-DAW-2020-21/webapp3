@@ -12,6 +12,7 @@ import java.util.Calendar;
 public class Completed_plan {
 
     public interface Basic{}
+    public interface Completed {}
 
     @EmbeddedId
     private CompletedPlanPK completedPlanPK;
@@ -21,12 +22,12 @@ public class Completed_plan {
     @MapsId("user_PK")
     private User user;
 
-    @JsonView(Basic.class)
+    @JsonView(Completed.class)
     @ManyToOne
     @MapsId("planPK")
     private Plan plan;
 
-    @JsonView(Basic.class)
+    @JsonView(Completed.class)
     @Column(updatable = false)
     private long date;
 

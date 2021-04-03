@@ -23,11 +23,11 @@ public class Tree {
     @MapsId("categoryPK")
     Category category;
 
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     @EmbeddedId
     private TreePK treePK;
 
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     private int height;
 
     @Column

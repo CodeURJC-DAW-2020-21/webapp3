@@ -17,9 +17,14 @@ import java.util.List;
 public class User {
 
 
-    public interface Basic{}
-    public interface Categories {}
-    public interface Plans {}
+    public interface Basic {
+    }
+
+    public interface Categories {
+    }
+
+    public interface Plans {
+    }
 
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
@@ -31,15 +36,15 @@ public class User {
     @Id
     private String email;
 
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     @Column(nullable = false, unique = true)
     private String username;
 
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     @Column(nullable = false)
     private String name;
 
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     @Column(nullable = false)
     private String surname;
 
@@ -53,7 +58,7 @@ public class User {
     @Transient
     private String confirmEncodedPassword;
 
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles;
 

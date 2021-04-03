@@ -42,14 +42,12 @@ public class RESTUser {
     @Autowired
     private TreeService treeService;
 
-    @Autowired
-    private Completed_planRepository completed_planRepository;
 
-    interface UserDetails extends User.Basico {
+    interface UserDetails extends User.Basic {
     }
 
-    interface CompletedPlanDetails extends Completed_plan.Basico, User.Basico, Plan.Basico {
-    }
+    interface CompletedPlanDetails extends Completed_plan.Basic, Completed_plan.Completed, User.Basic, Plan.Basic {}
+    interface CompletedPlanUser extends Completed_plan.Completed, Plan.Basic{}
 
     interface Charts extends ChartData.Basico {
     }
@@ -187,15 +185,38 @@ public class RESTUser {
             )
     })
 
-    @JsonView(RESTUser.CompletedPlanDetails.class)
+    @JsonView(RESTUser.CompletedPlanUser.class)
     @GetMapping("/completedPlans")
-    public ResponseEntity<List> getCompletedTasks(@RequestParam String email, HttpServletRequest request) {
+    public ResponseEntity<List<Completed_plan>> getCompletedTasksByUser(@RequestParam String email) {
         Optional<User> op = userService.findUserByEmail(email);
         if (op.isPresent()) {
             List<Completed_plan> completed_plan = completedPlanService.getCompletedPlanPageByEmailSortedByDate(email);
             return new ResponseEntity<>(completed_plan, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @Operation(summary = "Show all completed plans by users")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "List of all plans completed by all the users",
+                    content = {@Content(
+                            schema = @Schema(implementation = List.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Only access to admin account",
+                    content = @Content
+            )
+    })
+
+    @JsonView(RESTUser.CompletedPlanDetails.class)
+    @GetMapping("/completedPlans/")
+    public ResponseEntity<List<Completed_plan>> getCompletedTasks(HttpServletRequest request) {
+        return new ResponseEntity<>(completedPlanService.getAllCompletedPlans(request), HttpStatus.OK);
     }
 
     @Operation(summary = "Show the user progress with the tree height")
@@ -218,7 +239,7 @@ public class RESTUser {
     //BarChart
     @JsonView(RESTUser.Charts.class)
     @GetMapping("/profile/treeHeight")
-    public ResponseEntity<ArrayList> getHeight(HttpServletRequest request) {
+    public ResponseEntity<ArrayList<ChartData>> getHeight(HttpServletRequest request) {
         String email = request.getUserPrincipal().getName();
         Optional<User> op = userService.findUserByEmail(email);
         if (op.isPresent()) {
@@ -251,7 +272,7 @@ public class RESTUser {
     //DoughnutChart
     @JsonView(RESTUser.Charts.class)
     @GetMapping("/profile/favPlans")
-    public ResponseEntity<ArrayList> getFavPlans(HttpServletRequest request) {
+    public ResponseEntity<ArrayList<ChartData>> getFavPlans(HttpServletRequest request) {
         String email = request.getUserPrincipal().getName();
         Optional<User> op = userService.findUserByEmail(email);
         if (op.isPresent()) {
@@ -284,13 +305,13 @@ public class RESTUser {
     //RadarChart
     @JsonView(RESTUser.Charts.class)
     @GetMapping("/profile/finishedPlans")
-    public ResponseEntity<ArrayList> getFinishedPlans(HttpServletRequest request) {
+    public ResponseEntity<ArrayList<ChartData>> getFinishedPlans(HttpServletRequest request) {
         String email = request.getUserPrincipal().getName();
         Optional<User> op = userService.findUserByEmail(email);
         if (op.isPresent()) {
             ArrayList<ChartData> list = new ArrayList<>();
             for (Category category : categoryService.findAll()) {
-                list.add(new ChartData(email, category.getName(), category.getColor(), completed_planRepository.countTasksDoneByUserAndCategory(email, category.getName())));
+                list.add(new ChartData(email, category.getName(), category.getColor(), completedPlanService.countTasksDoneByUserAndCategory(email, category.getName())));
             }
             return new ResponseEntity<> (list, HttpStatus.OK);
         }

@@ -65,13 +65,13 @@ public class RESTPlan {
 
     @JsonView(PlanDetails.class)
     @GetMapping("/explore")
-    public ResponseEntity<Page<Plan>> getPlansPage(@RequestParam (defaultValue = "0", required = false) int page){
+    public ResponseEntity<Page<Plan>> getPlansPage(@RequestParam (defaultValue = "0", required = false) int page) {
         Page<Plan> plans = planService.findAll(page);
-        if (page < 0 || page > plans.getTotalPages()){
+        if (page < 0 || page > plans.getTotalPages()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        else
-        return ResponseEntity.ok(planService.findAll(page));
+        } else
+            return ResponseEntity.ok(planService.findAll(page));
+    }
 
     @JsonView(PlanDetails.class)
     @PostMapping("/new")

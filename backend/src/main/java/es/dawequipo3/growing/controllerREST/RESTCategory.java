@@ -63,7 +63,7 @@ public class RESTCategory {
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Category> createCategory(@RequestParam String name, @RequestParam String des,
-                                                   @RequestParam String color, @RequestParam MultipartFile imageFile,
+                                                   @RequestParam String color, @RequestParam (required = false) MultipartFile imageFile,
                                                    HttpServletRequest request) throws IOException {
         if (request.getUserPrincipal() != null || request.isUserInRole("USER")){
             if (!categoryService.existsByName(name)) {

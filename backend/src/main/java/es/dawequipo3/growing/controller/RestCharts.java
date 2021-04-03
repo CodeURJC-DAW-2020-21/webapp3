@@ -4,6 +4,7 @@ import es.dawequipo3.growing.model.Category;
 import es.dawequipo3.growing.model.ChartData;
 import es.dawequipo3.growing.repository.Completed_planRepository;
 import es.dawequipo3.growing.service.CategoryService;
+import es.dawequipo3.growing.service.CompletedPlanService;
 import es.dawequipo3.growing.service.PlanService;
 import es.dawequipo3.growing.service.TreeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class RestCharts {
     private TreeService treeService;
 
     @Autowired
-    private Completed_planRepository completed_planRepository;
+    private CompletedPlanService completedPlanService;
 
     /**
      * It loads the bar chart with real current user's data. In this case, the height achieved by the user on
@@ -77,7 +78,7 @@ public class RestCharts {
         String email = request.getUserPrincipal().getName();
         for (Category category : categoryService.findAll()) {
             categories.add(new ChartData(category.getName(), category.getColor(),
-                    completed_planRepository.countTasksDoneByUserAndCategory(email, category.getName())));
+                    completedPlanService.countTasksDoneByUserAndCategory(email, category.getName())));
         }
         return categories;
     }

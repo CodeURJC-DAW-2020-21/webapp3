@@ -77,4 +77,9 @@ public class CompletedPlanService {
             return Collections.emptyList();
         }
     }
+
+    public int countTasksDoneByUserAndCategory(String user, String category){
+        return completed_planRepository.countTasksDoneByUserAndCategory(user, category);
+    }
+
 }

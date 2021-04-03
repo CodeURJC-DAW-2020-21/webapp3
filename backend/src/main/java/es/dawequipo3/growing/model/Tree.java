@@ -12,7 +12,7 @@ import java.util.Calendar;
 @Entity
 public class Tree {
 
-    public interface Basico {}
+    public interface Basic {}
     public interface Categories {}
 
     @ManyToOne

@@ -16,16 +16,18 @@ import java.util.List;
 @Entity
 public class User {
 
-    public interface Basico{}
+
+    public interface Basic{}
     public interface Categories {}
     public interface Plans {}
+
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     List<Tree> trees;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     List<Completed_plan> completed_plans;
 
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     @Id
     private String email;
 

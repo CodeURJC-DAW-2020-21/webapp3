@@ -19,31 +19,31 @@ import java.util.Objects;
 @Entity
 public class Category {
 
-    public interface Basico {}
+    public interface Basic {}
     public interface Trees {}
 
-    @JsonView(Trees.class)
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     List<Tree> trees;
 
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     @Id
     private String name;
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     private String des;
 
     @Lob
     @JsonIgnore
     private Blob icon;
 
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     private String color;
 
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     @Transient
     private boolean likedByUser;
 
-
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     private List<Plan> plans;
 

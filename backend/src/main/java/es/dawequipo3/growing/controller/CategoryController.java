@@ -32,8 +32,6 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    @Autowired
-    private CategoryRepository categoryRepository;
 
     @Autowired
     private PlanService planService;
@@ -211,7 +209,6 @@ public class CategoryController {
     /**
      * This method applies the submit of the correspondent form and saves the new values for the instance previously created
      *
-     * @param model
      * @param categoryName   the category name on the url to know which one user will modify
      * @param newDescription the new description of the category
      * @param color
@@ -221,7 +218,7 @@ public class CategoryController {
      */
 
     @PostMapping("/editCategory/{categoryName}/completed")
-    public String editCategory(Model model, @PathVariable String categoryName,
+    public String editCategory(@PathVariable String categoryName,
                                @RequestParam String newDescription, @RequestParam String color, MultipartFile imageFile) throws IOException {
 
 

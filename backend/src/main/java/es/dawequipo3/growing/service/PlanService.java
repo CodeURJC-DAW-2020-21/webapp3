@@ -4,6 +4,7 @@ import es.dawequipo3.growing.model.*;
 import es.dawequipo3.growing.repository.Completed_planRepository;
 import es.dawequipo3.growing.repository.PlanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -73,5 +74,10 @@ public class PlanService {
             categoryNames.add(category.getName());
         }
         return this.planRepository.getLikedPlanFromCategory(categoryNames);
+    }
+
+    public Page<Plan> findAll(int page) {
+        Pageable pageable = PageRequest.of(page, 10);
+        return planRepository.findAll(pageable);
     }
 }

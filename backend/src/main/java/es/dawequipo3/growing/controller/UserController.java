@@ -288,7 +288,7 @@ public class UserController {
                         imageFile.getInputStream(), imageFile.getSize()));
             }
         }
-        userRepository.save(user);
+        userService.update(user);
         return "redirect:/profile";
     }
 

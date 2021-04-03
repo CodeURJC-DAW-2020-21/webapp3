@@ -21,9 +21,6 @@ public class PlanLikeController {
     @Autowired
     private PlanService planService;
 
-    @Autowired
-    private UserRepository userRepository;
-
 
     /**
      * Added to the user_liked_plans the relationship between the current user and the plan which has its abbreviation

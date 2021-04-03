@@ -32,8 +32,6 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    @Autowired
-    private CategoryRepository categoryRepository;
 
     @Autowired
     private PlanService planService;

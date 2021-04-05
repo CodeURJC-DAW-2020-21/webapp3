@@ -9,6 +9,11 @@ import es.dawequipo3.growing.model.User;
 import es.dawequipo3.growing.service.CategoryService;
 import es.dawequipo3.growing.service.UserService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.hibernate.engine.jdbc.BlobProxy;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,12 +41,40 @@ public class RESTCategory {
 
     interface CategoryDetails extends Category.Trees, Category.Basic, Tree.Basic {}
 
+    @Operation(summary = "Get the information of all existing categories")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Returns all the existing categories",
+                    content = {@Content(
+                            schema = @Schema(implementation = CategoryDetails.class)
+                    )}
+            ),
+    })
     @JsonView(CategoryDetails.class)
     @GetMapping("/")
     public ResponseEntity<Collection<Category>> getCategories() {
         return ResponseEntity.ok(categoryService.findAll());
     }
 
+
+    @Operation(summary = "Get the information a specific category searched by its name")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Returns the category information",
+                    content = {@Content(
+                            schema = @Schema(implementation = CategoryDetails.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Doesn't exists a category with that name",
+                    content = @Content
+            ),
+    })
     @JsonView(CategoryDetails.class)
     @GetMapping("")
     public ResponseEntity<Category> categoryInfo(@RequestParam String name, HttpServletRequest request) {
@@ -59,6 +92,27 @@ public class RESTCategory {
         }
     }
 
+    @Operation(summary = "Create a category with a specific name, description, color and an optional image")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Returns the created category information",
+                    content = {@Content(
+                            schema = @Schema(implementation = CategoryDetails.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Only access to admin account",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "409",
+                    description = "There is already a category with the name given by parameter",
+                    content = @Content
+            ),
+    })
     @JsonView(CategoryDetails.class)
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
@@ -81,6 +135,27 @@ public class RESTCategory {
        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
+    @Operation(summary = "Edits an existing category")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Returns the created category information",
+                    content = {@Content(
+                            schema = @Schema(implementation = CategoryDetails.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Only access to admin account",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "409",
+                    description = "There is already a category with the name given by parameter",
+                    content = @Content
+            ),
+    })
     @JsonView(CategoryDetails.class)
     @PutMapping("/edit")
     @ResponseStatus(HttpStatus.CREATED)

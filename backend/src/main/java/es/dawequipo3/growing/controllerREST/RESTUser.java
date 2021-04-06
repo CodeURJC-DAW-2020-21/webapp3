@@ -2,7 +2,6 @@ package es.dawequipo3.growing.controllerREST;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import es.dawequipo3.growing.model.*;
-import es.dawequipo3.growing.repository.Completed_planRepository;
 import es.dawequipo3.growing.service.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

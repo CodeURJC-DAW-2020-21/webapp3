@@ -31,8 +31,7 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-    @Autowired
-    private UserRepository userRepository;
+
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired

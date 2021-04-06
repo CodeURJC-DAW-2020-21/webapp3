@@ -260,11 +260,11 @@ Finally, in the following diagram, you can see all the navigation map inside the
 ---
 #### Top 5 files
 
-- [EditScreen.html](https://github.com/CodeURJC-DAW-2020-21/webapp3/blame/main/backend/src/main/resources/templates/EditScreen.html)
-- [CategoryController.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/controller/CategoryController.java)
-- [UserController.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/controller/UserController.java)
-- [dataBaseLoader.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/DataBaseLoader.java)
-- [PlanLikeController.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blame/main/backend/src/main/java/es/dawequipo3/growing/controller/PlanLikeController.java)
+1. [EditScreen.html](https://github.com/CodeURJC-DAW-2020-21/webapp3/blame/main/backend/src/main/resources/templates/EditScreen.html)
+2. [CategoryController.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/controller/CategoryController.java)
+3. [UserController.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/controller/UserController.java)
+4. [dataBaseLoader.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/DataBaseLoader.java)
+5. [PlanLikeController.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blame/main/backend/src/main/java/es/dawequipo3/growing/controller/PlanLikeController.java)
 
 ---
 **Antonio Agudo Esperanza** <a name="antonioP2"></a>
@@ -283,11 +283,11 @@ Finally, I also worked in the merges with the rest of the team and helped in the
 ---
 #### Top 5 files 
 
-- UserController.java
-- GrowingController.java
-- accordionCategories.html
-- GrowingApplicationTests.java
-- getStarted.html
+1. [UserController.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/controller/UserController.java)
+2. [GrowingController.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/controller/GrowingController.java)
+3. [accordionCategories.html](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/resources/templates/accordionCategories.html)
+4. [GrowingApplicationTests.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/test/java/es/dawequipo3/growing/GrowingApplicationTests.java)
+5. [getStarted.html](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/resources/templates/getStarted.html)
 
 ---
 **Marcos Robles Rodríguez** <a name="marcosP2"></a>
@@ -316,11 +316,11 @@ Finally, I also worked in the merges with the rest of the team and helped in the
 
 ---
 #### Top 5 files
-1. Growing/backend/src/main/java/es/dawequipo3/growing/repository/Completed_planReposiory.java
-2. Growing/backend/src/main/java/es/dawequipo3/growing/model/Completed_plan.java
-3. Growing/backend/src/main/java/es/dawequipo3/growing/model/Plan.java
-4. Growing/backend/src/main/java/es/dawequipo3/growing/model/Tree.java
-5. Growing/backend/src/main/java/es/dawequipo3/growing/model/User.java
+1. [Completed_planRepository.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/repository/Completed_planRepository.java)
+2. [Completed_plan.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/model/Completed_plan.java)
+3. [Plan.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/model/Plan.java)
+4. [Tree.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/model/Tree.java)
+5. [User.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/model/Tree.java)
 
 ---
 **Flavia Vásquez Gutiérrez** <a name="flaviaP2"></a>
@@ -341,11 +341,11 @@ Finally, I worked with my team in the merges and I helped to resolve some confli
 
 ---
 #### Top 5 files
-1. [Growing/backend/src/main/resources/static/assets/js/main.js](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/Stage2GoodOne/Growing/backend/src/main/resources/static/assets/js/main.js)
-2. [Growing/backend/src/main/java/es/dawequipo3/growing/security/SecurityConfiguration.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/Stage2GoodOne/Growing/backend/src/main/java/es/dawequipo3/growing/security/SecurityConfiguration.java)
-3. [Growing/backend/src/main/java/es/dawequipo3/growing/security/RepositoryUserDetailsService.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/Stage2GoodOne/Growing/backend/src/main/java/es/dawequipo3/growing/security/RepositoryUserDetailsService.java)
-4. [Growing/backend/src/main/resources/keystore.jks](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/Stage2GoodOne/Growing/backend/src/main/resources/keystore.jks)
-5. [Growing/backend/src/main/java/es/dawequipo3/growing/security/CSRFHandlerConfiguration.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/dbUser/Growing/backend/src/main/java/es/dawequipo3/growing/security/CSRFHandlerConfiguration.java)
+1. [main.js](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/Stage2GoodOne/Growing/backend/src/main/resources/static/assets/js/main.js)
+2. [SecurityConfiguration.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/Stage2GoodOne/Growing/backend/src/main/java/es/dawequipo3/growing/security/SecurityConfiguration.java)
+3. [RepositoryUserDetailsService.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/Stage2GoodOne/Growing/backend/src/main/java/es/dawequipo3/growing/security/RepositoryUserDetailsService.java)
+4. [keystore.jks](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/Stage2GoodOne/Growing/backend/src/main/resources/keystore.jks)
+5. [CSRFHandlerConfiguration.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/dbUser/Growing/backend/src/main/java/es/dawequipo3/growing/security/CSRFHandlerConfiguration.java)
 
 *Postscript: as we have organized our project, the previous commits do not appear in the main branch, so I put the links of the branches prior to the change, where the commits appear.*
 

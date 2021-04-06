@@ -1,4 +1,4 @@
-<img src="Stage 0 images/Growing logo.png" width="350" height="100">
+<img src="Documentation images/Stage 0 images/Growing logo.png" width="350" height="100">
 
 # Table of Contents
 
@@ -125,15 +125,15 @@ The application will have four charts. These will only be visible to *Registered
 
   - The first will show the number of *likes* for each category. This information will be displayed in a *Doughnut chart*.
 
-    <img src="Stage 0 images/Doughnut Chart.png" width="300" height="230">
+    <img src="Documentation images/Stage 0 images/Doughnut Chart.png" width="300" height="230">
 
   - The second will illustrate through a *Bar chart* the height of the tree in relation to its category.
 
-    <img src="Stage 0 images/Bar Chart.png" width="700" height="500">
+    <img src="Documentation images/Stage 0 images/Bar Chart.png" width="700" height="500">
 
   - The third one will show the number of completed tasks per category for each user, revealed through a *Radar chart*.
 
-    <img src="Stage 0 images/Radar Chart.png" width="350" height="300">
+    <img src="Documentation images/Stage 0 images/Radar Chart.png" width="350" height="300">
 
 
  ## Complementary Technologies <a name="technologies"></a>  
@@ -153,58 +153,58 @@ Complementary technologies to be used are:
 ## Screenshots <a name="screenshots"></a>  
 ### Principal page <a name="ss1"></a>  
 This screen is the first one that all users see when they access the webapp. In this one, they can see basic information about the initiative, some info about the team like our values and finally some preview of the rest of funtionalities like the categories or a portfolio where they can see a snapshot of every screen.
- <img src="Stage 1 images/indexScreen.png">
+ <img src="Documentation images/Stage 1 images/indexScreen.png">
 
 ### Categories <a name="ss2"></a>
 Because of the main purpose of the webapp is encourage users to make activities, for the UX is a good practice separate them into categories defined by their finality. This ends in a main screen where all the web visitors can differentiate the principal classes. The main interaction lies in some boxes where each one has a title, a short description and finally a *Read More* button, arriving in the next screen explained. Finally, the admin will have visible a button where it can create new ones.
 
- <img src="Stage 1 images/categoriesScreen.png">
+ <img src="Documentation images/Stage 1 images/categoriesScreen.png">
 
  ### Category information
  This screen represent the information that all webapp categories have. Everyone has the title, on the left side an image of a tree which represents the actual user improvements inside them. Regarding this image, it is important to explain the fact that the tree will be growing through the advances, having 5 stages, which are the following ones:
 
- <img src="Stage 1 images/stage 1.png" width="135"> → <img src="Stage 1 images/stage 2.png" width="135"> → <img src="Stage 1 images/stage 3.png" width="135"> → <img src="Stage 1 images/stage 4.png" width="135"> → <img src="Stage 1 images/stage 5.png" width="135">
+ <img src="Documentation images/Stage 1 images/stage 1.png" width="135"> → <img src="Documentation images/Stage 1 images/stage 2.png" width="135"> → <img src="Documentation images/Stage 1 images/stage 3.png" width="135"> → <img src="Documentation images/Stage 1 images/stage 4.png" width="135"> → <img src="Documentation images/Stage 1 images/stage 5.png" width="135">
 
  On the other side, the information displayed consists in a simple list with all the tasks users can complete. Finally, in this screen, the **admin user** will have multiple visible options that allows them to edit each task and technical features of the category:
 
- <img src="Stage 1 images/mentalHealthScreen.png">
+ <img src="Documentation images/Stage 1 images/mentalHealthScreen.png">
 
 ### Explore <a name="ss3"></a>
 In this screen, all the users can see a random selection of plans that are included on the webpage.
 
- <img src="Stage 1 images/exploreScreen.png">
+ <img src="Documentation images/Stage 1 images/exploreScreen.png">
 
 ### About us <a name="ss4"></a>
 This screen only contains the main information about the team membership. This information is composed by a representative photography, the member's full name and its role inside the project.
 
- <img src="Stage 1 images/aboutUsScreen.png">
+ <img src="Documentation images/Stage 1 images/aboutUsScreen.png">
 
 ### GetStarted <a name="ss5"></a>
 This screen has the main purpose to create new users or sign in users. When users came to this page, they will se the sign in (first picture), but easily can be transfered into the sign up section by clicking the *Sign Up* button.
 
- <img src="Stage 1 images/signInScreen.png">
- <img src="Stage 1 images/signUpScreen.png">
+ <img src="Documentation images/Stage 1 images/signInScreen.png">
+ <img src="Documentation images/Stage 1 images/signUpScreen.png">
 
 ### Profile <a name="ss6"></a>
 This screen is only visible to the registered users. Inside, users can see an information card, which has a button for traveling to the edition page, explained on a later snapshot; three charts that represents the progress they made and see by category all the plans they did and *dislike* them.
 
-<img src="Stage 1 images/profileScreen.png">  
+<img src="Documentation images/Stage 1 images/profileScreen.png">  
 
 ### Administrator profile <a name="ss7"></a>
 This screen is almost the same screen than the previous one explained. The main differences are ubicated on the information card with the tag: *Admin account* and a table at the end of the page which allows the user to search the record of plans made searching for users and category.
 
-<img src="Stage 1 images/adminProfileScreen.png">
+<img src="Documentation images/Stage 1 images/adminProfileScreen.png">
 
 ### Edit profile <a name="ss8"></a>
 This page can only be accessed from the registered user / admin profile screen and is composed by a form with some inputs to change the personal information of the actual user.
 
-<img src="Stage 1 images/editProfileScreen.png">
+<img src="Documentation images/Stage 1 images/editProfileScreen.png">
 
 
 ## Navigation diagram <a name="navigationP1"></a>
 Finally, in the following diagram, you can see all the navigation map inside the webapp:
 
-<img src="Stage 1 images/navigationDiagram.png">
+<img src="Documentation images/Stage 1 images/navigationDiagram.png">
 
 ---
 ## PHASE 2 <a name="phase2"></a>  
@@ -352,13 +352,13 @@ Finally, I worked with my team in the merges and I helped to resolve some confli
 ---
 ## Diagrams <a name="diagramsP2"></a>  
 - ### Navigation Diagram <a name="navigationP2"></a>
- <img src="Stage 2 images/NavigationDiagramDAW.svg" height="800px">
+ <img src="Documentation images/Stage 2 images/NavigationDiagramDAW.svg" height="800px">
 
 - ### Entity Relationship Diagram <a name="entity"></a>
- <img src="Stage 2 images/relationDB.svg" height="800px">
+ <img src="Documentation images/Stage 2 images/relationDB.svg" height="800px">
  
 - ### Classes and Templates Diagram <a name="templatesP2"></a>
-<img src="Stage 2 images/classAndTemplatesDiagram.svg">
+<img src="Documentation images/Stage 2 images/classAndTemplatesDiagram.svg">
 
 ***Note:*** For a better visualization, the image is an SVG file.
 

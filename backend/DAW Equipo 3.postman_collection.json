@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "195b27c6-8e6f-41e6-921c-7770edb367e6",
+		"_postman_id": "114036f0-8e7e-4de2-8f4f-c1f3f56b8f73",
 		"name": "DAW Equipo 3",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -69,6 +69,36 @@
 					"response": []
 				},
 				{
+					"name": "New user Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\": \"badBunny@hotmail.com\", \"password\": \"pass\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/auth/login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Logout",
 					"request": {
 						"method": "POST",
@@ -92,7 +122,234 @@
 			]
 		},
 		{
-			"name": "Category",
+			"name": "User",
+			"item": [
+				{
+					"name": "New user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "badBunny@hotmail.com",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "BadBunny",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Benito Antonio",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Martinez Ocasio",
+									"type": "text"
+								},
+								{
+									"key": "encodedPassword",
+									"value": "pass",
+									"type": "text"
+								},
+								{
+									"key": "confirmEncodedPassword",
+									"value": "pass",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/users/new",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"users",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/users/profile",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit user profile",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "newUsername",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "namename",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "22",
+									"type": "text"
+								},
+								{
+									"key": "encodedPassword",
+									"value": "12",
+									"type": "text"
+								},
+								{
+									"key": "confirmEncodedPassword",
+									"value": "12",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/users/profile/edited",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"users",
+								"profile",
+								"edited"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get completed plans by email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/users/completedPlans?email=admin@gmail",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"users",
+								"completedPlans"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "admin@gmail"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User progress (tree height by category)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/users/profile/treeHeight",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"users",
+								"profile",
+								"treeHeight"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User progress (fav plans by category)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/users/profile/favPlans",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"users",
+								"profile",
+								"favPlans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User progress (finished plans by category)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/users/profile/finishedPlans",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"users",
+								"profile",
+								"finishedPlans"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categories",
 			"item": [
 				{
 					"name": "Get Categories",
@@ -142,7 +399,7 @@
 					"response": []
 				},
 				{
-					"name": "New Category (with default image)",
+					"name": "New Category (with not default image)",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -162,6 +419,52 @@
 								{
 									"key": "des",
 									"value": "Do you want to be a professional footballer or want to play for hobbie? Here you have some tasks to improve!",
+									"type": "text"
+								},
+								{
+									"key": "imageFile",
+									"type": "file",
+									"src": "/D:/Fotos/Fondos de pantalla/f1/1555324350_113338_1555324486_noticia_normal.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/categories/new",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"categories",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Category (with default image)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Basketball",
+									"type": "text"
+								},
+								{
+									"key": "des",
+									"value": "Do you want to be the next King James? Let's practice from now with some activities to increase your skillset!",
+									"type": "text"
+								},
+								{
+									"key": "color",
+									"value": "orange",
 									"type": "text"
 								},
 								{
@@ -188,37 +491,12 @@
 					"response": []
 				},
 				{
-					"name": "New Category without default image",
+					"name": "Like category",
 					"request": {
-						"method": "POST",
+						"method": "PUT",
 						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "name",
-									"value": "Basketball",
-									"type": "text"
-								},
-								{
-									"key": "des",
-									"value": "Do you want to be the next King James? Let's practice from now with some activities to increase your skillset!",
-									"type": "text"
-								},
-								{
-									"key": "color",
-									"value": "orange",
-									"type": "text"
-								},
-								{
-									"key": "imageFile",
-									"type": "file",
-									"src": "/D:/Fotos/Fondos de pantalla/f1/Dq2ufL5XgAENbEk.jpg"
-								}
-							]
-						},
 						"url": {
-							"raw": "https://localhost:8443/api/categories/new",
+							"raw": "https://localhost:8443/api/categories/like?categoryName=Mental Health",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -227,14 +505,47 @@
 							"path": [
 								"api",
 								"categories",
-								"new"
+								"like"
+							],
+							"query": [
+								{
+									"key": "categoryName",
+									"value": "Mental Health"
+								}
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Edit Category without new image",
+					"name": "Dislike category",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/categories/dislike?categoryName=Mental Health",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"categories",
+								"dislike"
+							],
+							"query": [
+								{
+									"key": "categoryName",
+									"value": "Mental Health"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Category (without new image)",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -281,7 +592,7 @@
 					"response": []
 				},
 				{
-					"name": "Edit category with new image",
+					"name": "Edit category (with new image)",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -326,66 +637,33 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "Dislike category",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"url": {
-							"raw": "https://localhost:8443/api/categories/dislike?categoryName=Mental Health",
-							"protocol": "https",
-							"host": [
-								"localhost"
-							],
-							"port": "8443",
-							"path": [
-								"api",
-								"categories",
-								"dislike"
-							],
-							"query": [
-								{
-									"key": "categoryName",
-									"value": "Mental Health"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Like category",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"url": {
-							"raw": "https://localhost:8443/api/categories/like?categoryName=Mental Health",
-							"protocol": "https",
-							"host": [
-								"localhost"
-							],
-							"port": "8443",
-							"path": [
-								"api",
-								"categories",
-								"like"
-							],
-							"query": [
-								{
-									"key": "categoryName",
-									"value": "Mental Health"
-								}
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
 		{
-			"name": "Plan",
+			"name": "Plans",
 			"item": [
+				{
+					"name": "Get all plans",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/plans/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"plans",
+								""
+							]
+						}
+					},
+					"response": []
+				},
 				{
 					"name": "Get plan by name",
 					"request": {
@@ -413,27 +691,6 @@
 					"response": []
 				},
 				{
-					"name": "Get all plans",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "https://localhost:8443/api/plans/",
-							"protocol": "https",
-							"host": [
-								"localhost"
-							],
-							"port": "8443",
-							"path": [
-								"api",
-								"plans",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Complete plan",
 					"request": {
 						"method": "POST",
@@ -454,6 +711,58 @@
 								{
 									"key": "planName",
 									"value": "Abs"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create plan",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "planName",
+									"value": "Football basic skills",
+									"type": "text"
+								},
+								{
+									"key": "abv",
+									"value": "footbasicskills",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Let's play some football! Start with ten shoots to a wall or a friend to practice passes",
+									"type": "text"
+								},
+								{
+									"key": "difficulty",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost:8443/api/plans/new?category=Physical Health",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"plans",
+								"new"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "Physical Health"
 								}
 							]
 						}
@@ -544,37 +853,16 @@
 					"response": []
 				},
 				{
-					"name": "Create plan",
+					"name": "LikeC plan",
 					"request": {
-						"method": "POST",
+						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "planName",
-									"value": "Football basic skills",
-									"type": "text"
-								},
-								{
-									"key": "abv",
-									"value": "footbasicskills",
-									"type": "text"
-								},
-								{
-									"key": "description",
-									"value": "Let's play some football! Start with ten shoots to a wall or a friend to practice passes",
-									"type": "text"
-								},
-								{
-									"key": "difficulty",
-									"value": "1",
-									"type": "text"
-								}
-							]
+							"formdata": []
 						},
 						"url": {
-							"raw": "https://localhost:8443/api/plans/new?category=Physical Health",
+							"raw": "https://localhost:8443/api/plan/likeC?planName=Puzzle",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -582,13 +870,94 @@
 							"port": "8443",
 							"path": [
 								"api",
-								"plans",
-								"new"
+								"plan",
+								"likeC"
 							],
 							"query": [
 								{
-									"key": "category",
-									"value": "Physical Health"
+									"key": "planName",
+									"value": "Puzzle"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DislikeC plan",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/plan/dislikeC?planName=Puzzle",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"plan",
+								"dislikeC"
+							],
+							"query": [
+								{
+									"key": "planName",
+									"value": "Puzzle"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Like plan",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/plan/like?abbrev=puzzle",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"plan",
+								"like"
+							],
+							"query": [
+								{
+									"key": "abbrev",
+									"value": "puzzle"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dislike plan",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/plan/dislike?abbrev=puzzle",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"plan",
+								"dislike"
+							],
+							"query": [
+								{
+									"key": "abbrev",
+									"value": "puzzle"
 								}
 							]
 						}

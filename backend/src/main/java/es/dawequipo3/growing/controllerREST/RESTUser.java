@@ -145,7 +145,7 @@ public class RESTUser {
         Optional<User> op = userService.findUserByEmail(email);
         if (op.isPresent()) {
             User user = op.get();
-            if (!username.isBlank()) {
+            if (!username.isBlank() && userService.findUserByName(username).isEmpty()) {
                 user.setUsername(username);
             }
             if (!name.isBlank()) {

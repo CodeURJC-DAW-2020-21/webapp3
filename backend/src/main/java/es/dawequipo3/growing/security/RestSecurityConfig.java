@@ -51,8 +51,14 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.antMatcher("/api/**");
 
 		// URLs that need authentication to access to it
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/plans/**").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/plans/**").hasRole("ADMIN");
+		//		RESTPlan
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/plans/like").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/plans/dislike").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/plans/likeC").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/plans/dislikeC").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/plans/edited").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/plans/done").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/plans/new").hasRole("ADMIN");
 		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/plans/**").hasRole("ADMIN");
 
 		//		RESTUser
@@ -61,7 +67,10 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/completedPlans").hasRole("ADMIN");
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/users/new").anonymous();
 
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/categories/**").hasRole("USER");
+		//		RESTCategory
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/categories/like").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/categories/dislike").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/categories/edit").hasRole("ADMIN");
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/categories/**").hasRole("ADMIN");
 
 		// Other URLs can be accessed without authentication

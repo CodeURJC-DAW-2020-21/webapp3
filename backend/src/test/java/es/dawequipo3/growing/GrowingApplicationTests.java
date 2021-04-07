@@ -31,14 +31,5 @@ class GrowingApplicationTests extends GrowingApplication {
     @MockBean
     private UserService repository;
 
-    @Test
-    public void getUserTest(){
-        int numberOfUsers = 2;
-
-        when(repository.findAll()).thenReturn(Stream.of(new User("pepe@byexpample.com","exampleName", "exampleName","password","password"),new User("pepe2@byexpample.com","exampleName2", "exampleName2","exampleName2","password"))
-        .collect(Collectors.toList()));
-
-        assertEquals(numberOfUsers,service.findAll().size());
-    }
 
 }

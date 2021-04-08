@@ -1,0 +1,13 @@
+web:
+    build: .
+    ports:
+      - 8443:8443
+    links:
+      - db
+db:
+  image: mysql
+  restart: always
+  environment:
+    MYSQL_ROOT_PASSWORD: dawEquipo3-2021
+  ports:
+    - 3306:3306

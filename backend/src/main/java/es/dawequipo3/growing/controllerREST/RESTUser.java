@@ -103,6 +103,7 @@ public class RESTUser {
             )
     })
 
+    // TODO RETURN LOCATION
     @JsonView(RESTUser.UserDetails.class)
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)

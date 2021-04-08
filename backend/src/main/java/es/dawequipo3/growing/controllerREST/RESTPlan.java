@@ -95,7 +95,8 @@ public class RESTPlan {
     }
 
 
-
+    //TODO MUST DO A METHOD TO SEARCH A COMPLETED PLAN BY USER AND COMPLETED PLAN AND DATE AND BY USER, COMPLETED PLAN AND DATE
+    // RETURN ALSO A LOCATION
     @JsonView(RESTPlan.PlanDetails.class)
     @PostMapping("/done")
     @ResponseStatus(HttpStatus.CREATED)

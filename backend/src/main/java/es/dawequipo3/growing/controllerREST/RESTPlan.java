@@ -10,6 +10,11 @@ import es.dawequipo3.growing.service.CategoryService;
 import es.dawequipo3.growing.service.CompletedPlanService;
 import es.dawequipo3.growing.service.PlanService;
 import es.dawequipo3.growing.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -18,13 +23,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.URI;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.Date;
-import java.util.Optional;
+import java.util.*;
 
 
 @RestController
@@ -46,6 +47,17 @@ public class RESTPlan {
     interface PlanDetails extends Plan.Categories, Plan.Basic, Category.Basic{}
     interface CompletedPlanDetails extends Completed_plan.Basic, Plan.Basic, User.Basic{}
 
+    @Operation(summary = "Get all the plans")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Found the plans correctly",
+                    content = {@Content(
+                            schema = @Schema(implementation = Plan.class)
+                    )}
+            )
+    })
+
     @JsonView(PlanDetails.class)
     @GetMapping("/")
     public ResponseEntity<Collection<Plan>> getPlans() {
@@ -53,6 +65,21 @@ public class RESTPlan {
 
     }
 
+    @Operation(summary = "Get all the plans of a given category by category's name")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Found the plans correctly",
+                    content = {@Content(
+                            schema = @Schema(implementation = Plan.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Category not found",
+                    content = @Content
+            )
+    })
     @JsonView(PlanDetails.class)
     @GetMapping("/category")
     public ResponseEntity<Collection<Plan>> getPlansbyCategoryName(@RequestParam String category){
@@ -63,16 +90,51 @@ public class RESTPlan {
         else return ResponseEntity.notFound().build();
     }
 
+    @Operation(summary = "Get the plan list of the indicated explore's page")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Found the plans correctly",
+                    content = {@Content(
+                            schema = @Schema(implementation = Plan.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "204",
+                    description = "Page without content",
+                    content = @Content
+            )
+    })
     @JsonView(PlanDetails.class)
     @GetMapping("/explore")
-    public ResponseEntity<Page<Plan>> getPlansPage(@RequestParam (defaultValue = "0", required = false) int page) {
+    public ResponseEntity<List<Plan>> getPlansPage(@RequestParam (defaultValue = "0", required = false) int page) {
         Page<Plan> plans = planService.findAll(page);
         if (page < 0 || page > plans.getTotalPages()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else
-            return ResponseEntity.ok(planService.findAll(page));
+            return ResponseEntity.ok(planService.findAll(page).getContent());
     }
 
+    @Operation(summary = "Create a new plan as an administrator")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Created the plan correctly",
+                    content = {@Content(
+                            schema = @Schema(implementation = Plan.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Only access to admin account",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "409",
+                    description = "Error in one of the arguments",
+                    content = @Content
+            )
+    })
     @JsonView(PlanDetails.class)
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
@@ -96,6 +158,26 @@ public class RESTPlan {
 
 
 
+    @Operation(summary = "Complete the plan by name indicated as the logged user")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Completed the plan correctly",
+                    content = {@Content(
+                            schema = @Schema(implementation = Plan.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Only access to registered user",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Plan not found",
+                    content = @Content
+            )
+    })
     @JsonView(RESTPlan.PlanDetails.class)
     @PostMapping("/done")
     @ResponseStatus(HttpStatus.CREATED)
@@ -114,12 +196,51 @@ public class RESTPlan {
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
+    @Operation(summary = "Get all the completed plans")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Plans found correctly",
+                    content = {@Content(
+                            schema = @Schema(implementation = Plan.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Only access to admin user",
+                    content = @Content
+            )
+    })
     @JsonView(CompletedPlanDetails.class)
     @GetMapping("/completedPlans")
-    public ResponseEntity<Collection<Completed_plan>> getAllCompletedPlan() {
-        return ResponseEntity.ok(completedPlanService.findall());
+    public ResponseEntity<Collection<Completed_plan>> getAllCompletedPlan(HttpServletRequest request) {
+        if (request.getUserPrincipal() != null){
+            return ResponseEntity.ok(completedPlanService.findall());
+        }
+        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+
     }
 
+    @Operation(summary = "Remove a completed plan of a given user")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Completed plan removed correctly",
+                    content = {@Content(
+                            schema = @Schema(implementation = Plan.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Completed plan not found",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Only access to admin user",
+                    content = @Content
+            )
+    })
     @JsonView(CompletedPlanDetails.class)
     @DeleteMapping("/completedPlan/removed")
     public ResponseEntity<Completed_plan> removeCompletedPlanbyUser(@RequestParam String email, @RequestParam String planName, @RequestParam String date, HttpServletRequest request) {
@@ -150,8 +271,21 @@ public class RESTPlan {
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
-
-
+    @Operation(summary = "Get the information of a plan by the name")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Plan found correctly",
+                    content = {@Content(
+                            schema = @Schema(implementation = Plan.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Plan not found",
+                    content = @Content
+            )
+    })
     @JsonView(RESTPlan.PlanDetails.class)
     @GetMapping("")
     public ResponseEntity<Plan> getPlan(@RequestParam String planName) {
@@ -164,80 +298,202 @@ public class RESTPlan {
         }
     }
 
+    @Operation(summary = "Like a plan given the abbreviation as the logged user")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Plan liked correctly",
+                    content = {@Content(
+                            schema = @Schema(implementation = Plan.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Only access to registered user",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Plan not found",
+                    content = @Content
+            )
+    })
     @JsonView(RESTPlan.PlanDetails.class)
     @PutMapping("/like")
-    public void likePlan(@RequestParam String abbrev, HttpServletRequest request){
+    public ResponseEntity<Plan> likePlan(@RequestParam String abbrev, HttpServletRequest request){
         String email = request.getUserPrincipal().getName();
-        User user = userService.findUserByEmail(email).orElseThrow();
-        user.getLikedPlans().add(planService.findPlanByAbbr(abbrev));
-        planService.findPlanByAbbr(abbrev).setLikedUser(true);
-        userService.update(user);
-    }
+        Optional<User> op = userService.findUserByEmail(email);
+        if (op.isPresent()) {
+            User user = op.get();
+            try{
+            Plan opPlan = planService.findPlanByAbbr(abbrev);
+            user.getLikedPlans().add(planService.findPlanByAbbr(abbrev));
+            planService.findPlanByAbbr(abbrev).setLikedUser(true);
+            userService.update(user);
+            return ResponseEntity.ok(opPlan);
+        }catch (NoSuchElementException e){
+                return ResponseEntity.notFound().build();
+        }
+        }
+     else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 
+}
+
+    @Operation(summary = "Remove the like of a plan given the abbreviation as the logged user")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Like removed correctly",
+                    content = {@Content(
+                            schema = @Schema(implementation = Plan.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Only access to registered user",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Plan not found",
+                    content = @Content
+            )
+    })
     @JsonView(RESTPlan.PlanDetails.class)
     @PutMapping("/dislike")
-    public void dislikePlan(@RequestParam String abbrev, HttpServletRequest request){
+    public ResponseEntity<Plan> dislikePlan(@RequestParam String abbrev, HttpServletRequest request){
+
         String email = request.getUserPrincipal().getName();
-        User user = userService.findUserByEmail(email).orElseThrow();
-        user.getLikedPlans().remove(planService.findPlanByAbbr(abbrev));
-        planService.findPlanByAbbr(abbrev).setLikedUser(false);
-        userService.update(user);
+        Optional<User> op = userService.findUserByEmail(email);
+        if (op.isPresent()) {
+            User user = op.get();
+            try{
+                Plan opPlan = planService.findPlanByAbbr(abbrev);
+                user.getLikedPlans().remove(planService.findPlanByAbbr(abbrev));
+                planService.findPlanByAbbr(abbrev).setLikedUser(false);
+                userService.update(user);
+                return ResponseEntity.ok(opPlan);
+            }catch (NoSuchElementException e){
+                return ResponseEntity.notFound().build();
+            }
+        }
+        else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
+    @Operation(summary = "Like a plan given its name as the logged user")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Plan liked correctly",
+                    content = {@Content(
+                            schema = @Schema(implementation = Plan.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Only access to registered user",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Plan not found",
+                    content = @Content
+            )
+    })
     @JsonView(RESTPlan.PlanDetails.class)
     @PutMapping("/likeC")
     public ResponseEntity<Plan> likePlanC(@RequestParam String planName, HttpServletRequest request){
         String email = request.getUserPrincipal().getName();
-        User user = userService.findUserByEmail(email).orElseThrow();
-        Optional<Plan> op = planService.findPlanByName(planName);
-        if (op.isPresent()){
-            Plan plan = op.get();
-            user.getLikedPlans().add(plan);
-            plan.setLikedUser(true);
-            userService.update(user);
-            return ResponseEntity.ok(plan);
+        try {
+            User user = userService.findUserByEmail(email).orElseThrow();
+            Optional<Plan> op = planService.findPlanByName(planName);
+            if (op.isPresent()) {
+                Plan plan = op.get();
+                user.getLikedPlans().add(plan);
+                plan.setLikedUser(true);
+                userService.update(user);
+                return ResponseEntity.ok(plan);
+            } else return ResponseEntity.notFound().build();
+        }catch (NoSuchElementException e){
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
-        else return ResponseEntity.notFound().build();
     }
 
+    @Operation(summary = "Remove the like of a plan given its name as the logged user")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Like removed correctly",
+                    content = {@Content(
+                            schema = @Schema(implementation = Plan.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Only access to registered user",
+                    content = @Content
+            )
+    })
     @JsonView(RESTPlan.PlanDetails.class)
     @PutMapping("/dislikeC")
-    public ResponseEntity<Plan> dislikePlanC(@RequestParam String planName, HttpServletRequest request){
+    public ResponseEntity<Plan> dislikePlanC(@RequestParam String planName, HttpServletRequest request) {
         String email = request.getUserPrincipal().getName();
-        User user = userService.findUserByEmail(email).orElseThrow();
-        Optional<Plan> op = planService.findPlanByName(planName);
-        if (op.isPresent()){
-            Plan plan = op.get();
-            user.getLikedPlans().remove(plan);
-            plan.setLikedUser(false);
-            userService.update(user);
-            return ResponseEntity.ok(plan);
+        try {
+            User user = userService.findUserByEmail(email).orElseThrow();
+            Optional<Plan> op = planService.findPlanByName(planName);
+            if (op.isPresent()) {
+                Plan plan = op.get();
+                user.getLikedPlans().remove(plan);
+                plan.setLikedUser(false);
+                userService.update(user);
+                return ResponseEntity.ok(plan);
+            } else return ResponseEntity.notFound().build();
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
-        else return ResponseEntity.notFound().build();
     }
 
+    @Operation(summary = "Edit the information of a plan as an administrator")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Edited the plan correctly",
+                    content = {@Content(
+                            schema = @Schema(implementation = Plan.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Only access to admin account",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Plan not found",
+                    content = @Content
+            )
+    })
     @JsonView(PlanDetails.class)
     @PutMapping("/edited")
     public ResponseEntity<Plan> editPlan(@RequestParam String planName, @RequestParam String newDescription,
-                                         @RequestParam String abv, @RequestParam int difficulty){
-
-        Optional<Plan> op = planService.findPlanByName(planName);
-        if (op.isPresent()){
-            Plan plan = op.get();
-            if (!newDescription.isBlank()){
-                plan.setDescription(newDescription);
-            }
-            if (!abv.isBlank()){
-                plan.setAbv(abv);
-            }
-            if (difficulty != plan.getDifficulty()){
-                plan.setDifficulty(difficulty);
-            }
-            planService.save(plan);
-            return ResponseEntity.ok(plan);
+                                         @RequestParam String abv, @RequestParam int difficulty, HttpServletRequest request) {
+        if (request.getUserPrincipal() != null) {
+            Optional<Plan> op = planService.findPlanByName(planName);
+            if (op.isPresent()) {
+                Plan plan = op.get();
+                if (!newDescription.isBlank()) {
+                    plan.setDescription(newDescription);
+                }
+                if (!abv.isBlank()) {
+                    plan.setAbv(abv);
+                }
+                if (difficulty != plan.getDifficulty()) {
+                    plan.setDifficulty(difficulty);
+                }
+                planService.save(plan);
+                return ResponseEntity.ok(plan);
+            } else return ResponseEntity.notFound().build();
         }
-        else return ResponseEntity.notFound().build();
+        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
-
-
-}
+    }

@@ -84,10 +84,9 @@ public class RESTPlan {
     @GetMapping("/category")
     public ResponseEntity<Collection<Plan>> getPlansbyCategoryName(@RequestParam String categoryName){
         Optional<Category> op = categoryService.findByName(categoryName);
-        if (op.isPresent()){
-            return new ResponseEntity<>(planService.findPlansByCategory(categoryName), HttpStatus.OK);
-        }
-        else return ResponseEntity.notFound().build();
+        if (op.isPresent()) {
+            return ResponseEntity.ok(planService.findPlansByCategory(categoryName));
+        } else return ResponseEntity.notFound().build();
     }
 
     @Operation(summary = "Get the plan list of the indicated explore's page")
@@ -130,6 +129,11 @@ public class RESTPlan {
                     content = @Content
             ),
             @ApiResponse(
+                    responseCode = "404",
+                    description = "There is not a category with this name",
+                    content = @Content
+            ),
+            @ApiResponse(
                     responseCode = "409",
                     description = "There is already a plan with the name given by parameter",
                     content = @Content
@@ -150,12 +154,9 @@ public class RESTPlan {
                 planService.save(plan);
                 URI location = URI.create("https://localhost:8443/api/plans?planName=".concat(plan.getName().replaceAll(" ", "%20")));
                 return ResponseEntity.created(location).body(plan);
-            }
-            else return ResponseEntity.notFound().build();
-        }
-        else return new ResponseEntity<>(HttpStatus.CONFLICT);
+            } else return ResponseEntity.notFound().build();
+        } else return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
-
 
 
     @Operation(summary = "Complete the plan by name indicated as the logged user")
@@ -182,18 +183,15 @@ public class RESTPlan {
     @PostMapping("/done")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Plan> completePlan(@RequestParam String planName, HttpServletRequest request) {
-        if (request.getUserPrincipal() != null){
-            String email = request.getUserPrincipal().getName();
-            User user = userService.findUserByEmail(email).orElseThrow();
-            Optional<Plan> op = planService.findPlanByName(planName);
-            if (op.isPresent()){
-                Plan plan = op.get();
-                planService.saveCompletedPlan(user, plan);
-                return ResponseEntity.ok(plan);
-            }
-            else return ResponseEntity.notFound().build();
-        }
-        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        String email = request.getUserPrincipal().getName();
+        User user = userService.findUserByEmail(email).orElseThrow();
+        Optional<Plan> op = planService.findPlanByName(planName);
+        if (op.isPresent()) {
+            Plan plan = op.get();
+            planService.saveCompletedPlan(user, plan);
+            return ResponseEntity.ok(plan);
+        } else return ResponseEntity.notFound().build();
+
     }
 
     @Operation(summary = "Get all the completed plans")
@@ -213,12 +211,8 @@ public class RESTPlan {
     })
     @JsonView(CompletedPlanDetails.class)
     @GetMapping("/completedPlans")
-    public ResponseEntity<Collection<Completed_plan>> getAllCompletedPlan(HttpServletRequest request) {
-        if (request.getUserPrincipal() != null){
-            return ResponseEntity.ok(completedPlanService.findall());
-        }
-        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-
+    public ResponseEntity<Collection<Completed_plan>> getAllCompletedPlan() {
+        return ResponseEntity.ok(completedPlanService.findall());
     }
 
     @Operation(summary = "Remove a completed plan of a given user")
@@ -244,31 +238,28 @@ public class RESTPlan {
     @JsonView(CompletedPlanDetails.class)
     @DeleteMapping("/completedPlan/removed")
     public ResponseEntity<Completed_plan> removeCompletedPlanbyUser(@RequestParam String email, @RequestParam String planName, @RequestParam String date, HttpServletRequest request) {
-        if (request.getUserPrincipal() != null){
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss:SSS");
-            try {
-                Date dateObject = format.parse(date);
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(dateObject);
-                long milisecs = calendar.getTimeInMillis();
-                Optional<Plan> optionalPlan = planService.findPlanByName(planName);
-                if (optionalPlan.isPresent()){
-                    Plan plan = optionalPlan.get();
-                    Optional<Completed_plan> optionalCompleted_plan = completedPlanService.findCompletedPlan(email, plan, milisecs);
-                    if (optionalCompleted_plan.isPresent()){
-                        Completed_plan completed_plan = optionalCompleted_plan.get();
-                        completedPlanService.deleteCompletedPlan(email, planName, milisecs);
-                        return ResponseEntity.ok(completed_plan);
-                    }
-                    return ResponseEntity.notFound().build();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss:SSS");
+        try {
+            Date dateObject = format.parse(date);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(dateObject);
+            long milisecs = calendar.getTimeInMillis();
+            Optional<Plan> optionalPlan = planService.findPlanByName(planName);
+            if (optionalPlan.isPresent()) {
+                Plan plan = optionalPlan.get();
+                Optional<Completed_plan> optionalCompleted_plan = completedPlanService.findCompletedPlan(email, plan, milisecs);
+                if (optionalCompleted_plan.isPresent()) {
+                    Completed_plan completed_plan = optionalCompleted_plan.get();
+                    completedPlanService.deleteCompletedPlan(email, planName, milisecs);
+                    return ResponseEntity.ok(completed_plan);
                 }
-
-            } catch (ParseException e) {
-                e.printStackTrace();
+                return ResponseEntity.notFound().build();
             }
-            return ResponseEntity.notFound().build();
+
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
-        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        return ResponseEntity.notFound().build();
     }
 
     @Operation(summary = "Get the information of a plan by the name")
@@ -326,18 +317,17 @@ public class RESTPlan {
         if (op.isPresent()) {
             User user = op.get();
             try{
-            Plan opPlan = planService.findPlanByAbbr(abbrev);
-            user.getLikedPlans().add(planService.findPlanByAbbr(abbrev));
-            planService.findPlanByAbbr(abbrev).setLikedUser(true);
-            userService.update(user);
-            return ResponseEntity.ok(opPlan);
-        }catch (NoSuchElementException e){
+                Plan opPlan = planService.findPlanByAbbr(abbrev);
+                user.getLikedPlans().add(planService.findPlanByAbbr(abbrev));
+                planService.findPlanByAbbr(abbrev).setLikedUser(true);
+                userService.update(user);
+                return ResponseEntity.ok(opPlan);
+             }catch (NoSuchElementException e){
                 return ResponseEntity.notFound().build();
-        }
-        }
-     else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+            }
+        } else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 
-}
+    }
 
     @Operation(summary = "Remove the like of a plan given the abbreviation as the logged user")
     @ApiResponses(value = {
@@ -432,6 +422,11 @@ public class RESTPlan {
                     responseCode = "403",
                     description = "Only access to registered user",
                     content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Plan not found",
+                    content = @Content
             )
     })
     @JsonView(RESTPlan.PlanDetails.class)
@@ -477,23 +472,20 @@ public class RESTPlan {
     @PutMapping("/edited")
     public ResponseEntity<Plan> editPlan(@RequestParam String planName, @RequestParam String newDescription,
                                          @RequestParam String abv, @RequestParam int difficulty, HttpServletRequest request) {
-        if (request.getUserPrincipal() != null) {
-            Optional<Plan> op = planService.findPlanByName(planName);
-            if (op.isPresent()) {
-                Plan plan = op.get();
-                if (!newDescription.isBlank()) {
-                    plan.setDescription(newDescription);
-                }
-                if (!abv.isBlank()) {
-                    plan.setAbv(abv);
-                }
-                if (difficulty != plan.getDifficulty()) {
-                    plan.setDifficulty(difficulty);
-                }
-                planService.save(plan);
-                return ResponseEntity.ok(plan);
-            } else return ResponseEntity.notFound().build();
-        }
-        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        Optional<Plan> op = planService.findPlanByName(planName);
+        if (op.isPresent()) {
+            Plan plan = op.get();
+            if (!newDescription.isBlank()) {
+                plan.setDescription(newDescription);
+            }
+            if (!abv.isBlank()) {
+                plan.setAbv(abv);
+            }
+            if (difficulty != plan.getDifficulty()) {
+                plan.setDifficulty(difficulty);
+            }
+            planService.save(plan);
+            return ResponseEntity.ok(plan);
+        } else return ResponseEntity.notFound().build();
     }
-    }
+}

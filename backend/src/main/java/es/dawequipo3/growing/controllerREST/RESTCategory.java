@@ -50,6 +50,7 @@ public class RESTCategory {
                     responseCode = "200",
                     description = "Returns all the existing categories",
                     content = {@Content(
+                            mediaType = "application/json",
                             schema = @Schema(implementation = CategoryDetails.class)
                     )}
             ),
@@ -101,6 +102,7 @@ public class RESTCategory {
                     responseCode = "200",
                     description = "Returns the created category information",
                     content = {@Content(
+                            mediaType = "application/json",
                             schema = @Schema(implementation = CategoryDetails.class)
                     )}
             ),
@@ -140,6 +142,7 @@ public class RESTCategory {
                     responseCode = "200",
                     description = "Returns the created category information",
                     content = {@Content(
+                            mediaType = "application/json",
                             schema = @Schema(implementation = CategoryDetails.class)
                     )}
             ),

@@ -58,7 +58,8 @@ public class RESTUser {
                     responseCode = "200",
                     description = "Found the user profile",
                     content = {@Content(
-                            schema = @Schema(implementation = User.class)
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = UserDetails.class)
                     )}
             ),
             @ApiResponse(
@@ -88,7 +89,8 @@ public class RESTUser {
                     responseCode = "201",
                     description = "Account created successfully",
                     content = {@Content(
-                            schema = @Schema(implementation = User.class)
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = UserDetails.class)
                     )}
             ),
             @ApiResponse(
@@ -127,7 +129,8 @@ public class RESTUser {
                     responseCode = "200",
                     description = "Changes made successfully",
                     content = {@Content(
-                            schema = @Schema(implementation = User.class)
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = UserDetails.class)
                     )}
             ),
             @ApiResponse(
@@ -170,7 +173,8 @@ public class RESTUser {
                     responseCode = "200",
                     description = "List of all plans completed by the user",
                     content = {@Content(
-                            schema = @Schema(implementation = List.class)
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = RESTUser.CompletedPlanUser.class)
                     )}
             ),
             @ApiResponse(
@@ -203,7 +207,8 @@ public class RESTUser {
                     responseCode = "200",
                     description = "List of all plans completed by all the users",
                     content = {@Content(
-                            schema = @Schema(implementation = List.class)
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = RESTUser.CompletedPlanDetails.class)
                     )}
             ),
             @ApiResponse(
@@ -226,7 +231,8 @@ public class RESTUser {
                     responseCode = "200",
                     description = "List of all categories with their height",
                     content = {@Content(
-                            schema = @Schema(implementation = ArrayList.class)
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = RESTUser.Charts.class)
                     )}
             ),
             @ApiResponse(
@@ -259,7 +265,8 @@ public class RESTUser {
                     responseCode = "200",
                     description = "List of all categories with their number of favourite plans",
                     content = {@Content(
-                            schema = @Schema(implementation = ArrayList.class)
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = RESTUser.Charts.class)
                     )}
             ),
             @ApiResponse(
@@ -292,7 +299,8 @@ public class RESTUser {
                     responseCode = "200",
                     description = "List of all categories with their number of finished plans",
                     content = {@Content(
-                            schema = @Schema(implementation = ArrayList.class)
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = RESTUser.Charts.class)
                     )}
             ),
             @ApiResponse(

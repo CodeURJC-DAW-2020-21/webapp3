@@ -82,10 +82,10 @@ public class RESTPlan {
     })
     @JsonView(PlanDetails.class)
     @GetMapping("/category")
-    public ResponseEntity<Collection<Plan>> getPlansbyCategoryName(@RequestParam String category){
-        Optional<Category> op = categoryService.findByName(category);
+    public ResponseEntity<Collection<Plan>> getPlansbyCategoryName(@RequestParam String categoryName){
+        Optional<Category> op = categoryService.findByName(categoryName);
         if (op.isPresent()){
-            return new ResponseEntity<>(planService.findPlansByCategory(category), HttpStatus.OK);
+            return new ResponseEntity<>(planService.findPlansByCategory(categoryName), HttpStatus.OK);
         }
         else return ResponseEntity.notFound().build();
     }
@@ -118,7 +118,7 @@ public class RESTPlan {
     @Operation(summary = "Create a new plan as an administrator")
     @ApiResponses(value = {
             @ApiResponse(
-                    responseCode = "200",
+                    responseCode = "201",
                     description = "Created the plan correctly",
                     content = {@Content(
                             schema = @Schema(implementation = Plan.class)
@@ -131,7 +131,7 @@ public class RESTPlan {
             ),
             @ApiResponse(
                     responseCode = "409",
-                    description = "Error in one of the arguments",
+                    description = "There is already a plan with the name given by parameter",
                     content = @Content
             )
     })
@@ -232,12 +232,12 @@ public class RESTPlan {
             ),
             @ApiResponse(
                     responseCode = "403",
-                    description = "Completed plan not found",
+                    description = "Only access to admin user",
                     content = @Content
             ),
             @ApiResponse(
-                    responseCode = "403",
-                    description = "Only access to admin user",
+                    responseCode = "404",
+                    description = "Completed plan not found",
                     content = @Content
             )
     })

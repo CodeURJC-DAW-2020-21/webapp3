@@ -43,7 +43,7 @@ public class RESTPlan {
     @Autowired
     private CompletedPlanService completedPlanService;
 
-    interface PlanDetails extends Plan.Categories, Plan.Basic, Category.Basic{}
+    interface PlanDetails extends Plan.Basic, Category.Basic {}
     interface CompletedPlanDetails extends Completed_plan.Basic, Plan.Basic, User.Basic{}
 
     @JsonView(PlanDetails.class)

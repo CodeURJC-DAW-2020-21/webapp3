@@ -40,7 +40,7 @@ public class RESTCategory {
     @Autowired
     private UserService userService;
 
-    interface CategoryDetails extends Category.Trees, Category.Basic, Category.Plans, Tree.Basic, Plan.Basic{}
+    interface CategoryDetails extends Category.Trees, Category.Basic, Category.Plans, Tree.Basic, Plan.Basic, User.Basic{}
 
 
     @Operation(summary = "Get the information of all existing categories")
@@ -55,7 +55,7 @@ public class RESTCategory {
                     )}
             ),
     })
-    @JsonView(Category.Basic.class)
+    @JsonView(CategoryDetails.class)
     @GetMapping("/")
     public ResponseEntity<Collection<Category>> getCategories() {
         return ResponseEntity.ok(categoryService.findAll());

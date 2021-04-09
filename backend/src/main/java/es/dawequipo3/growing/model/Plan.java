@@ -12,7 +12,7 @@ import java.util.List;
 public class Plan {
 
     public interface Basic {}
-    public interface Categories {}
+
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "plan")
@@ -36,7 +36,7 @@ public class Plan {
     @Transient
     private boolean likedUser;
 
-    @JsonView(Categories.class)
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     private Category category;
 

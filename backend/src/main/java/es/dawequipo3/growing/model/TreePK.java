@@ -1,6 +1,8 @@
 package es.dawequipo3.growing.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
@@ -10,9 +12,11 @@ import java.util.Objects;
 @Embeddable
 public class TreePK implements Serializable {
 
+    @JsonIgnore
     @Column
     private String userPK;
 
+    @JsonIgnore
     @Column
     private String categoryPK;
 

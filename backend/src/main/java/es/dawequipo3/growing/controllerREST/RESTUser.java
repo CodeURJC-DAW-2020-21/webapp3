@@ -98,7 +98,7 @@ public class RESTUser {
                     content = @Content
             ),
             @ApiResponse(
-                    responseCode = "403",
+                    responseCode = "409",
                     description = "Only unregistered users can create a new one",
                     content = @Content
             )
@@ -117,7 +117,7 @@ public class RESTUser {
             User user = new User(email, username, name, surname, passwordEncoder.encode(encodedPassword), "USER");
             userService.save(user);
             return new ResponseEntity<>(user, HttpStatus.CREATED);
-        } else return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } else return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
 
     @Operation(summary = "Edit user profile")

@@ -47,7 +47,7 @@ public class RESTCategory {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Categroies retrieved correctly",
+                    description = "Categories retrieved correctly",
                     content = {@Content(
                             schema = @Schema(implementation = CategoryDetails.class)
                     )}
@@ -97,7 +97,7 @@ public class RESTCategory {
 
     @ApiResponses(value = {
             @ApiResponse(
-                    responseCode = "200",
+                    responseCode = "201",
                     description = "Category created correctly",
                     content = {@Content(
                             schema = @Schema(implementation = CategoryDetails.class)
@@ -150,7 +150,11 @@ public class RESTCategory {
                     responseCode = "403",
                     description = "Permission error, only access to admin account",
                     content = @Content
-            )
+            ),@ApiResponse(
+            responseCode = "404",
+            description = "Category not found",
+            content = @Content
+    )
     })
     @JsonView(CategoryDetails.class)
     @PutMapping("/edit")
@@ -216,7 +220,7 @@ public class RESTCategory {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Like removed correctly",
+                    description = "Category liked correctly",
                     content = {@Content(
                             schema = @Schema(implementation = CategoryDetails.class)
                     )}

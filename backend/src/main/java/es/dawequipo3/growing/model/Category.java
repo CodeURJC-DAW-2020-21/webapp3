@@ -43,7 +43,7 @@ public class Category {
     @Transient
     private boolean likedByUser;
 
-    @JsonIgnore
+    @JsonView(Basic.class)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     private List<Plan> plans;
 

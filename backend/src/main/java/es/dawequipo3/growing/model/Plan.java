@@ -28,7 +28,7 @@ public class Plan {
     @JsonView(Basic.class)
     private int difficulty;
 
-    @JsonView(Basic.class)
+    @JsonIgnore
     @Column(unique = true)
     private String abv;
 

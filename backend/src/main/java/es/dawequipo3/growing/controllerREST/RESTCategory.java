@@ -3,6 +3,7 @@ package es.dawequipo3.growing.controllerREST;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import es.dawequipo3.growing.model.Category;
+import es.dawequipo3.growing.model.Plan;
 import es.dawequipo3.growing.model.Tree;
 import es.dawequipo3.growing.model.User;
 
@@ -39,8 +40,10 @@ public class RESTCategory {
     @Autowired
     private UserService userService;
 
-    interface CategoryDetails extends Category.Trees, Category.Basic, Tree.Basic {
-    }
+    interface CategoryDetails extends Category.Trees, Category.Basic, Tree.Basic, Plan.Basic{}
+
+
+
 
     @Operation(summary = "Get the information of all existing categories")
 

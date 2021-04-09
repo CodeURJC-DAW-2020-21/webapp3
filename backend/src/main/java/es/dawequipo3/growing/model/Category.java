@@ -21,6 +21,7 @@ public class Category {
 
     public interface Basic {}
     public interface Trees {}
+    public interface Plans {}
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
@@ -43,7 +44,7 @@ public class Category {
     @Transient
     private boolean likedByUser;
 
-    @JsonView(Basic.class)
+    @JsonView(Plans.class)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     private List<Plan> plans;
 

@@ -2,7 +2,6 @@ package es.dawequipo3.growing.controllerREST;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import es.dawequipo3.growing.model.*;
-import es.dawequipo3.growing.repository.Completed_planRepository;
 import es.dawequipo3.growing.service.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -59,7 +58,8 @@ public class RESTUser {
                     responseCode = "200",
                     description = "Found the user profile",
                     content = {@Content(
-                            schema = @Schema(implementation = User.class)
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = UserDetails.class)
                     )}
             ),
             @ApiResponse(
@@ -89,7 +89,8 @@ public class RESTUser {
                     responseCode = "201",
                     description = "Account created successfully",
                     content = {@Content(
-                            schema = @Schema(implementation = User.class)
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = UserDetails.class)
                     )}
             ),
             @ApiResponse(
@@ -98,12 +99,13 @@ public class RESTUser {
                     content = @Content
             ),
             @ApiResponse(
-                    responseCode = "403",
+                    responseCode = "409",
                     description = "Only unregistered users can create a new one",
                     content = @Content
             )
     })
 
+    // TODO RETURN LOCATION
     @JsonView(RESTUser.UserDetails.class)
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
@@ -117,7 +119,7 @@ public class RESTUser {
             User user = new User(email, username, name, surname, passwordEncoder.encode(encodedPassword), "USER");
             userService.save(user);
             return new ResponseEntity<>(user, HttpStatus.CREATED);
-        } else return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } else return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
 
     @Operation(summary = "Edit user profile")
@@ -127,7 +129,8 @@ public class RESTUser {
                     responseCode = "200",
                     description = "Changes made successfully",
                     content = {@Content(
-                            schema = @Schema(implementation = User.class)
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = UserDetails.class)
                     )}
             ),
             @ApiResponse(
@@ -146,7 +149,7 @@ public class RESTUser {
         Optional<User> op = userService.findUserByEmail(email);
         if (op.isPresent()) {
             User user = op.get();
-            if (!username.isBlank()) {
+            if (!username.isBlank() && userService.findUserByName(username).isEmpty()) {
                 user.setUsername(username);
             }
             if (!name.isBlank()) {
@@ -170,7 +173,8 @@ public class RESTUser {
                     responseCode = "200",
                     description = "List of all plans completed by the user",
                     content = {@Content(
-                            schema = @Schema(implementation = List.class)
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = RESTUser.CompletedPlanUser.class)
                     )}
             ),
             @ApiResponse(
@@ -203,7 +207,8 @@ public class RESTUser {
                     responseCode = "200",
                     description = "List of all plans completed by all the users",
                     content = {@Content(
-                            schema = @Schema(implementation = List.class)
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = RESTUser.CompletedPlanDetails.class)
                     )}
             ),
             @ApiResponse(
@@ -226,7 +231,8 @@ public class RESTUser {
                     responseCode = "200",
                     description = "List of all categories with their height",
                     content = {@Content(
-                            schema = @Schema(implementation = ArrayList.class)
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = RESTUser.Charts.class)
                     )}
             ),
             @ApiResponse(
@@ -259,7 +265,8 @@ public class RESTUser {
                     responseCode = "200",
                     description = "List of all categories with their number of favourite plans",
                     content = {@Content(
-                            schema = @Schema(implementation = ArrayList.class)
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = RESTUser.Charts.class)
                     )}
             ),
             @ApiResponse(
@@ -292,7 +299,8 @@ public class RESTUser {
                     responseCode = "200",
                     description = "List of all categories with their number of finished plans",
                     content = {@Content(
-                            schema = @Schema(implementation = ArrayList.class)
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = RESTUser.Charts.class)
                     )}
             ),
             @ApiResponse(

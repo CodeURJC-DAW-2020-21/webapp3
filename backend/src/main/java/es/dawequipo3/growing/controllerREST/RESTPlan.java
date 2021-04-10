@@ -44,7 +44,7 @@ public class RESTPlan {
     @Autowired
     private CompletedPlanService completedPlanService;
 
-    interface PlanDetails extends Plan.Categories, Plan.Basic, Category.Basic{}
+    interface PlanDetails extends Plan.Basic, Category.Basic {}
     interface CompletedPlanDetails extends Completed_plan.Basic, Plan.Basic, User.Basic{}
 
     @Operation(summary = "Get all the plans")
@@ -159,6 +159,10 @@ public class RESTPlan {
     }
 
 
+
+    //TODO MUST DO A METHOD TO SEARCH A COMPLETED PLAN BY USER AND COMPLETED PLAN AND DATE AND BY USER, COMPLETED PLAN AND DATE
+    // RETURN ALSO A LOCATION
+  
     @Operation(summary = "Complete the plan by name indicated as the logged user")
     @ApiResponses(value = {
             @ApiResponse(
@@ -179,6 +183,8 @@ public class RESTPlan {
                     content = @Content
             )
     })
+
+
     @JsonView(RESTPlan.PlanDetails.class)
     @PostMapping("/done")
     @ResponseStatus(HttpStatus.CREATED)

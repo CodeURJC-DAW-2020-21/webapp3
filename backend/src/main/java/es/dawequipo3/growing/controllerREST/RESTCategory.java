@@ -3,6 +3,7 @@ package es.dawequipo3.growing.controllerREST;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import es.dawequipo3.growing.model.Category;
+import es.dawequipo3.growing.model.Plan;
 import es.dawequipo3.growing.model.Tree;
 import es.dawequipo3.growing.model.User;
 
@@ -39,15 +40,17 @@ public class RESTCategory {
     @Autowired
     private UserService userService;
 
-    interface CategoryDetails extends Category.Trees, Category.Basic, Tree.Basic {}
+    interface CategoryDetails extends Category.Trees, Category.Basic, Category.Plans, Tree.Basic, Plan.Basic, User.Basic {
+    }
 
     @Operation(summary = "Get the information of all existing categories")
 
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Returns all the existing categories",
+                    description = "Categories retrieved correctly",
                     content = {@Content(
+                            mediaType = "application/json",
                             schema = @Schema(implementation = CategoryDetails.class)
                     )}
             ),
@@ -64,14 +67,14 @@ public class RESTCategory {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Returns the category information",
+                    description = "Category's information retrieved correctly",
                     content = {@Content(
                             schema = @Schema(implementation = CategoryDetails.class)
                     )}
             ),
             @ApiResponse(
                     responseCode = "404",
-                    description = "Doesn't exists a category with that name",
+                    description = "Category not found",
                     content = @Content
             ),
     })
@@ -81,7 +84,7 @@ public class RESTCategory {
         Optional<Category> op = categoryService.findByName(name);
         if (op.isPresent()) {
             Category category = op.get();
-            if (request.getUserPrincipal() != null){
+            if (request.getUserPrincipal() != null) {
                 String email = request.getUserPrincipal().getName();
                 User user = userService.findUserByEmail(email).orElseThrow();
                 category.setLikedByUser(user.getUserFavoritesCategory().contains(category));
@@ -96,15 +99,16 @@ public class RESTCategory {
 
     @ApiResponses(value = {
             @ApiResponse(
-                    responseCode = "200",
-                    description = "Returns the created category information",
+                    responseCode = "201",
+                    description = "Category created correctly",
                     content = {@Content(
+                            mediaType = "application/json",
                             schema = @Schema(implementation = CategoryDetails.class)
                     )}
             ),
             @ApiResponse(
                     responseCode = "403",
-                    description = "Only access to admin account",
+                    description = "Permission error, only access to admin account",
                     content = @Content
             ),
             @ApiResponse(
@@ -117,22 +121,19 @@ public class RESTCategory {
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Category> createCategory(@RequestParam String name, @RequestParam String des,
-                                                   @RequestParam String color, @RequestParam (required = false) MultipartFile imageFile,
-                                                   HttpServletRequest request) throws IOException {
-        if (request.getUserPrincipal() != null || request.isUserInRole("USER")){
-            if (!categoryService.existsByName(name)) {
-                Category category = new Category(name, des, color);
-                if (!imageFile.isEmpty()) {
-                    category.setIcon(BlobProxy.generateProxy(
-                            imageFile.getInputStream(), imageFile.getSize()));
-                }
-                categoryService.save(category);
-                URI location = URI.create("https://localhost:8443/api/categories?name=".concat(category.getName().replaceAll(" ", "%20")));
-                return ResponseEntity.created(location).build();
+                                                   @RequestParam String color, @RequestParam(required = false) MultipartFile imageFile) throws IOException {
+
+        if (!categoryService.existsByName(name)) {
+            Category category = new Category(name, des, color);
+            if (!imageFile.isEmpty()) {
+                category.setIcon(BlobProxy.generateProxy(
+                        imageFile.getInputStream(), imageFile.getSize()));
             }
-            else return new ResponseEntity<>(HttpStatus.CONFLICT);
-        }
-       return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+            categoryService.save(category);
+            URI location = URI.create("https://localhost:8443/api/categories?name=".concat(category.getName().replaceAll(" ", "%20")));
+
+            return ResponseEntity.created(location).body(category);
+        } else return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
 
     @Operation(summary = "Edits an existing category")
@@ -140,70 +141,114 @@ public class RESTCategory {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Returns the created category information",
+                    description = "Category edited correctly",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = CategoryDetails.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Permission error, only access to admin account",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Category not found",
+                    content = @Content
+            )
+    })
+    @JsonView(CategoryDetails.class)
+    @PutMapping("/edit")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<Category> editCategory(@RequestParam String categoryName, @RequestParam(required = false) String newDescription,
+                                                 @RequestParam(required = false) String color, MultipartFile imageFile) throws IOException {
+
+
+        Optional<Category> op = categoryService.findByName(categoryName);
+        if (op.isPresent()) {
+            Category category = op.get();
+            if (newDescription == null) {
+                newDescription = "";
+            }
+            if (color == null) {
+                color = "";
+            }
+            categoryService.editCategory(category, newDescription, color, imageFile);
+            return ResponseEntity.ok(category);
+        } else return ResponseEntity.notFound().build();
+    }
+
+    @Operation(summary = "Remove the like of a category as the logged user")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Like removed correctly",
                     content = {@Content(
                             schema = @Schema(implementation = CategoryDetails.class)
                     )}
             ),
             @ApiResponse(
                     responseCode = "403",
-                    description = "Only access to admin account",
+                    description = "Permission error, only access to logged users",
                     content = @Content
             ),
             @ApiResponse(
-                    responseCode = "409",
-                    description = "There is already a category with the name given by parameter",
+                    responseCode = "404",
+                    description = "Category not found",
                     content = @Content
-            ),
+            )
     })
     @JsonView(CategoryDetails.class)
-    @PutMapping("/edit")
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Category> editCategory(@RequestParam String categoryName, @RequestParam String newDescription,
-                                                   @RequestParam String color, MultipartFile imageFile) throws IOException {
-
-        Optional<Category> op = categoryService.findByName(categoryName);
-        if (op.isPresent()){
-            Category category = op.get();
-            categoryService.editCategory(category, newDescription, color, imageFile);
-            return ResponseEntity.ok(category);
-        }
-         else return ResponseEntity.notFound().build();
-    }
-
-    @JsonView(CategoryDetails.class)
     @PutMapping("/dislike")
-    public ResponseEntity<Category> dislikeCategory(@RequestParam String categoryName, HttpServletRequest request){
+    public ResponseEntity<Category> dislikeCategory(@RequestParam String categoryName, HttpServletRequest request) {
         String email = request.getUserPrincipal().getName();
         User user = userService.findUserByEmail(email).orElseThrow();
         Optional<Category> op = categoryService.findByName(categoryName);
-        if (op.isPresent()){
+        if (op.isPresent()) {
             Category category = op.get();
             user.getUserFavoritesCategory().remove(category);
             category.setLikedByUser(false);
             userService.update(user);
             return ResponseEntity.ok(category);
-        }
-         else return ResponseEntity.notFound().build();
+        } else return ResponseEntity.notFound().build();
     }
 
+    @Operation(summary = "Like a category as the logged user")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Category liked correctly",
+                    content = {@Content(
+                            schema = @Schema(implementation = CategoryDetails.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Permission error, only access to logged users",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Category not found",
+                    content = @Content
+            )
+    })
     @JsonView(CategoryDetails.class)
     @PutMapping("/like")
-    public ResponseEntity<Category> likeCategory(@RequestParam String categoryName, HttpServletRequest request){
-        if (request.getUserPrincipal() != null){
-            String email = request.getUserPrincipal().getName();
-            User user = userService.findUserByEmail(email).orElseThrow();
-            Optional<Category> op = categoryService.findByName(categoryName);
-            if (op.isPresent()){
-                Category category = op.get();
-                user.getUserFavoritesCategory().add(category);
-                category.setLikedByUser(true);
-                userService.update(user);
-                return ResponseEntity.ok(category);
-            }
-            else return ResponseEntity.notFound().build();    
-        }
-        else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+    public ResponseEntity<Category> likeCategory(@RequestParam String categoryName, HttpServletRequest request) {
+        String email = request.getUserPrincipal().getName();
+        User user = userService.findUserByEmail(email).orElseThrow();
+        Optional<Category> op = categoryService.findByName(categoryName);
+        if (op.isPresent()) {
+            Category category = op.get();
+            user.getUserFavoritesCategory().add(category);
+            category.setLikedByUser(true);
+            userService.update(user);
+            return ResponseEntity.ok(category);
+        } else return ResponseEntity.notFound().build();
     }
 
 }

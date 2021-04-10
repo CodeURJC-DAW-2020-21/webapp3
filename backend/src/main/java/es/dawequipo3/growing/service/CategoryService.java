@@ -22,8 +22,6 @@ public class CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    @Autowired
-    private CategoryService categoryService;
 
     @Autowired
     private UserService userService;

@@ -3,6 +3,7 @@ package es.dawequipo3.growing.model;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.*;
@@ -15,15 +16,17 @@ public class Tree {
     public interface Basic {}
     public interface Categories {}
 
+    @JsonView(Basic.class)
     @ManyToOne
     @MapsId("userPK")
     User user;
 
+    @JsonIgnore
     @ManyToOne
     @MapsId("categoryPK")
     Category category;
 
-    @JsonView(Basic.class)
+    @JsonIgnore
     @EmbeddedId
     private TreePK treePK;
 

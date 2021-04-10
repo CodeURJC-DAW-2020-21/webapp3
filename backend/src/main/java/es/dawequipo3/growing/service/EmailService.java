@@ -55,14 +55,11 @@ public class EmailService {
         MimeMessageHelper mailMessage = new MimeMessageHelper(mimeMessage, "utf-8");
         try {
             String message = "<section style=\"border-style:groove; border-color: #12a294; align-self: center\">" +
-                    "<div style=\"text-align: center; margin: 25px;\">" +
-                    "<img alt= \"GROWING\" onclick=\"/\" src='cid:image'/>" +
-                    "</div>" +
                     "<div style=\"background-color: #12a292; text-align: center; margin: 25px; border-radius: 8px\">" +
                     "<h1 style=\"padding-top: 20px; color: white; font-size: 35px\">Confirm your email</h1>" +
                     "<p style=\"padding: 5px; color: white; font-size: 25px\">" +
-                    "Congratulations! We are delighted to inform you recently achieved the incredible height of " + height + " cm" +
-                    "on the next category: " + category + " Keep pushing! Big fan of your progress.<br>" +
+                    "Congratulations! We are delighted to inform you recently achieved the incredible height of " + height + " cm " +
+                    "on the <em>" + category + "</em> category Keep pushing! Big fan of your progress.<br>" +
                     "Sincerely, the team of Growing <br><br>" +
                     "</p>" +
                     "</div>" +

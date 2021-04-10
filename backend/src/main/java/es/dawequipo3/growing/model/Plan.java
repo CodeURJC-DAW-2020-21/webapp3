@@ -110,6 +110,11 @@ public class Plan {
         }
     }
 
+    @JsonView(Basic.class)
+    public String getCategoryName(){
+        return this.category.getName();
+    }
+
     public boolean isLikedUser() {
         return likedUser;
     }

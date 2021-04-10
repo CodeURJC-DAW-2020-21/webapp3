@@ -40,7 +40,7 @@ public class RESTCategory {
     @Autowired
     private UserService userService;
 
-    interface CategoryDetails extends Category.Trees, Category.Basic, Tree.Basic {
+    interface CategoryDetails extends Category.Trees, Category.Basic, Category.Plans, Tree.Basic, Plan.Basic, User.Basic {
     }
 
     @Operation(summary = "Get the information of all existing categories")

@@ -2,12 +2,17 @@ web:
     build: .
     ports:
       - 8443:8443
+    volumes:
+      - .:/usr/app
     links:
       - db
+    environment:
+      SPRING_DATASOURCE_URL: db
+      SPRING_DATASOURCE_USERNAME: growingUser
+      SPRING_DATASOURCE_PASSWORD: dawEquipo3-2021
 db:
   image: mysql
-  restart: always
   environment:
     MYSQL_ROOT_PASSWORD: dawEquipo3-2021
-  ports:
-    - 3306:3306
+  expose:
+    - 3306

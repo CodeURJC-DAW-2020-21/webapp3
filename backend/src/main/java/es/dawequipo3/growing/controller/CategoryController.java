@@ -2,12 +2,8 @@ package es.dawequipo3.growing.controller;
 
 import es.dawequipo3.growing.model.Category;
 import es.dawequipo3.growing.model.Plan;
-import es.dawequipo3.growing.model.Tree;
 import es.dawequipo3.growing.model.User;
-import es.dawequipo3.growing.repository.CategoryRepository;
-import es.dawequipo3.growing.repository.UserRepository;
 import es.dawequipo3.growing.service.*;
-import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

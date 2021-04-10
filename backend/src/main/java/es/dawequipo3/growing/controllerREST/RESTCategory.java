@@ -3,6 +3,7 @@ package es.dawequipo3.growing.controllerREST;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import es.dawequipo3.growing.model.Category;
+import es.dawequipo3.growing.model.Plan;
 import es.dawequipo3.growing.model.Tree;
 import es.dawequipo3.growing.model.User;
 
@@ -49,6 +50,7 @@ public class RESTCategory {
                     responseCode = "200",
                     description = "Categories retrieved correctly",
                     content = {@Content(
+                            mediaType = "application/json",
                             schema = @Schema(implementation = CategoryDetails.class)
                     )}
             ),
@@ -100,6 +102,7 @@ public class RESTCategory {
                     responseCode = "201",
                     description = "Category created correctly",
                     content = {@Content(
+                            mediaType = "application/json",
                             schema = @Schema(implementation = CategoryDetails.class)
                     )}
             ),
@@ -119,6 +122,7 @@ public class RESTCategory {
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Category> createCategory(@RequestParam String name, @RequestParam String des,
                                                    @RequestParam String color, @RequestParam(required = false) MultipartFile imageFile) throws IOException {
+
         if (!categoryService.existsByName(name)) {
             Category category = new Category(name, des, color);
             if (!imageFile.isEmpty()) {
@@ -127,7 +131,8 @@ public class RESTCategory {
             }
             categoryService.save(category);
             URI location = URI.create("https://localhost:8443/api/categories?name=".concat(category.getName().replaceAll(" ", "%20")));
-            return ResponseEntity.created(location).build();
+
+            return ResponseEntity.created(location).body(category);
         } else return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
 
@@ -138,6 +143,7 @@ public class RESTCategory {
                     responseCode = "200",
                     description = "Category edited correctly",
                     content = {@Content(
+                            mediaType = "application/json",
                             schema = @Schema(implementation = CategoryDetails.class)
                     )}
             ),
@@ -157,6 +163,7 @@ public class RESTCategory {
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Category> editCategory(@RequestParam String categoryName, @RequestParam(required = false) String newDescription,
                                                  @RequestParam(required = false) String color, MultipartFile imageFile) throws IOException {
+
 
         Optional<Category> op = categoryService.findByName(categoryName);
         if (op.isPresent()) {
@@ -242,7 +249,6 @@ public class RESTCategory {
             userService.update(user);
             return ResponseEntity.ok(category);
         } else return ResponseEntity.notFound().build();
-
     }
 
 }

@@ -12,7 +12,7 @@ import java.util.List;
 public class Plan {
 
     public interface Basic {}
-    public interface Categories {}
+
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "plan")
@@ -28,7 +28,7 @@ public class Plan {
     @JsonView(Basic.class)
     private int difficulty;
 
-    @JsonView(Basic.class)
+    @JsonIgnore
     @Column(unique = true)
     private String abv;
 
@@ -36,7 +36,7 @@ public class Plan {
     @Transient
     private boolean likedUser;
 
-    @JsonView(Categories.class)
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     private Category category;
 
@@ -108,6 +108,11 @@ public class Plan {
         } else {
             return "level3.png";
         }
+    }
+
+    @JsonView(Basic.class)
+    public String getCategoryName(){
+        return this.category.getName();
     }
 
     public boolean isLikedUser() {

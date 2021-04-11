@@ -107,11 +107,15 @@ public class RESTUser {
 
     // TODO RETURN LOCATION
     @JsonView(RESTUser.UserDetails.class)
-    @PostMapping("/new")
+    @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<User> createUser(@RequestParam String email, @RequestParam String username,
-                                           @RequestParam String name, @RequestParam String surname,
-                                           @RequestParam String encodedPassword, @RequestParam String confirmEncodedPassword) {
+    public ResponseEntity<User> createUser(@RequestBody UserRequestForm userRequestForm) {
+        String email=userRequestForm.getEmail();
+        String username=userRequestForm.getUsername();
+        String name=userRequestForm.getName();
+        String surname=userRequestForm.getSurname();
+        String encodedPassword = userRequestForm.getEncodedPassword();
+        String confirmEncodedPassword=userRequestForm.getConfirmEncodedPassword();
 
         Optional<User> op = userService.findUserByEmail(email);
         Optional<User> op1 = userService.findUserByName(username);
@@ -141,11 +145,16 @@ public class RESTUser {
     })
 
     @JsonView(RESTUser.UserDetails.class)
-    @PutMapping("/profile/edited")
-    public ResponseEntity<User> editUser(@RequestParam String username, @RequestParam String name,
-                                         @RequestParam String surname, @RequestParam String encodedPassword, @RequestParam String confirmEncodedPassword, HttpServletRequest request) {
+    @PutMapping("/profile")
+    public ResponseEntity<User> editUser(@RequestBody UserRequestForm userRequestForm, HttpServletRequest request) {
 
+        String username=userRequestForm.getUsername();
+        String name=userRequestForm.getName();
+        String surname=userRequestForm.getSurname();
+        String encodedPassword = userRequestForm.getEncodedPassword();
+        String confirmEncodedPassword=userRequestForm.getConfirmEncodedPassword();
         String email = request.getUserPrincipal().getName();
+
         Optional<User> op = userService.findUserByEmail(email);
         if (op.isPresent()) {
             User user = op.get();

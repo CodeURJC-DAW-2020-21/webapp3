@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URI;
 import java.util.Collection;
@@ -118,10 +119,13 @@ public class RESTCategory {
             ),
     })
     @JsonView(CategoryDetails.class)
-    @PostMapping("/new")
+    @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Category> createCategory(@RequestParam String name, @RequestParam String des,
-                                                   @RequestParam String color, @RequestParam(required = false) MultipartFile imageFile) throws IOException {
+    public ResponseEntity<Category> createCategory(@RequestBody CategoryRequestBody categoryRequestBody) throws IOException {
+        String name=categoryRequestBody.getName();
+        String des=categoryRequestBody.getDescription();
+        String color = categoryRequestBody.getColor();
+        MultipartFile imageFile=categoryRequestBody.getImageFile();
 
         if (!categoryService.existsByName(name)) {
             Category category = new Category(name, des, color);
@@ -159,11 +163,13 @@ public class RESTCategory {
             )
     })
     @JsonView(CategoryDetails.class)
-    @PutMapping("/edit")
+    @PutMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Category> editCategory(@RequestParam String categoryName, @RequestParam(required = false) String newDescription,
-                                                 @RequestParam(required = false) String color, MultipartFile imageFile) throws IOException {
+    public ResponseEntity<Category> editCategory(@RequestParam String categoryName,@RequestBody CategoryRequestBody categoryRequestBody) throws IOException {
 
+        String newDescription=categoryRequestBody.getDescription();
+        String color = categoryRequestBody.getColor();
+        MultipartFile imageFile=categoryRequestBody.getImageFile();
 
         Optional<Category> op = categoryService.findByName(categoryName);
         if (op.isPresent()) {

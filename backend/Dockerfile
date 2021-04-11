@@ -1,8 +1,5 @@
 FROM openjdk:11-jre
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-EXPOSE 8443
+COPY target/*.jar /usr/app/
 WORKDIR /usr/app
-CMD ["java","-jar","/app.jar"]
+CMD ["java","-jar","growing-0.0.1.jar"]
 
-HEALTHCHECK CMD curl --fail http://localhost:8443 || exit 1

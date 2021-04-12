@@ -1,5 +1,5 @@
 FROM openjdk:11-jre
-COPY target/*.jar /usr/app/
-WORKDIR /usr/app
-CMD ["java","-jar","growing-0.0.1.jar"]
+ADD target/*.jar app.jar
+EXPOSE 8443
+ENTRYPOINT ["java","-jar","app.jar"]
 

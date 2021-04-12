@@ -1,34 +1,24 @@
 version: '3'
 
 services:
-  web:
 
+  db:
+    image: mysql:5.7
+    container_name: growing_db
+    restart: on-failure
+    environment:
+      - MYSQL_DATABASE=growing
+      - MYSQL_ROOT_PASSWORD=dawEquipo3-2021
+
+  web:
     build: .
-    restart: always
     ports:
       - 8443:8443
     container_name: growing
-    volumes:
-      - .:/usr/app
+      
     links:
       - db
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://localhost/growing
-      SPRING_DATASOURCE_USERNAME: growingUser
-      SPRING_DATASOURCE_PASSWORD: dawEquipo3-2021
-      WAIT_HOSTS: mysql_db:3306
-  db:
-    healthcheck:
-      test: ["CMD", "curl" , "-f" , "http://localhost"]
-      interval: 1m30s
-      timeout: 10s
-      retries: 3
-    container_name: growing_db
-    image: mysql
-    restart: on-failure
-    ports:
-      - "5000:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: dawEquipo3-2021
-    expose:
-      - 3306
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db/growing
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=dawEquipo3-2021

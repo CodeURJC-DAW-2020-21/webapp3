@@ -38,9 +38,6 @@ public class PlanCreateRequest {
         return abv;
     }
 
-    public void setAbv(String abv) {
-        this.abv = abv;
-    }
 
     public String getDescription() {
         return description;

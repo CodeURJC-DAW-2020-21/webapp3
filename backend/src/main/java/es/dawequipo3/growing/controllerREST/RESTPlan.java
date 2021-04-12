@@ -44,8 +44,11 @@ public class RESTPlan {
     @Autowired
     private CompletedPlanService completedPlanService;
 
-    interface PlanDetails extends Plan.Basic, Category.Basic {}
-    interface CompletedPlanDetails extends Completed_plan.Basic, Plan.Basic, User.Basic{}
+    interface PlanDetails extends Plan.Basic, Category.Basic {
+    }
+
+    interface CompletedPlanDetails extends Completed_plan.Basic, Plan.Basic, User.Basic {
+    }
 
     @Operation(summary = "Get all the plans")
     @ApiResponses(value = {
@@ -82,7 +85,7 @@ public class RESTPlan {
     })
     @JsonView(PlanDetails.class)
     @GetMapping("/category")
-    public ResponseEntity<Collection<Plan>> getPlansbyCategoryName(@RequestParam String categoryName){
+    public ResponseEntity<Collection<Plan>> getPlansbyCategoryName(@RequestParam String categoryName) {
         Optional<Category> op = categoryService.findByName(categoryName);
         if (op.isPresent()) {
             return ResponseEntity.ok(planService.findPlansByCategory(categoryName));
@@ -106,7 +109,7 @@ public class RESTPlan {
     })
     @JsonView(PlanDetails.class)
     @GetMapping("/explore")
-    public ResponseEntity<List<Plan>> getPlansPage(@RequestParam (defaultValue = "0", required = false) int page) {
+    public ResponseEntity<List<Plan>> getPlansPage(@RequestParam(defaultValue = "0", required = false) int page) {
         Page<Plan> plans = planService.findAll(page);
         if (page < 0 || page > plans.getTotalPages()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -145,9 +148,9 @@ public class RESTPlan {
     public ResponseEntity<Plan> createPlan(@RequestParam String category, @RequestBody PlanCreateRequest planRequest) {
 
         Optional<Plan> op = planService.findPlanByName(planRequest.getPlanName());
-        if (op.isEmpty() || (planRequest.getDifficulty() > 3 || planRequest.getDifficulty() < 1)){
+        if (op.isEmpty() || (planRequest.getDifficulty() > 3 || planRequest.getDifficulty() < 1)) {
             Optional<Category> optionalCategory = categoryService.findByName(category);
-            if (optionalCategory.isPresent()){
+            if (optionalCategory.isPresent()) {
                 Plan plan = new Plan(planRequest.getPlanName(), planRequest.getDescription(),
                         planRequest.getDifficulty(), optionalCategory.get(), planRequest.getAbv());
                 planService.save(plan);
@@ -158,10 +161,9 @@ public class RESTPlan {
     }
 
 
-
     //TODO MUST DO A METHOD TO SEARCH A COMPLETED PLAN BY USER AND COMPLETED PLAN AND DATE AND BY USER, COMPLETED PLAN AND DATE
     // RETURN ALSO A LOCATION
-  
+
     @Operation(summary = "Complete the plan by name indicated as the logged user")
     @ApiResponses(value = {
             @ApiResponse(
@@ -316,18 +318,18 @@ public class RESTPlan {
     })
     @JsonView(RESTPlan.PlanDetails.class)
     @PutMapping("/like")
-    public ResponseEntity<Plan> likePlan(@RequestParam String abbrev, HttpServletRequest request){
+    public ResponseEntity<Plan> likePlan(@RequestParam String abbrev, HttpServletRequest request) {
         String email = request.getUserPrincipal().getName();
         Optional<User> op = userService.findUserByEmail(email);
         if (op.isPresent()) {
             User user = op.get();
-            try{
+            try {
                 Plan opPlan = planService.findPlanByAbbr(abbrev);
                 user.getLikedPlans().add(planService.findPlanByAbbr(abbrev));
                 planService.findPlanByAbbr(abbrev).setLikedUser(true);
                 userService.update(user);
                 return ResponseEntity.ok(opPlan);
-             }catch (NoSuchElementException e){
+            } catch (NoSuchElementException e) {
                 return ResponseEntity.notFound().build();
             }
         } else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -356,23 +358,22 @@ public class RESTPlan {
     })
     @JsonView(RESTPlan.PlanDetails.class)
     @PutMapping("/dislike")
-    public ResponseEntity<Plan> dislikePlan(@RequestParam String abbrev, HttpServletRequest request){
+    public ResponseEntity<Plan> dislikePlan(@RequestParam String abbrev, HttpServletRequest request) {
 
         String email = request.getUserPrincipal().getName();
         Optional<User> op = userService.findUserByEmail(email);
         if (op.isPresent()) {
             User user = op.get();
-            try{
+            try {
                 Plan opPlan = planService.findPlanByAbbr(abbrev);
                 user.getLikedPlans().remove(planService.findPlanByAbbr(abbrev));
                 planService.findPlanByAbbr(abbrev).setLikedUser(false);
                 userService.update(user);
                 return ResponseEntity.ok(opPlan);
-            }catch (NoSuchElementException e){
+            } catch (NoSuchElementException e) {
                 return ResponseEntity.notFound().build();
             }
-        }
-        else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        } else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
     @Operation(summary = "Like a plan given its name as the logged user")
@@ -397,7 +398,7 @@ public class RESTPlan {
     })
     @JsonView(RESTPlan.PlanDetails.class)
     @PutMapping("/likeC")
-    public ResponseEntity<Plan> likePlanC(@RequestParam String planName, HttpServletRequest request){
+    public ResponseEntity<Plan> likePlanC(@RequestParam String planName, HttpServletRequest request) {
         String email = request.getUserPrincipal().getName();
         try {
             User user = userService.findUserByEmail(email).orElseThrow();
@@ -409,7 +410,7 @@ public class RESTPlan {
                 userService.update(user);
                 return ResponseEntity.ok(plan);
             } else return ResponseEntity.notFound().build();
-        }catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }
@@ -474,20 +475,19 @@ public class RESTPlan {
             )
     })
     @JsonView(PlanDetails.class)
-    @PutMapping("/edited")
-    public ResponseEntity<Plan> editPlan(@RequestParam String planName, @RequestParam String newDescription,
-                                         @RequestParam String abv, @RequestParam int difficulty, HttpServletRequest request) {
+    @PutMapping("")
+    public ResponseEntity<Plan> editPlan(@RequestParam String planName, @RequestBody EditPlanRequest editPlanRequest) {
         Optional<Plan> op = planService.findPlanByName(planName);
         if (op.isPresent()) {
             Plan plan = op.get();
-            if (!newDescription.isBlank()) {
-                plan.setDescription(newDescription);
+            if (!editPlanRequest.getNewDescription().isBlank()) {
+                plan.setDescription(editPlanRequest.getNewDescription());
             }
-            if (!abv.isBlank()) {
-                plan.setAbv(abv);
+            if (!editPlanRequest.getAbv().isBlank()) {
+                plan.setAbv(editPlanRequest.getAbv());
             }
-            if (difficulty != plan.getDifficulty()) {
-                plan.setDifficulty(difficulty);
+            if (editPlanRequest.getDifficulty() != plan.getDifficulty()) {
+                plan.setDifficulty(editPlanRequest.getDifficulty());
             }
             planService.save(plan);
             return ResponseEntity.ok(plan);

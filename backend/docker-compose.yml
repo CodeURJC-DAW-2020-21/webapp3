@@ -12,6 +12,7 @@ services:
 
   web:
     build: .
+    image: dawequipo3/growing:latest
     ports:
       - 8443:8443
     container_name: growing

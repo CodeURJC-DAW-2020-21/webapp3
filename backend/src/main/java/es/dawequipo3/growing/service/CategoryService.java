@@ -42,13 +42,8 @@ public class CategoryService {
     }
 
     public void editCategory(Category category, String description, String color, MultipartFile imageFile) throws IOException {
-        if (!description.isBlank()) {
-            category.setDescription(description);
-        }
-        if (!color.isBlank()) {
-            category.setColor(color);
-        }
 
+        editCategory(category, description, color);
         if (imageFile != null) {
             if (!imageFile.isEmpty()) {
                 category.setIcon(BlobProxy.generateProxy(
@@ -57,6 +52,16 @@ public class CategoryService {
         }
         update(category);
 
+    }
+
+    public void editCategory(Category category, String description, String color){
+        if (!description.isBlank()) {
+            category.setDescription(description);
+        }
+        if (!color.isBlank()) {
+            category.setColor(color);
+        }
+        update(category);
     }
 
     public List<Category> findAll() {

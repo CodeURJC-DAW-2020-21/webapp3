@@ -15,15 +15,16 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import org.hibernate.engine.jdbc.BlobProxy;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
+
 
 import javax.servlet.http.HttpServletRequest;
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URI;
 import java.util.Collection;
@@ -118,17 +119,15 @@ public class RESTCategory {
             ),
     })
     @JsonView(CategoryDetails.class)
-    @PostMapping("/new")
+    @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Category> createCategory(@RequestParam String name, @RequestParam String des,
-                                                   @RequestParam String color, @RequestParam(required = false) MultipartFile imageFile) throws IOException {
+    public ResponseEntity<Category> createCategory(@RequestBody CategoryRequestBody categoryRequestBody){
+        String name=categoryRequestBody.getName();
+        String des=categoryRequestBody.getDescription();
+        String color = categoryRequestBody.getColor();
 
         if (!categoryService.existsByName(name)) {
             Category category = new Category(name, des, color);
-            if (!imageFile.isEmpty()) {
-                category.setIcon(BlobProxy.generateProxy(
-                        imageFile.getInputStream(), imageFile.getSize()));
-            }
             categoryService.save(category);
             URI location = URI.create("https://localhost:8443/api/categories?name=".concat(category.getName().replaceAll(" ", "%20")));
 
@@ -159,11 +158,12 @@ public class RESTCategory {
             )
     })
     @JsonView(CategoryDetails.class)
-    @PutMapping("/edit")
+    @PutMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Category> editCategory(@RequestParam String categoryName, @RequestParam(required = false) String newDescription,
-                                                 @RequestParam(required = false) String color, MultipartFile imageFile) throws IOException {
+    public ResponseEntity<Category> editCategory(@RequestParam String categoryName,@RequestBody CategoryRequestBody categoryRequestBody) throws IOException {
 
+        String newDescription=categoryRequestBody.getDescription();
+        String color = categoryRequestBody.getColor();
 
         Optional<Category> op = categoryService.findByName(categoryName);
         if (op.isPresent()) {
@@ -174,7 +174,7 @@ public class RESTCategory {
             if (color == null) {
                 color = "";
             }
-            categoryService.editCategory(category, newDescription, color, imageFile);
+            categoryService.editCategory(category, newDescription, color);
             return ResponseEntity.ok(category);
         } else return ResponseEntity.notFound().build();
     }

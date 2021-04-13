@@ -243,21 +243,22 @@ public class RESTPlan {
             )
     })
     @JsonView(CompletedPlanDetails.class)
-    @DeleteMapping("/completedPlan/removed")
-    public ResponseEntity<Completed_plan> removeCompletedPlanbyUser(@RequestParam String email, @RequestParam String planName, @RequestParam String date, HttpServletRequest request) {
+    @DeleteMapping("/")
+    public ResponseEntity<Completed_plan> removeCompletedPlanbyUser(@RequestBody RemoveCompletedPlanRequest planRemoved) {
+
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss:SSS");
         try {
-            Date dateObject = format.parse(date);
+            Date dateObject = format.parse(planRemoved.getDate());
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(dateObject);
             long milisecs = calendar.getTimeInMillis();
-            Optional<Plan> optionalPlan = planService.findPlanByName(planName);
+            Optional<Plan> optionalPlan = planService.findPlanByName(planRemoved.getPlanName());
             if (optionalPlan.isPresent()) {
                 Plan plan = optionalPlan.get();
-                Optional<Completed_plan> optionalCompleted_plan = completedPlanService.findCompletedPlan(email, plan, milisecs);
+                Optional<Completed_plan> optionalCompleted_plan = completedPlanService.findCompletedPlan(planRemoved.getEmail(), plan, milisecs);
                 if (optionalCompleted_plan.isPresent()) {
                     Completed_plan completed_plan = optionalCompleted_plan.get();
-                    completedPlanService.deleteCompletedPlan(email, planName, milisecs);
+                    completedPlanService.deleteCompletedPlan(planRemoved.getEmail(), planRemoved.getPlanName(), milisecs);
                     return ResponseEntity.ok(completed_plan);
                 }
                 return ResponseEntity.notFound().build();

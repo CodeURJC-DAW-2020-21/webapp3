@@ -1,13 +1,13 @@
-package es.dawequipo3.growing.controllerREST;
+package es.dawequipo3.growing.controllerREST.requestBody;
 
 
-public class CategoryRequestBody {
+public class CategoryRequest {
     private String name;
     private String description;
     private String color;
 
 
-    public CategoryRequestBody(String name, String description, String color) {
+    public CategoryRequest(String name, String description, String color) {
         this.name = name;
         this.description = description;
         this.color = color;

@@ -2,6 +2,9 @@ package es.dawequipo3.growing.controllerREST;
 
 
 import com.fasterxml.jackson.annotation.JsonView;
+import es.dawequipo3.growing.controllerREST.requestBody.EditPlanRequest;
+import es.dawequipo3.growing.controllerREST.requestBody.PlanCreateRequest;
+import es.dawequipo3.growing.controllerREST.requestBody.RemoveCompletedPlanRequest;
 import es.dawequipo3.growing.model.Category;
 import es.dawequipo3.growing.model.Completed_plan;
 import es.dawequipo3.growing.model.Plan;

@@ -1,6 +1,7 @@
 package es.dawequipo3.growing.controllerREST;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import es.dawequipo3.growing.controllerREST.requestBody.UserRequest;
 import es.dawequipo3.growing.model.*;
 import es.dawequipo3.growing.service.*;
 import io.swagger.v3.oas.annotations.Operation;
@@ -199,13 +200,14 @@ public class RESTUser {
     @JsonView(RESTUser.UserDetails.class)
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<User> createUser(@RequestBody UserRequestForm userRequestForm) {
-        String email = userRequestForm.getEmail();
-        String username = userRequestForm.getUsername();
-        String name = userRequestForm.getName();
-        String surname = userRequestForm.getSurname();
-        String encodedPassword = userRequestForm.getEncodedPassword();
-        String confirmEncodedPassword = userRequestForm.getConfirmEncodedPassword();
+
+    public ResponseEntity<User> createUser(@RequestBody UserRequest userRequest) {
+        String email= userRequest.getEmail();
+        String username= userRequest.getUsername();
+        String name= userRequest.getName();
+        String surname= userRequest.getSurname();
+        String encodedPassword = userRequest.getEncodedPassword();
+        String confirmEncodedPassword= userRequest.getConfirmEncodedPassword();
 
         Optional<User> op = userService.findUserByEmail(email);
         Optional<User> op1 = userService.findUserByName(username);
@@ -236,13 +238,13 @@ public class RESTUser {
 
     @JsonView(RESTUser.UserDetails.class)
     @PutMapping("/profile")
-    public ResponseEntity<User> editUser(@RequestBody UserRequestForm userRequestForm, HttpServletRequest request) {
+    public ResponseEntity<User> editUser(@RequestBody UserRequest userRequest, HttpServletRequest request) {
 
-        String username = userRequestForm.getUsername();
-        String name = userRequestForm.getName();
-        String surname = userRequestForm.getSurname();
-        String encodedPassword = userRequestForm.getEncodedPassword();
-        String confirmEncodedPassword = userRequestForm.getConfirmEncodedPassword();
+        String username = userRequest.getUsername();
+        String name = userRequest.getName();
+        String surname = userRequest.getSurname();
+        String encodedPassword = userRequest.getEncodedPassword();
+        String confirmEncodedPassword = userRequest.getConfirmEncodedPassword();
         String email = request.getUserPrincipal().getName();
 
         Optional<User> op = userService.findUserByEmail(email);

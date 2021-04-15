@@ -1,6 +1,6 @@
-package es.dawequipo3.growing.controllerREST;
+package es.dawequipo3.growing.controllerREST.requestBody;
 
-public class UserRequestForm {
+public class UserRequest {
     private String email;
     private String username;
     private String name;
@@ -8,7 +8,7 @@ public class UserRequestForm {
     private String encodedPassword;
     private String confirmEncodedPassword;
 
-    public UserRequestForm(String email, String username, String name, String surname, String encodedPassword, String confirmEncodedPassword) {
+    public UserRequest(String email, String username, String name, String surname, String encodedPassword, String confirmEncodedPassword) {
         this.email = email;
         this.username = username;
         this.name = name;

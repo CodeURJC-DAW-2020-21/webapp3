@@ -2,6 +2,7 @@ package es.dawequipo3.growing.controllerREST;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import es.dawequipo3.growing.controllerREST.requestBody.CategoryRequest;
 import es.dawequipo3.growing.model.Category;
 import es.dawequipo3.growing.model.Plan;
 import es.dawequipo3.growing.model.Tree;
@@ -168,10 +169,10 @@ public class RESTCategory {
     @JsonView(CategoryDetails.class)
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Category> createCategory(@RequestBody CategoryRequestBody categoryRequestBody){
-        String name=categoryRequestBody.getName();
-        String des=categoryRequestBody.getDescription();
-        String color = categoryRequestBody.getColor();
+    public ResponseEntity<Category> createCategory(@RequestBody CategoryRequest categoryRequest){
+        String name= categoryRequest.getName();
+        String des= categoryRequest.getDescription();
+        String color = categoryRequest.getColor();
 
         if (!categoryService.existsByName(name)) {
             Category category = new Category(name, des, color);
@@ -242,10 +243,10 @@ public class RESTCategory {
     @JsonView(CategoryDetails.class)
     @PutMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Category> editCategory(@RequestParam String categoryName,@RequestBody CategoryRequestBody categoryRequestBody) throws IOException {
+    public ResponseEntity<Category> editCategory(@RequestParam String categoryName,@RequestBody CategoryRequest categoryRequest) throws IOException {
 
-        String newDescription=categoryRequestBody.getDescription();
-        String color = categoryRequestBody.getColor();
+        String newDescription= categoryRequest.getDescription();
+        String color = categoryRequest.getColor();
 
         Optional<Category> op = categoryService.findByName(categoryName);
         if (op.isPresent()) {

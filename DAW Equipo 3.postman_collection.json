@@ -1,0 +1,998 @@
+{
+	"info": {
+		"_postman_id": "2eb8d71a-0826-4e67-9006-5fe830780c0e",
+		"name": "DAW Equipo 3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User authorization",
+			"item": [
+				{
+					"name": "User Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\": \"user@gmail\", \"password\": \"pass\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\": \"admin@gmail\", \"password\": \"pass\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User created login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\": \"badBunny@hotmail.com\", \"password\": \"yhlqmdlg\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/auth/logout",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "User chart data",
+					"item": [
+						{
+							"name": "Trees' height",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/users/profile/treeHeight",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"users",
+										"profile",
+										"treeHeight"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Number of plans liked by category",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/users/profile/favPlans",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"users",
+										"profile",
+										"favPlans"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Finished plans by category",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/users/profile/finishedPlans",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"users",
+										"profile",
+										"finishedPlans"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Admin operations",
+					"item": [
+						{
+							"name": "Get user registered information",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/users/info?email=user@gmail",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"users",
+										"info"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "user@gmail"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all users",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/users",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User creation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"badBunny@hotmail.com\",\n    \"username\" : \"BadBunny\",\n    \"name\" : \"Benito Antonio\",\n    \"surname\" : \"Martinez Ocasio\",\n    \"encodedPassword\" : \"yhlqmdlg\",\n    \"confirmEncodedPassword\" : \"yhlqmdlg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/users",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/users/profile",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit user profile",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "newUsername",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "namename",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "22",
+									"type": "text"
+								},
+								{
+									"key": "encodedPassword",
+									"value": "12",
+									"type": "text"
+								},
+								{
+									"key": "confirmEncodedPassword",
+									"value": "12",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/profile",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all completed plans",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/users/completedPlans/",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"completedPlans",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user completed plans by email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/users/completedPlans?email=admin@gmail",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"completedPlans"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "admin@gmail"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit profile image",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imageFile",
+									"type": "file",
+									"src": "/home/jorge/Imágenes/james celebrando bernabeu 2014-2015.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/profile/image",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"profile",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get profile image",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/users/profile/image",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"profile",
+								"image"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Get categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/categories/",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"categories",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get category by name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/categories?name=Savings",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"categories"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Savings"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"Football\",\n    \"color\" : \"green\",\n    \"description\" : \"Do you want to be a professional footballer or want to play for hobbie? Here you have some tasks to improve!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/categories",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Category",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\" : \"this is a totally new description\",\n    \"color\" : \"red\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/categories?categoryName=Savings",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"categories"
+							],
+							"query": [
+								{
+									"key": "categoryName",
+									"value": "Savings"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get category icon",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/categories/image?categoryName=Savings",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"categories",
+								"image"
+							],
+							"query": [
+								{
+									"key": "categoryName",
+									"value": "Savings"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit category icon",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imageFile",
+									"type": "file",
+									"src": "/home/jorge/Imágenes/Fondo verstappen.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/categories/image?name=Savings",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"categories",
+								"image"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Savings"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dislike category",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/categories/dislike?categoryName=Mental Health",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"categories",
+								"dislike"
+							],
+							"query": [
+								{
+									"key": "categoryName",
+									"value": "Mental Health"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Like category",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/categories/like?categoryName=Mental Health",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"categories",
+								"like"
+							],
+							"query": [
+								{
+									"key": "categoryName",
+									"value": "Mental Health"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Plan",
+			"item": [
+				{
+					"name": "Get all plans",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/plans/",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"plans",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get category plans",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{baseURL}}/plans/category?categoryName=Focus and effort",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"plans",
+								"category"
+							],
+							"query": [
+								{
+									"key": "categoryName",
+									"value": "Focus and effort"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get plan by name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/plans?planName=Paint Mandalas",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"plans"
+							],
+							"query": [
+								{
+									"key": "planName",
+									"value": "Paint Mandalas"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all completed plans",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/plans/completedPlans",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"plans",
+								"completedPlans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all completed plans by email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/users/completedPlans?email=admin@gmail",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"completedPlans"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "admin@gmail"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all completed plans by current user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/users/completedPlans/",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"completedPlans",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove completed plan",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"admin@gmail\",\n    \"planName\" : \"Abs\",\n    \"date\" : \"2021-04-16-01:22:56:852\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/plans/completedPlans",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"plans",
+								"completedPlans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create plan",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"planName\": \"Football basic skills\",\r\n    \"abv\": \"footbasicskills\",\r\n    \"description\": \"Let's play some football! Start with ten shoots to a wall or a friend to practice passes\",\r\n    \"difficulty\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/plans?category=Physical Health",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"plans"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "Physical Health"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit plan",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"newDescription\" :\"new Description to the plan\",\r\n    \"abv\" : \"abs2\",\r\n    \"difficulty\" : 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/plans?planName=Abs",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"plans"
+							],
+							"query": [
+								{
+									"key": "planName",
+									"value": "Abs"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Complete plan",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/plans/done?planName=Abs",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"plans",
+								"done"
+							],
+							"query": [
+								{
+									"key": "planName",
+									"value": "Abs"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pagination page 0",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/plans/explore?page=0",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"plans",
+								"explore"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pagination page 1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/plans/explore?page=1",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"plans",
+								"explore"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "https://localhost:8443/api"
+		}
+	]
+}

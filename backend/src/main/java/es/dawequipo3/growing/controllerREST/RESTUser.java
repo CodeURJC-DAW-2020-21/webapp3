@@ -9,13 +9,21 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.net.URI;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -46,8 +54,11 @@ public class RESTUser {
     interface UserDetails extends User.Basic {
     }
 
-    interface CompletedPlanDetails extends Completed_plan.Basic, Completed_plan.Completed, User.Basic, Plan.Basic {}
-    interface CompletedPlanUser extends Completed_plan.Completed, Plan.Basic{}
+    interface CompletedPlanDetails extends Completed_plan.Basic, Completed_plan.Completed, User.Basic, Plan.Basic {
+    }
+
+    interface CompletedPlanUser extends Completed_plan.Completed, Plan.Basic {
+    }
 
     interface Charts extends ChartData.Basico {
     }
@@ -83,6 +94,85 @@ public class RESTUser {
         }
     }
 
+
+    @Operation(summary = "Returns the current user profile image")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Category's icon retrieved correctly",
+                    content = {@Content(
+                            mediaType = "image/*"
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Image not found",
+                    content = @Content
+            ),
+    })
+    @GetMapping("/image")
+    public ResponseEntity<Object> getImage(HttpServletRequest request) throws SQLException {
+        String email = request.getUserPrincipal().getName();
+        Optional<User> op = userService.findUserByEmail(email);
+        if (op.isPresent()) {
+            User user = op.get();
+            if (user.getImageFile() != null) {
+                Resource file = new InputStreamResource(user.getImageFile().getBinaryStream());
+                return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+                        .contentLength(user.getImageFile().length()).body(file);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @Operation(summary = "Changes the current user profile image with a new one indicated by the user")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "User's profile icon changed correctly",
+                    content = {@Content(
+                            mediaType = "image/*",
+                            schema = @Schema(implementation = UserDetails.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Permission error, only access to registered users",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Image not found",
+                    content = @Content
+            ),
+    })
+    @JsonView(User.Basic.class)
+    @PutMapping("/image")
+    public ResponseEntity<User> uploadImage(HttpServletRequest request, @RequestParam MultipartFile imageFile) throws SQLException, IOException {
+        String email = request.getUserPrincipal().getName();
+        Optional<User> op = userService.findUserByEmail(email);
+        if (op.isPresent()) {
+            User user = op.get();
+            if (imageFile != null) {
+                if (!imageFile.isEmpty()) {
+                    user.setImageFile(BlobProxy.generateProxy(
+                            imageFile.getInputStream(), imageFile.getSize()));
+                }
+            }
+            userService.update(user);
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
+
+    }
+
+
     @Operation(summary = "Create a new user")
 
     @ApiResponses(value = {
@@ -110,6 +200,7 @@ public class RESTUser {
     @JsonView(RESTUser.UserDetails.class)
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
+
     public ResponseEntity<User> createUser(@RequestBody UserRequest userRequest) {
         String email= userRequest.getEmail();
         String username= userRequest.getUsername();
@@ -149,11 +240,11 @@ public class RESTUser {
     @PutMapping("/profile")
     public ResponseEntity<User> editUser(@RequestBody UserRequest userRequest, HttpServletRequest request) {
 
-        String username= userRequest.getUsername();
-        String name= userRequest.getName();
-        String surname= userRequest.getSurname();
+        String username = userRequest.getUsername();
+        String name = userRequest.getName();
+        String surname = userRequest.getSurname();
         String encodedPassword = userRequest.getEncodedPassword();
-        String confirmEncodedPassword= userRequest.getConfirmEncodedPassword();
+        String confirmEncodedPassword = userRequest.getConfirmEncodedPassword();
         String email = request.getUserPrincipal().getName();
 
         Optional<User> op = userService.findUserByEmail(email);
@@ -263,7 +354,7 @@ public class RESTUser {
             for (Category category : categoryService.findAll()) {
                 list.add(new ChartData(email, category.getName(), category.getColor(), treeService.findTree(email, category.getName()).orElseThrow().getHeight()));
             }
-            return new ResponseEntity<> (list, HttpStatus.OK);
+            return new ResponseEntity<>(list, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
@@ -297,7 +388,7 @@ public class RESTUser {
             for (Category category : categoryService.findAll()) {
                 list.add(new ChartData(email, category.getName(), category.getColor(), planService.likedplans(email, category.getName()).size()));
             }
-            return new ResponseEntity<> (list, HttpStatus.OK);
+            return new ResponseEntity<>(list, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
@@ -331,7 +422,7 @@ public class RESTUser {
             for (Category category : categoryService.findAll()) {
                 list.add(new ChartData(email, category.getName(), category.getColor(), completedPlanService.countTasksDoneByUserAndCategory(email, category.getName())));
             }
-            return new ResponseEntity<> (list, HttpStatus.OK);
+            return new ResponseEntity<>(list, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }

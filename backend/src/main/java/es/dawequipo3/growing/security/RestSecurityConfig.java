@@ -51,6 +51,7 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.antMatcher("/api/**");
 
 		// URLs that need authentication to access to it
+		http.authorizeRequests().antMatchers("/api/auth/login").anonymous();
 		//		RESTPlan
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/plans/like").hasRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/plans/dislike").hasRole("USER");
@@ -66,13 +67,15 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 		//		RESTUser
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/profile/**").hasRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/profile/**").hasRole("USER");
+		http.authorizeRequests().antMatchers("/api/users/image").hasRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/completedPlans").hasRole("ADMIN");
-		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/users/new").anonymous();
+		http.authorizeRequests().antMatchers("/api/users").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers("/api/users/info").hasRole("USER");
 
 		//		RESTCategory
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/categories/like").hasRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/categories/dislike").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/categories/edit").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/categories/image").hasRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/categories/**").hasRole("ADMIN");
 
 		// Other URLs can be accessed without authentication

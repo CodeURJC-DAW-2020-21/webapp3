@@ -25,8 +25,11 @@ import java.io.IOException;
 import java.net.URI;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+
+import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
 @RestController
 @RequestMapping("/api/users")
@@ -63,12 +66,12 @@ public class RESTUser {
     interface Charts extends ChartData.Basico {
     }
 
-    @Operation(summary = "Get user profile by the email")
+    @Operation(summary = "Get all users")
 
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Found the user profile",
+                    description = "Found all the users",
                     content = {@Content(
                             mediaType = "application/json",
                             schema = @Schema(implementation = UserDetails.class)
@@ -76,22 +79,65 @@ public class RESTUser {
             ),
             @ApiResponse(
                     responseCode = "403",
-                    description = "Only access to registered user",
+                    description = "Only access to an admin user",
                     content = @Content
             )
     })
+    @JsonView(RESTUser.UserDetails.class)
+    @GetMapping("")
+    public ResponseEntity<Collection<User>> getAllUsers(){
+        return ResponseEntity.ok(userService.findAll());
+    }
 
+    @Operation(summary = "Get all users")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Found all the users",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = UserDetails.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Only access to an admin user",
+                    content = @Content
+            )
+    })
+    @JsonView(RESTUser.UserDetails.class)
+    @GetMapping("/info")
+    public ResponseEntity<User> getUserEmail(@RequestParam String email, HttpServletRequest request){
+        if (request.getUserPrincipal() != null){
+            if (request.isUserInRole("ADMIN") || request.getUserPrincipal().getName().equals(email))
+                return userService.returnUser(email);
+        }
+        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+    }
+
+    @Operation(summary = "Get user logged profile")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Found the current user profile",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = UserDetails.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Only access to registered users",
+                    content = @Content
+            )
+    })
     @JsonView(RESTUser.UserDetails.class)
     @GetMapping("/profile")
     public ResponseEntity<User> getUser(HttpServletRequest request) {
         String email = request.getUserPrincipal().getName();
-        Optional<User> op = userService.findUserByEmail(email);
-        if (op.isPresent()) {
-            User user = op.get();
-            return new ResponseEntity<>(user, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        return userService.returnUser(email);
     }
 
 
@@ -196,7 +242,6 @@ public class RESTUser {
             )
     })
 
-    // TODO RETURN LOCATION
     @JsonView(RESTUser.UserDetails.class)
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
@@ -214,7 +259,8 @@ public class RESTUser {
         if (op.isEmpty() && op1.isEmpty() && encodedPassword.equals(confirmEncodedPassword)) {
             User user = new User(email, username, name, surname, passwordEncoder.encode(encodedPassword), "USER");
             userService.save(user);
-            return new ResponseEntity<>(user, HttpStatus.CREATED);
+            URI location = URI.create("https://localhost:8443/api/users/info?email="+email);
+            return ResponseEntity.created(location).body(user);
         } else return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
 

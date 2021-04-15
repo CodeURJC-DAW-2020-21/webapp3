@@ -7,6 +7,7 @@ import es.dawequipo3.growing.model.User;
 import es.dawequipo3.growing.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.support.PagedListHolder;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -30,7 +31,6 @@ public class UserService {
     private PlanService planService;
 
     /**
-     *
      * @param user
      * @param pageNum
      * @return
@@ -54,7 +54,6 @@ public class UserService {
     }
 
     /**
-     *
      * @param user
      * @return
      */
@@ -73,7 +72,6 @@ public class UserService {
     }
 
     /**
-     *
      * @param user
      */
     public void save(User user) {
@@ -100,5 +98,18 @@ public class UserService {
         return userRepository.findByUsername(name);
     }
 
-    public void update(User user){userRepository.save(user);}
+    public void update(User user) {
+        userRepository.save(user);
+    }
+
+    public ResponseEntity<User> returnUser(String email) {
+        Optional<User> op = findUserByEmail(email);
+        if (op.isPresent()) {
+            User user = op.get();
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }

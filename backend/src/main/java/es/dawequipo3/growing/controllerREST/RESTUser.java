@@ -66,159 +66,6 @@ public class RESTUser {
     interface Charts extends ChartData.Basico {
     }
 
-    @Operation(summary = "Get all users")
-
-    @ApiResponses(value = {
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "Found all the users",
-                    content = {@Content(
-                            mediaType = "application/json",
-                            schema = @Schema(implementation = UserDetails.class)
-                    )}
-            ),
-            @ApiResponse(
-                    responseCode = "403",
-                    description = "Only access to an admin user",
-                    content = @Content
-            )
-    })
-    @JsonView(RESTUser.UserDetails.class)
-    @GetMapping("")
-    public ResponseEntity<Collection<User>> getAllUsers(){
-        return ResponseEntity.ok(userService.findAll());
-    }
-
-    @Operation(summary = "Get all users")
-
-    @ApiResponses(value = {
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "Found all the users",
-                    content = {@Content(
-                            mediaType = "application/json",
-                            schema = @Schema(implementation = UserDetails.class)
-                    )}
-            ),
-            @ApiResponse(
-                    responseCode = "403",
-                    description = "Only access to an admin user",
-                    content = @Content
-            )
-    })
-    @JsonView(RESTUser.UserDetails.class)
-    @GetMapping("/info")
-    public ResponseEntity<User> getUserEmail(@RequestParam String email, HttpServletRequest request){
-        if (request.getUserPrincipal() != null){
-            if (request.isUserInRole("ADMIN") || request.getUserPrincipal().getName().equals(email))
-                return userService.returnUser(email);
-        }
-        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-    }
-
-    @Operation(summary = "Get user logged profile")
-
-    @ApiResponses(value = {
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "Found the current user profile",
-                    content = {@Content(
-                            mediaType = "application/json",
-                            schema = @Schema(implementation = UserDetails.class)
-                    )}
-            ),
-            @ApiResponse(
-                    responseCode = "403",
-                    description = "Only access to registered users",
-                    content = @Content
-            )
-    })
-    @JsonView(RESTUser.UserDetails.class)
-    @GetMapping("/profile")
-    public ResponseEntity<User> getUser(HttpServletRequest request) {
-        String email = request.getUserPrincipal().getName();
-        return userService.returnUser(email);
-    }
-
-
-    @Operation(summary = "Returns the current user profile image")
-
-    @ApiResponses(value = {
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "Category's icon retrieved correctly",
-                    content = {@Content(
-                            mediaType = "image/*"
-                    )}
-            ),
-            @ApiResponse(
-                    responseCode = "404",
-                    description = "Image not found",
-                    content = @Content
-            ),
-    })
-    @GetMapping("/image")
-    public ResponseEntity<Object> getImage(HttpServletRequest request) throws SQLException {
-        String email = request.getUserPrincipal().getName();
-        Optional<User> op = userService.findUserByEmail(email);
-        if (op.isPresent()) {
-            User user = op.get();
-            if (user.getImageFile() != null) {
-                Resource file = new InputStreamResource(user.getImageFile().getBinaryStream());
-                return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
-                        .contentLength(user.getImageFile().length()).body(file);
-            } else {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            }
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    @Operation(summary = "Changes the current user profile image with a new one indicated by the user")
-
-    @ApiResponses(value = {
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "User's profile icon changed correctly",
-                    content = {@Content(
-                            mediaType = "image/*",
-                            schema = @Schema(implementation = UserDetails.class)
-                    )}
-            ),
-            @ApiResponse(
-                    responseCode = "403",
-                    description = "Permission error, only access to registered users",
-                    content = @Content
-            ),
-            @ApiResponse(
-                    responseCode = "404",
-                    description = "Image not found",
-                    content = @Content
-            ),
-    })
-    @JsonView(User.Basic.class)
-    @PutMapping("/image")
-    public ResponseEntity<User> uploadImage(HttpServletRequest request, @RequestParam MultipartFile imageFile) throws SQLException, IOException {
-        String email = request.getUserPrincipal().getName();
-        Optional<User> op = userService.findUserByEmail(email);
-        if (op.isPresent()) {
-            User user = op.get();
-            if (imageFile != null) {
-                if (!imageFile.isEmpty()) {
-                    user.setImageFile(BlobProxy.generateProxy(
-                            imageFile.getInputStream(), imageFile.getSize()));
-                }
-            }
-            userService.update(user);
-            return ResponseEntity.ok(user);
-        } else {
-            return ResponseEntity.badRequest().build();
-        }
-
-    }
-
-
     @Operation(summary = "Create a new user")
 
     @ApiResponses(value = {
@@ -247,23 +94,141 @@ public class RESTUser {
     @ResponseStatus(HttpStatus.CREATED)
 
     public ResponseEntity<User> createUser(@RequestBody UserRequest userRequest) {
-        String email= userRequest.getEmail();
-        String username= userRequest.getUsername();
-        String name= userRequest.getName();
-        String surname= userRequest.getSurname();
+        String email = userRequest.getEmail();
+        String username = userRequest.getUsername();
+        String name = userRequest.getName();
+        String surname = userRequest.getSurname();
         String encodedPassword = userRequest.getEncodedPassword();
-        String confirmEncodedPassword= userRequest.getConfirmEncodedPassword();
+        String confirmEncodedPassword = userRequest.getConfirmEncodedPassword();
 
         Optional<User> op = userService.findUserByEmail(email);
         Optional<User> op1 = userService.findUserByName(username);
         if (op.isEmpty() && op1.isEmpty() && encodedPassword.equals(confirmEncodedPassword)) {
             User user = new User(email, username, name, surname, passwordEncoder.encode(encodedPassword), "USER");
             userService.save(user);
-            URI location = URI.create("https://localhost:8443/api/users/info?email="+email);
+            URI location = URI.create("https://localhost:8443/api/users/info?email=" + email);
             return ResponseEntity.created(location).body(user);
         } else return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
 
+    // Get users logged
+
+    @Operation(summary = "Get all users")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Found all the users",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = UserDetails.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Only access to an admin user",
+                    content = @Content
+            )
+    })
+    @JsonView(RESTUser.UserDetails.class)
+    @GetMapping("")
+    public ResponseEntity<Collection<User>> getAllUsers() {
+        return ResponseEntity.ok(userService.findAll());
+    }
+
+    @Operation(summary = "Get all users")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Found all the users",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = UserDetails.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Only access to an admin user",
+                    content = @Content
+            )
+    })
+
+    // Get user logged searched by email
+    @JsonView(RESTUser.UserDetails.class)
+    @GetMapping("/info")
+    public ResponseEntity<User> getUserEmail(@RequestParam String email, HttpServletRequest request) {
+        if (request.getUserPrincipal() != null) {
+            if (request.isUserInRole("ADMIN") || request.getUserPrincipal().getName().equals(email))
+                return userService.returnUser(email);
+        }
+        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+    }
+
+    // OPERATIONS WITH THE CURRENT USER
+
+    // Get principal information
+    @Operation(summary = "Get user logged profile")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Found the current user profile",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = UserDetails.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Only access to registered users",
+                    content = @Content
+            )
+    })
+    @JsonView(RESTUser.UserDetails.class)
+    @GetMapping("/profile")
+    public ResponseEntity<User> getUser(HttpServletRequest request) {
+        String email = request.getUserPrincipal().getName();
+        return userService.returnUser(email);
+    }
+
+    // Get profile image
+    @Operation(summary = "Returns the current user profile image")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Category's icon retrieved correctly",
+                    content = {@Content(
+                            mediaType = "image/*"
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Image not found",
+                    content = @Content
+            ),
+    })
+    @GetMapping("/profile/image")
+    public ResponseEntity<Object> getImage(HttpServletRequest request) throws SQLException {
+        String email = request.getUserPrincipal().getName();
+        Optional<User> op = userService.findUserByEmail(email);
+        if (op.isPresent()) {
+            User user = op.get();
+            if (user.getImageFile() != null) {
+                Resource file = new InputStreamResource(user.getImageFile().getBinaryStream());
+                return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+                        .contentLength(user.getImageFile().length()).body(file);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
+    // Profile editing
     @Operation(summary = "Edit user profile")
 
     @ApiResponses(value = {
@@ -312,6 +277,52 @@ public class RESTUser {
             return new ResponseEntity<>(user, HttpStatus.OK);
         } else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+    //Changes the profile image
+    @Operation(summary = "Changes the current user profile image with a new one indicated by the user")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "User's profile icon changed correctly",
+                    content = {@Content(
+                            mediaType = "image/*",
+                            schema = @Schema(implementation = UserDetails.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Permission error, only access to registered users",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Image not found",
+                    content = @Content
+            ),
+    })
+    @JsonView(User.Basic.class)
+    @PutMapping("/profile/image")
+    public ResponseEntity<User> uploadImage(HttpServletRequest request, @RequestParam MultipartFile imageFile) throws SQLException, IOException {
+        String email = request.getUserPrincipal().getName();
+        Optional<User> op = userService.findUserByEmail(email);
+        if (op.isPresent()) {
+            User user = op.get();
+            if (imageFile != null) {
+                if (!imageFile.isEmpty()) {
+                    user.setImageFile(BlobProxy.generateProxy(
+                            imageFile.getInputStream(), imageFile.getSize()));
+                }
+            }
+            userService.update(user);
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
+
+    }
+
+
 
     @Operation(summary = "Show completed plans by email")
 
@@ -371,6 +382,8 @@ public class RESTUser {
         return new ResponseEntity<>(completedPlanService.getAllCompletedPlans(request), HttpStatus.OK);
     }
 
+    // GETS CHART INFORMATION
+
     @Operation(summary = "Show the user progress with the tree height")
 
     @ApiResponses(value = {
@@ -404,6 +417,7 @@ public class RESTUser {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
 
     @Operation(summary = "Show the user progress with the number of favourites plans per category")
 

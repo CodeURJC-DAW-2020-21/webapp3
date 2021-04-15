@@ -1,12 +1,13 @@
 package es.dawequipo3.growing.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 public class ChartData {
 
     public interface Basico{}
 
-    @JsonView(Basico.class)
+    @JsonIgnore
     private String email;
 
     @JsonView(Basico.class)

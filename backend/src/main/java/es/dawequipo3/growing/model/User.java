@@ -48,6 +48,7 @@ public class User {
     @Column(nullable = false)
     private String surname;
 
+    @JsonIgnore
     @Column(nullable = false)
     private String encodedPassword;
 
@@ -55,6 +56,7 @@ public class User {
     @JsonIgnore
     private Blob imageFile;
 
+    @JsonIgnore
     @Transient
     private String confirmEncodedPassword;
 

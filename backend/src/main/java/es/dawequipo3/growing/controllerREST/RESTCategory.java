@@ -126,7 +126,7 @@ public class RESTCategory {
     })
     @JsonView(CategoryDetails.class)
     @PutMapping("/image")
-    public ResponseEntity<Category> uploadImage(@RequestParam String name, @RequestParam MultipartFile imageFile) throws SQLException, IOException {
+    public ResponseEntity<Category> uploadImage(@RequestParam String name, @RequestParam MultipartFile imageFile) throws IOException {
         Optional<Category> op = categoryService.findByName(name);
         if (op.isPresent()) {
             Category category = op.get();
@@ -144,7 +144,8 @@ public class RESTCategory {
 
     }
 
-    @Operation(summary = "Create a category with a specific name, description, color and an optional image")
+    @Operation(summary = "Create a category with a specific name, description, color and an optional image. Color " +
+            "must be green, orange, darkblue, red, purple or blue")
 
     @ApiResponses(value = {
             @ApiResponse(
@@ -154,6 +155,11 @@ public class RESTCategory {
                             mediaType = "application/json",
                             schema = @Schema(implementation = CategoryDetails.class)
                     )}
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Bad request, the color is not valid",
+                    content = @Content
             ),
             @ApiResponse(
                     responseCode = "403",
@@ -169,17 +175,20 @@ public class RESTCategory {
     @JsonView(CategoryDetails.class)
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Category> createCategory(@RequestBody CategoryRequest categoryRequest){
-        String name= categoryRequest.getName();
-        String des= categoryRequest.getDescription();
+    public ResponseEntity<Category> createCategory(@RequestBody CategoryRequest categoryRequest) {
+        String name = categoryRequest.getName();
+        String des = categoryRequest.getDescription();
         String color = categoryRequest.getColor();
 
         if (!categoryService.existsByName(name)) {
-            Category category = new Category(name, des, color);
-            categoryService.save(category);
-            URI location = URI.create("https://localhost:8443/api/categories?name=".concat(category.getName().replaceAll(" ", "%20")));
+            if (color.equals("green") || color.equals("orange") || color.equals("darkblue") || color.equals("red") || color.equals("purple") || color.equals("blue")) {
 
-            return ResponseEntity.created(location).body(category);
+                Category category = new Category(name, des, color);
+                categoryService.save(category);
+                URI location = URI.create("https://localhost:8443/api/categories?name=".concat(category.getName().replaceAll(" ", "%20")));
+
+                return ResponseEntity.created(location).body(category);
+            } else return ResponseEntity.badRequest().build();
         } else return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
 
@@ -202,7 +211,7 @@ public class RESTCategory {
     @GetMapping("/image")
     public ResponseEntity<Object> getImage(@RequestParam String categoryName) throws SQLException {
         Optional<Category> op = categoryService.findByName(categoryName);
-        if (op.isPresent()){
+        if (op.isPresent()) {
             Category category = op.get();
             if (category.getIcon() != null) {
 
@@ -243,9 +252,9 @@ public class RESTCategory {
     @JsonView(CategoryDetails.class)
     @PutMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Category> editCategory(@RequestParam String categoryName,@RequestBody CategoryRequest categoryRequest) throws IOException {
+    public ResponseEntity<Category> editCategory(@RequestParam String categoryName, @RequestBody CategoryRequest categoryRequest) {
 
-        String newDescription= categoryRequest.getDescription();
+        String newDescription = categoryRequest.getDescription();
         String color = categoryRequest.getColor();
 
         Optional<Category> op = categoryService.findByName(categoryName);

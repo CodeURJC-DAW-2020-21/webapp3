@@ -50,7 +50,7 @@ public class RESTPlan {
     interface PlanDetails extends Plan.Basic, Category.Basic {
     }
 
-    interface CompletedPlanDetails extends Completed_plan.Basic, Plan.Basic, User.Basic {
+    interface CompletedPlanDetails extends Completed_plan.Basic, Completed_plan.Completed, Plan.Basic, User.Basic {
     }
 
     @Operation(summary = "Get all the plans")
@@ -164,9 +164,6 @@ public class RESTPlan {
     }
 
 
-    //TODO MUST DO A METHOD TO SEARCH A COMPLETED PLAN BY USER AND COMPLETED PLAN AND DATE AND BY USER, COMPLETED PLAN AND DATE
-    // RETURN ALSO A LOCATION
-
     @Operation(summary = "Complete the plan by name indicated as the logged user")
     @ApiResponses(value = {
             @ApiResponse(
@@ -246,7 +243,7 @@ public class RESTPlan {
             )
     })
     @JsonView(CompletedPlanDetails.class)
-    @DeleteMapping("/")
+    @DeleteMapping("/completedPlans")
     public ResponseEntity<Completed_plan> removeCompletedPlanbyUser(@RequestBody RemoveCompletedPlanRequest planRemoved) {
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss:SSS");

@@ -347,23 +347,23 @@ public class RESTUser {
             )
     })
 
-    @JsonView(RESTUser.CompletedPlanUser.class)
+    @JsonView(CompletedPlanUser.class)
     @GetMapping("/completedPlans")
     public ResponseEntity<List<Completed_plan>> getCompletedTasksByUser(@RequestParam String email) {
         Optional<User> op = userService.findUserByEmail(email);
         if (op.isPresent()) {
             List<Completed_plan> completed_plan = completedPlanService.getCompletedPlanPageByEmailSortedByDate(email);
-            return new ResponseEntity<>(completed_plan, HttpStatus.OK);
+            return ResponseEntity.ok(completed_plan);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return ResponseEntity.notFound().build();
     }
 
-    @Operation(summary = "Show all completed plans by users")
+    @Operation(summary = "Show all completed plans by actual user")
 
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "List of all plans completed by all the users",
+                    description = "List of all plans completed by actual user",
                     content = {@Content(
                             mediaType = "application/json",
                             schema = @Schema(implementation = RESTUser.CompletedPlanDetails.class)
@@ -376,7 +376,7 @@ public class RESTUser {
             )
     })
 
-    @JsonView(RESTUser.CompletedPlanDetails.class)
+    @JsonView(CompletedPlanUser.class)
     @GetMapping("/completedPlans/")
     public ResponseEntity<List<Completed_plan>> getCompletedTasks(HttpServletRequest request) {
         return new ResponseEntity<>(completedPlanService.getAllCompletedPlans(request), HttpStatus.OK);

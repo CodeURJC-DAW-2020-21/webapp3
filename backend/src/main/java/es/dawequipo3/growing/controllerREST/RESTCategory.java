@@ -101,6 +101,28 @@ public class RESTCategory {
         }
     }
 
+    @Operation(summary = "Changes the current icon with a new one indicated by the user")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Category's icon changed correctly",
+                    content = {@Content(
+                            mediaType = "image/*",
+                            schema = @Schema(implementation = CategoryDetails.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Permission error, only access to admin account",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Image not found",
+                    content = @Content
+            ),
+    })
     @JsonView(CategoryDetails.class)
     @PutMapping("/image")
     public ResponseEntity<Category> uploadImage(@RequestParam String name, @RequestParam MultipartFile imageFile) throws SQLException, IOException {
@@ -160,6 +182,22 @@ public class RESTCategory {
         } else return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
 
+    @Operation(summary = "Returns the current user selected category icon")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Category's icon retrieved correctly",
+                    content = {@Content(
+                            mediaType = "image/*"
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Image not found",
+                    content = @Content
+            ),
+    })
     @GetMapping("/image")
     public ResponseEntity<Object> getImage(@RequestParam String categoryName) throws SQLException {
         Optional<Category> op = categoryService.findByName(categoryName);

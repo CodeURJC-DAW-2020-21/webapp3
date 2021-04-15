@@ -94,6 +94,22 @@ public class RESTUser {
     }
 
 
+    @Operation(summary = "Returns the current user profile image")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Category's icon retrieved correctly",
+                    content = {@Content(
+                            mediaType = "image/*"
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Image not found",
+                    content = @Content
+            ),
+    })
     @GetMapping("/image")
     public ResponseEntity<Object> getImage(HttpServletRequest request) throws SQLException {
         String email = request.getUserPrincipal().getName();
@@ -112,6 +128,28 @@ public class RESTUser {
         }
     }
 
+    @Operation(summary = "Changes the current user profile image with a new one indicated by the user")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "User's profile icon changed correctly",
+                    content = {@Content(
+                            mediaType = "image/*",
+                            schema = @Schema(implementation = UserDetails.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Permission error, only access to registered users",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Image not found",
+                    content = @Content
+            ),
+    })
     @JsonView(User.Basic.class)
     @PutMapping("/image")
     public ResponseEntity<User> uploadImage(HttpServletRequest request, @RequestParam MultipartFile imageFile) throws SQLException, IOException {

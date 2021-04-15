@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
@@ -54,7 +55,22 @@ public class CategoryService {
 
     }
 
-    public void editCategory(Category category, String description, String color){
+    public Category editCategory(String categoryName, String newDescription, String color) {
+
+        Optional<Category> op = findByName(categoryName);
+
+        Category category = op.orElseThrow();
+        if (newDescription == null) {
+            newDescription = "";
+        }
+        if (color == null) {
+            color = "";
+        }
+        editCategory(category, newDescription, color);
+        return category;
+    }
+
+    public void editCategory(Category category, String description, String color) {
         if (!description.isBlank()) {
             category.setDescription(description);
         }
@@ -77,5 +93,24 @@ public class CategoryService {
     }
 
 
+    public Category dislikeCategory(String categoryName, HttpServletRequest request) {
+        String email = request.getUserPrincipal().getName();
+        User user = userService.findUserByEmail(email).orElseThrow();
+        Category category = findByName(categoryName).orElseThrow();
 
+        user.getUserFavoritesCategory().remove(category);
+        category.setLikedByUser(false);
+        userService.update(user);
+        return category;
+    }
+
+    public Category likeCategory(String categoryName, HttpServletRequest request) {
+        String email = request.getUserPrincipal().getName();
+        User user = userService.findUserByEmail(email).orElseThrow();
+        Category category = findByName(categoryName).orElseThrow();
+
+        user.getUserFavoritesCategory().add(category);
+        category.setLikedByUser(true);
+        userService.update(user);
+    }
 }

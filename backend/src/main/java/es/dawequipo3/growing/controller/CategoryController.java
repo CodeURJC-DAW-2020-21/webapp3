@@ -143,11 +143,7 @@ public class CategoryController {
 
     @PostMapping("/categoryInfo/{name}/like")
     public String categoryLike(@PathVariable String name, HttpServletRequest request) {
-        Category category = categoryService.findByName(name).orElseThrow();
-        String email = request.getUserPrincipal().getName();
-        User user = userService.findUserByEmail(email).orElseThrow();
-        user.getUserFavoritesCategory().add(category);
-        userService.update(user);
+        categoryService.likeCategory(name,request);
         return "redirect:/categoryInfo/{name}";
     }
 
@@ -161,12 +157,7 @@ public class CategoryController {
 
     @PostMapping("/categoryInfo/{name}/dislike")
     public String categoryDislike(@PathVariable String name, HttpServletRequest request) {
-        Category category = categoryService.findByName(name).orElseThrow();
-        String email = request.getUserPrincipal().getName();
-        User user = userService.findUserByEmail(email).orElseThrow();
-        user.getUserFavoritesCategory().remove(category);
-        category.setLikedByUser(false);
-        userService.update(user);
+        categoryService.dislikeCategory(name,request);
         return "redirect:/categoryInfo/{name}";
     }
 

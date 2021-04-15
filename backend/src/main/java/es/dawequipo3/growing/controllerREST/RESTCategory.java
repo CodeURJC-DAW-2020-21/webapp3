@@ -281,16 +281,13 @@ public class RESTCategory {
     @JsonView(CategoryDetails.class)
     @PutMapping("/dislike")
     public ResponseEntity<Category> dislikeCategory(@RequestParam String categoryName, HttpServletRequest request) {
-        String email = request.getUserPrincipal().getName();
-        User user = userService.findUserByEmail(email).orElseThrow();
-        Optional<Category> op = categoryService.findByName(categoryName);
-        if (op.isPresent()) {
-            Category category = op.get();
-            user.getUserFavoritesCategory().remove(category);
-            category.setLikedByUser(false);
-            userService.update(user);
+
+        try {
+            Category category = categoryService.dislikeCategory(categoryName, request);
             return ResponseEntity.ok(category);
-        } else return ResponseEntity.notFound().build();
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @Operation(summary = "Like a category as the logged user")
@@ -317,16 +314,11 @@ public class RESTCategory {
     @JsonView(CategoryDetails.class)
     @PutMapping("/like")
     public ResponseEntity<Category> likeCategory(@RequestParam String categoryName, HttpServletRequest request) {
-        String email = request.getUserPrincipal().getName();
-        User user = userService.findUserByEmail(email).orElseThrow();
-        Optional<Category> op = categoryService.findByName(categoryName);
-        if (op.isPresent()) {
-            Category category = op.get();
-            user.getUserFavoritesCategory().add(category);
-            category.setLikedByUser(true);
-            userService.update(user);
+        try {
+            Category category = categoryService.likeCategory(categoryName, request);
             return ResponseEntity.ok(category);
-        } else return ResponseEntity.notFound().build();
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
-
 }

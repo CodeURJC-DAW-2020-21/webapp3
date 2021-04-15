@@ -19,6 +19,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 
@@ -217,14 +218,11 @@ public class CategoryController {
     public String editCategory(@PathVariable String categoryName,
                                @RequestParam String newDescription, @RequestParam String color, MultipartFile imageFile) throws IOException {
 
-
-        Optional<Category> op = categoryService.findByName(categoryName);
-        if (op.isPresent()) {
-            Category category = op.get();
-            categoryService.editCategory(category, newDescription, color, imageFile);
+        try {
+            categoryService.editCategory(categoryName, newDescription, color);
             return "redirect:/profile";
-
-        }
+        } catch (NoSuchElementException e) {
             return "redirect:/categories";
+        }
     }
 }

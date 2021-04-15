@@ -34,6 +34,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.sql.SQLException;
 import java.util.Collection;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 
@@ -169,9 +170,9 @@ public class RESTCategory {
     @JsonView(CategoryDetails.class)
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Category> createCategory(@RequestBody CategoryRequest categoryRequest){
-        String name= categoryRequest.getName();
-        String des= categoryRequest.getDescription();
+    public ResponseEntity<Category> createCategory(@RequestBody CategoryRequest categoryRequest) {
+        String name = categoryRequest.getName();
+        String des = categoryRequest.getDescription();
         String color = categoryRequest.getColor();
 
         if (!categoryService.existsByName(name)) {
@@ -202,7 +203,7 @@ public class RESTCategory {
     @GetMapping("/image")
     public ResponseEntity<Object> getImage(@RequestParam String categoryName) throws SQLException {
         Optional<Category> op = categoryService.findByName(categoryName);
-        if (op.isPresent()){
+        if (op.isPresent()) {
             Category category = op.get();
             if (category.getIcon() != null) {
 
@@ -243,23 +244,17 @@ public class RESTCategory {
     @JsonView(CategoryDetails.class)
     @PutMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Category> editCategory(@RequestParam String categoryName,@RequestBody CategoryRequest categoryRequest) throws IOException {
+    public ResponseEntity<Category> editCategory(@RequestParam String categoryName, @RequestBody CategoryRequest categoryRequest) throws IOException {
 
-        String newDescription= categoryRequest.getDescription();
+        String newDescription = categoryRequest.getDescription();
         String color = categoryRequest.getColor();
 
-        Optional<Category> op = categoryService.findByName(categoryName);
-        if (op.isPresent()) {
-            Category category = op.get();
-            if (newDescription == null) {
-                newDescription = "";
-            }
-            if (color == null) {
-                color = "";
-            }
-            categoryService.editCategory(category, newDescription, color);
+        try {
+            Category category = categoryService.editCategory(categoryName, newDescription, color);
             return ResponseEntity.ok(category);
-        } else return ResponseEntity.notFound().build();
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @Operation(summary = "Remove the like of a category as the logged user")

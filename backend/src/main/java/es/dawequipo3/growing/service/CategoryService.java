@@ -112,5 +112,6 @@ public class CategoryService {
         user.getUserFavoritesCategory().add(category);
         category.setLikedByUser(true);
         userService.update(user);
+        return category;
     }
 }

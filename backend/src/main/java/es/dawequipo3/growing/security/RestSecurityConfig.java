@@ -52,10 +52,10 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		// URLs that need authentication to access to it
 		//		RESTPlan
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/plans/like").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/plans/dislike").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/plans/likeC").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/plans/dislikeC").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/plans/favN").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/plans/notFavN").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/plans/favA").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/plans/notFavA").hasRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/plans/edited").hasRole("ADMIN");
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/plans/done").hasRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/plans/new").hasRole("ADMIN");
@@ -73,8 +73,8 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/api/users/info").hasRole("USER");
 
 		//		RESTCategory
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/categories/like").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/categories/dislike").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/categories/fav").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/categories/notFav").hasRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/categories/image").hasRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/categories/**").hasRole("ADMIN");
 

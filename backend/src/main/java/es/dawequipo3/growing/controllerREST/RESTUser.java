@@ -130,6 +130,7 @@ public class RESTUser {
                     content = @Content
             )
     })
+
     @JsonView(RESTUser.UserDetails.class)
     @GetMapping("")
     public ResponseEntity<Collection<User>> getAllUsers() {
@@ -299,8 +300,9 @@ public class RESTUser {
                     responseCode = "404",
                     description = "Image not found",
                     content = @Content
-            ),
+            )
     })
+
     @JsonView(User.Basic.class)
     @PutMapping("/profile/image")
     public ResponseEntity<User> uploadImage(HttpServletRequest request, @RequestParam MultipartFile imageFile) throws SQLException, IOException {

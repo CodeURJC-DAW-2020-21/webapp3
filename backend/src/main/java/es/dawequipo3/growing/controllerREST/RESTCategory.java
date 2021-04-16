@@ -122,7 +122,7 @@ public class RESTCategory {
                     responseCode = "404",
                     description = "Image not found",
                     content = @Content
-            ),
+            )
     })
     @JsonView(CategoryDetails.class)
     @PutMapping("/image")
@@ -141,7 +141,6 @@ public class RESTCategory {
         } else {
             return ResponseEntity.badRequest().build();
         }
-
     }
 
     @Operation(summary = "Create a category with a specific name, description, color and an optional image. Color " +
@@ -170,8 +169,9 @@ public class RESTCategory {
                     responseCode = "409",
                     description = "There is already a category with the name given by parameter",
                     content = @Content
-            ),
+            )
     })
+
     @JsonView(CategoryDetails.class)
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
@@ -206,8 +206,9 @@ public class RESTCategory {
                     responseCode = "404",
                     description = "Image not found",
                     content = @Content
-            ),
+            )
     })
+
     @GetMapping("/image")
     public ResponseEntity<Object> getImage(@RequestParam String categoryName) throws SQLException {
         Optional<Category> op = categoryService.findByName(categoryName);
@@ -292,6 +293,7 @@ public class RESTCategory {
                     content = @Content
             )
     })
+
     @JsonView(CategoryDetails.class)
     @PutMapping("/dislike")
     public ResponseEntity<Category> dislikeCategory(@RequestParam String categoryName, HttpServletRequest request) {
@@ -328,6 +330,7 @@ public class RESTCategory {
                     content = @Content
             )
     })
+
     @JsonView(CategoryDetails.class)
     @PutMapping("/like")
     public ResponseEntity<Category> likeCategory(@RequestParam String categoryName, HttpServletRequest request) {

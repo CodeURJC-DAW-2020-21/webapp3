@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2eb8d71a-0826-4e67-9006-5fe830780c0e",
+		"_postman_id": "d28f25f6-7b8a-453c-84cf-3938e6b76356",
 		"name": "DAW Equipo 3",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -227,7 +227,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\" : \"badBunny@hotmail.com\",\n    \"username\" : \"BadBunny\",\n    \"name\" : \"Benito Antonio\",\n    \"surname\" : \"Martinez Ocasio\",\n    \"encodedPassword\" : \"yhlqmdlg\",\n    \"confirmEncodedPassword\" : \"yhlqmdlg\"\n}",
+							"raw": "{\n    \"email\" : \"j.ad.p2370@gmail.com\",\n    \"username\" : \"BadBunny\",\n    \"name\" : \"Benito Antonio\",\n    \"surname\" : \"Martinez Ocasio\",\n    \"encodedPassword\" : \"yhlqmdlg\",\n    \"confirmEncodedPassword\" : \"yhlqmdlg\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -789,8 +789,24 @@
 						"method": "DELETE",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"email\" : \"admin@gmail\",\n    \"planName\" : \"Lunges\",\n    \"date\" : \"2021-04-16-09:16:41:000\"\n}",
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "admin@gmail",
+									"type": "text"
+								},
+								{
+									"key": "planName",
+									"value": "Lunges",
+									"type": "text"
+								},
+								{
+									"key": "date",
+									"value": "2021-04-16-09:16:41:000",
+									"type": "text"
+								}
+							],
 							"options": {
 								"raw": {
 									"language": "json"

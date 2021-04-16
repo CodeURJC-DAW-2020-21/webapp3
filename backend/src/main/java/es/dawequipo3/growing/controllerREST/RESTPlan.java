@@ -4,7 +4,6 @@ package es.dawequipo3.growing.controllerREST;
 import com.fasterxml.jackson.annotation.JsonView;
 import es.dawequipo3.growing.controllerREST.requestBody.EditPlanRequest;
 import es.dawequipo3.growing.controllerREST.requestBody.PlanCreateRequest;
-import es.dawequipo3.growing.controllerREST.requestBody.RemoveCompletedPlanRequest;
 import es.dawequipo3.growing.model.Category;
 import es.dawequipo3.growing.model.Completed_plan;
 import es.dawequipo3.growing.model.Plan;
@@ -244,21 +243,21 @@ public class RESTPlan {
     })
     @JsonView(CompletedPlanDetails.class)
     @DeleteMapping("/completedPlans")
-    public ResponseEntity<Completed_plan> removeCompletedPlanbyUser(@RequestBody RemoveCompletedPlanRequest planRemoved) {
+    public ResponseEntity<Completed_plan> removeCompletedPlanbyUser(@RequestParam String planName, @RequestParam String email , @RequestParam String date) {
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss:SSS");
         try {
-            Date dateObject = format.parse(planRemoved.getDate());
+            Date dateObject = format.parse(date);
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(dateObject);
             long milisecs = calendar.getTimeInMillis();
-            Optional<Plan> optionalPlan = planService.findPlanByName(planRemoved.getPlanName());
+            Optional<Plan> optionalPlan = planService.findPlanByName(planName);
             if (optionalPlan.isPresent()) {
                 Plan plan = optionalPlan.get();
-                Optional<Completed_plan> optionalCompleted_plan = completedPlanService.findCompletedPlan(planRemoved.getEmail(), plan, milisecs);
+                Optional<Completed_plan> optionalCompleted_plan = completedPlanService.findCompletedPlan(email, plan, milisecs);
                 if (optionalCompleted_plan.isPresent()) {
                     Completed_plan completed_plan = optionalCompleted_plan.get();
-                    completedPlanService.deleteCompletedPlan(planRemoved.getEmail(), planRemoved.getPlanName(), milisecs);
+                    completedPlanService.deleteCompletedPlan(email, planName , milisecs);
                     return ResponseEntity.ok(completed_plan);
                 }
                 return ResponseEntity.notFound().build();

@@ -3,7 +3,7 @@ version: '3'
 services:
 
   db:
-    image: mysql:5.7
+    image: mysql:latest
     container_name: growing_db
     restart: always
     environment:
@@ -11,7 +11,6 @@ services:
       - MYSQL_ROOT_PASSWORD=dawEquipo3-2021
 
   web:
-    build: .
     image: dawequipo3/growing:latest
     ports:
       - 8443:8443

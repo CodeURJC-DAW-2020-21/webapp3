@@ -63,6 +63,32 @@
 					"response": []
 				},
 				{
+					"name": "User creation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"badbunny@gmail.com\",\n    \"username\" : \"BadBunny\",\n    \"name\" : \"Benito Antonio\",\n    \"surname\" : \"Martinez Ocasio\",\n    \"encodedPassword\" : \"yhlqmdlg\",\n    \"confirmEncodedPassword\" : \"yhlqmdlg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/users",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "User created login",
 					"request": {
 						"method": "POST",
@@ -221,32 +247,6 @@
 					]
 				},
 				{
-					"name": "User creation",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"email\" : \"j.ad.p2370@gmail.com\",\n    \"username\" : \"BadBunny\",\n    \"name\" : \"Benito Antonio\",\n    \"surname\" : \"Martinez Ocasio\",\n    \"encodedPassword\" : \"yhlqmdlg\",\n    \"confirmEncodedPassword\" : \"yhlqmdlg\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseURL}}/users",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"users"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Get user profile",
 					"request": {
 						"method": "GET",
@@ -270,34 +270,13 @@
 						"method": "PUT",
 						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "username",
-									"value": "newUsername",
-									"type": "text"
-								},
-								{
-									"key": "name",
-									"value": "namename",
-									"type": "text"
-								},
-								{
-									"key": "surname",
-									"value": "22",
-									"type": "text"
-								},
-								{
-									"key": "encodedPassword",
-									"value": "12",
-									"type": "text"
-								},
-								{
-									"key": "confirmEncodedPassword",
-									"value": "12",
-									"type": "text"
+							"mode": "raw",
+							"raw": "{\n    \"username\" : \"elBenito\",\n    \"name\" : \"el badbunny\",\n    \"surname\" : \"badbunnybaby\",\n    \"encodedPassword\" : \"elultimotour\",\n    \"confirmEncodedPassword\" : \"elultimotour\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "{{baseURL}}/users/profile",
@@ -366,7 +345,7 @@
 								{
 									"key": "imageFile",
 									"type": "file",
-									"src": "/home/jorge/Imágenes/james celebrando bernabeu 2014-2015.jpg"
+									"src": "/home/jorge/Imágenes/PortadaR26.jpg"
 								}
 							]
 						},
@@ -554,7 +533,7 @@
 								{
 									"key": "imageFile",
 									"type": "file",
-									"src": "/home/jorge/Imágenes/Fondo verstappen.jpg"
+									"src": "/home/jorge/Imágenes/alonso italia 2010.jpg"
 								}
 							]
 						},
@@ -806,12 +785,7 @@
 									"value": "2021-04-16-09:16:41:000",
 									"type": "text"
 								}
-							],
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							]
 						},
 						"url": {
 							"raw": "{{baseURL}}/plans/completedPlans",

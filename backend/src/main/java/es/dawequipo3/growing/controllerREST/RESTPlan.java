@@ -4,10 +4,7 @@ package es.dawequipo3.growing.controllerREST;
 import com.fasterxml.jackson.annotation.JsonView;
 import es.dawequipo3.growing.controllerREST.requestBody.EditPlanRequest;
 import es.dawequipo3.growing.controllerREST.requestBody.PlanCreateRequest;
-import es.dawequipo3.growing.model.Category;
-import es.dawequipo3.growing.model.Completed_plan;
-import es.dawequipo3.growing.model.Plan;
-import es.dawequipo3.growing.model.User;
+import es.dawequipo3.growing.model.*;
 import es.dawequipo3.growing.service.CategoryService;
 import es.dawequipo3.growing.service.CompletedPlanService;
 import es.dawequipo3.growing.service.PlanService;
@@ -50,6 +47,9 @@ public class RESTPlan {
     }
 
     interface CompletedPlanDetails extends Completed_plan.Basic, Completed_plan.Completed, Plan.Basic, User.Basic {
+    }
+
+    interface UserRegisteredPlanDetails extends Plan.Registered, Plan.Basic, User.Basic {
     }
 
     @Operation(summary = "Get all the plans")
@@ -183,8 +183,6 @@ public class RESTPlan {
                     content = @Content
             )
     })
-
-
     @JsonView(RESTPlan.PlanDetails.class)
     @PostMapping("/done")
     @ResponseStatus(HttpStatus.CREATED)
@@ -316,7 +314,7 @@ public class RESTPlan {
                     content = @Content
             )
     })
-    @JsonView(RESTPlan.PlanDetails.class)
+    @JsonView(UserRegisteredPlanDetails.class)
     @PutMapping("/like")
     public ResponseEntity<Plan> likePlan(@RequestParam String abbrev, HttpServletRequest request) {
         String email = request.getUserPrincipal().getName();
@@ -356,7 +354,7 @@ public class RESTPlan {
                     content = @Content
             )
     })
-    @JsonView(RESTPlan.PlanDetails.class)
+    @JsonView(UserRegisteredPlanDetails.class)
     @PutMapping("/dislike")
     public ResponseEntity<Plan> dislikePlan(@RequestParam String abbrev, HttpServletRequest request) {
 
@@ -396,7 +394,7 @@ public class RESTPlan {
                     content = @Content
             )
     })
-    @JsonView(RESTPlan.PlanDetails.class)
+    @JsonView(UserRegisteredPlanDetails.class)
     @PutMapping("/likeC")
     public ResponseEntity<Plan> likePlanC(@RequestParam String planName, HttpServletRequest request) {
         String email = request.getUserPrincipal().getName();
@@ -435,7 +433,7 @@ public class RESTPlan {
                     content = @Content
             )
     })
-    @JsonView(RESTPlan.PlanDetails.class)
+    @JsonView(UserRegisteredPlanDetails.class)
     @PutMapping("/dislikeC")
     public ResponseEntity<Plan> dislikePlanC(@RequestParam String planName, HttpServletRequest request) {
         String email = request.getUserPrincipal().getName();

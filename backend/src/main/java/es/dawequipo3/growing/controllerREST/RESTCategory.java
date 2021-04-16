@@ -9,6 +9,7 @@ import es.dawequipo3.growing.model.Tree;
 import es.dawequipo3.growing.model.User;
 
 import es.dawequipo3.growing.service.CategoryService;
+import es.dawequipo3.growing.service.TreeService;
 import es.dawequipo3.growing.service.UserService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -33,6 +34,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.net.URI;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -47,7 +49,16 @@ public class RESTCategory {
     @Autowired
     private UserService userService;
 
-    interface CategoryDetails extends Category.Trees, Category.Basic, Category.Plans, Tree.Basic, Plan.Basic, User.Basic {
+    @Autowired
+    private TreeService treeService;
+
+    interface CategoriesDetails extends Category.Basic {
+    }
+
+    interface CategoryDetails extends Category.Basic, Category.Plans, Tree.Basic, Plan.Basic, User.Basic {
+    }
+
+    interface UserRegisteredCategoryDetails extends Category.Registered, Category.Basic, Category.Plans, Tree.Basic, Plan.Basic, User.Basic {
     }
 
     @Operation(summary = "Get the information of all existing categories")
@@ -58,11 +69,11 @@ public class RESTCategory {
                     description = "Categories retrieved correctly",
                     content = {@Content(
                             mediaType = "application/json",
-                            schema = @Schema(implementation = CategoryDetails.class)
+                            schema = @Schema(implementation = CategoriesDetails.class)
                     )}
             ),
     })
-    @JsonView(CategoryDetails.class)
+    @JsonView(CategoriesDetails.class)
     @GetMapping("/")
     public ResponseEntity<Collection<Category>> getCategories() {
         return ResponseEntity.ok(categoryService.findAll());
@@ -87,16 +98,18 @@ public class RESTCategory {
     })
     @JsonView(CategoryDetails.class)
     @GetMapping("")
-    public ResponseEntity<Category> categoryInfo(@RequestParam String name, HttpServletRequest request) {
+    public ResponseEntity<ArrayList> categoryInfo(@RequestParam String name, HttpServletRequest request) {
         Optional<Category> op = categoryService.findByName(name);
         if (op.isPresent()) {
             Category category = op.get();
+            ArrayList categories = new ArrayList();
             if (request.getUserPrincipal() != null) {
                 String email = request.getUserPrincipal().getName();
-                User user = userService.findUserByEmail(email).orElseThrow();
-                category.setLikedByUser(user.getUserFavoritesCategory().contains(category));
+                Optional<Tree> tree = treeService.findTree(email, name);
+                categories.add(tree);
             }
-            return ResponseEntity.ok(category);
+            categories.add(category);
+            return ResponseEntity.ok(categories);
         } else {
             return ResponseEntity.notFound().build();
         }
@@ -250,7 +263,7 @@ public class RESTCategory {
                     content = @Content
             )
     })
-    @JsonView(CategoryDetails.class)
+    @JsonView(CategoriesDetails.class)
     @PutMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Category> editCategory(@RequestParam String categoryName, @RequestBody CategoryRequest categoryRequest) {
@@ -294,7 +307,7 @@ public class RESTCategory {
             )
     })
 
-    @JsonView(CategoryDetails.class)
+    @JsonView(UserRegisteredCategoryDetails.class)
     @PutMapping("/dislike")
     public ResponseEntity<Category> dislikeCategory(@RequestParam String categoryName, HttpServletRequest request) {
         String email = request.getUserPrincipal().getName();
@@ -331,7 +344,7 @@ public class RESTCategory {
             )
     })
 
-    @JsonView(CategoryDetails.class)
+    @JsonView(UserRegisteredCategoryDetails.class)
     @PutMapping("/like")
     public ResponseEntity<Category> likeCategory(@RequestParam String categoryName, HttpServletRequest request) {
         String email = request.getUserPrincipal().getName();

@@ -315,7 +315,7 @@ public class RESTPlan {
             )
     })
     @JsonView(UserRegisteredPlanDetails.class)
-    @PutMapping("/like")
+    @PutMapping("/favA")
     public ResponseEntity<Plan> likePlan(@RequestParam String abbrev, HttpServletRequest request) {
         String email = request.getUserPrincipal().getName();
         Optional<User> op = userService.findUserByEmail(email);
@@ -355,7 +355,7 @@ public class RESTPlan {
             )
     })
     @JsonView(UserRegisteredPlanDetails.class)
-    @PutMapping("/dislike")
+    @PutMapping("/notFavA")
     public ResponseEntity<Plan> dislikePlan(@RequestParam String abbrev, HttpServletRequest request) {
 
         String email = request.getUserPrincipal().getName();
@@ -395,8 +395,8 @@ public class RESTPlan {
             )
     })
     @JsonView(UserRegisteredPlanDetails.class)
-    @PutMapping("/likeC")
-    public ResponseEntity<Plan> likePlanC(@RequestParam String planName, HttpServletRequest request) {
+    @PutMapping("/favN")
+    public ResponseEntity<Plan> likePlanN(@RequestParam String planName, HttpServletRequest request) {
         String email = request.getUserPrincipal().getName();
         try {
             User user = userService.findUserByEmail(email).orElseThrow();
@@ -434,8 +434,8 @@ public class RESTPlan {
             )
     })
     @JsonView(UserRegisteredPlanDetails.class)
-    @PutMapping("/dislikeC")
-    public ResponseEntity<Plan> dislikePlanC(@RequestParam String planName, HttpServletRequest request) {
+    @PutMapping("/notFavN")
+    public ResponseEntity<Plan> dislikePlanN(@RequestParam String planName, HttpServletRequest request) {
         String email = request.getUserPrincipal().getName();
         try {
             User user = userService.findUserByEmail(email).orElseThrow();

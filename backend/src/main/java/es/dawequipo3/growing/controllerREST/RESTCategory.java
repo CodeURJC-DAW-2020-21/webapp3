@@ -98,11 +98,11 @@ public class RESTCategory {
     })
     @JsonView(CategoryDetails.class)
     @GetMapping("")
-    public ResponseEntity<ArrayList> categoryInfo(@RequestParam String name, HttpServletRequest request) {
+    public ResponseEntity<ArrayList<Object>> categoryInfo(@RequestParam String name, HttpServletRequest request) {
         Optional<Category> op = categoryService.findByName(name);
         if (op.isPresent()) {
             Category category = op.get();
-            ArrayList categories = new ArrayList();
+            ArrayList<Object> categories = new ArrayList<>();
             if (request.getUserPrincipal() != null) {
                 String email = request.getUserPrincipal().getName();
                 Optional<Tree> tree = treeService.findTree(email, name);
@@ -308,7 +308,7 @@ public class RESTCategory {
     })
 
     @JsonView(UserRegisteredCategoryDetails.class)
-    @PutMapping("/dislike")
+    @PutMapping("/notFav")
     public ResponseEntity<Category> dislikeCategory(@RequestParam String categoryName, HttpServletRequest request) {
         String email = request.getUserPrincipal().getName();
         User user = userService.findUserByEmail(email).orElseThrow();
@@ -345,7 +345,7 @@ public class RESTCategory {
     })
 
     @JsonView(UserRegisteredCategoryDetails.class)
-    @PutMapping("/like")
+    @PutMapping("/fav")
     public ResponseEntity<Category> likeCategory(@RequestParam String categoryName, HttpServletRequest request) {
         String email = request.getUserPrincipal().getName();
         User user = userService.findUserByEmail(email).orElseThrow();

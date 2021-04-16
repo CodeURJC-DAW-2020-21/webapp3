@@ -1,13 +1,66 @@
 {
 	"info": {
-		"_postman_id": "d28f25f6-7b8a-453c-84cf-3938e6b76356",
-		"name": "DAW Equipo 3",
+		"_postman_id": "f78edca8-e884-4798-802c-45e1c8393409",
+		"name": "api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "User authorization",
+			"name": "User get started",
 			"item": [
+				{
+					"name": "User creation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"badbunny@gmail.com\",\n    \"username\" : \"BadBunny\",\n    \"name\" : \"Benito Antonio\",\n    \"surname\" : \"Martinez Ocasio\",\n    \"encodedPassword\" : \"yhlqmdlg\",\n    \"confirmEncodedPassword\" : \"yhlqmdlg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/users",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User created login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\": \"badBunny@hotmail.com\", \"password\": \"yhlqmdlg\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
 				{
 					"name": "User Login",
 					"request": {
@@ -43,59 +96,6 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\"username\": \"admin@gmail\", \"password\": \"pass\"}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseURL}}/auth/login",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"auth",
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "User creation",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"email\" : \"badbunny@gmail.com\",\n    \"username\" : \"BadBunny\",\n    \"name\" : \"Benito Antonio\",\n    \"surname\" : \"Martinez Ocasio\",\n    \"encodedPassword\" : \"yhlqmdlg\",\n    \"confirmEncodedPassword\" : \"yhlqmdlg\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseURL}}/users",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"users"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "User created login",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\"username\": \"badBunny@hotmail.com\", \"password\": \"yhlqmdlg\"}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -243,6 +243,49 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Get user completed plans by email",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/users/completedPlans?email=admin@gmail",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"users",
+										"completedPlans"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "admin@gmail"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all completed plans",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/users/completedPlans/",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"users",
+										"completedPlans",
+										""
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -259,6 +302,25 @@
 							"path": [
 								"users",
 								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get profile image",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/users/profile/image",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"profile",
+								"image"
 							]
 						}
 					},
@@ -292,49 +354,6 @@
 					"response": []
 				},
 				{
-					"name": "Get all completed plans",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseURL}}/users/completedPlans/",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"users",
-								"completedPlans",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get user completed plans by email",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseURL}}/users/completedPlans?email=admin@gmail",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"users",
-								"completedPlans"
-							],
-							"query": [
-								{
-									"key": "email",
-									"value": "admin@gmail"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Edit profile image",
 					"request": {
 						"method": "PUT",
@@ -349,25 +368,6 @@
 								}
 							]
 						},
-						"url": {
-							"raw": "{{baseURL}}/users/profile/image",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"users",
-								"profile",
-								"image"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get profile image",
-					"request": {
-						"method": "GET",
-						"header": [],
 						"url": {
 							"raw": "{{baseURL}}/users/profile/image",
 							"host": [
@@ -557,18 +557,18 @@
 					"response": []
 				},
 				{
-					"name": "Dislike category",
+					"name": "Like category",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/categories/dislike?categoryName=Mental Health",
+							"raw": "{{baseURL}}/categories/fav?categoryName=Mental Health",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
 								"categories",
-								"dislike"
+								"fav"
 							],
 							"query": [
 								{
@@ -581,18 +581,18 @@
 					"response": []
 				},
 				{
-					"name": "Like category",
+					"name": "Dislike category",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/categories/like?categoryName=Mental Health",
+							"raw": "{{baseURL}}/categories/notFav?categoryName=Mental Health",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
 								"categories",
-								"like"
+								"notFav"
 							],
 							"query": [
 								{
@@ -757,6 +757,102 @@
 								"users",
 								"completedPlans",
 								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Like plan by abbrev",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/plans/favA?abbrev=abs",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"plans",
+								"favA"
+							],
+							"query": [
+								{
+									"key": "abbrev",
+									"value": "abs"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dislike plan by abbrev",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/plans/notFavA?abbrev=abs",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"plans",
+								"notFavA"
+							],
+							"query": [
+								{
+									"key": "abbrev",
+									"value": "abs"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Like plan by name",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/plans/favN?planName=Abs",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"plans",
+								"favN"
+							],
+							"query": [
+								{
+									"key": "planName",
+									"value": "Abs"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dislike plan by name",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/plans/notFavN?planName=Abs",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"plans",
+								"notFavN"
+							],
+							"query": [
+								{
+									"key": "planName",
+									"value": "Abs"
+								}
 							]
 						}
 					},
@@ -981,6 +1077,7 @@
 	],
 	"variable": [
 		{
+			"id": "9805c880-a4a5-4a22-84c4-49462b32a594",
 			"key": "baseURL",
 			"value": "https://localhost:8443/api"
 		}

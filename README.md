@@ -380,6 +380,26 @@ Finally, I worked with my team in the merges and I helped to resolve some confli
 
 ## Docker instrucctions <a name="dockerIns"></a>  
 
+To run the application using docker it is only necessary to have downloaded the Docker CLI and docker-compose
+
+You can download it using
+
+```sudo apt install docker-compose```
+
+After making sure that we have them installed, we simply have to download the docker-compose.yml file using the following command
+
+```curl https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/docker/docker-compose.yml```
+
+Then the next step would be to just use the docker-compose up command
+
+```docker-compose up```
+
+With this, we would run the application and it could be seen by opening any browser that we have installed and inserting the following URL https: // localhost: 8443 /.
+
+When we want to finish the application we would simply have to execute the docker-compose down command
+
+```docker-compose down```
+
 ## Docker documentation <a name="dockerDoc"></a>  
 
 ## Participation of each member <a name="participationP3"></a>  

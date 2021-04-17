@@ -38,6 +38,10 @@
   * [Navigation Diagram](#navigationP2)
 
 [**Phase 3**](#phase3)
+* [API documentation](#APIDoc)
+* [Class diagram](#diagramsP3)
+* [Docker instrucctions](#dockerIns)
+* [Docker documentation](#dockerDoc)
 * [Participation of each member](#participationP3)
   * [Jorge Adame Prudencio](#jorgeP3)
   * [Antonio Agudo Esperanza](#antonioP3)
@@ -366,11 +370,17 @@ Finally, I worked with my team in the merges and I helped to resolve some confli
 
 ## PHASE 3 <a name="phase3"></a>  
 
-## REST API documentation
+## REST API documentation <a name="APIDoc"></a>  
 
 * YAML file : [api-docs.yaml](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/api-docs/api-docs.yaml)
 * HTML file : [api-docs.html](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/api-docs/api-docs.html)
 * HTML rendering : [raw.githack](https://raw.githack.com/CodeURJC-DAW-2020-21/webapp3/main/api-docs/api-docs.html)
+
+## Class diagram <a name="diagramsP3"></a>  
+
+## Docker instrucctions <a name="dockerIns"></a>  
+
+## Docker documentation <a name="dockerDoc"></a>  
 
 ## Participation of each member <a name="participationP3"></a>  
  

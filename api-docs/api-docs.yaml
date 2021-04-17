@@ -1,0 +1,954 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: https://localhost:8443
+  description: Generated server url
+paths:
+  /api/users/profile:
+    get:
+      tags:
+      - rest-user
+      summary: Get user logged profile
+      operationId: getUser
+      responses:
+        "404":
+          description: Not Found
+        "403":
+          description: Only access to registered users
+        "200":
+          description: Found the current user profile
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDetails_UserDetails'
+    put:
+      tags:
+      - rest-user
+      summary: Edit user profile
+      operationId: editUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest_UserDetails'
+        required: true
+      responses:
+        "404":
+          description: Not Found
+        "403":
+          description: Only access to registered user
+        "200":
+          description: Changes made successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDetails_UserDetails'
+  /api/users/profile/image:
+    get:
+      tags:
+      - rest-user
+      summary: Returns the current user profile image
+      operationId: getImage
+      responses:
+        "404":
+          description: Image not found
+          content: {}
+        "200":
+          description: Category's icon retrieved correctly
+          content:
+            image/*: {}
+    put:
+      tags:
+      - rest-user
+      summary: Changes the current user profile image with a new one indicated by
+        the user
+      operationId: uploadImage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - imageFile
+              type: object
+              properties:
+                imageFile:
+                  type: string
+                  format: binary
+      responses:
+        "404":
+          description: Image not found
+          content: {}
+        "403":
+          description: "Permission error, only access to registered users"
+        "200":
+          description: User's profile icon changed correctly
+          content:
+            image/*:
+              schema:
+                $ref: '#/components/schemas/UserDetails_Basic'
+  /api/plans:
+    get:
+      tags:
+      - rest-plan
+      summary: Get the information of a plan by the name
+      operationId: getPlan
+      parameters:
+      - name: planName
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "404":
+          description: Plan not found
+          content: {}
+        "200":
+          description: Plan found correctly
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Plan_PlanDetails'
+    put:
+      tags:
+      - rest-plan
+      summary: Edit the information of a plan as an administrator
+      operationId: editPlan
+      parameters:
+      - name: planName
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditPlanRequest_PlanDetails'
+        required: true
+      responses:
+        "404":
+          description: Plan not found
+          content: {}
+        "403":
+          description: Only access to admin account
+        "200":
+          description: Edited the plan correctly
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Plan_PlanDetails'
+    post:
+      tags:
+      - rest-plan
+      summary: Create a new plan as an administrator
+      operationId: createPlan
+      parameters:
+      - name: category
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlanCreateRequest_PlanDetails'
+        required: true
+      responses:
+        "404":
+          description: There is not a category with this name
+          content: {}
+        "403":
+          description: Only access to admin account
+        "409":
+          description: There is already a plan with the name given by parameter
+        "201":
+          description: Created the plan correctly
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Plan_PlanDetails'
+  /api/plans/notFavN:
+    put:
+      tags:
+      - rest-plan
+      summary: Remove the like of a plan given its name as the logged user
+      operationId: dislikePlanN
+      parameters:
+      - name: planName
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "404":
+          description: Plan not found
+          content: {}
+        "403":
+          description: Only access to registered user
+        "200":
+          description: Like removed correctly
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Plan_UserRegisteredPlanDetails'
+  /api/plans/notFavA:
+    put:
+      tags:
+      - rest-plan
+      summary: Remove the like of a plan given the abbreviation as the logged user
+      operationId: dislikePlan
+      parameters:
+      - name: abbrev
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "404":
+          description: Plan not found
+          content: {}
+        "403":
+          description: Only access to registered user
+        "200":
+          description: Like removed correctly
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Plan_UserRegisteredPlanDetails'
+  /api/plans/favN:
+    put:
+      tags:
+      - rest-plan
+      summary: Like a plan given its name as the logged user
+      operationId: likePlanN
+      parameters:
+      - name: planName
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "404":
+          description: Plan not found
+          content: {}
+        "403":
+          description: Only access to registered user
+        "200":
+          description: Plan liked correctly
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Plan_UserRegisteredPlanDetails'
+  /api/plans/favA:
+    put:
+      tags:
+      - rest-plan
+      summary: Like a plan given the abbreviation as the logged user
+      operationId: likePlan
+      parameters:
+      - name: abbrev
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "404":
+          description: Plan not found
+          content: {}
+        "403":
+          description: Only access to registered user
+        "200":
+          description: Plan liked correctly
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Plan_UserRegisteredPlanDetails'
+  /api/categories:
+    get:
+      tags:
+      - rest-category
+      summary: Get the information a specific category searched by its name
+      operationId: categoryInfo
+      parameters:
+      - name: name
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "404":
+          description: Category not found
+          content: {}
+        "200":
+          description: Category's information retrieved correctly
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CategoryDetails_CategoryDetails'
+    put:
+      tags:
+      - rest-category
+      summary: Edits an existing category
+      operationId: editCategory
+      parameters:
+      - name: categoryName
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryRequest_CategoriesDetails'
+        required: true
+      responses:
+        "404":
+          description: Category not found
+          content: {}
+        "403":
+          description: "Permission error, only access to admin account"
+        "200":
+          description: Category edited correctly
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryDetails_CategoriesDetails'
+    post:
+      tags:
+      - rest-category
+      summary: "Create a category with a specific name, description, color and an\
+        \ optional image. Color must be green, orange, darkblue, red, purple or blue"
+      operationId: createCategory
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryRequest_CategoryDetails'
+        required: true
+      responses:
+        "404":
+          description: Not Found
+        "403":
+          description: "Permission error, only access to admin account"
+        "201":
+          description: Category created correctly
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryDetails_CategoryDetails'
+        "409":
+          description: There is already a category with the name given by parameter
+        "400":
+          description: "Bad request, the color is not valid"
+  /api/categories/notFav:
+    put:
+      tags:
+      - rest-category
+      summary: Remove the like of a category as the logged user
+      operationId: dislikeCategory
+      parameters:
+      - name: categoryName
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "404":
+          description: Category not found
+          content: {}
+        "403":
+          description: "Permission error, only access to logged users"
+        "200":
+          description: Like removed correctly
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CategoryDetails_UserRegisteredCategoryDetails'
+  /api/categories/image:
+    get:
+      tags:
+      - rest-category
+      summary: Returns the current user selected category icon
+      operationId: getImage_1
+      parameters:
+      - name: categoryName
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "404":
+          description: Image not found
+          content: {}
+        "200":
+          description: Category's icon retrieved correctly
+          content:
+            image/*: {}
+    put:
+      tags:
+      - rest-category
+      summary: Changes the current icon with a new one indicated by the user
+      operationId: uploadImage_1
+      parameters:
+      - name: name
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - imageFile
+              type: object
+              properties:
+                imageFile:
+                  type: string
+                  format: binary
+      responses:
+        "404":
+          description: Image not found
+          content: {}
+        "403":
+          description: "Permission error, only access to admin account"
+        "200":
+          description: Category's icon changed correctly
+          content:
+            image/*:
+              schema:
+                $ref: '#/components/schemas/CategoryDetails_CategoryDetails'
+  /api/categories/fav:
+    put:
+      tags:
+      - rest-category
+      summary: Like a category as the logged user
+      operationId: likeCategory
+      parameters:
+      - name: categoryName
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "404":
+          description: Category not found
+          content: {}
+        "403":
+          description: "Permission error, only access to logged users"
+        "200":
+          description: Category liked correctly
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CategoryDetails_UserRegisteredCategoryDetails'
+  /api/users:
+    get:
+      tags:
+      - rest-user
+      summary: Get all users
+      operationId: getAllUsers
+      responses:
+        "404":
+          description: Not Found
+        "200":
+          description: Found all the users
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDetails_UserDetails'
+        "403":
+          description: Only access to an admin user
+    post:
+      tags:
+      - rest-user
+      summary: Create a new user
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest_UserDetails'
+        required: true
+      responses:
+        "404":
+          description: Not Found
+        "409":
+          description: Only unregistered users can create a new one
+        "201":
+          description: Account created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDetails_UserDetails'
+        "400":
+          description: There is already a user with this email or username
+  /api/plans/done:
+    post:
+      tags:
+      - rest-plan
+      summary: Complete the plan by name indicated as the logged user
+      operationId: completePlan
+      parameters:
+      - name: planName
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "404":
+          description: Plan not found
+          content: {}
+        "403":
+          description: Only access to registered user
+        "200":
+          description: Completed the plan correctly
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Plan_PlanDetails'
+  /api/auth/refresh:
+    post:
+      tags:
+      - login-controller
+      operationId: refreshToken
+      parameters:
+      - name: refreshToken
+        in: cookie
+        required: false
+        schema:
+          type: string
+      responses:
+        "404":
+          description: Not Found
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+  /api/auth/logout:
+    post:
+      tags:
+      - login-controller
+      operationId: logout
+      responses:
+        "404":
+          description: Not Found
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+  /api/auth/login:
+    post:
+      tags:
+      - login-controller
+      operationId: login
+      parameters:
+      - name: accessToken
+        in: cookie
+        required: false
+        schema:
+          type: string
+      - name: refreshToken
+        in: cookie
+        required: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+        required: true
+      responses:
+        "404":
+          description: Not Found
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+  /api/users/profile/treeHeight:
+    get:
+      tags:
+      - rest-user
+      summary: Show the user progress with the tree height
+      operationId: getHeight
+      responses:
+        "404":
+          description: Not Found
+        "403":
+          description: Only access to registered user
+        "200":
+          description: List of all categories with their height
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Charts_Charts'
+  /api/users/profile/finishedPlans:
+    get:
+      tags:
+      - rest-user
+      summary: Show the user progress with the number of finished plans per category
+      operationId: getFinishedPlans
+      responses:
+        "404":
+          description: Not Found
+        "403":
+          description: Only access to registered user
+        "200":
+          description: List of all categories with their number of finished plans
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Charts_Charts'
+  /api/users/profile/favPlans:
+    get:
+      tags:
+      - rest-user
+      summary: Show the user progress with the number of favourites plans per category
+      operationId: getFavPlans
+      responses:
+        "404":
+          description: Not Found
+        "200":
+          description: List of all categories with their number of favourite plans
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Charts_Charts'
+        "403":
+          description: Only access to registered user
+  /api/users/info:
+    get:
+      tags:
+      - rest-user
+      summary: Get all users
+      operationId: getUserEmail
+      parameters:
+      - name: email
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "404":
+          description: Not Found
+        "200":
+          description: Found all the users
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDetails_UserDetails'
+        "403":
+          description: Only access to an admin user
+  /api/users/completedPlans:
+    get:
+      tags:
+      - rest-user
+      summary: Show completed plans by email
+      operationId: getCompletedTasksByUser
+      parameters:
+      - name: email
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "404":
+          description: User not found
+          content: {}
+        "403":
+          description: Only access to admin account
+        "200":
+          description: List of all plans completed by the user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompletedPlanUser_CompletedPlanUser'
+  /api/users/completedPlans/:
+    get:
+      tags:
+      - rest-user
+      summary: Show all completed plans by actual user
+      operationId: getCompletedTasks
+      responses:
+        "404":
+          description: Not Found
+        "200":
+          description: List of all plans completed by actual user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompletedPlanDetails_CompletedPlanUser'
+        "403":
+          description: Only access to admin account
+  /api/plans/explore:
+    get:
+      tags:
+      - rest-plan
+      summary: Get the plan list of the indicated explore's page
+      operationId: getPlansPage
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      responses:
+        "404":
+          description: Not Found
+        "200":
+          description: Found the plans correctly
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Plan_PlanDetails'
+        "204":
+          description: Page without content
+  /api/plans/completedPlans:
+    get:
+      tags:
+      - rest-plan
+      summary: Get all the completed plans
+      operationId: getAllCompletedPlan
+      responses:
+        "404":
+          description: Not Found
+        "200":
+          description: Plans found correctly
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Plan_CompletedPlanDetails'
+        "403":
+          description: Only access to admin user
+    delete:
+      tags:
+      - rest-plan
+      summary: Remove a completed plan of a given user
+      operationId: removeCompletedPlanbyUser
+      parameters:
+      - name: planName
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: email
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: date
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "404":
+          description: Completed plan not found
+          content: {}
+        "403":
+          description: Only access to admin user
+        "200":
+          description: Completed plan removed correctly
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Plan_CompletedPlanDetails'
+  /api/plans/category:
+    get:
+      tags:
+      - rest-plan
+      summary: Get all the plans of a given category by category's name
+      operationId: getPlansbyCategoryName
+      parameters:
+      - name: categoryName
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "404":
+          description: Category not found
+          content: {}
+        "200":
+          description: Found the plans correctly
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Plan_PlanDetails'
+  /api/plans/:
+    get:
+      tags:
+      - rest-plan
+      summary: Get all the plans
+      operationId: getPlans
+      responses:
+        "404":
+          description: Not Found
+        "200":
+          description: Found the plans correctly
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Plan_PlanDetails'
+  /api/categories/:
+    get:
+      tags:
+      - rest-category
+      summary: Get the information of all existing categories
+      operationId: getCategories
+      responses:
+        "404":
+          description: Not Found
+        "200":
+          description: Categories retrieved correctly
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoriesDetails_CategoriesDetails'
+components:
+  schemas:
+    UserRequest_UserDetails:
+      type: object
+      properties:
+        email:
+          type: string
+        username:
+          type: string
+        name:
+          type: string
+        surname:
+          type: string
+        encodedPassword:
+          type: string
+        confirmEncodedPassword:
+          type: string
+    UserDetails_UserDetails:
+      type: object
+    UserDetails_Basic:
+      type: object
+    EditPlanRequest_PlanDetails:
+      type: object
+      properties:
+        newDescription:
+          type: string
+        abv:
+          type: string
+        difficulty:
+          type: integer
+          format: int32
+    Plan_PlanDetails:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        difficulty:
+          type: integer
+          format: int32
+        categoryName:
+          type: string
+    Plan_UserRegisteredPlanDetails:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        difficulty:
+          type: integer
+          format: int32
+        likedUser:
+          type: boolean
+        categoryName:
+          type: string
+    CategoryRequest_CategoriesDetails:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        color:
+          type: string
+    CategoryDetails_CategoriesDetails:
+      type: object
+    CategoryDetails_UserRegisteredCategoryDetails:
+      type: object
+    CategoryDetails_CategoryDetails:
+      type: object
+    PlanCreateRequest_PlanDetails:
+      type: object
+      properties:
+        category:
+          type: string
+        planName:
+          type: string
+        abv:
+          type: string
+        description:
+          type: string
+        difficulty:
+          type: integer
+          format: int32
+    CategoryRequest_CategoryDetails:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        color:
+          type: string
+    AuthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - SUCCESS
+          - FAILURE
+        message:
+          type: string
+        error:
+          type: string
+    LoginRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+    Charts_Charts:
+      type: object
+    CompletedPlanUser_CompletedPlanUser:
+      type: object
+    CompletedPlanDetails_CompletedPlanUser:
+      type: object
+    Plan_CompletedPlanDetails:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        difficulty:
+          type: integer
+          format: int32
+        categoryName:
+          type: string
+    CategoriesDetails_CategoriesDetails:
+      type: object

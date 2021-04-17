@@ -42,16 +42,15 @@ public class CategoryService {
         categoryRepository.save(category);
     }
 
-    public void editCategory(Category category, String description, String color, MultipartFile imageFile) throws IOException {
-
-        editCategory(category, description, color);
+    public void editCategory(String category, String description, String color, MultipartFile imageFile) throws IOException {
+        Category editedCategory = editCategory(category, description, color);
         if (imageFile != null) {
             if (!imageFile.isEmpty()) {
-                category.setIcon(BlobProxy.generateProxy(
+                editedCategory.setIcon(BlobProxy.generateProxy(
                         imageFile.getInputStream(), imageFile.getSize()));
             }
         }
-        update(category);
+        update(editedCategory);
 
     }
 
@@ -93,24 +92,21 @@ public class CategoryService {
     }
 
 
-    public Category dislikeCategory(String categoryName, HttpServletRequest request) {
+
+    public Category likeCategory(String categoryName, HttpServletRequest request, boolean like) {
         String email = request.getUserPrincipal().getName();
         User user = userService.findUserByEmail(email).orElseThrow();
         Category category = findByName(categoryName).orElseThrow();
-
-        user.getUserFavoritesCategory().remove(category);
-        category.setLikedByUser(false);
-        userService.update(user);
-        return category;
-    }
-
-    public Category likeCategory(String categoryName, HttpServletRequest request) {
-        String email = request.getUserPrincipal().getName();
-        User user = userService.findUserByEmail(email).orElseThrow();
-        Category category = findByName(categoryName).orElseThrow();
-
-        user.getUserFavoritesCategory().add(category);
-        category.setLikedByUser(true);
+        if (like){
+            if (!user.getUserFavoritesCategory().contains(category)){
+                user.getUserFavoritesCategory().add(category);
+                category.setLikedByUser(true);
+            }
+        }
+        else{
+            user.getUserFavoritesCategory().remove(category);
+            category.setLikedByUser(false);
+        }
         userService.update(user);
         return category;
     }

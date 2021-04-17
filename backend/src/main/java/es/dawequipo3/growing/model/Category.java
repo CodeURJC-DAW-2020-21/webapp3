@@ -22,6 +22,7 @@ public class Category {
     public interface Basic {}
     public interface Trees {}
     public interface Plans {}
+    public interface Registered {}
 
     @JsonView(Trees.class)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
@@ -40,7 +41,7 @@ public class Category {
     @JsonView(Basic.class)
     private String color;
 
-    @JsonView(Basic.class)
+    @JsonView(Registered.class)
     @Transient
     private boolean likedByUser;
 

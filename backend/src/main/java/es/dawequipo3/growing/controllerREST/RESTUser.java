@@ -9,7 +9,6 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
@@ -26,7 +25,6 @@ import java.net.URI;
 import java.sql.SQLException;
 import java.util.*;
 
-import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
 @RestController
 @RequestMapping("/api/users")
@@ -50,6 +48,9 @@ public class RESTUser {
 
     @Autowired
     private TreeService treeService;
+
+    @Autowired
+    private ImageService imageService;
 
 
     interface UserDetails extends User.Basic {
@@ -125,6 +126,7 @@ public class RESTUser {
                     content = @Content
             )
     })
+
     @JsonView(RESTUser.UserDetails.class)
     @GetMapping("")
     public ResponseEntity<Collection<User>> getAllUsers() {
@@ -206,20 +208,7 @@ public class RESTUser {
     })
     @GetMapping("/profile/image")
     public ResponseEntity<Object> getImage(HttpServletRequest request) throws SQLException {
-        String email = request.getUserPrincipal().getName();
-        Optional<User> op = userService.findUserByEmail(email);
-        if (op.isPresent()) {
-            User user = op.get();
-            if (user.getImageFile() != null) {
-                Resource file = new InputStreamResource(user.getImageFile().getBinaryStream());
-                return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
-                        .contentLength(user.getImageFile().length()).body(file);
-            } else {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            }
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return imageService.downloadProfileImage(request);
     }
 
 
@@ -254,10 +243,11 @@ public class RESTUser {
         String email = request.getUserPrincipal().getName();
         try {
             User user = userService.editUser(email, username, name, surname, encodedPassword, confirmEncodedPassword);
-            return new ResponseEntity<>(user, HttpStatus.OK);
+            return ResponseEntity.ok(user);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+
     }
 
     //Changes the profile image
@@ -281,27 +271,13 @@ public class RESTUser {
                     responseCode = "404",
                     description = "Image not found",
                     content = @Content
-            ),
+            )
     })
+
     @JsonView(User.Basic.class)
     @PutMapping("/profile/image")
     public ResponseEntity<User> uploadImage(HttpServletRequest request, @RequestParam MultipartFile imageFile) throws SQLException, IOException {
-        String email = request.getUserPrincipal().getName();
-        Optional<User> op = userService.findUserByEmail(email);
-        if (op.isPresent()) {
-            User user = op.get();
-            if (imageFile != null) {
-                if (!imageFile.isEmpty()) {
-                    user.setImageFile(BlobProxy.generateProxy(
-                            imageFile.getInputStream(), imageFile.getSize()));
-                }
-            }
-            userService.update(user);
-            return ResponseEntity.ok(user);
-        } else {
-            return ResponseEntity.badRequest().build();
-        }
-
+        return imageService.uploadUserProfileImage(request, imageFile);
     }
 
 
@@ -328,23 +304,23 @@ public class RESTUser {
             )
     })
 
-    @JsonView(RESTUser.CompletedPlanUser.class)
+    @JsonView(CompletedPlanUser.class)
     @GetMapping("/completedPlans")
     public ResponseEntity<List<Completed_plan>> getCompletedTasksByUser(@RequestParam String email) {
         Optional<User> op = userService.findUserByEmail(email);
         if (op.isPresent()) {
             List<Completed_plan> completed_plan = completedPlanService.getCompletedPlanPageByEmailSortedByDate(email);
-            return new ResponseEntity<>(completed_plan, HttpStatus.OK);
+            return ResponseEntity.ok(completed_plan);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return ResponseEntity.notFound().build();
     }
 
-    @Operation(summary = "Show all completed plans by users")
+    @Operation(summary = "Show all completed plans by actual user")
 
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "List of all plans completed by all the users",
+                    description = "List of all plans completed by actual user",
                     content = {@Content(
                             mediaType = "application/json",
                             schema = @Schema(implementation = RESTUser.CompletedPlanDetails.class)
@@ -357,7 +333,7 @@ public class RESTUser {
             )
     })
 
-    @JsonView(RESTUser.CompletedPlanDetails.class)
+    @JsonView(CompletedPlanUser.class)
     @GetMapping("/completedPlans/")
     public ResponseEntity<List<Completed_plan>> getCompletedTasks(HttpServletRequest request) {
         return new ResponseEntity<>(completedPlanService.getAllCompletedPlans(request), HttpStatus.OK);

@@ -4,11 +4,7 @@ package es.dawequipo3.growing.controllerREST;
 import com.fasterxml.jackson.annotation.JsonView;
 import es.dawequipo3.growing.controllerREST.requestBody.EditPlanRequest;
 import es.dawequipo3.growing.controllerREST.requestBody.PlanCreateRequest;
-import es.dawequipo3.growing.controllerREST.requestBody.RemoveCompletedPlanRequest;
-import es.dawequipo3.growing.model.Category;
-import es.dawequipo3.growing.model.Completed_plan;
-import es.dawequipo3.growing.model.Plan;
-import es.dawequipo3.growing.model.User;
+import es.dawequipo3.growing.model.*;
 import es.dawequipo3.growing.service.CategoryService;
 import es.dawequipo3.growing.service.CompletedPlanService;
 import es.dawequipo3.growing.service.PlanService;
@@ -50,7 +46,10 @@ public class RESTPlan {
     interface PlanDetails extends Plan.Basic, Category.Basic {
     }
 
-    interface CompletedPlanDetails extends Completed_plan.Basic, Plan.Basic, User.Basic {
+    interface CompletedPlanDetails extends Completed_plan.Basic, Completed_plan.Completed, Plan.Basic, User.Basic {
+    }
+
+    interface UserRegisteredPlanDetails extends Plan.Registered, Plan.Basic, User.Basic {
     }
 
     @Operation(summary = "Get all the plans")
@@ -155,8 +154,8 @@ public class RESTPlan {
         int difficulty = planRequest.getDifficulty();
         try {
             Plan plan = planService.createPlan(planName, category, abv, description, difficulty);
-            if (plan == null) {
-                URI location = URI.create("https://localhost:8443/api/plans?planName=".concat(plan.getName().replaceAll(" ", "%20")));
+            if (plan != null) {
+                URI location = URI.create("https://localhost:8443/api/plans?planName=".concat(planName.replaceAll(" ", "%20")));
                 return ResponseEntity.created(location).body(plan);
             } else {
                 return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -166,9 +165,6 @@ public class RESTPlan {
         }
     }
 
-
-    //TODO MUST DO A METHOD TO SEARCH A COMPLETED PLAN BY USER AND COMPLETED PLAN AND DATE AND BY USER, COMPLETED PLAN AND DATE
-    // RETURN ALSO A LOCATION
 
     @Operation(summary = "Complete the plan by name indicated as the logged user")
     @ApiResponses(value = {
@@ -190,8 +186,6 @@ public class RESTPlan {
                     content = @Content
             )
     })
-
-
     @JsonView(RESTPlan.PlanDetails.class)
     @PostMapping("/done")
     @ResponseStatus(HttpStatus.CREATED)
@@ -249,12 +243,8 @@ public class RESTPlan {
             )
     })
     @JsonView(CompletedPlanDetails.class)
-    @DeleteMapping("/")
-    public ResponseEntity<Completed_plan> removeCompletedPlanbyUser(@RequestBody RemoveCompletedPlanRequest planRemoved) {
-
-        String email = planRemoved.getEmail();
-        String planName = planRemoved.getPlanName();
-        String date = planRemoved.getDate();
+    @DeleteMapping("/completedPlans")
+    public ResponseEntity<Completed_plan> removeCompletedPlanbyUser(@RequestParam String planName, @RequestParam String email , @RequestParam String date) {
         try {
             Completed_plan completed_plan = planService.removeCompletedPlan(email, planName, date);
             return ResponseEntity.ok(completed_plan);
@@ -310,8 +300,8 @@ public class RESTPlan {
                     content = @Content
             )
     })
-    @JsonView(RESTPlan.PlanDetails.class)
-    @PutMapping("/like")
+    @JsonView(UserRegisteredPlanDetails.class)
+    @PutMapping("/favA")
     public ResponseEntity<Plan> likePlan(@RequestParam String abbrev, HttpServletRequest request) {
         String email = request.getUserPrincipal().getName();
         Optional<User> op = userService.findUserByEmail(email);
@@ -346,8 +336,8 @@ public class RESTPlan {
                     content = @Content
             )
     })
-    @JsonView(RESTPlan.PlanDetails.class)
-    @PutMapping("/dislike")
+    @JsonView(UserRegisteredPlanDetails.class)
+    @PutMapping("/notFavA")
     public ResponseEntity<Plan> dislikePlan(@RequestParam String abbrev, HttpServletRequest request) {
 
         String email = request.getUserPrincipal().getName();
@@ -383,10 +373,9 @@ public class RESTPlan {
             )
     })
 
-
-    @JsonView(RESTPlan.PlanDetails.class)
-    @PutMapping("/likeC")
-    public ResponseEntity<Plan> likePlanC(@RequestParam String planName, HttpServletRequest request) {
+    @JsonView(UserRegisteredPlanDetails.class)
+    @PutMapping("/favN")
+    public ResponseEntity<Plan> likePlanN(@RequestParam String planName, HttpServletRequest request) {
         String email = request.getUserPrincipal().getName();
         Optional<User> op = userService.findUserByEmail(email);
         if (op.isPresent()) {
@@ -420,9 +409,9 @@ public class RESTPlan {
                     content = @Content
             )
     })
-    @JsonView(RESTPlan.PlanDetails.class)
-    @PutMapping("/dislikeC")
-    public ResponseEntity<Plan> dislikePlanC(@RequestParam String planName, HttpServletRequest request) {
+    @JsonView(UserRegisteredPlanDetails.class)
+    @PutMapping("/notFavN")
+    public ResponseEntity<Plan> dislikePlanN(@RequestParam String planName, HttpServletRequest request) {
         String email = request.getUserPrincipal().getName();
         Optional<User> op = userService.findUserByEmail(email);
         if (op.isPresent()) {

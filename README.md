@@ -432,6 +432,7 @@ In this stage I made the following tasks:
 ---
 **Marcos Robles Rodríguez** <a name="marcosP3"></a>
   #### Description
+  
 In this phase I have been helping to finish every part of the project, including helping with the docker, refactoring the REST methods, completing the documentation of OpenAPI and fixing bugs whenever I could.
 ---
  #### Top 5 commits
@@ -444,11 +445,10 @@ In this phase I have been helping to finish every part of the project, including
 ---
 #### Top 5 files
 1. [RESTCategory.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/controllerREST/RESTCategory.java)
-
 2. [RESTUser.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/controllerREST/RESTUser.java)
 3. [RESTPlan.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/controllerREST/RESTPlan.java)
 4. [CategoryRequest.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/controllerREST/requestBody/CategoryRequest.java)
-5.[docker-compose.yml](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/docker/docker-compose.yml)
+5. [docker-compose.yml](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/docker/docker-compose.yml)
 
 ---
 **Flavia Vásquez Gutiérrez** <a name="flaviaP3"></a>

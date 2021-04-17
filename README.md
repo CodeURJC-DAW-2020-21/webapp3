@@ -40,8 +40,7 @@
 [**Phase 3**](#phase3)
 * [API documentation](#APIDoc)
 * [Class diagram](#diagramsP3)
-* [Docker instrucctions](#dockerIns)
-* [Docker documentation](#dockerDoc)
+* [Docker documentation and instructions](#docker)
 * [Participation of each member](#participationP3)
   * [Jorge Adame Prudencio](#jorgeP3)
   * [Antonio Agudo Esperanza](#antonioP3)
@@ -378,25 +377,27 @@ Finally, I worked with my team in the merges and I helped to resolve some confli
 
 ## Class diagram <a name="diagramsP3"></a>  
 
-## Docker instrucctions <a name="dockerIns"></a>  
+## Docker documentation and instructions <a name="docker"></a>  
 
-To run the application using docker it is only necessary to have downloaded the Docker CLI and docker-compose
+To run the application using docker it is only necessary to have downloaded the Docker CLI and docker-compose.
 
-You can download it using
+You can download it using:
 
 ```sudo apt install docker-compose```
 
-After making sure that we have them installed, we simply have to download the docker-compose.yml file using the following command
+After making sure that we have them installed, we simply have to download the docker-compose.yml file using the following command:
 
 ```curl https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/docker/docker-compose.yml```
 
-Then the next step would be to just use the docker-compose up command
+Then the next step would be to just use the docker-compose up command:
 
 ```docker-compose up```
 
-With this, we would run the application and it could be seen by opening any browser that we have installed and inserting the following URL https: // localhost: 8443 /.
+With this, we would run the application and it could be seen by opening any browser that we have installed and inserting the following URL:
 
-When we want to finish the application we would simply have to execute the docker-compose down command
+[https://localhost:8443.](https://localhost:8443)
+
+When we want to finish the application we would simply have to execute the docker-compose down command:
 
 ```docker-compose down```
 

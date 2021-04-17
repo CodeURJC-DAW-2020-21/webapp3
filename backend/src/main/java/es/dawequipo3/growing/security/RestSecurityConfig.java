@@ -58,7 +58,8 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/plans/notFavA").hasRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/plans/edited").hasRole("ADMIN");
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/plans/done").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/plans/new").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/plans").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/plans").hasRole("ADMIN");
 		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/plans/**").hasRole("ADMIN");
 		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/plans/completedPlans").hasRole("ADMIN");
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/plans/completedPlans").hasRole("ADMIN");
@@ -75,7 +76,8 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 		//		RESTCategory
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/categories/fav").hasRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/categories/notFav").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/categories/image").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/categories/image").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/categories").hasRole("ADMIN");
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/categories/**").hasRole("ADMIN");
 
 		// Other URLs can be accessed without authentication

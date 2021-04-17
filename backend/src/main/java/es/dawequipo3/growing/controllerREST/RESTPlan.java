@@ -18,12 +18,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.URI;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 
@@ -111,12 +110,12 @@ public class RESTPlan {
     })
     @JsonView(PlanDetails.class)
     @GetMapping("/explore")
-    public ResponseEntity<List<Plan>> getPlansPage(@RequestParam(defaultValue = "0", required = false) int page) {
+    public ResponseEntity<Page<Plan>> getPlansPage(@RequestParam(defaultValue = "0", required = false) int page) {
         Page<Plan> plans = planService.findAll(page);
         if (page < 0 || page > plans.getTotalPages()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else
-            return ResponseEntity.ok(planService.findAll(page).getContent());
+            return ResponseEntity.ok(planService.findAll(page));
     }
 
     @Operation(summary = "Create a new plan as an administrator")

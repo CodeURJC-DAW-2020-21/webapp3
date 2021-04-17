@@ -41,7 +41,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"username\": \"badBunny@hotmail.com\", \"password\": \"yhlqmdlg\"}",
+							"raw": "{\"username\": \"badbunny@gmail.com\", \"password\": \"yhlqmdlg\"}",
 							"options": {
 								"raw": {
 									"language": "json"

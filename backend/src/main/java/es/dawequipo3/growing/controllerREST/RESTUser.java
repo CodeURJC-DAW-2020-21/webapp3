@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.net.URI;
+import java.security.Principal;
 import java.sql.SQLException;
 import java.util.*;
 
@@ -336,7 +337,11 @@ public class RESTUser {
     @JsonView(CompletedPlanUser.class)
     @GetMapping("/completedPlans/")
     public ResponseEntity<List<Completed_plan>> getCompletedTasks(HttpServletRequest request) {
-        return new ResponseEntity<>(completedPlanService.getAllCompletedPlans(request), HttpStatus.OK);
+        Principal principal = request.getUserPrincipal();
+        if (principal != null){
+            return ResponseEntity.ok(completedPlanService.getCompletedPlanPageByEmailSortedByDate(principal.getName()));
+        }
+        return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
 
     // GETS CHART INFORMATION

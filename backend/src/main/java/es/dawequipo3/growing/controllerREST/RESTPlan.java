@@ -372,6 +372,7 @@ public class RESTPlan {
                     content = @Content
             )
     })
+
     @JsonView(UserRegisteredPlanDetails.class)
     @PutMapping("/favN")
     public ResponseEntity<Plan> likePlanN(@RequestParam String planName, HttpServletRequest request) {

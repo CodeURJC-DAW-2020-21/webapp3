@@ -32,8 +32,6 @@ public class UserController {
     private UserService userService;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
-    @Autowired
     private CompletedPlanService completedPlanService;
     @Autowired
     private PlanService planService;
@@ -59,27 +57,11 @@ public class UserController {
                          @RequestParam String name, @RequestParam String password, @RequestParam String confirmPassword, MultipartFile imageFile) throws IOException {
 
 
-        User user = new User(email, username, name, surname, password, "USER");
-
-        if (password.equals(confirmPassword)) {
-            user.setPassword(passwordEncoder.encode(user.getEncodedPassword()));
-        }
-
-        boolean error = !password.equals(confirmPassword);
-
+        User user = userService.createUser(email,username,name,surname,password,confirmPassword);
         if (!imageFile.isEmpty()) {
             user.setImageFile(BlobProxy.generateProxy(
                     imageFile.getInputStream(), imageFile.getSize()));
         }
-
-        error = userService.findUserByEmail(user.getEmail()).isPresent() || error;
-
-        if (error) {
-            return "redirect:/getStarted";
-        }
-
-        userService.save(user);
-
         return "redirect:/getStarted";
     }
 
@@ -244,27 +226,15 @@ public class UserController {
                                  @RequestParam String confirmEncodedPassword, MultipartFile imageFile,
                                  HttpServletRequest request) throws IOException {
 
-        String actualEmail = request.getUserPrincipal().getName();
-        User user = userService.findUserByEmail(actualEmail).orElseThrow();
-        if (!username.isBlank()) {
-            user.setUsername(username);
-        }
-        if (!name.isBlank()) {
-            user.setName(name);
-        }
-        if (!surname.isBlank()) {
-            user.setSurname(surname);
-        }
-        if (!encodedPassword.isBlank() && (encodedPassword.equals(confirmEncodedPassword))) {
-            user.setEncodedPassword(passwordEncoder.encode(encodedPassword));
-        }
+        String email = request.getUserPrincipal().getName();
+        User user = userService.editUser(email, username, name, surname, encodedPassword, confirmEncodedPassword);
+
         if (imageFile != null) {
             if (!imageFile.isEmpty()) {
                 user.setImageFile(BlobProxy.generateProxy(
                         imageFile.getInputStream(), imageFile.getSize()));
             }
         }
-        userService.update(user);
         return "redirect:/profile";
     }
 

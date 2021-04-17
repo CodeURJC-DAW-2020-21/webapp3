@@ -60,6 +60,12 @@ public class PlanService {
         completed_planRepository.save(new Completed_plan(user, plan));
     }
 
+    public void saveCompletedPlan(User user, Plan plan, long date) {
+        Tree tree = treeService.findTree(user.getEmail(), plan.getCategory().getName()).orElseThrow();
+        treeService.UpdateTreeNewPlan(tree, plan, user.getEmail());
+        completed_planRepository.save(new Completed_plan(user, plan, date));
+    }
+
     public List<Plan> GetPageable(int page) {
         Pageable pageable = PageRequest.of(page, 10);
         return planRepository.findAll(pageable).getContent();

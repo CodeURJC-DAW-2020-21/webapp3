@@ -134,7 +134,7 @@ public class CategoryController {
 
     @PostMapping("/categoryInfo/{name}/like")
     public String categoryLike(@PathVariable String name, HttpServletRequest request) {
-        categoryService.likeCategory(name,request);
+        categoryService.likeCategory(name, request, true);
         return "redirect:/categoryInfo/{name}";
     }
 
@@ -148,7 +148,7 @@ public class CategoryController {
 
     @PostMapping("/categoryInfo/{name}/dislike")
     public String categoryDislike(@PathVariable String name, HttpServletRequest request) {
-        categoryService.dislikeCategory(name,request);
+        categoryService.likeCategory(name, request, false);
         return "redirect:/categoryInfo/{name}";
     }
 
@@ -201,7 +201,7 @@ public class CategoryController {
                                @RequestParam String newDescription, @RequestParam String color, MultipartFile imageFile) throws IOException {
 
         try {
-            categoryService.editCategory(categoryName, newDescription, color);
+            categoryService.editCategory(categoryName, newDescription, color, imageFile);
             return "redirect:/profile";
         } catch (NoSuchElementException e) {
             return "redirect:/categories";

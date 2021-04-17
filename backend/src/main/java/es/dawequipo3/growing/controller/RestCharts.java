@@ -8,7 +8,7 @@ import es.dawequipo3.growing.service.PlanService;
 import es.dawequipo3.growing.service.TreeService;
 import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +35,7 @@ public class RestCharts {
      * each category
      */
 
-    @RequestMapping("/generateBarChart")
+    @GetMapping("/generateBarChart")
     public ArrayList<ChartData> getBarChart(HttpServletRequest request) {
         ArrayList<ChartData> categories = new ArrayList<>();
         String email = request.getUserPrincipal().getName();
@@ -51,7 +51,7 @@ public class RestCharts {
      * each category
      *
      */
-    @RequestMapping("/generateDoughnutChart")
+    @GetMapping("/generateDoughnutChart")
     public ArrayList<ChartData> getDouhnutChart(HttpServletRequest request) {
         ArrayList<ChartData> categories = new ArrayList<>();
         String email = request.getUserPrincipal().getName();
@@ -65,7 +65,7 @@ public class RestCharts {
      * It loads the radar chart with real current user's data. In this case, the number of tasks done by the user on
      * each category
      */
-    @RequestMapping("/generateRadarChart")
+    @GetMapping("/generateRadarChart")
     public ArrayList<ChartData> getRadarChart(HttpServletRequest request) {
         ArrayList<ChartData> categories = new ArrayList<>();
         String email = request.getUserPrincipal().getName();

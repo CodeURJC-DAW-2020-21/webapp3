@@ -366,6 +366,12 @@ Finally, I worked with my team in the merges and I helped to resolve some confli
 
 ## PHASE 3 <a name="phase3"></a>  
 
+## REST API documentation
+
+* YAML file : [api-docs.yaml](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/api-docs/api-docs.yaml)
+* HTML file : [api-docs.html](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/api-docs/api-docs.html)
+* HTML rendering : [raw.githack](https://raw.githack.com/CodeURJC-DAW-2020-21/webapp3/main/api-docs/api-docs.html)
+
 ## Participation of each member <a name="participationP3"></a>  
  
 **Jorge Adame Prudencio** <a name="jorgeP3"></a>
@@ -380,16 +386,16 @@ In this stage I made the following tasks:
 - [Category REST Controller.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/bae22f74c24bde618d46f6e61b105a605ccac4ca)
 - [Completing the other part of RESTPlan.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/e4120181dbdca6099be3f2a85d2c34cf4d4e6fe3)
 - [Explore pagination and ResponseEntity answers consistency.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/30e7f2c8d06715ae481f936de07646845f4ec190)
-- 
-- 
+- [API REST images treatment.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/9eb66af4cffa0bd9d2f36692b9653d3d364f328f)
+- [Updating the Postman collection.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/b9db3873f2a452bb1b1da3032803b4534fc556f1)
 
 ---
 #### Top 5 files
-1. 
-2. 
-3. 
-4.
-5. 
+1. [RESTCategory.](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/controllerREST/RESTCategory.java)
+2. [RESTPlan.](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/controllerREST/RESTPlan.java)
+3. [RESTUser.](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/controllerREST/RESTUSER.java)
+4. [ImageService.](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/service/ImageService.java)
+5. [api.postman_collection.json.](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/api.postman_collection.json)
 
 
 ---
@@ -433,23 +439,24 @@ In this stage I made the following tasks:
 4. CategoryRequestBody
 5.Docker-Compose.yml
 
-
 ---
 **Flavia Vásquez Gutiérrez** <a name="flaviaP3"></a>
  #### Description
+In this phase I have done the REST API part. I have made the RESTUser file and part of the RESTPlan. In addition to implementing Open API in the application.
+I have also added requests to the POSTMAN file and regulated access in the RESTSecurityConfig file.
 
 ---
  #### Top 5 commits
-1. [Added like and dislike to RESTPlan.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/aa784a33d11876036dcf8176df85a3fc207b562e)
-2. [Added the remaining like and dislike methods.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/57052ac84b9e6b0fefc4285f0382d3402824a5db)
-3. [Added RESTUser with basic methods.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/c43b142db15cf1834b7a2bc14241c76029c5b298)
-4. 
-5. 
+1. [Added like and dislike to RESTPlan.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/aa784a33d11876036dcf8176df85a3fc207b562e)-[Added the remaining like and dislike methods.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/57052ac84b9e6b0fefc4285f0382d3402824a5db)
+2. [Added RESTUser with basic methods.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/c43b142db15cf1834b7a2bc14241c76029c5b298)
+3. [Added user progress charts.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/2f8f03afb3b882bd32ab7e407099d0b2fb20c312)
+4. [Added Open API to RESTUser.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/cebb950c62a660497242e515a53d6fa23e6a13dd)
+5. [Updating the Postman collection.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/4b14eedbc08943f6c366ffa91eb8263d4c505543)
 
 ---
 #### Top 5 files
-1. [backend/src/main/java/es/dawequipo3/growing/controllerREST/RESTPlan.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blame/main/backend/src/main/java/es/dawequipo3/growing/controllerREST/RESTPlan.java)
-2. [backend/src/main/java/es/dawequipo3/growing/controllerREST/RESTUser.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blame/main/backend/src/main/java/es/dawequipo3/growing/controllerREST/RESTUser.java)
-3. 
-4. 
-5. 
+1. [RESTUser.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blame/main/backend/src/main/java/es/dawequipo3/growing/controllerREST/RESTUser.java)
+2. [RestSecurityConfig.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blame/main/backend/src/main/java/es/dawequipo3/growing/security/RestSecurityConfig.java)
+3. [api.postman_collection.json](https://github.com/CodeURJC-DAW-2020-21/webapp3/blame/main/backend/api.postman_collection.json)
+4. [RESTPlan.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blame/main/backend/src/main/java/es/dawequipo3/growing/controllerREST/RESTPlan.java)
+5. [RESTCategory.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/controllerREST/RESTCategory.java)

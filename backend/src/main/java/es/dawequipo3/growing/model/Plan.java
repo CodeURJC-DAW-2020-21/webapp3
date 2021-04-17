@@ -13,6 +13,7 @@ public class Plan {
 
     public interface Basic {}
 
+    public interface Registered {}
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "plan")
@@ -32,7 +33,7 @@ public class Plan {
     @Column(unique = true)
     private String abv;
 
-    @JsonView(Basic.class)
+    @JsonView(Registered.class)
     @Transient
     private boolean likedUser;
 

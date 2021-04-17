@@ -382,6 +382,8 @@ public class RESTPlan {
                     content = @Content
             )
     })
+
+
     @JsonView(RESTPlan.PlanDetails.class)
     @PutMapping("/likeC")
     public ResponseEntity<Plan> likePlanC(@RequestParam String planName, HttpServletRequest request) {

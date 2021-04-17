@@ -263,7 +263,7 @@ public class RESTUser {
                 user.setEncodedPassword(passwordEncoder.encode(encodedPassword));
             }
             userService.update(user);
-            return new ResponseEntity<>(user, HttpStatus.OK);
+            return ResponseEntity.ok(user);
         } else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 

@@ -154,8 +154,8 @@ public class RESTPlan {
         int difficulty = planRequest.getDifficulty();
         try {
             Plan plan = planService.createPlan(planName, category, abv, description, difficulty);
-            if (plan == null) {
-                URI location = URI.create("https://localhost:8443/api/plans?planName=".concat(plan.getName().replaceAll(" ", "%20")));
+            if (plan != null) {
+                URI location = URI.create("https://localhost:8443/api/plans?planName=".concat(planName.replaceAll(" ", "%20")));
                 return ResponseEntity.created(location).body(plan);
             } else {
                 return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -245,10 +245,6 @@ public class RESTPlan {
     @JsonView(CompletedPlanDetails.class)
     @DeleteMapping("/completedPlans")
     public ResponseEntity<Completed_plan> removeCompletedPlanbyUser(@RequestParam String planName, @RequestParam String email , @RequestParam String date) {
-
-        String email = planRemoved.getEmail();
-        String planName = planRemoved.getPlanName();
-        String date = planRemoved.getDate();
         try {
             Completed_plan completed_plan = planService.removeCompletedPlan(email, planName, date);
             return ResponseEntity.ok(completed_plan);

@@ -400,8 +400,6 @@ When we want to finish the application we would simply have to execute the docke
 
 ```docker-compose down```
 
-## Docker documentation <a name="dockerDoc"></a>  
-
 ## Participation of each member <a name="participationP3"></a>  
  
 **Jorge Adame Prudencio** <a name="jorgeP3"></a>

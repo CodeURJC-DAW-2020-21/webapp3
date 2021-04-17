@@ -368,8 +368,9 @@ Finally, I worked with my team in the merges and I helped to resolve some confli
 
 ## REST API documentation
 
-* yaml file : [api-docs.yaml](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/api-docs/api-docs.yaml)
-* html file : [api-docs.html](https://raw.githack.com/CodeURJC-DAW-2020-21/webapp3/main/api-docs/api-docs.html)
+* YAML file : [api-docs.yaml](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/api-docs/api-docs.yaml)
+* HTML file : [api-docs.html](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/api-docs/api-docs.html)
+* HTML rendering : [raw.githack](https://raw.githack.com/CodeURJC-DAW-2020-21/webapp3/main/api-docs/api-docs.html)
 
 ## Participation of each member <a name="participationP3"></a>  
  

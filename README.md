@@ -395,11 +395,11 @@ In this stage I made the following tasks:
 
 ---
  #### Top 5 commits
-- [Category REST Controller.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/bae22f74c24bde618d46f6e61b105a605ccac4ca)
-- [Completing the other part of RESTPlan.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/e4120181dbdca6099be3f2a85d2c34cf4d4e6fe3)
-- [Explore pagination and ResponseEntity answers consistency.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/30e7f2c8d06715ae481f936de07646845f4ec190)
-- [API REST images treatment.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/9eb66af4cffa0bd9d2f36692b9653d3d364f328f)
-- [Updating the Postman collection.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/b9db3873f2a452bb1b1da3032803b4534fc556f1)
+1. [Category REST Controller.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/bae22f74c24bde618d46f6e61b105a605ccac4ca)
+2. [Completing the other part of RESTPlan.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/e4120181dbdca6099be3f2a85d2c34cf4d4e6fe3)
+3. [Explore pagination and ResponseEntity answers consistency.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/30e7f2c8d06715ae481f936de07646845f4ec190)
+4. [API REST images treatment.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/9eb66af4cffa0bd9d2f36692b9653d3d364f328f)
+5. [Updating the Postman collection.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/b9db3873f2a452bb1b1da3032803b4534fc556f1)
 
 ---
 #### Top 5 files

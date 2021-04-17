@@ -9,7 +9,6 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
@@ -29,7 +28,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
 @RestController
 @RequestMapping("/api/users")
@@ -52,6 +50,9 @@ public class RESTUser {
 
     @Autowired
     private TreeService treeService;
+
+    @Autowired
+    private ImageService imageService;
 
 
     interface UserDetails extends User.Basic {
@@ -212,20 +213,7 @@ public class RESTUser {
     })
     @GetMapping("/profile/image")
     public ResponseEntity<Object> getImage(HttpServletRequest request) throws SQLException {
-        String email = request.getUserPrincipal().getName();
-        Optional<User> op = userService.findUserByEmail(email);
-        if (op.isPresent()) {
-            User user = op.get();
-            if (user.getImageFile() != null) {
-                Resource file = new InputStreamResource(user.getImageFile().getBinaryStream());
-                return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
-                        .contentLength(user.getImageFile().length()).body(file);
-            } else {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            }
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return imageService.downloadProfileImage(request);
     }
 
 
@@ -306,22 +294,7 @@ public class RESTUser {
     @JsonView(User.Basic.class)
     @PutMapping("/profile/image")
     public ResponseEntity<User> uploadImage(HttpServletRequest request, @RequestParam MultipartFile imageFile) throws SQLException, IOException {
-        String email = request.getUserPrincipal().getName();
-        Optional<User> op = userService.findUserByEmail(email);
-        if (op.isPresent()) {
-            User user = op.get();
-            if (imageFile != null) {
-                if (!imageFile.isEmpty()) {
-                    user.setImageFile(BlobProxy.generateProxy(
-                            imageFile.getInputStream(), imageFile.getSize()));
-                }
-            }
-            userService.update(user);
-            return ResponseEntity.ok(user);
-        } else {
-            return ResponseEntity.badRequest().build();
-        }
-
+        return imageService.uploadUserProfileImage(request, imageFile);
     }
 
 

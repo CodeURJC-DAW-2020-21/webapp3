@@ -9,6 +9,7 @@ import es.dawequipo3.growing.model.Tree;
 import es.dawequipo3.growing.model.User;
 
 import es.dawequipo3.growing.service.CategoryService;
+import es.dawequipo3.growing.service.ImageService;
 import es.dawequipo3.growing.service.TreeService;
 import es.dawequipo3.growing.service.UserService;
 
@@ -18,12 +19,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
-
-import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.InputStreamResource;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -52,6 +48,9 @@ public class RESTCategory {
 
     @Autowired
     private TreeService treeService;
+
+    @Autowired
+    private ImageService imageService;
 
     interface CategoriesDetails extends Category.Basic {
     }
@@ -141,20 +140,7 @@ public class RESTCategory {
     @JsonView(CategoryDetails.class)
     @PutMapping("/image")
     public ResponseEntity<Category> uploadImage(@RequestParam String name, @RequestParam MultipartFile imageFile) throws IOException {
-        Optional<Category> op = categoryService.findByName(name);
-        if (op.isPresent()) {
-            Category category = op.get();
-            if (imageFile != null) {
-                if (!imageFile.isEmpty()) {
-                    category.setIcon(BlobProxy.generateProxy(
-                            imageFile.getInputStream(), imageFile.getSize()));
-                }
-            }
-            categoryService.update(category);
-            return ResponseEntity.ok(category);
-        } else {
-            return ResponseEntity.badRequest().build();
-        }
+        return imageService.uploadImage(name, imageFile);
     }
 
     @Operation(summary = "Create a category with a specific name, description, color and an optional image. Color " +
@@ -225,21 +211,7 @@ public class RESTCategory {
 
     @GetMapping("/image")
     public ResponseEntity<Object> getImage(@RequestParam String categoryName) throws SQLException {
-        Optional<Category> op = categoryService.findByName(categoryName);
-        if (op.isPresent()) {
-            Category category = op.get();
-            if (category.getIcon() != null) {
-
-                Resource file = new InputStreamResource(category.getIcon().getBinaryStream());
-
-                return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
-                        .contentLength(category.getIcon().length()).body(file);
-
-            } else {
-                return ResponseEntity.notFound().build();
-            }
-        }
-        return ResponseEntity.notFound().build();
+        return imageService.downloadCategoryImage(categoryName);
     }
 
     @Operation(summary = "Edits an existing category")
@@ -267,7 +239,7 @@ public class RESTCategory {
     @JsonView(CategoriesDetails.class)
     @PutMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Category> editCategory(@RequestParam String categoryName, @RequestBody CategoryRequest categoryRequest) throws IOException {
+    public ResponseEntity<Category> editCategory(@RequestParam String categoryName, @RequestBody CategoryRequest categoryRequest) {
 
         String newDescription = categoryRequest.getDescription();
         String color = categoryRequest.getColor();
@@ -307,7 +279,7 @@ public class RESTCategory {
     public ResponseEntity<Category> dislikeCategory(@RequestParam String categoryName, HttpServletRequest request) {
 
         try {
-            Category category = categoryService.dislikeCategory(categoryName, request);
+            Category category = categoryService.likeCategory(categoryName, request, false);
             return ResponseEntity.ok(category);
         } catch (NoSuchElementException e) {
             return ResponseEntity.notFound().build();
@@ -340,7 +312,7 @@ public class RESTCategory {
     @PutMapping("/fav")
     public ResponseEntity<Category> likeCategory(@RequestParam String categoryName, HttpServletRequest request) {
         try {
-            Category category = categoryService.likeCategory(categoryName, request);
+            Category category = categoryService.likeCategory(categoryName, request, true);
             return ResponseEntity.ok(category);
         } catch (NoSuchElementException e) {
             return ResponseEntity.notFound().build();

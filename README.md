@@ -432,8 +432,8 @@ In this stage I made the following tasks:
 ---
 **Marcos Robles Rodríguez** <a name="marcosP3"></a>
   #### Description
-  
 In this phase I have been helping to finish every part of the project, including helping with the docker, refactoring the REST methods, completing the documentation of OpenAPI and fixing bugs whenever I could.
+
 ---
  #### Top 5 commits
 1. [Complete the RESTCategory OpenAPI](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/a4118151ea6388c7db62eb34dadd77e7a5a52896)

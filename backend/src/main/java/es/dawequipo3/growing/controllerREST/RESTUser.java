@@ -24,10 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.net.URI;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
@@ -49,6 +46,7 @@ public class RESTUser {
 
     @Autowired
     private PlanService planService;
+
 
     @Autowired
     private TreeService treeService;
@@ -101,11 +99,8 @@ public class RESTUser {
         String encodedPassword = userRequest.getEncodedPassword();
         String confirmEncodedPassword = userRequest.getConfirmEncodedPassword();
 
-        Optional<User> op = userService.findUserByEmail(email);
-        Optional<User> op1 = userService.findUserByName(username);
-        if (op.isEmpty() && op1.isEmpty() && encodedPassword.equals(confirmEncodedPassword)) {
-            User user = new User(email, username, name, surname, passwordEncoder.encode(encodedPassword), "USER");
-            userService.save(user);
+        User user = userService.createUser(email, username, name, surname, encodedPassword, confirmEncodedPassword);
+        if (user != null) {
             URI location = URI.create("https://localhost:8443/api/users/info?email=" + email);
             return ResponseEntity.created(location).body(user);
         } else return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -257,25 +252,12 @@ public class RESTUser {
         String encodedPassword = userRequest.getEncodedPassword();
         String confirmEncodedPassword = userRequest.getConfirmEncodedPassword();
         String email = request.getUserPrincipal().getName();
-
-        Optional<User> op = userService.findUserByEmail(email);
-        if (op.isPresent()) {
-            User user = op.get();
-            if (!username.isBlank() && userService.findUserByName(username).isEmpty()) {
-                user.setUsername(username);
-            }
-            if (!name.isBlank()) {
-                user.setName(name);
-            }
-            if (!surname.isBlank()) {
-                user.setSurname(surname);
-            }
-            if (!encodedPassword.isBlank() && !confirmEncodedPassword.isBlank() && encodedPassword.equals(confirmEncodedPassword)) {
-                user.setEncodedPassword(passwordEncoder.encode(encodedPassword));
-            }
-            userService.update(user);
+        try {
+            User user = userService.editUser(email, username, name, surname, encodedPassword, confirmEncodedPassword);
             return new ResponseEntity<>(user, HttpStatus.OK);
-        } else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     //Changes the profile image
@@ -321,7 +303,6 @@ public class RESTUser {
         }
 
     }
-
 
 
     @Operation(summary = "Show completed plans by email")

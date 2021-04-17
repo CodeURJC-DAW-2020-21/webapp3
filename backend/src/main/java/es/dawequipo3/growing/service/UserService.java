@@ -8,6 +8,7 @@ import es.dawequipo3.growing.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -29,6 +30,9 @@ public class UserService {
 
     @Autowired
     private PlanService planService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     /**
      * @param user
@@ -112,4 +116,33 @@ public class UserService {
         }
     }
 
+    public User createUser(String email, String username, String name, String surname, String encodedPassword, String confirmEncodedPassword) {
+        Optional<User> op = findUserByEmail(email);
+        Optional<User> op1 = findUserByName(username);
+        if (op.isEmpty() && op1.isEmpty() && encodedPassword.equals(confirmEncodedPassword)) {
+            User user = new User(email, username, name, surname, passwordEncoder.encode(encodedPassword), "USER");
+            save(user);
+            return user;
+        } else {
+            return null;
+        }
+    }
+
+    public User editUser(String email, String username, String name, String surname, String encodedPassword, String confirmEncodedPassword) {
+        User user = findUserByEmail(email).orElseThrow();
+        if (!username.isBlank() && findUserByName(username).isEmpty()) {
+            user.setUsername(username);
+        }
+        if (!name.isBlank()) {
+            user.setName(name);
+        }
+        if (!surname.isBlank()) {
+            user.setSurname(surname);
+        }
+        if (!encodedPassword.isBlank() && !confirmEncodedPassword.isBlank() && encodedPassword.equals(confirmEncodedPassword)) {
+            user.setEncodedPassword(passwordEncoder.encode(encodedPassword));
+        }
+        update(user);
+        return user;
+    }
 }

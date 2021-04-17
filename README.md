@@ -391,6 +391,8 @@ In this stage I made the following tasks:
 - Implement the Category Rest Controller
 - Complete half of the RESTPlan
 - REST Pagination
+- Added postman examples
+
 ---
  #### Top 5 commits
 - [Category REST Controller.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/bae22f74c24bde618d46f6e61b105a605ccac4ca)
@@ -403,7 +405,7 @@ In this stage I made the following tasks:
 #### Top 5 files
 1. [RESTCategory.](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/controllerREST/RESTCategory.java)
 2. [RESTPlan.](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/controllerREST/RESTPlan.java)
-3. [RESTUser.](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/controllerREST/RESTUSER.java)
+3. [RESTUser.](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/controllerREST/RESTUser.java)
 4. [ImageService.](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/service/ImageService.java)
 5. [api.postman_collection.json.](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/api.postman_collection.json)
 

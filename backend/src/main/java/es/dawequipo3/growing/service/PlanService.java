@@ -9,9 +9,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Service
 public class PlanService {
@@ -26,8 +27,16 @@ public class PlanService {
     private TreeService treeService;
 
     @Autowired
+    private CompletedPlanService completedPlanService;
+
+    @Autowired
     private Completed_planRepository completed_planRepository;
 
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private PlanService planService;
 
     public void save(Plan plan) {
         planRepository.save(plan);
@@ -85,5 +94,90 @@ public class PlanService {
     public Page<Plan> findAll(int page) {
         Pageable pageable = PageRequest.of(page, 10);
         return planRepository.findAll(pageable);
+    }
+
+    public Plan createPlan(String planName, String categoryName, String abv, String description, int difficulty) {
+        Optional<Plan> op = findPlanByName(planName);
+        if (op.isEmpty() || (difficulty > 3 || difficulty < 1)) {
+            Category category = categoryService.findByName(categoryName).orElseThrow();
+            Plan plan = new Plan(planName, description,
+                    difficulty, category, abv);
+            save(plan);
+            return plan;
+        } else {
+            return null;
+        }
+    }
+
+    public Completed_plan removeCompletedPlan(String email, String planName, String date) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss:SSS");
+        try {
+            Date dateObject = format.parse(date);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(dateObject);
+            long milisecs = calendar.getTimeInMillis();
+            Plan plan = findPlanByName(planName).orElseThrow();
+            Completed_plan completed_plan = completedPlanService.findCompletedPlan(email, plan, milisecs).orElseThrow();
+            completedPlanService.deleteCompletedPlan(email, planName, milisecs);
+            return completed_plan;
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public Plan likePlanAbbr(String abbrev, HttpServletRequest request) {
+        String email = request.getUserPrincipal().getName();
+        User user = userService.findUserByEmail(email).orElseThrow();
+        user.getLikedPlans().add(planService.findPlanByAbbr(abbrev));
+        Plan plan= planService.findPlanByAbbr(abbrev);
+        plan.setLikedUser(true);
+        userService.update(user);
+        return plan;
+    }
+
+    public Plan dislikePlanAbbr(String abbrev, HttpServletRequest request) {
+        String email = request.getUserPrincipal().getName();
+        User user = userService.findUserByEmail(email).orElseThrow();
+        user.getLikedPlans().remove(planService.findPlanByAbbr(abbrev));
+        Plan plan= planService.findPlanByAbbr(abbrev);
+        plan.setLikedUser(false);
+        userService.update(user);
+        return plan;
+    }
+    public Plan likePlanName(String planname, HttpServletRequest request) {
+        String email = request.getUserPrincipal().getName();
+        User user = userService.findUserByEmail(email).orElseThrow();
+        Plan plan= planService.findPlanByName(planname).orElseThrow();
+        user.getLikedPlans().add(plan);
+        plan.setLikedUser(true);
+        userService.update(user);
+        return plan;
+    }
+    public Plan dislikePlanName(String planname, HttpServletRequest request) {
+        String email = request.getUserPrincipal().getName();
+        User user = userService.findUserByEmail(email).orElseThrow();
+        user.getLikedPlans().remove(planService.findPlanByName(planname).orElseThrow());
+        Plan plan= planService.findPlanByName(planname).orElseThrow();
+        plan.setLikedUser(false);
+        userService.update(user);
+        return plan;
+    }
+
+    public Plan editPlan(String planName,String newDescription,String abv,int difficulty) {
+        Plan plan = planService.findPlanByName(planName).orElseThrow();
+
+        if (!newDescription.isBlank()) {
+            plan.setDescription(newDescription);
+        }
+
+        plan.setDifficulty(difficulty);
+
+        if (!abv.isBlank()) {
+            plan.setAbv(abv);
+        }
+
+        planService.save(plan);
+        return plan;
     }
 }

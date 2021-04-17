@@ -202,19 +202,7 @@ public class UserController {
     public String editPlan(@PathVariable String planName,
                            @RequestParam String newDescription, @RequestParam String abv, @RequestParam int difficulty) {
 
-        Plan plan = planService.findPlanByName(planName).orElseThrow();
-
-        if (!newDescription.isBlank()) {
-            plan.setDescription(newDescription);
-        }
-
-        plan.setDifficulty(difficulty);
-
-        if (!abv.isBlank()) {
-            plan.setAbv(abv);
-        }
-
-        planService.save(plan);
+        planService.editPlan(planName,newDescription,abv,difficulty);
         return "redirect:/";
 
     }
@@ -232,16 +220,7 @@ public class UserController {
     public String createPlan(@PathVariable String category, @RequestParam String planName, @RequestParam String abv, @RequestParam String description,
                              @RequestParam int difficulty) {
 
-        boolean planExist = planService.findPlanByName(planName).isPresent();
-        Category planCategory = categoryService.findByName(category).orElseThrow();
-        if (planExist) {
-            editPlan(planName, description, abv, difficulty);
-        }
-
-
-        Plan plan = new Plan(planName, description, difficulty, planCategory, abv);
-        planService.save(plan);
-
+        Plan plan = planService.createPlan(planName,category,abv,description,difficulty);
         return "redirect:/categoryInfo/{category}";
     }
 

@@ -148,18 +148,21 @@ public class RESTPlan {
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Plan> createPlan(@RequestParam String category, @RequestBody PlanCreateRequest planRequest) {
-
-        Optional<Plan> op = planService.findPlanByName(planRequest.getPlanName());
-        if (op.isEmpty() || (planRequest.getDifficulty() > 3 || planRequest.getDifficulty() < 1)) {
-            Optional<Category> optionalCategory = categoryService.findByName(category);
-            if (optionalCategory.isPresent()) {
-                Plan plan = new Plan(planRequest.getPlanName(), planRequest.getDescription(),
-                        planRequest.getDifficulty(), optionalCategory.get(), planRequest.getAbv());
-                planService.save(plan);
+        String planName = planRequest.getPlanName();
+        String abv = planRequest.getAbv();
+        String description = planRequest.getDescription();
+        int difficulty = planRequest.getDifficulty();
+        try {
+            Plan plan = planService.createPlan(planName, category, abv, description, difficulty);
+            if (plan == null) {
                 URI location = URI.create("https://localhost:8443/api/plans?planName=".concat(plan.getName().replaceAll(" ", "%20")));
                 return ResponseEntity.created(location).body(plan);
-            } else return ResponseEntity.notFound().build();
-        } else return new ResponseEntity<>(HttpStatus.CONFLICT);
+            } else {
+                return new ResponseEntity<>(HttpStatus.CONFLICT);
+            }
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 
@@ -243,28 +246,15 @@ public class RESTPlan {
     @DeleteMapping("/completedPlans")
     public ResponseEntity<Completed_plan> removeCompletedPlanbyUser(@RequestParam String planName, @RequestParam String email , @RequestParam String date) {
 
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss:SSS");
+        String email = planRemoved.getEmail();
+        String planName = planRemoved.getPlanName();
+        String date = planRemoved.getDate();
         try {
-            Date dateObject = format.parse(date);
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(dateObject);
-            long milisecs = calendar.getTimeInMillis();
-            Optional<Plan> optionalPlan = planService.findPlanByName(planName);
-            if (optionalPlan.isPresent()) {
-                Plan plan = optionalPlan.get();
-                Optional<Completed_plan> optionalCompleted_plan = completedPlanService.findCompletedPlan(email, plan, milisecs);
-                if (optionalCompleted_plan.isPresent()) {
-                    Completed_plan completed_plan = optionalCompleted_plan.get();
-                    completedPlanService.deleteCompletedPlan(email, planName , milisecs);
-                    return ResponseEntity.ok(completed_plan);
-                }
-                return ResponseEntity.notFound().build();
-            }
-
-        } catch (ParseException e) {
-            e.printStackTrace();
+            Completed_plan completed_plan = planService.removeCompletedPlan(email, planName, date);
+            return ResponseEntity.ok(completed_plan);
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.notFound().build();
     }
 
     @Operation(summary = "Get the information of a plan by the name")
@@ -320,13 +310,9 @@ public class RESTPlan {
         String email = request.getUserPrincipal().getName();
         Optional<User> op = userService.findUserByEmail(email);
         if (op.isPresent()) {
-            User user = op.get();
             try {
-                Plan opPlan = planService.findPlanByAbbr(abbrev);
-                user.getLikedPlans().add(planService.findPlanByAbbr(abbrev));
-                planService.findPlanByAbbr(abbrev).setLikedUser(true);
-                userService.update(user);
-                return ResponseEntity.ok(opPlan);
+                Plan plan = planService.likePlanAbbr(abbrev, request);
+                return ResponseEntity.ok(plan);
             } catch (NoSuchElementException e) {
                 return ResponseEntity.notFound().build();
             }
@@ -361,13 +347,9 @@ public class RESTPlan {
         String email = request.getUserPrincipal().getName();
         Optional<User> op = userService.findUserByEmail(email);
         if (op.isPresent()) {
-            User user = op.get();
             try {
-                Plan opPlan = planService.findPlanByAbbr(abbrev);
-                user.getLikedPlans().remove(planService.findPlanByAbbr(abbrev));
-                planService.findPlanByAbbr(abbrev).setLikedUser(false);
-                userService.update(user);
-                return ResponseEntity.ok(opPlan);
+                Plan plan = planService.dislikePlanAbbr(abbrev, request);
+                return ResponseEntity.ok(plan);
             } catch (NoSuchElementException e) {
                 return ResponseEntity.notFound().build();
             }
@@ -398,19 +380,16 @@ public class RESTPlan {
     @PutMapping("/favN")
     public ResponseEntity<Plan> likePlanN(@RequestParam String planName, HttpServletRequest request) {
         String email = request.getUserPrincipal().getName();
-        try {
-            User user = userService.findUserByEmail(email).orElseThrow();
-            Optional<Plan> op = planService.findPlanByName(planName);
-            if (op.isPresent()) {
-                Plan plan = op.get();
-                user.getLikedPlans().add(plan);
-                plan.setLikedUser(true);
-                userService.update(user);
+        Optional<User> op = userService.findUserByEmail(email);
+        if (op.isPresent()) {
+            try {
+                Plan plan = planService.likePlanName(planName, request);
                 return ResponseEntity.ok(plan);
-            } else return ResponseEntity.notFound().build();
-        } catch (NoSuchElementException e) {
-            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-        }
+            } catch (NoSuchElementException e) {
+                return ResponseEntity.notFound().build();
+            }
+        } else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+
     }
 
     @Operation(summary = "Remove the like of a plan given its name as the logged user")
@@ -437,19 +416,15 @@ public class RESTPlan {
     @PutMapping("/notFavN")
     public ResponseEntity<Plan> dislikePlanN(@RequestParam String planName, HttpServletRequest request) {
         String email = request.getUserPrincipal().getName();
-        try {
-            User user = userService.findUserByEmail(email).orElseThrow();
-            Optional<Plan> op = planService.findPlanByName(planName);
-            if (op.isPresent()) {
-                Plan plan = op.get();
-                user.getLikedPlans().remove(plan);
-                plan.setLikedUser(false);
-                userService.update(user);
+        Optional<User> op = userService.findUserByEmail(email);
+        if (op.isPresent()) {
+            try {
+                Plan plan = planService.dislikePlanName(planName, request);
                 return ResponseEntity.ok(plan);
-            } else return ResponseEntity.notFound().build();
-        } catch (NoSuchElementException e) {
-            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-        }
+            } catch (NoSuchElementException e) {
+                return ResponseEntity.notFound().build();
+            }
+        } else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
     @Operation(summary = "Edit the information of a plan as an administrator")
@@ -475,20 +450,14 @@ public class RESTPlan {
     @JsonView(PlanDetails.class)
     @PutMapping("")
     public ResponseEntity<Plan> editPlan(@RequestParam String planName, @RequestBody EditPlanRequest editPlanRequest) {
-        Optional<Plan> op = planService.findPlanByName(planName);
-        if (op.isPresent()) {
-            Plan plan = op.get();
-            if (!editPlanRequest.getNewDescription().isBlank()) {
-                plan.setDescription(editPlanRequest.getNewDescription());
-            }
-            if (!editPlanRequest.getAbv().isBlank()) {
-                plan.setAbv(editPlanRequest.getAbv());
-            }
-            if (editPlanRequest.getDifficulty() != plan.getDifficulty()) {
-                plan.setDifficulty(editPlanRequest.getDifficulty());
-            }
-            planService.save(plan);
+        String newDescription=editPlanRequest.getNewDescription();
+        String abv=editPlanRequest.getAbv();
+        int difficulty=editPlanRequest.getDifficulty();
+        try{
+            Plan plan=planService.editPlan(planName,newDescription,abv,difficulty);
             return ResponseEntity.ok(plan);
-        } else return ResponseEntity.notFound().build();
+        } catch (NoSuchElementException e){
+            return ResponseEntity.notFound().build();
+        }
     }
 }

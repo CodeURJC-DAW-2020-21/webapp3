@@ -204,19 +204,7 @@ public class UserController {
     public String editPlan(@PathVariable String planName,
                            @RequestParam String newDescription, @RequestParam String abv, @RequestParam int difficulty) {
 
-        Plan plan = planService.findPlanByName(planName).orElseThrow();
-
-        if (!newDescription.isBlank()) {
-            plan.setDescription(newDescription);
-        }
-
-        plan.setDifficulty(difficulty);
-
-        if (!abv.isBlank()) {
-            plan.setAbv(abv);
-        }
-
-        planService.save(plan);
+        planService.editPlan(planName,newDescription,abv,difficulty);
         return "redirect:/";
 
     }

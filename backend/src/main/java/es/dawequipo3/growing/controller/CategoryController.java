@@ -71,16 +71,7 @@ public class CategoryController {
      */
     @PostMapping("/removeCompletedPlan/{email}/{plan}/{date}")
     public String removeCompletedPlan(@PathVariable String email, @PathVariable String plan, @PathVariable String date) {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss:SSS");
-        try {
-            Date dateObject = format.parse(date);
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(dateObject);
-            long milisecs = calendar.getTimeInMillis();
-            completedPlanService.deleteCompletedPlan(email, plan, milisecs);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        planService.removeCompletedPlan(email,plan,date);
         return "redirect:/profile";
     }
 

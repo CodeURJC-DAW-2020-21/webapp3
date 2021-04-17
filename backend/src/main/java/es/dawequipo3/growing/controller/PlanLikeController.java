@@ -30,10 +30,7 @@ public class PlanLikeController {
      */
     @GetMapping("/categoryInfo/{abbrev}/like")
     public void likePlan(@PathVariable String abbrev, HttpServletRequest request) {
-        String email = request.getUserPrincipal().getName();
-        User user = userService.findUserByEmail(email).orElseThrow();
-        user.getLikedPlans().add(planService.findPlanByAbbr(abbrev));
-        userService.update(user);
+        planService.likePlanAbbr(abbrev,request);
     }
 
     /**
@@ -43,10 +40,7 @@ public class PlanLikeController {
      */
     @GetMapping("/categoryInfo/{abbrev}/dislike")
     public void dislikePlan(@PathVariable String abbrev, HttpServletRequest request) {
-        String email = request.getUserPrincipal().getName();
-        User user = userService.findUserByEmail(email).orElseThrow();
-        user.getLikedPlans().remove(planService.findPlanByAbbr(abbrev));
-        userService.update(user);
+        planService.dislikePlanAbbr(abbrev,request);
     }
 
     /**
@@ -58,10 +52,7 @@ public class PlanLikeController {
      */
     @PostMapping("/categoryInfo/{name}/{planName}/like")
     public String likePlanC(@PathVariable String name, @PathVariable String planName, HttpServletRequest request) {
-        String email = request.getUserPrincipal().getName();
-        User user = userService.findUserByEmail(email).orElseThrow();
-        user.getLikedPlans().add(planService.findPlanByName(planName).orElseThrow());
-        userService.update(user);
+        planService.likePlanName(planName,request);
         return "redirect:/categoryInfo/{name}";
     }
 
@@ -74,10 +65,7 @@ public class PlanLikeController {
      */
     @PostMapping("/categoryInfo/{name}/{planName}/dislike")
     public String dislikePlanC(@PathVariable String name, @PathVariable String planName, HttpServletRequest request) {
-        String email = request.getUserPrincipal().getName();
-        User user = userService.findUserByEmail(email).orElseThrow();
-        user.getLikedPlans().remove(planService.findPlanByName(planName).orElseThrow());
-        userService.update(user);
+        planService.dislikePlanName(planName,request);
         return "redirect:/categoryInfo/{name}";
     }
 

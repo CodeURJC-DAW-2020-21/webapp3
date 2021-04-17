@@ -467,6 +467,6 @@ I have also added requests to the POSTMAN file and regulated access in the RESTS
 #### Top 5 files
 1. [RESTUser.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blame/main/backend/src/main/java/es/dawequipo3/growing/controllerREST/RESTUser.java)
 2. [RestSecurityConfig.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blame/main/backend/src/main/java/es/dawequipo3/growing/security/RestSecurityConfig.java)
-3. [api.postman_collection.json](https://github.com/CodeURJC-DAW-2020-21/webapp3/blame/main/backend/api.postman_collection.json)
+3. [api.postman_collection.json](https://github.com/CodeURJC-DAW-2020-21/webapp3/blame/main/api.postman_collection.json)
 4. [RESTPlan.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blame/main/backend/src/main/java/es/dawequipo3/growing/controllerREST/RESTPlan.java)
-5. [RESTCategory.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/controllerREST/RESTCategory.java)
+5. [RESTCategory.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blame/main/backend/src/main/java/es/dawequipo3/growing/controllerREST/RESTCategory.java)

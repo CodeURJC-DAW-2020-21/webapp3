@@ -80,4 +80,17 @@ public class PlanService {
         Pageable pageable = PageRequest.of(page, 10);
         return planRepository.findAll(pageable);
     }
+
+    public Plan createPlan(String planName, String categoryName, String abv, String description, int difficulty) {
+        Optional<Plan> op = findPlanByName(planName);
+        if (op.isEmpty() || (difficulty > 3 || difficulty < 1)) {
+             Category category = categoryService.findByName(categoryName).orElseThrow();
+                Plan plan = new Plan(planName, description,
+                        difficulty, category, abv);
+                save(plan);
+                return plan;
+        }else{
+            return null;
+        }
+    }
 }

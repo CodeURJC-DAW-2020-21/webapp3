@@ -149,18 +149,21 @@ public class RESTPlan {
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Plan> createPlan(@RequestParam String category, @RequestBody PlanCreateRequest planRequest) {
-
-        Optional<Plan> op = planService.findPlanByName(planRequest.getPlanName());
-        if (op.isEmpty() || (planRequest.getDifficulty() > 3 || planRequest.getDifficulty() < 1)) {
-            Optional<Category> optionalCategory = categoryService.findByName(category);
-            if (optionalCategory.isPresent()) {
-                Plan plan = new Plan(planRequest.getPlanName(), planRequest.getDescription(),
-                        planRequest.getDifficulty(), optionalCategory.get(), planRequest.getAbv());
-                planService.save(plan);
+        String planName = planRequest.getPlanName();
+        String abv = planRequest.getAbv();
+        String description = planRequest.getDescription();
+        int difficulty = planRequest.getDifficulty();
+        try {
+            Plan plan = planService.createPlan(planName, category, abv, description, difficulty);
+            if (plan == null) {
                 URI location = URI.create("https://localhost:8443/api/plans?planName=".concat(plan.getName().replaceAll(" ", "%20")));
                 return ResponseEntity.created(location).body(plan);
-            } else return ResponseEntity.notFound().build();
-        } else return new ResponseEntity<>(HttpStatus.CONFLICT);
+            } else {
+                return new ResponseEntity<>(HttpStatus.CONFLICT);
+            }
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 

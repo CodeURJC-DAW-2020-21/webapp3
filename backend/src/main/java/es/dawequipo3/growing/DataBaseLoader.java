@@ -13,6 +13,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.Calendar;
+import java.util.Date;
 
 @Service
 public class DataBaseLoader {
@@ -130,8 +132,9 @@ public class DataBaseLoader {
         planService.save(new Plan("Push ups", "Come on buddy! This is the easiest one, but you are advised," +
                 " this is the most difficult category. This challenge is to achieve 3 series of 10 push ups, with 30 second breaks!", 3, categoryService.findByName("Focus and Effort").orElseThrow(), "pushUps"));
 
-        planService.save(new Plan("Lunges", "You have to complete 5 series of 20 lunges, with 30 second breaks!" +
-                " Don't mark this activity two consecutive days! we won't trust you, you need to rest one day minimum", 3, categoryService.findByName("Focus and Effort").orElseThrow(), "lunges"));
+        Plan lunges = new Plan("Lunges", "You have to complete 5 series of 20 lunges, with 30 second breaks!" +
+                " Don't mark this activity two consecutive days! we won't trust you, you need to rest one day minimum", 3, categoryService.findByName("Focus and Effort").orElseThrow(), "lunges");
+        planService.save(lunges);
 
         Plan abs = new Plan("Abs", "You have to complete 4 series of 20 abs, with 30 second breaks!" +
                 " This is the most difficult one, at the moment!", 3, categoryService.findByName("Focus and Effort").orElseThrow(), "abs");
@@ -150,6 +153,7 @@ public class DataBaseLoader {
         planService.saveCompletedPlan(admin, running);
         planService.saveCompletedPlan(admin, yoga);
         planService.saveCompletedPlan(admin, yoga);
+        planService.saveCompletedPlan(admin, lunges, 1618557401000L);
     }
 
 }

@@ -39,6 +39,14 @@ public class Completed_plan {
         this.date = Calendar.getInstance().getTimeInMillis();
     }
 
+    public Completed_plan(User user, Plan plan, long date) {
+        super();
+        this.completedPlanPK = new CompletedPlanPK(user.getEmail(), plan.getName());
+        this.user = user;
+        this.plan = plan;
+        this.date = date;
+    }
+
     public Completed_plan() {
 
     }

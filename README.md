@@ -377,6 +377,10 @@ Finally, I worked with my team in the merges and I helped to resolve some confli
 
 ## Class diagram <a name="diagramsP3"></a>  
 
+<img src="https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/Documentation%20images/Stage%203%20images/DiagramaClases.svg">
+
+***Note:*** For a better visualization, the image is an SVG file.
+
 ## Docker documentation and instructions <a name="docker"></a>  
 
 To run the application using docker it is only necessary to have downloaded the Docker CLI and docker-compose.

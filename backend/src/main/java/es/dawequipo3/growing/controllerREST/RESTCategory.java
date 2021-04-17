@@ -36,6 +36,7 @@ import java.net.URI;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 
@@ -266,23 +267,17 @@ public class RESTCategory {
     @JsonView(CategoriesDetails.class)
     @PutMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Category> editCategory(@RequestParam String categoryName, @RequestBody CategoryRequest categoryRequest) {
+    public ResponseEntity<Category> editCategory(@RequestParam String categoryName, @RequestBody CategoryRequest categoryRequest) throws IOException {
 
         String newDescription = categoryRequest.getDescription();
         String color = categoryRequest.getColor();
 
-        Optional<Category> op = categoryService.findByName(categoryName);
-        if (op.isPresent()) {
-            Category category = op.get();
-            if (newDescription == null) {
-                newDescription = "";
-            }
-            if (color == null) {
-                color = "";
-            }
-            categoryService.editCategory(category, newDescription, color);
+        try {
+            Category category = categoryService.editCategory(categoryName, newDescription, color);
             return ResponseEntity.ok(category);
-        } else return ResponseEntity.notFound().build();
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @Operation(summary = "Remove the like of a category as the logged user")
@@ -310,16 +305,13 @@ public class RESTCategory {
     @JsonView(UserRegisteredCategoryDetails.class)
     @PutMapping("/notFav")
     public ResponseEntity<Category> dislikeCategory(@RequestParam String categoryName, HttpServletRequest request) {
-        String email = request.getUserPrincipal().getName();
-        User user = userService.findUserByEmail(email).orElseThrow();
-        Optional<Category> op = categoryService.findByName(categoryName);
-        if (op.isPresent()) {
-            Category category = op.get();
-            user.getUserFavoritesCategory().remove(category);
-            category.setLikedByUser(false);
-            userService.update(user);
+
+        try {
+            Category category = categoryService.dislikeCategory(categoryName, request);
             return ResponseEntity.ok(category);
-        } else return ResponseEntity.notFound().build();
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @Operation(summary = "Like a category as the logged user")
@@ -347,16 +339,11 @@ public class RESTCategory {
     @JsonView(UserRegisteredCategoryDetails.class)
     @PutMapping("/fav")
     public ResponseEntity<Category> likeCategory(@RequestParam String categoryName, HttpServletRequest request) {
-        String email = request.getUserPrincipal().getName();
-        User user = userService.findUserByEmail(email).orElseThrow();
-        Optional<Category> op = categoryService.findByName(categoryName);
-        if (op.isPresent()) {
-            Category category = op.get();
-            user.getUserFavoritesCategory().add(category);
-            category.setLikedByUser(true);
-            userService.update(user);
+        try {
+            Category category = categoryService.likeCategory(categoryName, request);
             return ResponseEntity.ok(category);
-        } else return ResponseEntity.notFound().build();
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
-
 }

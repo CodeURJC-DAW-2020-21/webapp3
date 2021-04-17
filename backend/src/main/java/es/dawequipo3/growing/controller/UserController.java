@@ -4,7 +4,6 @@ import es.dawequipo3.growing.model.Category;
 import es.dawequipo3.growing.model.Completed_plan;
 import es.dawequipo3.growing.model.Plan;
 import es.dawequipo3.growing.model.User;
-import es.dawequipo3.growing.repository.UserRepository;
 import es.dawequipo3.growing.service.CategoryService;
 import es.dawequipo3.growing.service.CompletedPlanService;
 import es.dawequipo3.growing.service.PlanService;
@@ -56,8 +55,7 @@ public class UserController {
      * @throws IOException
      */
     @PostMapping("/getStarted/signUp")
-    public String signUp(Model model, HttpServletRequest request,
-                         @RequestParam String username, @RequestParam String surname, @RequestParam String email,
+    public String signUp(@RequestParam String username, @RequestParam String surname, @RequestParam String email,
                          @RequestParam String name, @RequestParam String password, @RequestParam String confirmPassword, MultipartFile imageFile) throws IOException {
 
 

@@ -431,15 +431,15 @@ In this stage I made the following tasks:
 ---
 **Antonio Agudo Esperanza** <a name="antonioP3"></a>
  #### Description
- In this stage I was working in the Docker files part
+ In this stage I was working in the Docker files part.
  
 ---
  #### Top 5 commits
-1. [Docker Compose Done](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/c90d1f7e1697f9db70fb96ab81d740be88509321)
-2. [Installation Script Created](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/17fd356038fc01fa2ad49b8b2a72ec55a2f2b7e4)
-3. [Docker fixes](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/1056beae3be341b5bbddae4d584e49fb4591970b)
-4. [Added healthcheck to Docker](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/6ceb092ce0f336e13f8e186fd218a45a535fa2bf)
-5. [DataBase dockerized](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/e3b5f81aba59752863d086c63961e5d44a436578)
+1. [Docker Compose Done.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/c90d1f7e1697f9db70fb96ab81d740be88509321)
+2. [Installation Script Created.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/17fd356038fc01fa2ad49b8b2a72ec55a2f2b7e4)
+3. [Docker fixes.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/1056beae3be341b5bbddae4d584e49fb4591970b)
+4. [Added healthcheck to Docker.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/6ceb092ce0f336e13f8e186fd218a45a535fa2bf)
+5. [DataBase dockerized.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/e3b5f81aba59752863d086c63961e5d44a436578)
 
 ---
 #### Top 5 files
@@ -457,11 +457,11 @@ In this phase I have been helping to finish every part of the project, including
 
 ---
  #### Top 5 commits
-1. [Complete the RESTCategory OpenAPI](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/a4118151ea6388c7db62eb34dadd77e7a5a52896)
-2. [Complete the RESTPlan OpenAPI](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/149675dc1e818654b1e4a9206b96f46170eeda9c)
-3. [Update RESTCategory so it uses body request](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/aadb51ba03158e4c9cd259af78f6f8c6a696f6d8)
-4. [Update RESTUser so it uses body request](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/2a3ee9d05ddfee4ec529247fb51e483285e0c8df)
-5. [Refactor RESTPlan](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/a4efc59a73c21ec0bee8356617172521a25c7fe5)
+1. [Complete the RESTCategory OpenAPI.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/a4118151ea6388c7db62eb34dadd77e7a5a52896)
+2. [Complete the RESTPlan OpenAPI.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/149675dc1e818654b1e4a9206b96f46170eeda9c)
+3. [Update RESTCategory so it uses body request.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/aadb51ba03158e4c9cd259af78f6f8c6a696f6d8)
+4. [Update RESTUser so it uses body request.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/2a3ee9d05ddfee4ec529247fb51e483285e0c8df)
+5. [Refactor RESTPlan.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/a4efc59a73c21ec0bee8356617172521a25c7fe5)
 
 ---
 #### Top 5 files

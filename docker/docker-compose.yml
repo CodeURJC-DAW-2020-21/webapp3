@@ -11,7 +11,7 @@ services:
       - MYSQL_ROOT_PASSWORD=dawEquipo3-2021
 
   web:
-    image: dawequipo3/growing:latest
+    image: dawequipo3/growing
     ports:
       - 8443:8443
     container_name: growing

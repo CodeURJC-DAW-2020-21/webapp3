@@ -1,5 +1,5 @@
 FROM openjdk:11-jre
-ADD target/*.jar app.jar
+ADD . /usr/app/
+WORKDIR /usr/app
 EXPOSE 8443
-ENTRYPOINT ["java","-jar","app.jar"]
-
+CMD [ "java", "-jar", "app.jar" ]

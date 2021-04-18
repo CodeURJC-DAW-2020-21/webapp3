@@ -10,7 +10,7 @@
     </parent>
     <groupId>es.dawEquipo3</groupId>
     <artifactId>growing</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>fase3</version>
     <name>growing</name>
     <description>Demo project for Spring Boot</description>
     <properties>

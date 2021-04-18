@@ -18,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -185,7 +184,7 @@ public class RESTPlan {
                     content = @Content
             )
     })
-    @JsonView(RESTPlan.PlanDetails.class)
+    @JsonView(PlanDetails.class)
     @PostMapping("/done")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Plan> completePlan(@RequestParam String planName, HttpServletRequest request) {
@@ -267,7 +266,7 @@ public class RESTPlan {
                     content = @Content
             )
     })
-    @JsonView(RESTPlan.PlanDetails.class)
+    @JsonView(PlanDetails.class)
     @GetMapping("")
     public ResponseEntity<Plan> getPlan(@RequestParam String planName) {
         Optional<Plan> op = planService.findPlanByName(planName);

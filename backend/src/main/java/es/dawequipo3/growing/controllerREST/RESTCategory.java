@@ -43,8 +43,6 @@ public class RESTCategory {
     @Autowired
     private CategoryService categoryService;
 
-    @Autowired
-    private UserService userService;
 
     @Autowired
     private TreeService treeService;
@@ -68,7 +66,6 @@ public class RESTCategory {
                     responseCode = "200",
                     description = "Categories retrieved correctly",
                     content = {@Content(
-                            mediaType = "application/json",
                             schema = @Schema(implementation = CategoriesDetails.class)
                     )}
             ),
@@ -151,7 +148,6 @@ public class RESTCategory {
                     responseCode = "201",
                     description = "Category created correctly",
                     content = {@Content(
-                            mediaType = "application/json",
                             schema = @Schema(implementation = CategoryDetails.class)
                     )}
             ),

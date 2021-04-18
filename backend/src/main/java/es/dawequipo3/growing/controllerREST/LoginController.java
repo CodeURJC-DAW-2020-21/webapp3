@@ -1,7 +1,5 @@
 package es.dawequipo3.growing.controllerREST;
 
-
-import es.dawequipo3.growing.model.Plan;
 import es.dawequipo3.growing.security.jwt.AuthResponse;
 import es.dawequipo3.growing.security.jwt.LoginRequest;
 import es.dawequipo3.growing.security.jwt.UserLoginService;
@@ -34,7 +32,7 @@ public class LoginController {
 					)}
 			),
 			@ApiResponse(
-					responseCode = "403",
+					responseCode = "401",
 					description = "Incorrect email or password",
 					content = @Content
 			)

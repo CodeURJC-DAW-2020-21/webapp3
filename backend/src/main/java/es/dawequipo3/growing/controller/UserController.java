@@ -1,6 +1,5 @@
 package es.dawequipo3.growing.controller;
 
-import es.dawequipo3.growing.model.Category;
 import es.dawequipo3.growing.model.Completed_plan;
 import es.dawequipo3.growing.model.Plan;
 import es.dawequipo3.growing.model.User;
@@ -10,7 +9,6 @@ import es.dawequipo3.growing.service.PlanService;
 import es.dawequipo3.growing.service.UserService;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,7 +1,6 @@
 package es.dawequipo3.growing.controller;
 
-import es.dawequipo3.growing.model.User;
-import es.dawequipo3.growing.repository.UserRepository;
+
 import es.dawequipo3.growing.service.PlanService;
 import es.dawequipo3.growing.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class PlanLikeController {
-
-    @Autowired
-    private UserService userService;
 
     @Autowired
     private PlanService planService;

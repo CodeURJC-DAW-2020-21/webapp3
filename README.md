@@ -377,7 +377,7 @@ Finally, I worked with my team in the merges and I helped to resolve some confli
 
 ## Class diagram <a name="diagramsP3"></a>  
 
-<img src="https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/Documentation%20images/Stage%203%20images/DiagramaClases.svg">
+<img src="https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/Documentation%20images/Stage%203%20images/ClassDiagram.svg">
 
 ***Note:*** For a better visualization, the image is an SVG file.
 

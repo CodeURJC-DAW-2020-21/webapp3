@@ -247,7 +247,7 @@
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
     <pre class="post"><code class="huge"><span class="http-method">post</span> /api/auth/login</code></pre></div>
-    <div class="method-summary"> (<span class="nickname">login</span>)</div>
+    <div class="method-summary">Login for registered users (<span class="nickname">login</span>)</div>
     <div class="method-notes"></div>
 
 
@@ -294,8 +294,11 @@
     <h4 class="field-label">404</h4>
     Not Found
         <a href="#"></a>
+    <h4 class="field-label">401</h4>
+    Incorrect email or password
+        <a href="#"></a>
     <h4 class="field-label">200</h4>
-    OK
+    Successfully logged in
         <a href="#AuthResponse">AuthResponse</a>
   </div> <!-- method -->
   <hr/>
@@ -303,7 +306,7 @@
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
     <pre class="post"><code class="huge"><span class="http-method">post</span> /api/auth/logout</code></pre></div>
-    <div class="method-summary"> (<span class="nickname">logout</span>)</div>
+    <div class="method-summary">Logout for started sessions (<span class="nickname">logout</span>)</div>
     <div class="method-notes"></div>
 
 
@@ -340,7 +343,7 @@
     Not Found
         <a href="#"></a>
     <h4 class="field-label">200</h4>
-    OK
+    Successfully logged out
         <a href="#AuthResponse">AuthResponse</a>
   </div> <!-- method -->
   <hr/>
@@ -348,7 +351,7 @@
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
     <pre class="post"><code class="huge"><span class="http-method">post</span> /api/auth/refresh</code></pre></div>
-    <div class="method-summary"> (<span class="nickname">refreshToken</span>)</div>
+    <div class="method-summary">Refresh the session token (<span class="nickname">refreshToken</span>)</div>
     <div class="method-notes"></div>
 
 
@@ -385,7 +388,7 @@
     Not Found
         <a href="#"></a>
     <h4 class="field-label">200</h4>
-    OK
+    Token successfully refreshed
         <a href="#AuthResponse">AuthResponse</a>
   </div> <!-- method -->
   <hr/>
@@ -476,25 +479,25 @@
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
     the media type will be conveyed by the <span class="header">Content-Type</span> response header.
     <ul>
-      <li><code>application/json</code></li>
+      <li><code>*/*</code></li>
     </ul>
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">404</h4>
     Not Found
         <a href="#"></a>
-    <h4 class="field-label">403</h4>
-    Permission error, only access to admin account
-        <a href="#"></a>
-    <h4 class="field-label">201</h4>
-    Category created correctly
-        <a href="#CategoryDetails_CategoryDetails">CategoryDetails_CategoryDetails</a>
     <h4 class="field-label">409</h4>
     There is already a category with the name given by parameter
+        <a href="#"></a>
+    <h4 class="field-label">403</h4>
+    Permission error, only access to admin account
         <a href="#"></a>
     <h4 class="field-label">400</h4>
     Bad request, the color is not valid
         <a href="#"></a>
+    <h4 class="field-label">201</h4>
+    Category created correctly
+        <a href="#CategoryDetails_CategoryDetails">CategoryDetails_CategoryDetails</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="dislikeCategory"></a>
@@ -538,12 +541,12 @@
     <h4 class="field-label">404</h4>
     Category not found
         <a href="#"></a>
-    <h4 class="field-label">403</h4>
-    Permission error, only access to logged users
-        <a href="#"></a>
     <h4 class="field-label">200</h4>
     Like removed correctly
         <a href="#CategoryDetails_UserRegisteredCategoryDetails">CategoryDetails_UserRegisteredCategoryDetails</a>
+    <h4 class="field-label">403</h4>
+    Permission error, only access to logged users
+        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="editCategory"></a>
@@ -598,12 +601,12 @@
     <h4 class="field-label">404</h4>
     Category not found
         <a href="#"></a>
-    <h4 class="field-label">403</h4>
-    Permission error, only access to admin account
-        <a href="#"></a>
     <h4 class="field-label">200</h4>
     Category edited correctly
         <a href="#CategoryDetails_CategoriesDetails">CategoryDetails_CategoriesDetails</a>
+    <h4 class="field-label">403</h4>
+    Permission error, only access to admin account
+        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getCategories"></a>
@@ -635,7 +638,7 @@
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
     the media type will be conveyed by the <span class="header">Content-Type</span> response header.
     <ul>
-      <li><code>application/json</code></li>
+      <li><code>*/*</code></li>
     </ul>
 
     <h3 class="field-label">Responses</h3>
@@ -726,12 +729,12 @@
     <h4 class="field-label">404</h4>
     Category not found
         <a href="#"></a>
-    <h4 class="field-label">403</h4>
-    Permission error, only access to logged users
-        <a href="#"></a>
     <h4 class="field-label">200</h4>
     Category liked correctly
         <a href="#CategoryDetails_UserRegisteredCategoryDetails">CategoryDetails_UserRegisteredCategoryDetails</a>
+    <h4 class="field-label">403</h4>
+    Permission error, only access to logged users
+        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="uploadImage1"></a>
@@ -841,12 +844,12 @@
     <h4 class="field-label">404</h4>
     Plan not found
         <a href="#"></a>
-    <h4 class="field-label">403</h4>
-    Only access to registered user
-        <a href="#"></a>
     <h4 class="field-label">200</h4>
     Completed the plan correctly
         <a href="#Plan_PlanDetails">Plan_PlanDetails</a>
+    <h4 class="field-label">403</h4>
+    Only access to registered user
+        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="createPlan"></a>
@@ -909,12 +912,12 @@
     <h4 class="field-label">403</h4>
     Only access to admin account
         <a href="#"></a>
-    <h4 class="field-label">409</h4>
-    There is already a plan with the name given by parameter
-        <a href="#"></a>
     <h4 class="field-label">201</h4>
     Created the plan correctly
         <a href="#Plan_PlanDetails">Plan_PlanDetails</a>
+    <h4 class="field-label">409</h4>
+    There is already a plan with the name given by parameter
+        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="dislikePlan"></a>
@@ -1084,12 +1087,12 @@
     <h4 class="field-label">404</h4>
     Plan not found
         <a href="#"></a>
-    <h4 class="field-label">403</h4>
-    Only access to admin account
-        <a href="#"></a>
     <h4 class="field-label">200</h4>
     Edited the plan correctly
         <a href="#Plan_PlanDetails">Plan_PlanDetails</a>
+    <h4 class="field-label">403</h4>
+    Only access to admin account
+        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getAllCompletedPlan"></a>
@@ -1133,12 +1136,12 @@
     <h4 class="field-label">404</h4>
     Not Found
         <a href="#"></a>
-    <h4 class="field-label">200</h4>
-    Plans found correctly
-        <a href="#Plan_CompletedPlanDetails">Plan_CompletedPlanDetails</a>
     <h4 class="field-label">403</h4>
     Only access to admin user
         <a href="#"></a>
+    <h4 class="field-label">200</h4>
+    Plans found correctly
+        <a href="#Plan_CompletedPlanDetails">Plan_CompletedPlanDetails</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getPlan"></a>
@@ -1559,12 +1562,12 @@
     <h4 class="field-label">404</h4>
     Not Found
         <a href="#"></a>
-    <h4 class="field-label">409</h4>
-    Only unregistered users can create a new one
-        <a href="#"></a>
     <h4 class="field-label">201</h4>
     Account created successfully
         <a href="#UserDetails_UserDetails">UserDetails_UserDetails</a>
+    <h4 class="field-label">409</h4>
+    Only unregistered users can create a new one
+        <a href="#"></a>
     <h4 class="field-label">400</h4>
     There is already a user with this email or username
         <a href="#"></a>
@@ -1705,12 +1708,12 @@
     <h4 class="field-label">404</h4>
     Not Found
         <a href="#"></a>
-    <h4 class="field-label">200</h4>
-    List of all plans completed by actual user
-        <a href="#CompletedPlanDetails_CompletedPlanUser">CompletedPlanDetails_CompletedPlanUser</a>
     <h4 class="field-label">403</h4>
     Only access to admin account
         <a href="#"></a>
+    <h4 class="field-label">200</h4>
+    List of all plans completed by actual user
+        <a href="#CompletedPlanDetails_CompletedPlanUser">CompletedPlanDetails_CompletedPlanUser</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getCompletedTasksByUser"></a>
@@ -1754,12 +1757,12 @@
     <h4 class="field-label">404</h4>
     User not found
         <a href="#"></a>
-    <h4 class="field-label">403</h4>
-    Only access to admin account
-        <a href="#"></a>
     <h4 class="field-label">200</h4>
     List of all plans completed by the user
         <a href="#CompletedPlanUser_CompletedPlanUser">CompletedPlanUser_CompletedPlanUser</a>
+    <h4 class="field-label">403</h4>
+    Only access to admin account
+        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getFavPlans"></a>
@@ -1798,12 +1801,12 @@
     <h4 class="field-label">404</h4>
     Not Found
         <a href="#"></a>
-    <h4 class="field-label">200</h4>
-    List of all categories with their number of favourite plans
-        <a href="#Charts_Charts">Charts_Charts</a>
     <h4 class="field-label">403</h4>
     Only access to registered user
         <a href="#"></a>
+    <h4 class="field-label">200</h4>
+    List of all categories with their number of favourite plans
+        <a href="#Charts_Charts">Charts_Charts</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getFinishedPlans"></a>
@@ -1886,12 +1889,12 @@
     <h4 class="field-label">404</h4>
     Not Found
         <a href="#"></a>
-    <h4 class="field-label">403</h4>
-    Only access to registered user
-        <a href="#"></a>
     <h4 class="field-label">200</h4>
     List of all categories with their height
         <a href="#Charts_Charts">Charts_Charts</a>
+    <h4 class="field-label">403</h4>
+    Only access to registered user
+        <a href="#"></a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getImage"></a>

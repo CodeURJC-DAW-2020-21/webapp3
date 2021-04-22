@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { FooterComponent } from './footer/footer.component';
 import { IndexComponent } from './index/index.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { IndexComponent } from './index/index.component';
     HeaderComponent,
     CategoryListComponent,
     FooterComponent,
-    IndexComponent
+    IndexComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, NgbModule, routing

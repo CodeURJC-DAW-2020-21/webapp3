@@ -1,0 +1,28 @@
+<section id="services" class="services">
+  <div class="container" data-aos="fade-left">
+    <header class="section-header category">
+      <div class="justify-content-center">
+        <h1>Categories</h1>
+        <h2 class="subtitle">Choose a category to start</h2>
+      </div>
+
+    </header>
+    <!-- End title header -->
+    <div class="row gy-4">
+
+      <div *ngFor="let category of categories" class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="700">
+        <div class="service-box {{category.color}}">
+          <div class="profile-background">
+            <img [src]="" class="photo icon" alt="categoryIcon">
+          </div>
+          <h3>{{category.name}}</h3>
+          <p>{{category.des}}</p>
+          <a href="#" class="read-more"><span>Read More</span> <i
+            class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>

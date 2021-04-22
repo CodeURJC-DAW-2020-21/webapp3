@@ -25,6 +25,8 @@ import java.util.*;
 
 
 @RestController
+@CrossOrigin(methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
+        RequestMethod.DELETE })
 @RequestMapping("/api/users")
 public class RESTUser {
 

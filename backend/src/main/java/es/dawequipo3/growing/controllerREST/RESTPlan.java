@@ -26,6 +26,8 @@ import java.util.*;
 
 
 @RestController
+@CrossOrigin(methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
+        RequestMethod.DELETE })
 @RequestMapping("/api/plans")
 public class RESTPlan {
 

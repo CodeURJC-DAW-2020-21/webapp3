@@ -37,6 +37,8 @@ import java.util.Optional;
 
 
 @RestController
+@CrossOrigin(methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
+        RequestMethod.DELETE })
 @RequestMapping("/api/categories")
 public class RESTCategory {
 

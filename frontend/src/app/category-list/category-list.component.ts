@@ -5,7 +5,7 @@ import {Category} from './Category';
 @Component({
   selector: 'category-list',
   templateUrl: './category-list.component.html',
-  styleUrls: ['../../assets/css/style.css']
+  styleUrls: []
 })
 export class CategoryListComponent implements OnInit {
 

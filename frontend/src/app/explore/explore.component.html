@@ -1,69 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-    <title>Growing - Welcome</title>
-
-    {{>head}}
-    <!-- jquery  -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="assets/js/main.js"></script>
-    <!-- =======================================================
-    * Template Name: FlexStart - v1.1.1
-    * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
-    * Author: BootstrapMade.com
-    * License: https://bootstrapmade.com/license/
-    ======================================================== -->
-</head>
-<script>
-    var increment = function() {
-        var i = 0;
-        return function() { return i += 1; };
-    };
-    var ob = increment();
-</script>
-
-<body>
 
 
-<!-- ======= Header ======= -->
-<header id="header" class="header fixed-top">
-    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-
-        <a href="/" class="logo d-flex align-items-center">
-            <img src="/images/growingLogo.png" alt="">
-        </a>
-
-        <nav id="navbar" class="navbar">
-            <ul>
-                <li><a class="nav-link scrollto" href="/">Home</a></li>
-                <li><a class="nav-link scrollto" href="/categories">Categories</a></li>
-                <li><a class="nav-link scrollto active" href="/explore">Explore</a></li>
-                <li><a class="nav-link scrollto" href="/aboutUs">About us</a></li>
-                {{#registered}}
-                <li><a class="nav-link scrollto" href="/profile"><i class="fas fa-user"></i></a>
-                </li>
-                <li>
-                    <form action="/logout" method="post">
-                        <input type="hidden" name="_csrf" value="{{token}}"/>
-                        <input type="submit" value="Sign out" class="sign_out scrollto"/>
-                    </form>
-                </li>
-                {{/registered}}
-                {{^registered}}
-                <li><a class="getstarted scrollto" href="/getStarted">Get Started</a></li>
-                {{/registered}}
-            </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav><!-- .navbar -->
-
-    </div>
-</header><!-- End Header -->
-
-
+<main>
 <!-- ======= F.A.Q Section ======= -->
 <section id="faq" class="faq">
 
@@ -72,13 +9,56 @@
         <header class="section-header category">
             <div class="justify-content-center">
                 <h1>Explore</h1>
-                {{#registered}}
-                <h2 class="subtitle">A specific selection of our plans according to your likes</h2>
-                {{/registered}}
-                {{^registered}}
-                <h2 class="subtitle">A selection of our plans for your pleasure</h2>
-                {{/registered}}
+                <h2 class="subtitle" *ngIf="registered ;else notRegistered">A specific selection of our plans according to your likes</h2>
+                <h2 class="subtitle" #notRegistered>A selection of our plans for your pleasure</h2>
             </div>
         </header>
         <div class="row">
+			<div class="row" id="PlanList" *ngFor="let plan of plans">>
+							<div class="col-lg-6">
+								<div class="accordion accordion-flush" id="{{plan.abv}}">
+									<div class="accordion-item">
+										<h2 class="accordion-header">
+											<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+													data-bs-target="#faq-content-{{plan.abv}}">
+												<div class="service-box orange">
+													<div class="profile-background explore">
+														<img src="/image/category/{{category.name}}" class="icon">
+													</div>
+												</div>
+												{{plan.name}}<img src="/assets/img/level/level{{plan.difficulty}}.png" class="icon"/>
+												<a href="/editPlan/{{plan.name}}" *ngIf="admin">><i class="editIcon fas fa-pencil-alt fa-lg"></i></a>
+											</button>
+										</h2>
+										<div id="faq-content-{{plan.abv}}" class="accordion-collapse collapse"
+											 data-bs-parent="#{{planabv}}">
+											<div class="accordion-body">
+												{{plan.description}}
+												<div class="col-7" *ngIf="registered">
+													<button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
+													<form method="post" action="/complete/{{plan.name}}">
+														<input type="submit" class="finish" value="I did it!">
+													</form>
+													<button onclick="ChangeButtonsStatus(this)" class="leave">I won't finish
+													</button>
+												</div>
+												<div class="col-3" *ngIf="registered">
+													<h2 *ngIf="notLikedUser; else likedUser"><img src="/assets/img/level/EmptyHeart.svg" class="like icon" onclick="ChangeHeart(this)"/></h2>
+													<h2 #likedUser><img src="/assets/img/level/FullHeart.svg" class="like  icon" onclick="ChangeHeart(this)"/></h2>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+				</div>
+					</div>
 
+
+
+					<button class="loadmore" onclick="LoadMore(ob)">Load more plans</button>
+				</div>
+			</section><!-- End F.A.Q Section -->
+
+</main>
+			<!-- ======= Footer ======= -->

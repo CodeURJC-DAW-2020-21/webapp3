@@ -447,4 +447,17 @@ public class RESTUser {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+    @JsonView(UserDetails.class)
+    @GetMapping("/me")
+    public ResponseEntity<User> me(HttpServletRequest request) {
+
+        Principal principal = request.getUserPrincipal();
+
+        if (principal != null) {
+            return ResponseEntity.ok(userService.findUserByEmail(principal.getName()).orElseThrow());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

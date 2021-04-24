@@ -9,6 +9,8 @@ import { CategoryListComponent } from './category-list/category-list.component';
 import { FooterComponent } from './footer/footer.component';
 import { IndexComponent } from './index/index.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { GetStartedComponent } from './get-started/get-started.component';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -18,11 +20,12 @@ import { AboutUsComponent } from './about-us/about-us.component';
     CategoryListComponent,
     FooterComponent,
     IndexComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    GetStartedComponent
   ],
-  imports: [
-    BrowserModule, HttpClientModule, NgbModule, routing
-  ],
+    imports: [
+        BrowserModule, HttpClientModule, NgbModule, routing, FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

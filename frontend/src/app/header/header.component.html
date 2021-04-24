@@ -12,7 +12,7 @@
         <li><a class="nav-link scrollto" [routerLink]="['categories']">Categories</a></li>
         <li><a class="nav-link scrollto" href="#">Explore</a></li>
         <li><a class="nav-link scrollto" [routerLink]="['aboutUs']" >About us</a></li>
-        <li *ngIf="authorization.isLogged();"><a class="nav-link scrollto" [routerLink]="['profile']">Registered </a></li>
+        <li *ngIf="authorization.isLogged();"><a class="nav-link scrollto" [routerLink]="['profile']"><fa-icon [icon]="faUser"></fa-icon> </a></li>
         <li *ngIf="authorization.isLogged();"><button type="submit" class="sign_out scrollto" (click)="authorization.logOut()">Sign out</button></li>
         <li *ngIf="!authorization.isLogged();"><a class="getstarted scrollto" [routerLink]="['getStarted']">Get Started</a></li>
       </ul>

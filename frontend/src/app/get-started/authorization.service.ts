@@ -35,18 +35,19 @@ export class AuthorizationService {
   login(email:string, password:string){
       this.httpClient.post(BASE_URL + "/login" , { username : email, password : password}, {withCredentials:true})
         .subscribe(
-          response => {this.reqIsLogged(); this.router.navigate([''])},
-          error => alert("Wrong credentials")
+          _ => {this.reqIsLogged(); this.router.navigate(['profile'])},
+          _ => alert("Wrong credentials")
         )
   }
 
   logOut() {
 
     return this.httpClient.post(BASE_URL + '/logout', { withCredentials: true })
-      .subscribe((resp: any) => {
+      .subscribe(_ => {
         console.log("LOGOUT: Successfully");
         this.logged = false;
         this.user = undefined;
+        this.router.navigate([''])
       });
 
   }
@@ -63,4 +64,7 @@ export class AuthorizationService {
     return this.user;
   }
 
+  createUser(newUser: User) {
+    return this.httpClient.post("/api/users", newUser).pipe()
+  }
 }

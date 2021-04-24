@@ -12,25 +12,24 @@
                   <header class="section-header">
                     <h1>About you</h1>
                   </header>
-
                   <div class="profile-card">
-                    <div class="card-header">
+                    <div [class]="cardHeader">
                       <div class="pic">
                         <img src="#" alt="">
                       </div>
                       <div class="item">
                         Name:
-                        <div class="name">Pepito pérez</div>
+                        <div class="name">{{authorization.user.name}}</div>
                         Username:
-                        <div class="name">Garatea</div>
+                        <div class="name">{{authorization.user.username}}</div>
                       </div>
                       <div class="item">
                         Email:
-                        <div class="email"><p>pepoperez@gmail.com</p></div>
+                        <div class="email"><p>{{authorization.user.email}}</p></div>
                       </div>
                       <!-- Button trigger-->
                       <a href="#">
-                        <i class="fas fa-user-edit"></i>
+                        <button (click)="goToEditProfile()"><fa-icon [icon]="faUserEdit"></fa-icon></button>
                       </a>
                     </div>
                   </div>

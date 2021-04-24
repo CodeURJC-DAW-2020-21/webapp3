@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthorizationService} from "./authorization.service";
+import {faEnvelope, faUser, faImage} from "@fortawesome/free-solid-svg-icons";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Title} from "@angular/platform-browser";
+import {User} from "../model/User";
 
 @Component({
   selector: 'app-get-started',
@@ -8,16 +12,28 @@ import {AuthorizationService} from "./authorization.service";
 })
 export class GetStartedComponent implements OnInit {
 
+  faEnvelope = faEnvelope;
+  faUser = faUser;
+  faImage = faImage;
 
   getStartedForm = {
     "container-login": true,
     "sign-up-mode": false
   }
 
-  constructor(private authorizationService : AuthorizationService) { }
+
+  constructor(private authorizationService: AuthorizationService, private titleService: Title, private router: Router, activatedRoute : ActivatedRoute) { }
+
+  user : User;
+
+  public setTitle(newTitle: string) {
+    this.titleService.setTitle(newTitle);
+  }
 
   ngOnInit(): void {
+    this.setTitle("Growing - Get started")
   }
+
 
   login(event: any, email: string, pass: string){
       event.preventDefault();
@@ -30,6 +46,15 @@ export class GetStartedComponent implements OnInit {
 
   goToSignIn() {
     this.getStartedForm["sign-up-mode"] = false;
+  }
+
+  createUser($event: MouseEvent, email: string, username: string, name: string, surname: string, password: string, confirmEncodedPassword: string, imageFile: string){
+      this.user = {email : email, username: username, name: name, surname: surname, encodedPassword : password, confirmEncodedPassword : confirmEncodedPassword, roles: ['USER']}
+      console.log(this.user)
+      this.authorizationService.createUser(this.user).subscribe(
+        _ => this.router.navigate(['']),
+        error => alert('Bad request')
+      )
   }
 
 }

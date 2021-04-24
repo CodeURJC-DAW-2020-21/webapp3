@@ -8,7 +8,7 @@
             <h2 class="title">Sign in</h2>
             <!--Email-->
             <div class="input-field">
-              <i class="fas fa-envelope"></i>
+              <fa-icon [icon]="faEnvelope"></fa-icon>
               <input #email type="email" placeholder="Email" required/>
             </div>
             <!-- Password -->
@@ -21,42 +21,42 @@
           <!-- Sign UP-->
           <form action="#" method="post" class="sign-up-form" enctype="multipart/form-data">
             <h2 class="title">Sign up</h2>
+            <!-- Email -->
+            <div class="input-field">
+              <fa-icon [icon]="faEnvelope"></fa-icon>
+              <input #emailSignUp type="email" name="email" placeholder="Email" required/>
+            </div>
             <!-- Username -->
             <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input  type="text" name="username" placeholder="Username" required/>
+              <fa-icon [icon]="faUser"></fa-icon>
+              <input #username type="text" name="username" placeholder="Username" required/>
             </div>
             <!-- Name-->
             <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input type="text" name="name" placeholder="Name" required/>
+              <fa-icon [icon]="faUser"></fa-icon>
+              <input #name type="text" name="name" placeholder="Name" required/>
             </div>
             <!-- Surname -->
             <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input type="text" name="surname" placeholder="Surname" required/>
-            </div>
-            <!-- Email -->
-            <div class="input-field">
-              <i class="fas fa-envelope"></i>
-              <input  type="email" name="email" placeholder="Email" required/>
+              <fa-icon [icon]="faUser"></fa-icon>
+              <input #surname type="text" name="surname" placeholder="Surname" required/>
             </div>
             <!-- Password -->
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input  type="password" name="password" placeholder="Password" min="3" max="20"  required/>
+              <input #passwordSignUp type="password" name="password" placeholder="Password" min="3" max="20"  required/>
             </div>
             <!-- Confirm Password -->
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" name="confirmPassword" placeholder="Confirm Password" min="3" max="20" required/>
+              <input #confirmPassword type="password" name="confirmPassword" placeholder="Confirm Password" min="3" max="20" required/>
             </div>
             <div class="input-field">
-              <i class="fas fa-image"></i>
-              <input type="file" name="imageFile" class="image-signUp"/>
+              <fa-icon [icon]="faImage"></fa-icon>
+              <input #profileImage type="file" name="imageFile" class="image-signUp"/>
             </div>
 
-            <button type="submit" class="btn">Sign Up </button>
+            <button type="submit" class="btn" (click)="createUser($event, emailSignUp.value, username.value, name.value, surname.value, passwordSignUp.value, confirmPassword.value, profileImage.value)">Sign Up </button>
           </form>
         </div>
       </div>

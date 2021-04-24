@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import {BrowserModule, Title} from '@angular/platform-browser';
 import {routing} from './app.routing';
+import { SwiperModule } from 'swiper/angular';
 import {AppComponent} from './app.component';
 import {ChartsModule} from 'ng2-charts';
 import {HttpClientModule} from '@angular/common/http';
@@ -17,6 +18,7 @@ import {RadarChartComponent} from './charts/radar-chart/radar-chart.component';
 import {DoughnutChartComponent} from './charts/doughnut-chart/doughnut-chart.component';
 import {ProfileComponent} from './profile/profile.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {EditProfileComponent} from './edit-profile/edit-profile.component';
 
 
 @NgModule({
@@ -32,13 +34,14 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     BarChartComponent,
     RadarChartComponent,
     DoughnutChartComponent,
-    ProfileComponent
+    ProfileComponent,
+    EditProfileComponent
   ],
-   
+
   imports: [
-    BrowserModule, HttpClientModule, NgbModule, ChartsModule, routing, FontAwesomeModule, FormsModule
+    BrowserModule, HttpClientModule, SwiperModule, NgbModule, ChartsModule, routing, FontAwesomeModule, FormsModule
   ],
-  providers: [],
+  providers: [Title],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthorizationService} from "./authorization.service";
-import {faEnvelope, faUser, faImage} from "@fortawesome/free-solid-svg-icons";
+
 import {ActivatedRoute, Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
 import {User} from "../model/User";
@@ -8,13 +8,10 @@ import {User} from "../model/User";
 @Component({
   selector: 'app-get-started',
   templateUrl: './get-started.component.html',
-  styleUrls: ['../../../src/assets/css/style.css', "../../../src/assets/css/getStarted.css"]
+  styleUrls: ['../../../src/assets/css/style.css', "../../../src/assets/css/getStarted.css", "../../../src/assets/vendor/font-awesome/css/all.css"]
 })
 export class GetStartedComponent implements OnInit {
 
-  faEnvelope = faEnvelope;
-  faUser = faUser;
-  faImage = faImage;
 
   getStartedForm = {
     "container-login": true,

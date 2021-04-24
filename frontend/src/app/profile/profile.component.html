@@ -29,7 +29,7 @@
                       </div>
                       <!-- Button trigger-->
                       <a href="#">
-                        <button (click)="goToEditProfile()"><fa-icon [icon]="faUserEdit"></fa-icon></button>
+                        <button (click)="goToEditProfile()"><i class="fas fa-user-edit"></i></button>
                       </a>
                     </div>
                   </div>
@@ -60,6 +60,11 @@
           </section>
           <category-list></category-list>
         </div>
+
+        <section *ngIf="admin" class="section-header">
+          <app-admin-table></app-admin-table>
+        </section>
+
       </div>
       <div class="col-lg-1 d-md-block border-screen"></div>
     </div>

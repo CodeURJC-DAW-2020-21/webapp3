@@ -19,6 +19,7 @@ import {DoughnutChartComponent} from './charts/doughnut-chart/doughnut-chart.com
 import {ProfileComponent} from './profile/profile.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {EditProfileComponent} from './edit-profile/edit-profile.component';
+import { AdminTableComponent } from './admin-table/admin-table.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import {EditProfileComponent} from './edit-profile/edit-profile.component';
     RadarChartComponent,
     DoughnutChartComponent,
     ProfileComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    AdminTableComponent
   ],
 
   imports: [

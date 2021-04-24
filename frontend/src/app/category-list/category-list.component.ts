@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CategoryService} from './category.service';
 import {HttpClient} from '@angular/common/http';
 import {Category} from '../model/Category';
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'category-list',
@@ -10,14 +11,19 @@ import {Category} from '../model/Category';
 })
 export class CategoryListComponent implements OnInit {
 
-
-  constructor(private categoryService: CategoryService, private httpClient: HttpClient) { }
+  constructor(private categoryService: CategoryService, private httpClient: HttpClient, private titleService: Title) { }
 
   categories: Category[] = [];
 
   ngOnInit() {
+    this.setTitle("Growing - Categories")
     this.getCategories();
   }
+
+  public setTitle(newTitle: string) {
+    this.titleService.setTitle(newTitle);
+  }
+
 
   public getCategories() {
     this.categoryService.getCategories().subscribe(
@@ -31,5 +37,5 @@ export class CategoryListComponent implements OnInit {
   getCategoryIcon(categoryIcon:string){
     return this.categoryService.getCategoryIcon(categoryIcon)
   }
-  
+
 }

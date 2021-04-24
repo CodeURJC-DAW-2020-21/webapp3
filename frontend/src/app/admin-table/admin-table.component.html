@@ -1,0 +1,29 @@
+<h1>Users and Categories</h1>
+<br>
+<div class="field" id="searchform">
+  <form method="post" action="#">
+    <input id="searchterm" name="emailSearched" placeholder="User that you are looking for" type="text"/>
+    <input id="search" type="submit" value="Find!" onclick="LoadTable()">
+  </form>
+</div>
+
+<table id="UsersTable">
+  <tr id="UsersTableTitle">
+    <th>Email</th>
+    <th>Plan Completed</th>
+    <th>Date</th>
+    <th>Remove</th>
+  </tr>
+
+  <tr *ngFor="let record of completedPlans">
+    <td class="email">{{record.email}}</td>
+    <td class="name">{{record.name}}</td>
+    <td class="date">{{record.date}}</td>
+    <td>
+      <form method="post" action="#">
+        <input type="submit" value="Remove" class="displayed leave">
+      </form>
+    </td>
+  </tr>
+
+</table>

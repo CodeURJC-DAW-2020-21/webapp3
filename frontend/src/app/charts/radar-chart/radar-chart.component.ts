@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CategoryService} from '../../category-list/category.service';
-import {Category} from '../../category-list/Category';
+import {Category} from "../../model/Category";
 import {map} from 'rxjs/operators';
 
 @Component({

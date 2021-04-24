@@ -1,21 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthorizationService} from "../get-started/authorization.service";
-import {faUserEdit} from "@fortawesome/free-solid-svg-icons";
 import {Router} from "@angular/router";
 import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['../../assets/css/profileStylesheet.css']
+  styleUrls: ['../../assets/css/profileStylesheet.css', "../../../src/assets/vendor/font-awesome/css/all.css"]
 })
 export class ProfileComponent implements OnInit {
 
-  faUserEdit = faUserEdit;
+
   cardHeader = {
     "card-header" : true,
     "admin" : this.authorization.isAdmin()
   }
+
+  admin: boolean = this.authorization.isAdmin();
   constructor(public authorization: AuthorizationService, private router: Router, private titleService: Title) { }
 
   public setTitle(newTitle: string) {

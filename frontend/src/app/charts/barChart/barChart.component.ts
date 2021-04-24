@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import {CategoryService} from '../../category-list/category.service';
-import {Observable} from 'rxjs';
+
 
 
 @Component({

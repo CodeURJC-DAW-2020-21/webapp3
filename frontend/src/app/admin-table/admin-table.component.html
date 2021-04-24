@@ -1,10 +1,8 @@
 <h1>Users and Categories</h1>
 <br>
 <div class="field" id="searchform">
-  <form method="post" action="#">
-    <input id="searchterm" name="emailSearched" placeholder="User that you are looking for" type="text"/>
-    <input id="search" type="submit" value="Find!" onclick="LoadTable()">
-  </form>
+  <input #emailSearched id="searchterm" name="emailSearched" placeholder="User that you are looking for" type="text"/>
+  <button id="search" type="submit" value="Find!" (click)="filterByEmail($event, emailSearched.value)">Find!</button>
 </div>
 
 <table id="UsersTable">
@@ -19,11 +17,7 @@
     <td class="email">{{record.email}}</td>
     <td class="name">{{record.name}}</td>
     <td class="date">{{record.date}}</td>
-    <td>
-      <form method="post" action="#">
-        <input type="submit" value="Remove" class="displayed leave">
-      </form>
-    </td>
+    <td><button (click)="removeCompletedPlan(record.email, record.name, record.date)"  class="displayed leave">Remove</button></td>
   </tr>
 
 </table>

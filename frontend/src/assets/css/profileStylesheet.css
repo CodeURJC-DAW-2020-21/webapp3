@@ -287,7 +287,7 @@ section .services{
 #searchterm {
     flex: 1;
     padding: 0.6em;
-    width: 88%;
+    width: 70%;
     border: 0.2em solid rgb(26, 188, 156);
 }
 

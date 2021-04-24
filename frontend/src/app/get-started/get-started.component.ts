@@ -32,7 +32,7 @@ export class GetStartedComponent implements OnInit {
   }
 
 
-  login(event: any, email: string, pass: string){
+  login(event: MouseEvent, email: string, pass: string){
       event.preventDefault();
       this.authorizationService.login(email, pass)
   }

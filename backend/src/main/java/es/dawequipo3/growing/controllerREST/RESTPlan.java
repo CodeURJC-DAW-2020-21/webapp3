@@ -243,8 +243,8 @@ public class RESTPlan {
             )
     })
     @JsonView(CompletedPlanDetails.class)
-    @DeleteMapping("/completedPlans")
-    public ResponseEntity<Completed_plan> removeCompletedPlanbyUser(@RequestParam String planName, @RequestParam String email , @RequestParam String date) {
+    @DeleteMapping("/completedPlans/{email}/{planName}/{date}")
+    public ResponseEntity<Completed_plan> removeCompletedPlanbyUser(@PathVariable String planName, @PathVariable String email , @PathVariable String date) {
         try {
             Completed_plan completed_plan = planService.removeCompletedPlan(email, planName, date);
             return ResponseEntity.ok(completed_plan);

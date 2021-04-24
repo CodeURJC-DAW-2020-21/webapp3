@@ -3,9 +3,11 @@ import {IndexComponent} from './index/index.component';
 import {AboutUsComponent} from './about-us/about-us.component';
 import {CategoryListComponent} from './category-list/category-list.component';
 import {GetStartedComponent} from "./get-started/get-started.component";
+import { ProfileComponent } from './profile/profile.component';
 
 const appRoutes = [
   { path:'', component:IndexComponent },
+  { path:'profile', component: ProfileComponent },
   { path:'aboutUs', component: AboutUsComponent },
   { path:'categories', component: CategoryListComponent },
   { path: 'getStarted', component: GetStartedComponent }

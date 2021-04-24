@@ -1,37 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import {CategoryService} from './category.service';
+import {HttpClient} from '@angular/common/http';
 import {Category} from '../model/Category';
 
 @Component({
   selector: 'category-list',
   templateUrl: './category-list.component.html',
-  styleUrls: ['../../assets/css/style.css']
+  styleUrls: []
 })
 export class CategoryListComponent implements OnInit {
 
-  constructor(private categoryService: CategoryService) { }
+
+  constructor(private categoryService: CategoryService, private httpClient: HttpClient) { }
 
   categories: Category[] = [];
 
   ngOnInit() {
-    this.refresh();
+    this.getCategories();
   }
 
-  private refresh() {
+  public getCategories() {
     this.categoryService.getCategories().subscribe(
       category => {this.categories = category},
       error => console.log(error)
     );
-  }
-  public getCategoryIcon(categoryName:string){
-    this.categoryService.getIcon(categoryName).subscribe(
-      image => {this.createImage(image); console.log(image)},
-      error => console.log(error)
-    );
+    return this.categories;
   }
 
-  createImage(image:Blob) {
-    const reader = new FileReader();
-    reader.readAsDataURL(image);
+
+  getCategoryIcon(categoryIcon:string){
+    return this.categoryService.getCategoryIcon(categoryIcon)
   }
+  
 }

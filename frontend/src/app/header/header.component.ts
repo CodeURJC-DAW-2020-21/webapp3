@@ -5,7 +5,7 @@ import {AuthorizationService} from "../get-started/authorization.service";
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['../../../src/assets/css/style.css']
+  styleUrls: []
 })
 export class HeaderComponent implements OnInit {
 
@@ -14,8 +14,5 @@ export class HeaderComponent implements OnInit {
   constructor(public authorization: AuthorizationService) { }
 
   ngOnInit(): void {
-
   }
-
-
 }

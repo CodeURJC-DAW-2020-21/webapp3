@@ -1,0 +1,68 @@
+<main>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-1 d-md-block borderScreen"></div>
+      <div class="col-lg-10 col-md-12 main">
+        <h1 class="title" data-aos="fade-left"> Your account</h1>
+        <div class="container-fluid" data-aos="fade-up">
+          <section class="profileContainer d-flex align-items-center">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-lg-3 col-md-4">
+                  <header class="section-header">
+                    <h1>About you</h1>
+                  </header>
+
+                  <div class="profile-card">
+                    <div class="card-header">
+                      <div class="pic">
+                        <img src="#" alt="">
+                      </div>
+                      <div class="item">
+                        Name:
+                        <div class="name">Pepito pérez</div>
+                        Username:
+                        <div class="name">Garatea</div>
+                      </div>
+                      <div class="item">
+                        Email:
+                        <div class="email"><p>pepoperez@gmail.com</p></div>
+                      </div>
+                      <!-- Button trigger-->
+                      <a href="#">
+                        <i class="fas fa-user-edit"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <!-- CHARTS -->
+                <div class="col-lg-9 col-md-8 charts">
+                  <header class="section-header">
+                    <h1>Your progress</h1>
+                  </header>
+                  <!-- DOUGHNUT CHART-->
+                  <div class="row wrapper" id="chartsPDF">
+                    <div class="col-lg-6 col-md-12 chartSeparation">
+                      <app-doughnut-chart></app-doughnut-chart>
+                    </div>
+                    <!-- BAR CHART -->
+                    <div class="col-lg-6 col-md-12 chartSeparation">
+                      <app-barChart></app-barChart>
+                    </div>
+                    <!-- RADAR CHART-->
+                    <div class="col-lg-6 col-md-12 chartSeparation">
+                      <app-radar-chart></app-radar-chart>
+                    </div>
+                  </div>
+                  <button id="PDF">Download your progress in PDF</button>
+                </div>
+              </div>
+            </div>
+          </section>
+          <category-list></category-list>
+        </div>
+      </div>
+      <div class="col-lg-1 d-md-block border-screen"></div>
+    </div>
+  </div>
+</main>

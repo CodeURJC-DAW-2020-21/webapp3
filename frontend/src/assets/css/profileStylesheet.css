@@ -2,8 +2,8 @@
 # Charts Section
 --------------------------------------------------------------*/
 
-body{
-    background-image: url(src/assets/img/background.svg);
+main{
+    background-image: url(./../img/background.svg);
     background-color: #D6FFB9;
 }
 

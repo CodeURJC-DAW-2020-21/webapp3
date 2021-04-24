@@ -18,10 +18,6 @@ export class CategoryService {
     return this.httpClient.get(this.urlPrefix + '/') as Observable<Category[]>
   }
 
-  getIcon(categoryName:string): Observable<Blob>{
-    return this.httpClient.get(this.urlPrefix + "/image?categoryName=" + categoryName , {responseType:'blob'});
-  }
-
   getCategoryLabels(): Observable<string[]> {
     return this.httpClient.get(this.urlPrefix + '/').pipe(
       map(response => this.getName(response as any))
@@ -42,4 +38,7 @@ export class CategoryService {
     return response.map(category => category.color);
   }
 
+  public getCategoryIcon(categoryName: string):string{
+    return 'https://localhost:8443'+this.urlPrefix+'/image?categoryName='+categoryName;
+  }
 }

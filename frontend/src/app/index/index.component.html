@@ -8,7 +8,8 @@
         <h2 data-aos="fade-up" data-aos-delay="400">Every big tree starts as a seed.<br> Your change starts now! </h2>
         <div data-aos="fade-up" data-aos-delay="600">
           <div class="text-center text-lg-start">
-            <a href="#" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+            <a href="#"
+               class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
               <span>What are you waiting for?</span>
               <i class="bi bi-arrow-right"></i>
             </a>
@@ -34,10 +35,12 @@
             <h3>Who We Are</h3>
             <h2>Software Engineer Students</h2>
             <p>
-              We are a group of software engineering students who are making this web application for a university subject
+              We are a group of software engineering students who are making this web application for a university
+              subject
             </p>
             <div class="text-center text-lg-start">
-              <a href="#" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+              <a href="#"
+                 class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
                 <span>Read More</span>
                 <i class="bi bi-arrow-right"></i>
               </a>
@@ -106,7 +109,8 @@
           <div class="count-box">
             <i class="bi bi-emoji-smile"></i>
             <div>
-              <span data-purecounter-start="0" data-purecounter-end="2000000" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="2000000" data-purecounter-duration="1"
+                    class="purecounter"></span>
               <p>Happy Clients</p>
             </div>
           </div>
@@ -116,7 +120,8 @@
           <div class="count-box">
             <i class="bi bi-journal-richtext" style="color: #ee6c20;"></i>
             <div>
-              <span data-purecounter-start="0" data-purecounter-end="1" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="1" data-purecounter-duration="1"
+                    class="purecounter"></span>
               <p>Projects</p>
             </div>
           </div>
@@ -126,7 +131,8 @@
           <div class="count-box">
             <i class="bi bi-headset" style="color: #15be56;"></i>
             <div>
-              <span data-purecounter-start="0" data-purecounter-end="180" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="180" data-purecounter-duration="1"
+                    class="purecounter"></span>
               <p>Hours Of Support</p>
             </div>
           </div>
@@ -136,7 +142,8 @@
           <div class="count-box">
             <i class="bi bi-people" style="color: #bb0852;"></i>
             <div>
-              <span data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="1"
+                    class="purecounter"></span>
               <p>Hard Workers</p>
             </div>
           </div>
@@ -196,7 +203,6 @@
             </div>
 
 
-
           </div>
         </div>
 
@@ -209,38 +215,41 @@
           <h3>How to use our app</h3>
 
           <!-- Tabs -->
-          <ul class="nav nav-pills mb-3">
-            <li>
-              <a class="nav-link active" data-bs-toggle="pill" href="#tab1">Unregistered user</a>
+          <ul ngbNav #nav="ngbNav" class="nav-tabs">
+            <li ngbNavItem>
+              <a ngbNavLink> Unregistered user </a>
+              <ng-template ngbNavContent>
+                <div class="tab-pane fade show active" id="tab1">
+                  <p class="users">Users who are not registered will only be able to view the available categories and the
+                    plans they contain. </p>
+                </div>
+              </ng-template>
             </li>
-            <li>
-              <a class="nav-link" data-bs-toggle="pill" href="#tab2">Registered user</a>
+            <li ngbNavItem>
+              <a ngbNavLink> Registered user </a>
+              <ng-template ngbNavContent>
+                <div class="tab-pane fade show" id="tab2">
+                  <p class="users">The registered user, like the anonymous user, are able to view the categories and the
+                    plans that contains them. In addition, they can edit their profile data except email, which will be
+                    unchangeable once the user register it; mark a plan as completed, view their profile information both on
+                    the web and in PDF format if they want to, choose favorite category(ies) and observe the progress for
+                    each category, represented in multiple charts which will be explained in the section Charts. Finally,
+                    they will receive an email when a tree in a category achieve a specific height.</p>
+                </div>
+              </ng-template>
             </li>
-            <li>
-              <a class="nav-link" data-bs-toggle="pill" href="#tab3">Administrator</a>
+            <li ngbNavItem>
+              <a ngbNavLink> Administrator </a>
+              <ng-template ngbNavContent>
+                <div class="tab-pane fade show" id="tab3">
+                  <p class="users">This user is allowed, in addition to the functionalities described for the previous type
+                    of user, to control the record of plans made by users marking them as incompleted, and adding / editing
+                    categories and plans.</p>
+                </div>
+              </ng-template>
             </li>
           </ul>
-          <!-- End Tabs -->
-
-          <!-- Tab Content -->
-          <div class="tab-content">
-
-            <div class="tab-pane fade show active" id="tab1">
-              <p class="users">Users who are not registered will only be able to view the available categories and the plans they contain. </p>
-            </div>
-            <!-- End Tab 1 Content -->
-
-            <div class="tab-pane fade show" id="tab2">
-              <p class="users">The registered user, like the anonymous user, are able to view the categories and the plans that contains them. In addition, they can edit their profile data except email, which will be unchangeable once the user register it; mark a plan as completed, view their profile information both on the web and in PDF format if they want to, choose favorite category(ies) and observe the progress for each category, represented in multiple charts which will be explained in the section Charts. Finally, they will receive an email when a tree in a category achieve a specific height.</p>
-            </div>
-            <!-- End Tab 2 Content -->
-
-            <div class="tab-pane fade show" id="tab3">
-              <p class="users">This user is allowed, in addition to the functionalities described for the previous type of user, to control the record of plans made by users marking them as incompleted, and adding / editing categories and plans.</p>
-            </div>
-            <!-- End Tab 3 Content -->
-
-          </div>
+          <div [ngbNavOutlet]="nav"></div>
 
         </div>
 
@@ -273,69 +282,46 @@
 
       <div class="row">
         <div class="col-lg-6">
-          <!-- F.A.Q List 1-->
-          <div class="accordion accordion-flush" id="faqlist1">
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
-                  How can I register in the application?
-                </button>
-              </h2>
-              <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
-                <div class="accordion-body">
-                  You simply have to click on the "Get Started" button at the top right of the screen and there will appear a form that you will only have to fill in to register in the application.
-                </div>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-2">
-                  The application has some payment functionality?
-                </button>
-              </h2>
-              <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
-                <div class="accordion-body">
-                  No, everything that our application can offer is totally free, we wanted to design it like this to help everyone regardless of their financial situation
-                </div>
-              </div>
-            </div>
-
-
-          </div>
+          <ngb-accordion #acc="ngbAccordion">
+            <ngb-panel id="panel1">
+              <ng-template ngbPanelTitle>
+                <h4 class="accordion-button"> How can I register in the application? </h4>
+              </ng-template>
+              <ng-template ngbPanelContent>
+                You simply have to click on the "Get Started" button at the top right of the screen and there will appear a form that you will only have to fill in to register in the application.
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel id="panel2">
+              <ng-template ngbPanelTitle>
+                <h4 class="accordion-button">The application has some payment functionality?</h4>
+              </ng-template>
+              <ng-template ngbPanelContent>
+                No, everything that our application can offer is totally free, we wanted to design it like this to help everyone regardless of their financial situation.
+              </ng-template>
+            </ngb-panel>
+          </ngb-accordion>
         </div>
 
+
         <div class="col-lg-6">
-
-          <!-- F.A.Q List 2-->
-          <div class="accordion accordion-flush" id="faqlist2">
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-1">
-                  How are you going to treat my personal data?
-                </button>
-              </h2>
-              <div id="faq2-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
-                <div class="accordion-body">
-                  At no time will we sell your personal information, we will only use it to customize the application to your liking and that it has a closer treatment for you
-                </div>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-2">
-                  What is the finality?
-                </button>
-              </h2>
-              <div id="faq2-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
-                <div class="accordion-body">
-                  With this application we try to reinforce the positive habits of users to improve their lifestyle and make them feel better about themselves                  </div>
-              </div>
-            </div>
-
-
-          </div>
+          <ngb-accordion #acc="ngbAccordion">
+            <ngb-panel id="panel3">
+              <ng-template ngbPanelTitle>
+                <h4 class="accordion-button"> How are you going to treat my personal data? </h4>
+              </ng-template>
+              <ng-template ngbPanelContent>
+                At no time will we sell your personal information, we will only use it to customize the application to your liking and that it has a closer treatment for you.
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel id="panel4">
+              <ng-template ngbPanelTitle>
+                <h4 class="accordion-button"> What is the finality? </h4>
+              </ng-template>
+              <ng-template ngbPanelContent>
+                With this application we try to reinforce the positive habits of users to improve their lifestyle and make them feel better about themselves.
+              </ng-template>
+            </ngb-panel>
+          </ngb-accordion>
         </div>
 
       </div>

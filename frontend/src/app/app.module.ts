@@ -14,6 +14,7 @@ import { BarChartComponent } from './charts/barChart/barChart.component';
 import { RadarChartComponent } from './charts/radar-chart/radar-chart.component';
 import { DoughnutChartComponent } from './charts/doughnut-chart/doughnut-chart.component';
 import { ProfileComponent } from './profile/profile.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -30,7 +31,7 @@ import { ProfileComponent } from './profile/profile.component';
     ProfileComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule, NgbModule, ChartsModule, routing
+    BrowserModule, HttpClientModule, NgbModule, ChartsModule, routing, FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

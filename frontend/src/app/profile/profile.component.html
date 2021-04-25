@@ -15,22 +15,21 @@
                   <div class="profile-card">
                     <div [class]="cardHeader">
                       <div class="pic">
-                        <img src="#" alt="">
+                        <img [src]="img" alt="">
                       </div>
-                      <div class="item">
+                      <div [class]="item">
                         Name:
                         <div class="name">{{authorization.user.name}}</div>
                         Username:
                         <div class="name">{{authorization.user.username}}</div>
                       </div>
-                      <div class="item">
+                      <div [class]="item">
                         Email:
                         <div class="email"><p>{{authorization.user.email}}</p></div>
                       </div>
-                      <!-- Button trigger-->
-                      <a href="#">
-                        <i (click)="goToEditProfile()" class="fas fa-user-edit"></i>
-                      </a>
+
+                      <i class="fas fa-user-edit fa-2x" (click)="goToEditProfile()"></i>
+
                     </div>
                   </div>
                 </div>
@@ -61,7 +60,7 @@
           <category-list></category-list>
         </div>
 
-        <section *ngIf="admin" class="section-header">
+        <section *ngIf="this.authorization.isAdmin()" class="section-header">
           <app-admin-table></app-admin-table>
         </section>
 

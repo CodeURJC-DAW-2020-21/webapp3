@@ -33,11 +33,7 @@ export class AuthorizationService {
   }
 
   login(email:string, password:string){
-      this.httpClient.post(BASE_URL + "/login" , { username : email, password : password}, {withCredentials:true})
-        .subscribe(
-          _ => {this.reqIsLogged(); this.router.navigate(['profile'])},
-          _ => alert("Wrong credentials")
-        )
+      return this.httpClient.post(BASE_URL + "/login" , { username : email, password : password}, {withCredentials:true})
   }
 
   logOut() {

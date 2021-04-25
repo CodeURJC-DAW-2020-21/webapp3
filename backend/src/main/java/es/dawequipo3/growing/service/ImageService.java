@@ -81,7 +81,7 @@ public class ImageService {
         }
     }
 
-    public ResponseEntity<User> uploadUserProfileImage(HttpServletRequest request, @RequestParam MultipartFile imageFile) throws SQLException, IOException {
+    public ResponseEntity<User> uploadUserProfileImage(HttpServletRequest request, MultipartFile imageFile) throws SQLException, IOException {
         String email = request.getUserPrincipal().getName();
         Optional<User> op = userService.findUserByEmail(email);
         if (op.isPresent()) {
@@ -99,5 +99,6 @@ public class ImageService {
         }
 
     }
+
 
 }

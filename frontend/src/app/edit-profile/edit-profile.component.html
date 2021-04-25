@@ -4,29 +4,29 @@
 
   <div class="container">
     <!-- Photo -->
+    <img [src]="">
    <!-- End photo -->
     <form method="post" action="#" enctype="multipart/form-data">
           <div class="contact-form row">
             <!-- Email-->
             <div class="d-flex justify-content-center">
-              <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                     >
+              <input type="text" readonly class="form-control-plaintext" id="staticEmail">
             </div>
             <div class="form-field col-lg-12">
               <input id="userName" class="form-control" name="username" type="text"
-                     placeholder="{{user.username}}">
+                     placeholder="">
               <label for="userName" class="form-label">Username</label>
             </div>
             <!-- Name-->
 
             <div class="form-field col-lg-6">
-              <input id="name" class="form-control" name="name" type="text" placeholder="{{user.name}}">
+              <input id="name" class="form-control" name="name" type="text">
               <label for="name" class="form-label">Name</label>
             </div>
             <!--Surname-->
             <div class="form-field col-lg-6">
               <input id="email" class="form-control" name="surname" type="text"
-                     placeholder="{{user.surname}}">
+                     placeholder="">
               <label for="email" class="form-label">Surname</label>
             </div>
             <!-- Password -->
@@ -44,9 +44,9 @@
             </div>
 
             <!-- Change photo -->
-            <input type="file" name="imageFile" id="customFile">
+            <input #image type="file" name="imageFile" id="customFile">
             <!-- Submit button-->
-            <button type="submit" class="btn-submit">Confirm</button>
+            <button type="submit" class="btn-submit" (click)="processFile(image)" >Confirm</button>
           </div>
         </form>
   </div>

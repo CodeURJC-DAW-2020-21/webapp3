@@ -3,6 +3,7 @@ import {AuthorizationService} from "../get-started/authorization.service";
 import {Router} from "@angular/router";
 import { Title } from '@angular/platform-browser';
 import {ImageService} from "../image/image.service";
+import {ProfileService} from "./profile.service";
 
 
 @Component({
@@ -14,10 +15,15 @@ export class ProfileComponent implements OnInit {
 
   cardHeader;
   item;
-  editIcon;
+  administratorColor;
+  email: string
+  username: string
+  name: string
+  surname: string
+  admin: boolean
   img;
 
-  constructor(public authorization: AuthorizationService, private router: Router, private titleService: Title, private imgService: ImageService) { }
+  constructor(public authorization: AuthorizationService, private router: Router, private titleService: Title, private imgService: ImageService, private profileService: ProfileService) { }
 
   public setTitle(newTitle: string) {
     this.titleService.setTitle(newTitle);
@@ -25,19 +31,28 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.setTitle("Growing - Profile")
-    this.cardHeader = {
-      "card-header": true,
-      "admin": this.authorization.isAdmin(),
-    }
-    this.item = {
-      'item' : true,
-      'admin' : this.authorization.isAdmin()
-    }
-    this.editIcon = {
-      "fas fa-user-edit": true,
-    }
-
-    this.getProfileImage()
+    this.profileService.getUserInfo().subscribe(
+      user => {
+        this.email = user.email;
+        this.username = user.username;
+        this.name = user.name;
+        this.surname = user.surname;
+        this.admin = this.authorization.isAdmin()
+        this.getProfileImage()
+        this.cardHeader = {
+          "card-header": true,
+          "admin": this.admin
+        };
+          this.item = {
+            'item' : true,
+            'admin' : this.admin
+          };
+          this.administratorColor = {
+            'fas fa-edit-user': true,
+            'administrator': this.admin
+          }
+      }
+    )
   }
 
   getProfileImage(){

@@ -276,10 +276,9 @@ public class RESTUser {
 
     @JsonView(User.Basic.class)
     @PutMapping("/profile/image")
-    public ResponseEntity<User> uploadImage(HttpServletRequest request, @RequestParam MultipartFile imageFile) throws SQLException, IOException {
+    public ResponseEntity<User> uploadImage(@RequestParam MultipartFile imageFile, HttpServletRequest request) throws SQLException, IOException {
         return imageService.uploadUserProfileImage(request, imageFile);
     }
-
 
     @Operation(summary = "Show completed plans by email")
 

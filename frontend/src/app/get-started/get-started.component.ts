@@ -89,7 +89,6 @@ export class GetStartedComponent implements OnInit {
       confirmEncodedPassword: confirmEncodedPassword,
       roles: ['USER'],
     }
-    console.log(this.user)
     this.authorizationService.createUser(this.user).subscribe(
       _ => {
         this.authorizationService.login(this.user.email, this.user.encodedPassword).subscribe(

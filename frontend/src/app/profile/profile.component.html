@@ -19,16 +19,16 @@
                       </div>
                       <div [class]="item">
                         Name:
-                        <div class="name">{{authorization.user.name}}</div>
+                        <div class="name">{{name}}</div>
                         Username:
-                        <div class="name">{{authorization.user.username}}</div>
+                        <div class="name">{{username}}</div>
                       </div>
                       <div [class]="item">
                         Email:
-                        <div class="email"><p>{{authorization.user.email}}</p></div>
+                        <div class="email"><p>{{email}}</p></div>
                       </div>
 
-                      <i class="fas fa-user-edit fa-2x" (click)="goToEditProfile()"></i>
+                      <i class="fas fa-user-edit fa-2x" [class]="administratorColor" (click)="goToEditProfile()"></i>
 
                     </div>
                   </div>

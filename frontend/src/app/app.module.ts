@@ -9,6 +9,7 @@ import { CategoryListComponent } from './category-list/category-list.component';
 import { FooterComponent } from './footer/footer.component';
 import { IndexComponent } from './index/index.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { ExploreComponent } from './explore/explore.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
     CategoryListComponent,
     FooterComponent,
     IndexComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    ExploreComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, NgbModule, routing

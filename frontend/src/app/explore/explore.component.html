@@ -6,13 +6,13 @@
     <header class="section-header category">
       <div class="justify-content-center">
         <h1>Explore</h1>
-        <h2 class="subtitle">A specific selection of our plans according to your likes</h2>
+        <h2 class="subtitle" *ngIf="registered ;else notRegistered">A specific selection of our plans according to your likes</h2>
+        <h2 class="subtitle" #notRegistered>A selection of our plans for your pleasure</h2>
       </div>
     </header>
-    <div class="row">
       <div class="row" id="PlanList">
+        <div class="col-lg-6">
         <ngb-accordion [closeOthers]="true">
-          
             <ngb-panel *ngFor="let plan of plans">
               <ng-template ngbPanelTitle>
                 <img alt="{{plan.categoryName}}" class="icon" src="/image/category/{{plan.categoryName}}"/>
@@ -21,14 +21,26 @@
               </ng-template>
               <ng-template ngbPanelContent>
                 {{plan.description}}
+                <div class="col-7" *ngIf="registered">
+                  <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
+                  <form method="post" action="/complete/{{plan.name}}">
+                    <input type="submit" class="finish" value="I did it!">
+                  </form>
+                  <button onclick="ChangeButtonsStatus(this)" class="leave">I won't finish
+                  </button>
+                </div>
+                <div class="col-3" *ngIf="registered">
+                  <h2 *ngIf="likedUser; else notLikedUser"><img src="/assets/img/level/EmptyHeart.svg" class="like icon" onclick="ChangeHeart(this)"/></h2>
+                  <h2 #notLikedUser><img src="/assets/img/level/FullHeart.svg" class="like  icon" onclick="ChangeHeart(this)"/></h2>
+
+                </div>
               </ng-template>
             </ngb-panel>
         </ngb-accordion>
+        </div>
       </div>
-    </div>
+      </div>
     <button class="loadmore" onclick="LoadMore(ob)">Load more plans</button>
-
-  </div>
 </section><!-- End F.A.Q Section -->
 
 

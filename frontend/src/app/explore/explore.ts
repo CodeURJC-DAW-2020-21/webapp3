@@ -3,4 +3,5 @@ export interface Plan {
   description:string;
   difficulty:number;
   categoryName:string;
+  likedUser:boolean;
 }

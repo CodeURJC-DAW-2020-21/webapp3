@@ -11,12 +11,15 @@ export class ExploreComponent implements OnInit {
   constructor(private planService: PlanService) { }
 
   plans: Plan[] = [];
-
+  registered:boolean;
+  admin:boolean;
   ngOnInit() {
     this.refresh();
   }
 
   private refresh() {
+    this.registered=true;
+    this.admin=false;
     this.planService.getPage(0).subscribe(
       plan => {this.plans = plan;console.log(plan)},
       error => console.log(error)

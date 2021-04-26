@@ -15,4 +15,11 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  public isCollapsed = true;
+
+  toggleMenu() {
+    this.isCollapsed = !this.isCollapsed;
+  }
+
 }

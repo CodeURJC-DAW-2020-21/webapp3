@@ -17,7 +17,6 @@ import {BarChartComponent} from './charts/barChart/barChart.component';
 import {RadarChartComponent} from './charts/radar-chart/radar-chart.component';
 import {DoughnutChartComponent} from './charts/doughnut-chart/doughnut-chart.component';
 import {ProfileComponent} from './profile/profile.component';
-import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {EditProfileComponent} from './edit-profile/edit-profile.component';
 import { AdminTableComponent } from './admin-table/admin-table.component';
 
@@ -41,10 +40,11 @@ import { AdminTableComponent } from './admin-table/admin-table.component';
   ],
 
   imports: [
-    BrowserModule, HttpClientModule, SwiperModule, NgbModule, ChartsModule, routing, FontAwesomeModule, FormsModule
+    BrowserModule, HttpClientModule, SwiperModule, NgbModule, ChartsModule, routing, FormsModule
   ],
   providers: [Title],
-  bootstrap: [AppComponent]
+  exports: [HeaderComponent],
+  bootstrap: [AppComponent, HeaderComponent]
 })
 export class AppModule {
 }

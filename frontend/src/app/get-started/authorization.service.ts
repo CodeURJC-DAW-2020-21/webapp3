@@ -61,6 +61,6 @@ export class AuthorizationService {
   }
 
   createUser(newUser: User) {
-    return this.httpClient.post("/api/users", newUser).pipe()
+    return this.httpClient.post("/api/users", newUser)
   }
 }

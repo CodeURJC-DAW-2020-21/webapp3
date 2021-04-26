@@ -93,7 +93,7 @@ export class GetStartedComponent implements OnInit {
       _ => {
         this.authorizationService.login(this.user.email, this.user.encodedPassword).subscribe(
           _ => {
-            if (imageFile)
+            if (imageFile.files.length != 0)
               this.processFile(imageFile)
             else this.router.navigate([''])},
           _ => alert('Bad request')

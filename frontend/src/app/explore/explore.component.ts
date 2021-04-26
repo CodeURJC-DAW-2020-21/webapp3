@@ -18,7 +18,7 @@ export class ExploreComponent implements OnInit {
 
   private refresh() {
     this.planService.getPage(0).subscribe(
-      plan => {this.plans = plan},
+      plan => {this.plans = plan;console.log(plan)},
       error => console.log(error)
     );
   }

@@ -9,9 +9,9 @@
 
       </header>
       <!-- End title header -->
-      <div class="row gy-4">
+      <div class="row">
 
-        <div *ngFor="let category of categories" class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="700">
+        <div *ngFor="let category of categories" class="col-lg-4 col-md-6 categoryMargin">
           <div class="service-box {{category.color}}">
             <div class="profile-background">
               <img [src]="getCategoryIcon(category.name)" class="photo icon" alt="categoryIcon">
@@ -23,7 +23,6 @@
           </div>
         </div>
       </div>
-
     </div>
 
   </section>

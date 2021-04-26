@@ -1,8 +1,10 @@
 <h1>Users and Categories</h1>
 <br>
 <div class="field" id="searchform">
-  <input #emailSearched id="searchterm" name="emailSearched" placeholder="User that you are looking for" type="text"/>
-  <button id="search" type="submit" value="Find!" (click)="filterByEmail($event, emailSearched.value)">Find!</button>
+  <form>
+    <input #emailSearched id="searchterm" name="emailSearched" placeholder="User that you are looking for" type="text"/>
+    <button id="search" type="submit" value="Find!" (click)="filterByEmail($event, emailSearched.value)">Find!</button>
+  </form>
 </div>
 
 <table id="UsersTable">

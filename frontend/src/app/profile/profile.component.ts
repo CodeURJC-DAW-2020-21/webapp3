@@ -16,6 +16,8 @@ export class ProfileComponent implements OnInit {
   cardHeader;
   item;
   administratorColor;
+  formName;
+  formEmail;
   email: string
   username: string
   name: string
@@ -50,6 +52,14 @@ export class ProfileComponent implements OnInit {
           this.administratorColor = {
             'fas fa-edit-user': true,
             'administrator': this.admin
+          }
+          this.formName = {
+            name: true,
+            ad: this.admin
+          }
+          this.formEmail = {
+            email: true,
+            ad: this.admin
           }
       }
     )

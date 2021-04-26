@@ -12,7 +12,7 @@ import {FooterComponent} from './footer/footer.component';
 import {IndexComponent} from './index/index.component';
 import {AboutUsComponent} from './about-us/about-us.component';
 import {GetStartedComponent} from './get-started/get-started.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule} from '@angular/forms';
 import {BarChartComponent} from './charts/barChart/barChart.component';
 import {RadarChartComponent} from './charts/radar-chart/radar-chart.component';
 import {DoughnutChartComponent} from './charts/doughnut-chart/doughnut-chart.component';

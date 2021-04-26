@@ -19,13 +19,13 @@
                       </div>
                       <div [class]="item">
                         Name:
-                        <div class="name">{{name}}</div>
+                        <div [class] = "formName" >{{name}}</div>
                         Username:
-                        <div class="name">{{username}}</div>
+                        <div [class] = "formName" >{{username}}</div>
                       </div>
                       <div [class]="item">
                         Email:
-                        <div class="email"><p>{{email}}</p></div>
+                        <div [class] = formEmail><p>{{email}}</p></div>
                       </div>
 
                       <i class="fas fa-user-edit fa-2x" [class]="administratorColor" (click)="goToEditProfile()"></i>

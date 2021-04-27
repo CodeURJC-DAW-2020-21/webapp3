@@ -56,6 +56,7 @@ public class Tree {
         this.category = PKCategory;
     }
 
+    @JsonView(Basic.class)
     public String getImagePath() {
         String path;
         if (this.height < 10) {

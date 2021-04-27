@@ -2,10 +2,9 @@
   <div id="barChart">
     <canvas baseChart
             [datasets]="barChartData"
-            [labels]="categoryLabels"
+            [labels]="barChartLabels"
             [options]="barChartOptions"
-            [legend]="barChartLegend"
-            [chartType]="barChartType">
+            chartType="bar">
     </canvas>
   </div>
 </div>

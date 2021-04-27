@@ -12,42 +12,43 @@ import {map} from "rxjs/operators";
 
 export class BarChartComponent implements OnInit {
 
- data: ChartData[];
+  public barChartData = [];
+  public barChartLabels = [];
 
-
-  public barChartType: ChartType = 'bar';
-  public barChartLegend = true;
-  /*public barChartData:any = [
-    {data : [10,15,12,3],
-      label : this.getCategoryLabels(),
-      backgroundColor: this.barChartColors,
-      borderColor: this.barChartColors,
-      pointBackgroundColor: "rgb(18, 162, 141)"
-    }
-  ];*/
   public barChartOptions: ChartOptions = {
-    responsive: true,
+    scales:{
+      yAxes: [{
+        ticks: {
+          beginAtZero: true,
+          min:0
+        }
+      }]
+    },
+    legend: {display: false},
     title: {
       display: true,
-      text: 'Tree height for each category'
+      text: "Tree height for each category"
     },
-    // We use these empty structures as placeholders for dynamic theming.
-    scales: { xAxes: [{}], yAxes: [{}] },
-    plugins: {
-      datalabels: {
-        anchor: 'end',
-        align: 'end',
-      }
-    }
+    responsive: true
   };
 
   constructor(private categoryService : CategoryService, private chartService: BarChartService) {
   }
 
   ngOnInit() {
-      this.chartService.getData().subscribe(
-        data => this.data.
-      )
+    this.chartService.getData().subscribe(
+      data => {
+        this.barChartData = [
+          { labels:this.barChartLabels,
+            data : data.data,
+            backgroundColor: data.color,
+          }];
+        this.barChartLabels = data.name;
+        data.name = []
+        data.data = []
+        data.color = []
+      }
+    )
   }
 
   // events

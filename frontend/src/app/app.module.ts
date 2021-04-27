@@ -19,6 +19,7 @@ import {DoughnutChartComponent} from './charts/doughnut-chart/doughnut-chart.com
 import {ProfileComponent} from './profile/profile.component';
 import {EditProfileComponent} from './edit-profile/edit-profile.component';
 import { AdminTableComponent } from './admin-table/admin-table.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { AdminTableComponent } from './admin-table/admin-table.component';
     DoughnutChartComponent,
     ProfileComponent,
     EditProfileComponent,
-    AdminTableComponent
+    AdminTableComponent,
+    PageNotFoundComponent
   ],
 
   imports: [

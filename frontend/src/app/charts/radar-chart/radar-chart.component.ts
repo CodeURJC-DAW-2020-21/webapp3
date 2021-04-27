@@ -11,6 +11,7 @@ import {map} from 'rxjs/operators';
 export class RadarChartComponent implements OnInit {
 
   public categoryLabels: string[] = this.getCategoryLabels();
+  public categoryColors: string[] = this.getCategoryColors();
 
   ngOnInit(): void {
   }
@@ -22,6 +23,15 @@ export class RadarChartComponent implements OnInit {
     );
     return this.categoryLabels;
   }
+
+  getCategoryColors() : string[]{
+    this.categoryService.getCategoryColors().subscribe(
+      color => this.categoryColors = color,
+      error => console.log(error)
+    );
+    return this.categoryColors
+  }
+
   constructor(private categoryService : CategoryService) {
   }
 
@@ -40,7 +50,6 @@ export class RadarChartComponent implements OnInit {
     }
   }
 
-  public radarChartLabels = ['Q1', 'Q2', 'Q3', 'Q4']
 
   public radarChartData = [
     {data : [10,15,12,3],

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ChartData} from "../../model/ChartData";
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import {CategoryService} from '../../category-list/category.service';
 import {BarChartService} from "./bar-chart.service";
@@ -49,9 +50,6 @@ export class BarChartComponent implements OnInit {
       )
   }
 
-  public getData(){
-    this.barChartData = [{ data: [65, 59, 80, 81, 56, 55, 40], backgroundColor: this.barChartColors}]
-  }
   // events
   public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
     console.log(event, active);

@@ -6,18 +6,28 @@
         <img src="/assets/images/growingLogo.png" alt="">
       </a>
 
-    <nav id="navbar" class="navbar navbar-expand-lg ">
-      <ul>
-        <li><a class="nav-link scrollto" [routerLink]="['']" >Home</a></li>
-        <li><a class="nav-link scrollto" [routerLink]="['categories']">Categories</a></li>
-        <li><a class="nav-link scrollto" href="#">Explore</a></li>
-        <li><a class="nav-link scrollto" [routerLink]="['aboutUs']" >About us</a></li>
-        <li *ngIf="authorization.isLogged();"><a class="nav-link scrollto" [routerLink]="['profile']"><i class="fas fa-user"></i></a></li>
-        <li *ngIf="authorization.isLogged();"><button type="submit" class="sign_out scrollto" (click)="authorization.logOut()">Sign out</button></li>
-        <li *ngIf="!authorization.isLogged();"><a class="getstarted scrollto" [routerLink]="['getStarted']">Get Started</a></li>
-      </ul>
-      <i class="bi bi-list mobile-nav-toggle"></i>
-    </nav><!-- .navbar -->
-  </div>
-</header>
+      <nav class="navbar navbar-expand-lg  mb-3">
+
+        <!-- Step 3: Toggle the value of the property when the toggler button is clicked. -->
+        <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed">
+          &#9776;
+        </button>
+
+        <!-- Step 2: Add the ngbCollapse directive to the element below. -->
+        <div [ngbCollapse]="isCollapsed" class="collapse navbar-collapse">
+
+          <!-- Step 4: Close the menu when a link is clicked. -->
+          <a class="nav-link " [routerLink]="['']">Home</a>
+          <a class="nav-link " [routerLink]="['categories']">Categories</a>
+          <a class="nav-link " href="#">Explore</a>
+          <a class="nav-link " [routerLink]="['aboutUs']">About us</a>
+          <a *ngIf="authorization.isLogged()" class="nav-link scrollto" [routerLink]="['profile']"><i
+            class="fas fa-user"></i></a>
+          <a *ngIf="!authorization.isLogged()" class="getstarted scrollto" [routerLink]="['getStarted']">Get
+            Started</a>
+          <a *ngIf="authorization.isLogged()" class="sign_out scrollto" (click)="authorization.logOut()">Sign out</a>
+        </div>
+      </nav>
+    </div>
+  </header>
 </section>

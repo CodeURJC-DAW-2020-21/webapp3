@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthorizationService} from "../get-started/authorization.service";
+import {AuthorizationService} from '../get-started/authorization.service';
 
 
 
@@ -17,9 +17,5 @@ export class HeaderComponent implements OnInit {
   }
 
   public isCollapsed = true;
-
-  toggleMenu() {
-    this.isCollapsed = !this.isCollapsed;
-  }
 
 }

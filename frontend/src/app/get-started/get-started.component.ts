@@ -6,12 +6,12 @@ import {Title} from "@angular/platform-browser";
 import {User} from "../model/User";
 import {ImageService} from "../image/image.service";
 import {ImageSnippet} from "../image/imageSnippet";
-import {Observable} from "rxjs";
+
 
 @Component({
   selector: 'app-get-started',
   templateUrl: './get-started.component.html',
-  styleUrls: ['../../../src/assets/css/style.css', "../../../src/assets/css/getStarted.css", "../../../src/assets/vendor/font-awesome/css/all.css"]
+  styleUrls: ["../../../src/assets/css/getStarted.css", "../../../src/assets/vendor/font-awesome/css/all.css"]
 })
 
 

@@ -26,7 +26,7 @@ input {
 }
 
 .signin-signup {
-  position: absolute;
+  position: relative;
   top: 40%;
   transform: translate(-50%, -50%);
   left: 75%;
@@ -50,8 +50,10 @@ form {
 }
 
 form.sign-up-form {
+  margin-top:40px;
   opacity: 0;
   z-index: 1;
+  margin-bottom: 100px;
 }
 
 form.sign-in-form {

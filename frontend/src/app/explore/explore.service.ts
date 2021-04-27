@@ -16,4 +16,13 @@ export class PlanService {
   getPage(page:number):Observable<Plan[]> {
     return this.httpClient.get(this.urlPrefix ) as Observable<Plan[]>
   }
+  completePlan(planName:string):Observable<Plan>{
+    return this.httpClient.post(this.urlPrefix +"done?planName="+ planName,"",{withCredentials:true} ) as Observable<Plan>
+  }
+  likePlan(abbv:string):Observable<Plan>{
+    return this.httpClient.get(this.urlPrefix +"favA?abbrev="+abbv ) as Observable<Plan>
+  }
+  dislikePlan(abbv:string):Observable<Plan>{
+    return this.httpClient.get(this.urlPrefix +"notfavA?abbrev="+abbv ) as Observable<Plan>
+  }
 }

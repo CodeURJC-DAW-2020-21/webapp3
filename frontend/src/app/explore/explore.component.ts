@@ -13,6 +13,7 @@ export class ExploreComponent implements OnInit {
   plans: Plan[] = [];
   registered:boolean;
   admin:boolean;
+
   ngOnInit() {
     this.refresh();
   }
@@ -21,9 +22,26 @@ export class ExploreComponent implements OnInit {
     this.registered=true;
     this.admin=false;
     this.planService.getPage(0).subscribe(
-      plan => {this.plans = plan;console.log(plan)},
+      plan => {this.plans = plan},
       error => console.log(error)
     );
   }
 
+  public CompletePlan(PlanName){
+    this.planService.completePlan(PlanName).subscribe(
+      _=> {console.log("funciona")},
+      error => console.log(error)    );
+
+
+  }
+
+  public EmptyHearth(abbv){
+    this.planService.dislikePlan(abbv);
+    window.location.reload();
+  }
+
+  public FillHearth(abbv){
+    this.planService.likePlan(abbv);
+    window.location.reload();
+  }
 }

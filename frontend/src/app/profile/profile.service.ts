@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {User} from "../model/User";
 
-const urlPrefix = 'api/users'
+const urlPrefix = '/api/users'
 
 @Injectable({
   providedIn: 'root'

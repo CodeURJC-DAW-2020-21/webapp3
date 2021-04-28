@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CompletedPlan} from "../model/CompletedPlan";
-import {CompletedPlanService} from "./completed-plan.service";
+import {CompletedPlanService} from "../service/completed-plan.service";
 import {ActivatedRoute, Router} from "@angular/router";
 
 

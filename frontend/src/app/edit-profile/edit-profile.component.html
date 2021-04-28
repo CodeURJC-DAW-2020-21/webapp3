@@ -17,22 +17,22 @@
       <div class="contact-form row">
         <!-- Email-->
         <div class="col-lg justify-content-center">
-          <input type="text" [value]="email" readonly class="form-control-plaintext" id="staticEmail">
+          <input type="text" [value]="user.email" readonly class="form-control-plaintext" id="staticEmail">
         </div>
         <div class="form-field col-lg-12">
-          <input #Username id="userName" [value]="username" class="form-control" name="username" type="text"
+          <input #Username id="userName" [value]="user.username" class="form-control" name="username" type="text"
                  placeholder="">
           <label for="userName" class="form-label">Username</label>
         </div>
         <!-- Name-->
 
         <div class="form-field col-lg-6">
-          <input #Name id="name" class="form-control" name="name" [value]="name" type="text">
+          <input #Name id="name" class="form-control" name="name" [value]="user.name" type="text">
           <label for="name" class="form-label">Name</label>
         </div>
         <!--Surname-->
         <div class="form-field col-lg-6">
-          <input #Surname id="surname" [value]="surname" class="form-control" name="surname" type="text"
+          <input #Surname id="surname" [value]="user.surname" class="form-control" name="surname" type="text"
                  placeholder="">
           <label for="surname" class="form-label">Surname</label>
         </div>

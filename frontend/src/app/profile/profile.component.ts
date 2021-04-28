@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthorizationService} from "../get-started/authorization.service";
+import {UserService} from "../service/user.service";
 import {Router} from "@angular/router";
 import { Title } from '@angular/platform-browser';
-import {ImageService} from "../image/image.service";
-import {ProfileService} from "./profile.service";
+import {ImageService} from "../service/image.service";
 
 
 @Component({
@@ -25,7 +24,7 @@ export class ProfileComponent implements OnInit {
   admin: boolean
   img;
 
-  constructor(public authorization: AuthorizationService, private router: Router, private titleService: Title, private imgService: ImageService, private profileService: ProfileService) { }
+  constructor(public authorization: UserService, private router: Router, private titleService: Title, private imgService: ImageService) { }
 
   public setTitle(newTitle: string) {
     this.titleService.setTitle(newTitle);
@@ -33,7 +32,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.setTitle("Growing - Profile")
-    this.profileService.getUserInfo().subscribe(
+    this.authorization.getUserInfo().subscribe(
       user => {
         this.email = user.email;
         this.username = user.username;

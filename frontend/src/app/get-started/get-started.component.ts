@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthorizationService} from "./authorization.service";
+import {UserService} from "../service/user.service";
 
 import {Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
 import {User} from "../model/User";
-import {ImageService} from "../image/image.service";
-import {ImageSnippet} from "../image/imageSnippet";
+import {ImageService} from "../service/image.service";
+import {Image} from "../model/Image";
 
 
 @Component({
@@ -24,20 +24,19 @@ export class GetStartedComponent implements OnInit {
   }
 
 
-  constructor(private authorizationService: AuthorizationService, private titleService: Title, private router: Router, private imageService: ImageService) {
+  constructor(private authorizationService: UserService, private titleService: Title, private router: Router, private imageService: ImageService) {
   }
 
-  selectedFile: ImageSnippet;
+  selectedFile: Image;
   user: User;
-
-  public setTitle(newTitle: string) {
-    this.titleService.setTitle(newTitle);
-  }
 
   ngOnInit(): void {
     this.setTitle("Growing - Get started")
   }
 
+  public setTitle(newTitle: string) {
+    this.titleService.setTitle(newTitle);
+  }
 
   login(event: MouseEvent, email: string, pass: string) {
     event.preventDefault();
@@ -65,17 +64,13 @@ export class GetStartedComponent implements OnInit {
 
     reader.addEventListener('load', (event: any) => {
 
-      this.selectedFile = new ImageSnippet(event.target.result, file);
+      this.selectedFile = new Image(event.target.result, file);
 
       this.imageService.uploadImage(this.selectedFile.file).subscribe(
         _ => {
           this.authorizationService.logOut()
-        },
-        _ => {
-
         })
     });
-
     reader.readAsDataURL(file);
   }
 
@@ -95,14 +90,12 @@ export class GetStartedComponent implements OnInit {
           _ => {
             if (imageFile.files.length != 0)
               this.processFile(imageFile)
-            else this.router.navigate([''])},
+            else this.router.navigate([''])
+          },
           _ => alert('Bad request')
         )
       }
     )
   }
-
-
-
 
 }

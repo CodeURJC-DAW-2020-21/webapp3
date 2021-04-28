@@ -10,6 +10,7 @@ export class AboutUsComponent implements OnInit {
 
   constructor(private titleService: Title) {
   }
+
   ngOnInit() {
     this.setTitle("Growing - About us")
 

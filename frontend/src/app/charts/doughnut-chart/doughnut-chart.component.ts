@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CategoryService} from '../../category-list/category.service';
+import {CategoryService} from '../../service/category.service';
 
 @Component({
   selector: 'app-doughnut-chart',

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthorizationService} from '../get-started/authorization.service';
+import {UserService} from '../service/user.service';
 
 
 
@@ -11,7 +11,7 @@ import {AuthorizationService} from '../get-started/authorization.service';
 export class HeaderComponent implements OnInit {
 
 
-  constructor(public authorization: AuthorizationService) { }
+  constructor(public authorization: UserService) { }
 
   ngOnInit(): void {
   }

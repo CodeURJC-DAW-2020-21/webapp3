@@ -8,7 +8,7 @@
   "files": [
     "src/main.ts",
     "src/polyfills.ts",
-    "src/app/image/imageSnippet.ts"
+    "src/app/model/Image.ts"
   ],
   "include": [
     "src/**/*.d.ts"

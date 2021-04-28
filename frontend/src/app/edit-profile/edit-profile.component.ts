@@ -1,10 +1,18 @@
 import {Component, OnInit} from '@angular/core';
 import {Title} from "@angular/platform-browser";
-import {AuthorizationService} from "../get-started/authorization.service";
-import {ImageSnippet} from "../image/imageSnippet";
-import {ImageService} from "../image/image.service";
+import {UserService} from "../service/user.service";
+import {Image} from "../model/Image";
+import {ImageService} from "../service/image.service";
 import {Router} from "@angular/router";
-import {ProfileService} from "../profile/profile.service";
+
+
+class UserData{
+  email: string;
+  username: string;
+  name: string;
+  surname: string;
+  roles : string[]
+}
 
 @Component({
   selector: 'app-edit-profile',
@@ -14,18 +22,10 @@ import {ProfileService} from "../profile/profile.service";
 export class EditProfileComponent implements OnInit {
 
   img;
-  email: string;
-  username: string;
-  name: string;
-  surname: string;
-  admin: boolean
-  selectedFile: ImageSnippet;
+  user: UserData
+  selectedFile: Image;
 
-  constructor(private titleService: Title, private authorizationService: AuthorizationService, private imageService: ImageService, private router: Router, private profileService: ProfileService) {
-  }
-
-  public setTitle(newTitle: string) {
-    this.titleService.setTitle(newTitle);
+  constructor(private titleService: Title, private authorizationService: UserService, private imageService: ImageService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -35,14 +35,15 @@ export class EditProfileComponent implements OnInit {
         this.createImageFromBlob(image);
       }
     );
-    this.profileService.getUserInfo().subscribe(
+    this.authorizationService.getUserInfo().subscribe(
       user => {
-        this.email = user.email;
-        this.username = user.username;
-        this.name = user.name;
-        this.surname = user.surname;
+        this.user = user
       }
     )
+  }
+
+  public setTitle(newTitle: string) {
+    this.titleService.setTitle(newTitle);
   }
 
   createImageFromBlob(image: Blob) {
@@ -63,7 +64,7 @@ export class EditProfileComponent implements OnInit {
 
     reader.addEventListener('load', (event: any) => {
 
-      this.selectedFile = new ImageSnippet(event.target.result, file);
+      this.selectedFile = new Image(event.target.result, file);
 
       this.imageService.uploadImage(this.selectedFile.file).subscribe(
         _ => {
@@ -80,7 +81,14 @@ export class EditProfileComponent implements OnInit {
 
   editProfile(event: MouseEvent, username: string, name: string, surname: string, encodedPassword: string, confirmEncodedPassword: string, imageFile: any) {
     event.preventDefault()
-    this.profileService.editProfile(username, name, surname, encodedPassword, confirmEncodedPassword).subscribe(
+    let variable = {
+      username : username,
+      name: name,
+      surname: surname,
+      encodedPassword: encodedPassword,
+      confirmEncodedPassword: confirmEncodedPassword
+    }
+    this.authorizationService.editProfile(variable).subscribe(
       _ => {
         if (imageFile.files.length > 0)
           this.processFile(imageFile)

@@ -13,7 +13,8 @@ fi
 # Go to frontend which contains the Angular project
 cd ../frontend
 
-# Build the application 
+# Build the application, but first, install npm
+sudo npm install
 ng build --prod --base-href="/new/"
 
 # Copy all the dist folder content into backend static folder

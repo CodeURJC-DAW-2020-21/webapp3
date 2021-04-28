@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import {ChartData} from "../../model/ChartData";
-import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
-import {CategoryService} from '../../category-list/category.service';
-import {BarChartService} from "./bar-chart.service";
-import {map} from "rxjs/operators";
+import { ChartOptions, ChartType } from 'chart.js';
+import { CategoryService } from '../../category-list/category.service';
+import { BarChartService } from "./bar-chart.service";
 
 @Component({
   selector: 'app-barChart',
-  templateUrl: './barChart.component.html'
+  templateUrl: './barChart.component.html',
+  styleUrls: []
 })
 
 export class BarChartComponent implements OnInit {
 
   public barChartData = [];
   public barChartLabels = [];
+  public chartType: ChartType = "bar";
 
   public barChartOptions: ChartOptions = {
     scales:{
@@ -32,11 +32,11 @@ export class BarChartComponent implements OnInit {
     responsive: true
   };
 
-  constructor(private categoryService : CategoryService, private chartService: BarChartService) {
+  constructor(private categoryService : CategoryService, private barChartService: BarChartService) {
   }
 
   ngOnInit() {
-    this.chartService.getData().subscribe(
+    this.barChartService.getData().subscribe(
       data => {
         this.barChartData = [
           { labels:this.barChartLabels,

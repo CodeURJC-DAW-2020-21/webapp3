@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import {ChartData} from "../../model/ChartData";
-import {map} from "rxjs/operators";
+import { ChartData } from "../../model/ChartData";
+import { map } from "rxjs/operators";
 
 const urlPrefix = 'generateBarChart'
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class BarChartService {
 
   chartData: ChartData = {name: [], data: [], color: []};

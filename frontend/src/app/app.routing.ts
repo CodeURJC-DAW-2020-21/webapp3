@@ -5,6 +5,7 @@ import {CategoryListComponent} from './category-list/category-list.component';
 import {GetStartedComponent} from "./get-started/get-started.component";
 import {ProfileComponent} from './profile/profile.component';
 import {EditProfileComponent} from "./edit-profile/edit-profile.component";
+import {CategoryInfoComponent} from "./category-info/category-info.component";
 
 const appRoutes = [
   { path: '', component:IndexComponent },
@@ -12,7 +13,8 @@ const appRoutes = [
   { path: 'editProfile', component: EditProfileComponent},
   { path: 'aboutUs', component: AboutUsComponent },
   { path: 'categories', component: CategoryListComponent },
-  { path: 'getStarted', component: GetStartedComponent }
+  { path: 'getStarted', component: GetStartedComponent },
+  { path: 'categoryInfo', component: CategoryInfoComponent}
 ]
 
 export const routing = RouterModule.forRoot(appRoutes)

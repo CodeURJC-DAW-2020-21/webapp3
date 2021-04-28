@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CompletedPlan} from "../model/CompletedPlan";
 import {CompletedPlanService} from "../service/completed-plan.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -11,9 +11,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class AdminTableComponent implements OnInit {
 
-  completedPlans : CompletedPlan[]
+  completedPlans: CompletedPlan[]
 
-  constructor(private completedPlanService : CompletedPlanService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private completedPlanService: CompletedPlanService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe(_ => this.ngOnInit())
   }
 
@@ -23,27 +23,37 @@ export class AdminTableComponent implements OnInit {
 
   }
 
-  getCompletedPlans(){
+  getCompletedPlans() {
     this.completedPlanService.getCompletedPlans().subscribe(
-        record => this.completedPlans = record
+      record => this.completedPlans = record
     )
   }
 
-  removeCompletedPlan(email: string, planName: string, date: string){
+  removeCompletedPlan(email: string, planName: string, date: string) {
     let completedPlan: CompletedPlan = {email: email, name: planName, date: date};
     this.completedPlanService.remove(completedPlan).subscribe(
-      _ => {this.router.navigate(['categories'])},
+      _ => {
+        this.getCompletedPlans()
+      },
       error => console.log(error)
     )
   }
 
 
   filterByEmail($event: MouseEvent, email: string) {
-    if (email === '') {this.getCompletedPlans()}
     $event.preventDefault();
-    this.completedPlanService.getCompletedPlansEmail(email).subscribe(
-      record => this.completedPlans = record,
-      _ => {this.completedPlans = []; alert("Bad request: The email does not exist");}
-    )
+    if (email == "") {
+      this.getCompletedPlans()
+    }
+    else{
+      this.completedPlanService.getCompletedPlansEmail(email).subscribe(
+        record => this.completedPlans = record,
+        _ => {
+          this.completedPlans = [];
+          alert("Bad request: The email does not exist");
+        }
+      )
+    }
+    if (this.completedPlans.length == 0) alert("No results for your query")
   }
 }

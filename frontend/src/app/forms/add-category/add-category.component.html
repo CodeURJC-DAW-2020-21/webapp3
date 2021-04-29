@@ -1,0 +1,39 @@
+<div *ngIf="this.authorization.isAdmin()" class="editCategory align-items-center">
+  <button class="addNew cat aos-init aos-animate" (click)="openCloseForm()"  data-aos="fade-left">Add category</button>
+  <div class="form-popup" id="myForm" style="display: none">
+    <form action="/addCategory" method="post" class="sign-up-form form-container" enctype="multipart/form-data">
+      <h2 class="title">Create Category</h2>
+      <!-- Category name -->
+      <div class="input-field">
+        <i class="fas fa-signature"></i>
+        <input #name type="text" name="name" placeholder="name" required="">
+      </div>
+      <!-- Description-->
+      <div class="input-field">
+        <i class="far fa-comments"></i>
+        <input #des type="text" name="des" placeholder="description" required="">
+      </div>
+      <!-- Icon -->
+      <div class="input-field">
+        <i class="far fa-image"></i>
+        <input #icon type="file" name="icon" placeholder="icon" required="">
+      </div>
+      <!-- color -->
+      <div class="input-field">
+        <i class="fas fa-palette"></i>
+        <select #color name="color" id="color">
+          <option value="orange">Orange</option>
+          <option value="darkblue">Dark blue</option>
+          <option value="purple">Purple</option>
+          <option value="blue">Blue</option>
+          <option value="red">Red</option>
+          <option value="green">Green</option>
+        </select>
+      </div>
+
+      <button type="submit" id="create" (click)="newCategory($event, name.value, des.value, icon.value, color.value)">Create Category</button>
+      <button type="button" id="cancel" (click)="openCloseForm()">Cancel</button>
+      <input type="hidden" name="_csrf" value="d0190fd6-f444-43e8-9036-5f018c653e42">
+    </form>
+  </div>
+</div>

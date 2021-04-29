@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import {Category} from '../model/Category';
-import {map} from 'rxjs/operators';
+import { Category } from '../model/Category';
+import { map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -40,5 +40,9 @@ export class CategoryService {
 
   public getCategoryIcon(categoryName: string):string{
     return 'https://localhost:8443'+this.urlPrefix+'/image?categoryName='+categoryName;
+  }
+
+  createCategory(newCat: Category) {
+    return this.httpClient.post(this.urlPrefix, newCat);
   }
 }

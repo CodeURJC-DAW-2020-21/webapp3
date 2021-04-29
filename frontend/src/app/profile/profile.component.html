@@ -61,7 +61,7 @@
         </div>
 
         <section *ngIf="this.authorization.isAdmin()" class="section-header">
-          <app-admin-table></app-admin-table>
+          <app-admin-table (event)="rechargeCharts()"></app-admin-table>
         </section>
 
       </div>

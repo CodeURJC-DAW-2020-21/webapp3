@@ -47,13 +47,15 @@ export class ExploreComponent implements OnInit {
 
   }
 
-  public EmptyHearth(abbv){
+  public EmptyHeart(abbv: string){
     this.planService.dislikePlan(abbv);
     window.location.reload();
   }
 
-  public FillHearth(abbv){
-    this.planService.likePlan(abbv);
-    window.location.reload();
+  public FillHeart(abbv: string){
+    this.planService.likePlan(abbv).subscribe(
+      _ => {console.log("It worked"); window.location.reload()}
+    )
   }
+
 }

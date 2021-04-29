@@ -12,6 +12,7 @@ const appRoutes = [
   { path: '', component:IndexComponent },
   { path: 'profile', component: ProfileComponent},
   { path: 'editProfile', component: EditProfileComponent},
+  { path: 'explore', component: ExploreComponent},
   { path: 'aboutUs', component: AboutUsComponent },
   { path: 'categories', component: CategoryScreenComponent },
   { path: 'getStarted', component: GetStartedComponent },

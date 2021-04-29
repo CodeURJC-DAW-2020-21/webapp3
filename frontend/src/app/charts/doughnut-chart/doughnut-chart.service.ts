@@ -13,7 +13,7 @@ export class DoughnutChartService {
   constructor(private httpClient: HttpClient) { }
 
   getData(): Observable<ChartData>{
-    return this.httpClient.get('api/users/profile/favPlans', {withCredentials:true}).pipe(
+    return this.httpClient.get('/api/users/profile/favPlans', {withCredentials:true}).pipe(
       map(response => this.extractData(response as any))
     ) as Observable<ChartData>
   }

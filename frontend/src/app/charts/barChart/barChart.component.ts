@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChartOptions, ChartType } from 'chart.js';
 import { CategoryService } from '../../category-list/category.service';
 import { BarChartService } from "./bar-chart.service";
+import {generate} from "rxjs";
 
 @Component({
   selector: 'app-barChart',
@@ -36,6 +37,10 @@ export class BarChartComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.generateChart()
+  }
+
+  public generateChart(){
     this.barChartService.getData().subscribe(
       data => {
         this.barChartData = [

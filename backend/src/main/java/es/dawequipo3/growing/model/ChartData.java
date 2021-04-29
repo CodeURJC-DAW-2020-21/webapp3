@@ -13,6 +13,7 @@ public class ChartData {
     @JsonView(Basico.class)
     private String name;
 
+    @JsonView(Basico.class)
     private String color;
 
     @JsonView(Basico.class)

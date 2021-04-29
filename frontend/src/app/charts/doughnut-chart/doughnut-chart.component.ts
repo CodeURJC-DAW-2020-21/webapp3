@@ -1,19 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import {CategoryService} from '../../service/category.service';
+import { CategoryService } from '../../category-list/category.service';
+import {ChartOptions, ChartType } from "chart.js";
+import { DoughnutChartService } from "./doughnut-chart.service";
+import {BarChartService} from "../barChart/bar-chart.service";
 
 @Component({
   selector: 'app-doughnut-chart',
   templateUrl: './doughnut-chart.component.html',
   styleUrls: []
 })
+
 export class DoughnutChartComponent implements OnInit {
 
-  constructor(private categoryService : CategoryService) {
+  constructor(private categoryService : CategoryService, private doughnutChartService: DoughnutChartService) {
   }
 
+  public doughnutChartData = [];
+  public doughnutChartLabels = [];
+  public legend: boolean = true;
+  public chartType: ChartType = "doughnut";
 
-  public doughnutChartOptions = {
-    bezierCurve: false,
+  public doughnutChartOptions: ChartOptions = {
     responsive: true,
     title: {
       display: true,
@@ -21,11 +28,22 @@ export class DoughnutChartComponent implements OnInit {
     }
   }
 
-  public doughnutChartData = [
-    {data: [65,59,80,81,56, 20]},
-  ];
-
   ngOnInit(): void {
+    this.doughnutChartService.getData().subscribe(
+      data => {
+        this.doughnutChartData = [
+          {
+            labels:this.doughnutChartLabels,
+            data: data.data,
+            backgroundColor: data.color,
+          }
+        ];
+        this.doughnutChartLabels = data.name;
+        data.data = []
+        data.name = []
+        data.color = []
+      }
+    )
   }
 
 }

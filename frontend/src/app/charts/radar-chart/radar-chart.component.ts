@@ -2,32 +2,27 @@ import { Component, OnInit } from '@angular/core';
 import {CategoryService} from '../../service/category.service';
 import {Category} from "../../model/Category";
 import {map} from 'rxjs/operators';
+import {ChartOptions, ChartType} from "chart.js";
+import {RadarChartService} from "./radar-chart.service";
 
 @Component({
   selector: 'app-radar-chart',
   templateUrl: './radar-chart.component.html',
   styleUrls: []
 })
+
 export class RadarChartComponent implements OnInit {
 
-  public categoryLabels: string[] = this.getCategoryLabels();
-
-  ngOnInit(): void {
+  constructor(private categoryService : CategoryService, private radarChartService: RadarChartService) {
   }
 
-  getCategoryLabels() : string[]{
-    this.categoryService.getCategoryLabels().subscribe(
-      label => this.categoryLabels = label,
-      error => console.log(error)
-    );
-    return this.categoryLabels;
-  }
-  constructor(private categoryService : CategoryService) {
-  }
+  public radarChartData = [];
+  public radarChartLabels = [];
+  public chartType: ChartType = "radar";
 
-  public radarChartOptions = {
-    bezierCurve: false,
+  public radarChartOptions: ChartOptions = {
     responsive: true,
+    legend: {display: false},
     title: {
       display: true,
       text: 'Number of tasks done by category'
@@ -40,14 +35,24 @@ export class RadarChartComponent implements OnInit {
     }
   }
 
-  public radarChartLabels = ['Q1', 'Q2', 'Q3', 'Q4']
+  ngOnInit() {
+    this.radarChartService.getData().subscribe(
+      data => {
+        this.radarChartData = [
+          {
+            labels: this.radarChartLabels,
+            data: data.data,
+            backgroundColor: 'rgba(18, 162, 148, 0.2)',
+            borderColor: "rgba(18, 162, 148, 0.8)",
+            pointBackgroundColor: "rgba(18, 162, 148, 1)"
+          }
+        ];
+        this.radarChartLabels = data.name;
+        data.name = []
+        data.data = []
+      }
+    )
+  }
 
-  public radarChartData = [
-    {data : [10,15,12,3],
-      label : this.getCategoryLabels(),
-      backgroundColor: 'rgba(18, 162, 148, 0.2)',
-      borderColor: "rgba(18, 162, 148, 0.8)",
-      pointBackgroundColor: "rgba(18, 162, 148, 1)"
-    }
-  ]
+
 }

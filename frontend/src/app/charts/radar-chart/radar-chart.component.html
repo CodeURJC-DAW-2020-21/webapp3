@@ -1,7 +1,8 @@
 <div id="barChart">
-  <canvas baseChart [datasets]="radarChartData"
-          [labels]="categoryLabels"
+  <canvas baseChart
+          [datasets]="radarChartData"
+          [labels]="radarChartLabels"
           [options]="radarChartOptions"
-          legend="true"
-          chartType="radar"></canvas>
+          [chartType]="chartType">
+  </canvas>
 </div>

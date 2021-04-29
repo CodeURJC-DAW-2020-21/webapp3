@@ -1,6 +1,8 @@
 <div id="doughnutChart">
-  <canvas baseChart [datasets]="doughnutChartData"
+  <canvas baseChart
+          [datasets]="doughnutChartData"
           [options]="doughnutChartOptions"
-          legend="true"
-          chartType="doughnut"></canvas>
+          [labels]="doughnutChartLabels"
+          [chartType]="chartType">
+  </canvas>
 </div>

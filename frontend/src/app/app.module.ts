@@ -21,6 +21,7 @@ import {EditProfileComponent} from './edit-profile/edit-profile.component';
 import { AdminTableComponent } from './admin-table/admin-table.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import {CategoryScreenComponent} from './category-screen/category-screen.component';
+import { ExploreComponent } from './explore/explore.component';
 
 
 @NgModule({
@@ -40,7 +41,9 @@ import {CategoryScreenComponent} from './category-screen/category-screen.compone
     EditProfileComponent,
     AdminTableComponent,
     PageNotFoundComponent,
-    CategoryScreenComponent
+    CategoryScreenComponent,
+    ExploreComponent
+
   ],
 
   imports: [

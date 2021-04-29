@@ -6,6 +6,7 @@ import {GetStartedComponent} from "./get-started/get-started.component";
 import {ProfileComponent} from './profile/profile.component';
 import {EditProfileComponent} from "./edit-profile/edit-profile.component";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
+import {ExploreComponent} from './explore/explore.component';
 
 const appRoutes = [
   { path: '', component:IndexComponent },

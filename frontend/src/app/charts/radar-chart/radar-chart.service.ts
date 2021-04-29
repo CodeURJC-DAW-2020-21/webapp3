@@ -14,7 +14,7 @@ export class RadarChartService {
   constructor(private httpClient: HttpClient) { }
 
   getData(): Observable<ChartData>{
-    return this.httpClient.get('api/users/profile/finishedPlans', {withCredentials:true}).pipe(
+    return this.httpClient.get('/api/users/profile/finishedPlans', {withCredentials:true}).pipe(
       map(response => this.extractData(response as any))
     ) as Observable<ChartData>
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PlanService} from './explore.service';
+import {UserService} from '../service/user.service';
 import {Plan} from './explore';
 import {pageable} from './explore';
 import { Observable } from 'rxjs';
@@ -11,8 +12,8 @@ import { Observable } from 'rxjs';
 })
 export class ExploreComponent implements OnInit {
 
+  constructor(private planService: PlanService,private userService: UserService) { }
 
-  constructor(private planService: PlanService) { }
 
   pageNumber: number=0;
   plans: Plan[] = [];
@@ -24,12 +25,13 @@ export class ExploreComponent implements OnInit {
     this.refresh();
   }
 
+
   private getPlans(content:pageable):void{
     content.content.forEach(plan=>(this.plans.push(plan)))
   }
   public refresh() {
-    this.registered=true;
-    this.admin=false;
+    this.registered=this.userService.isLogged();
+    this.admin=this.userService.isAdmin();
     if (!this.noMorePages){
       this.planService.getPage(this.pageNumber++).subscribe(
         pageable=> {this.getPlans(pageable); this.noMorePages = pageable.last},
@@ -43,8 +45,6 @@ export class ExploreComponent implements OnInit {
     this.planService.completePlan(PlanName).subscribe(
       _=> {console.log("funciona")},
       error => console.log(error)    );
-
-
   }
 
   public EmptyHeart(abbv: string){

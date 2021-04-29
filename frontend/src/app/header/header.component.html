@@ -19,7 +19,7 @@
           <!-- Step 4: Close the menu when a link is clicked. -->
           <a class="nav-link " [routerLink]="['']">Home</a>
           <a class="nav-link " [routerLink]="['categories']">Categories</a>
-          <a class="nav-link " href="#">Explore</a>
+          <a class="nav-link " [routerLink]="['explore']">Explore</a>
           <a class="nav-link " [routerLink]="['aboutUs']">About us</a>
           <a *ngIf="authorization.isLogged()" class="nav-link scrollto" [routerLink]="['profile']"><i
             class="fas fa-user"></i></a>

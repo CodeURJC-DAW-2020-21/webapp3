@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {CompletedPlan} from "../model/CompletedPlan";
 import {CompletedPlanService} from "../service/completed-plan.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -10,6 +10,9 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['../../assets/css/profileStylesheet.css']
 })
 export class AdminTableComponent implements OnInit {
+
+  @Output()
+  event = new EventEmitter<any>()
 
   completedPlans: CompletedPlan[]
 
@@ -37,6 +40,7 @@ export class AdminTableComponent implements OnInit {
       },
       error => console.log(error)
     )
+    this.event.emit();
   }
 
 

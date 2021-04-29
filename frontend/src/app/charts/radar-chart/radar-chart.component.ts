@@ -36,6 +36,10 @@ export class RadarChartComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.generateRadar()
+  }
+
+  generateRadar(){
     this.radarChartService.getData().subscribe(
       data => {
         this.radarChartData = [

@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {UserService} from "../service/user.service";
 import {Router} from "@angular/router";
 import { Title } from '@angular/platform-browser';
 import {ImageService} from "../service/image.service";
+import {BarChartComponent} from "../charts/barChart/barChart.component";
+import {RadarChartComponent} from "../charts/radar-chart/radar-chart.component";
 
 
 @Component({
@@ -25,6 +27,9 @@ export class ProfileComponent implements OnInit {
   img;
 
   constructor(public authorization: UserService, private router: Router, private titleService: Title, private imgService: ImageService) { }
+
+  @ViewChild(BarChartComponent) barChart
+  @ViewChild(RadarChartComponent) radarChart
 
   public setTitle(newTitle: string) {
     this.titleService.setTitle(newTitle);
@@ -83,6 +88,12 @@ export class ProfileComponent implements OnInit {
 
   goToEditProfile(){
     this.router.navigate(['editProfile']);
+  }
+
+  rechargeCharts(){
+    this.barChart.generateChart();
+    this.radarChart.generateRadar();
+
   }
 
 }

@@ -31,6 +31,9 @@ export class ExploreComponent implements OnInit {
   }
   public refresh() {
     this.registered=this.userService.isLogged();
+    if (this.registered){
+      console.log("logged");
+    }
     this.admin=this.userService.isAdmin();
     if (!this.noMorePages){
       this.planService.getPage(this.pageNumber++).subscribe(

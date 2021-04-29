@@ -17,7 +17,6 @@ class UserEdition {
 }
 
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -45,12 +44,27 @@ export class UserService {
     );
   }
 
+  assignVariables(observableUser:Observable<User>){
+    this.logged=true;
+    observableUser.subscribe(
+      user=>{this.user=user},
+      error=>{console.log(error)}
+    );
+  }
+
+  getLogin(email: string, password: string){
+    return this.httpClient.post(BASE_URL + "/login", {username: email, password: password}, {withCredentials: true}) as Observable<any>;
+  }
+
   login(email: string, password: string) {
-    return this.httpClient.post(BASE_URL + "/login", {username: email, password: password}, {withCredentials: true})
+    this.getLogin(email,password).subscribe(
+      _ =>(this.assignVariables(this.getUserInfo())),
+      error=>{console.log(error)}
+    );
+    return this.httpClient.post(BASE_URL + "/login", {username: email, password: password}, {withCredentials: true});
   }
 
   logOut() {
-
     return this.httpClient.post(BASE_URL + '/logout', {withCredentials: true})
       .subscribe(_ => {
         console.log("LOGOUT: Successfully");
@@ -62,6 +76,7 @@ export class UserService {
   }
 
   isLogged() {
+    console.log("Islogged:"+this.logged);
     return this.logged;
   }
 

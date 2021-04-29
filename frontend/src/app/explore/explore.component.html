@@ -8,7 +8,7 @@
         <h1>Explore</h1>
         <h2 *ngIf="registered ;else notRegistered" class="subtitle">A specific selection of our plans according to your
           likes</h2>
-        <h2 #notRegistered class="subtitle">A selection of our plans for your pleasure</h2>
+        <ng-template #notRegistered><h2  class="subtitle">A selection of our plans for your pleasure</h2></ng-template>
       </div>
     </header>
     <div class="row" id="PlanList">

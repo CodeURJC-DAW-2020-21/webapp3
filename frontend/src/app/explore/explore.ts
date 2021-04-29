@@ -6,3 +6,8 @@ export interface Plan {
   categoryName:string;
   likedUser:boolean;
 }
+
+export interface pageable{
+  content:[Plan];
+  last: boolean
+}

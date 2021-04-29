@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {PlanService} from './explore.service';
 import {UserService} from '../service/user.service';
 import {Plan} from './explore';
+import {pageable} from './explore';
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-explore',
   templateUrl: './explore.component.html',
@@ -11,22 +14,32 @@ export class ExploreComponent implements OnInit {
 
   constructor(private planService: PlanService,private userService: UserService) { }
 
+
+  pageNumber: number=0;
   plans: Plan[] = [];
   registered:boolean;
   admin:boolean;
+  noMorePages: boolean;
 
   ngOnInit() {
     this.refresh();
   }
 
-  private refresh() {
+
+  private getPlans(content:pageable):void{
+    content.content.forEach(plan=>(this.plans.push(plan)))
+  }
+  public refresh() {
     this.registered=this.userService.isLogged();
     this.admin=this.userService.isAdmin();
-    this.planService.getPage(0).subscribe(
-      plan => {this.plans = plan; console.log(plan)},
-      error => console.log(error)
-    );
+    if (!this.noMorePages){
+      this.planService.getPage(this.pageNumber++).subscribe(
+        pageable=> {this.getPlans(pageable); this.noMorePages = pageable.last},
+        error => console.log(error));
+    }
+    else { alert("No more plans to load"); }
   }
+
 
   public CompletePlan(PlanName){
     this.planService.completePlan(PlanName).subscribe(

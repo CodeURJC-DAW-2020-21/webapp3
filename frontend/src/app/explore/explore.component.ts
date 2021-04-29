@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {PlanService} from './explore.service';
 import {Plan} from './explore';
+import {pageable} from './explore';
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-explore',
   templateUrl: './explore.component.html',
@@ -8,8 +11,10 @@ import {Plan} from './explore';
 })
 export class ExploreComponent implements OnInit {
 
+
   constructor(private planService: PlanService) { }
 
+  pageNumber: number=0;
   plans: Plan[] = [];
   registered:boolean;
   admin:boolean;
@@ -18,14 +23,17 @@ export class ExploreComponent implements OnInit {
     this.refresh();
   }
 
-  private refresh() {
+  private getPlans(content:pageable):void{
+    content.content.forEach(plan=>(this.plans.push(plan)))
+  }
+  public refresh() {
     this.registered=true;
     this.admin=false;
-    this.planService.getPage(0).subscribe(
-      plan => {this.plans = plan},
-      error => console.log(error)
-    );
+    this.planService.getPage(this.pageNumber++).subscribe(
+      pageable=>(this.getPlans(pageable)),
+      error => console.log(error));
   }
+
 
   public CompletePlan(PlanName){
     this.planService.completePlan(PlanName).subscribe(

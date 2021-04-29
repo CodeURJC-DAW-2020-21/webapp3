@@ -15,6 +15,7 @@ const appRoutes = [
   { path: 'aboutUs', component: AboutUsComponent },
   { path: 'categories', component: CategoryScreenComponent },
   { path: 'getStarted', component: GetStartedComponent },
+  { path: 'explore', component: ExploreComponent },
   { path: '**', component: PageNotFoundComponent}
 ]
 

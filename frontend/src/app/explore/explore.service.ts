@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import {Plan} from './explore';
+import {pageable, Plan} from './explore';
 
 
 @Injectable({
@@ -13,8 +13,8 @@ export class PlanService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getPage(page:number):Observable<Plan[]> {
-    return this.httpClient.get(this.urlPrefix ) as Observable<Plan[]>
+  getPage(page:number):Observable<pageable> {
+    return this.httpClient.get(this.urlPrefix+"explore?page="+page.toString()) as Observable<pageable>;
   }
   completePlan(planName:string):Observable<Plan>{
     return this.httpClient.post(this.urlPrefix +"done?planName="+ planName,"",{withCredentials:true} ) as Observable<Plan>

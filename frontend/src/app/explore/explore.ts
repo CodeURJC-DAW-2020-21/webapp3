@@ -9,4 +9,5 @@ export interface Plan {
 
 export interface pageable{
   content:[Plan];
+  last: boolean
 }

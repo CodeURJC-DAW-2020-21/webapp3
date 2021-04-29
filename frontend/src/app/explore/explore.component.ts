@@ -18,6 +18,7 @@ export class ExploreComponent implements OnInit {
   plans: Plan[] = [];
   registered:boolean;
   admin:boolean;
+  noMorePages: boolean;
 
   ngOnInit() {
     this.refresh();
@@ -29,9 +30,12 @@ export class ExploreComponent implements OnInit {
   public refresh() {
     this.registered=true;
     this.admin=false;
-    this.planService.getPage(this.pageNumber++).subscribe(
-      pageable=>(this.getPlans(pageable)),
-      error => console.log(error));
+    if (!this.noMorePages){
+      this.planService.getPage(this.pageNumber++).subscribe(
+        pageable=> {this.getPlans(pageable); this.noMorePages = pageable.last},
+        error => console.log(error));
+    }
+    else { alert("No more plans to load"); }
   }
 
 

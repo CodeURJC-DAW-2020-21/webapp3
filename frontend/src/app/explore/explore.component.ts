@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PlanService} from './explore.service';
+import {UserService} from '../service/user.service';
 import {Plan} from './explore';
 @Component({
   selector: 'app-explore',
@@ -8,7 +9,7 @@ import {Plan} from './explore';
 })
 export class ExploreComponent implements OnInit {
 
-  constructor(private planService: PlanService) { }
+  constructor(private planService: PlanService,private userService: UserService) { }
 
   plans: Plan[] = [];
   registered:boolean;
@@ -19,8 +20,8 @@ export class ExploreComponent implements OnInit {
   }
 
   private refresh() {
-    this.registered=true;
-    this.admin=false;
+    this.registered=this.userService.isLogged();
+    this.admin=this.userService.isAdmin();
     this.planService.getPage(0).subscribe(
       plan => {this.plans = plan; console.log(plan)},
       error => console.log(error)
@@ -31,8 +32,6 @@ export class ExploreComponent implements OnInit {
     this.planService.completePlan(PlanName).subscribe(
       _=> {console.log("funciona")},
       error => console.log(error)    );
-
-
   }
 
   public EmptyHeart(abbv: string){

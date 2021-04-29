@@ -151,7 +151,7 @@ public class PlanService {
         String email = request.getUserPrincipal().getName();
         User user = userService.findUserByEmail(email).orElseThrow();
         Plan plan= planService.findPlanByName(planname).orElseThrow();
-        if (!user.getLikedPlans().contains(planService.findPlanByAbbr(planname))) {
+        if (!user.getLikedPlans().contains(plan)) {
             user.getLikedPlans().add(plan);
         }
         plan.setLikedUser(true);
@@ -161,8 +161,8 @@ public class PlanService {
     public Plan dislikePlanName(String planname, HttpServletRequest request) {
         String email = request.getUserPrincipal().getName();
         User user = userService.findUserByEmail(email).orElseThrow();
-        user.getLikedPlans().remove(planService.findPlanByName(planname).orElseThrow());
         Plan plan= planService.findPlanByName(planname).orElseThrow();
+        user.getLikedPlans().remove(plan);
         plan.setLikedUser(false);
         userService.update(user);
         return plan;

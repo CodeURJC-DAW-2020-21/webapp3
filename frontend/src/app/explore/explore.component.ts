@@ -22,7 +22,7 @@ export class ExploreComponent implements OnInit {
     this.registered=true;
     this.admin=false;
     this.planService.getPage(0).subscribe(
-      plan => {this.plans = plan},
+      plan => {this.plans = plan; console.log(plan)},
       error => console.log(error)
     );
   }
@@ -35,13 +35,15 @@ export class ExploreComponent implements OnInit {
 
   }
 
-  public EmptyHearth(abbv){
+  public EmptyHeart(abbv: string){
     this.planService.dislikePlan(abbv);
     window.location.reload();
   }
 
-  public FillHearth(abbv){
-    this.planService.likePlan(abbv);
-    window.location.reload();
+  public FillHeart(abbv: string){
+    this.planService.likePlan(abbv).subscribe(
+      _ => {console.log("It worked"); window.location.reload()}
+    )
   }
+
 }

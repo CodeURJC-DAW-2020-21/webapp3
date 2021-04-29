@@ -19,10 +19,10 @@ export class PlanService {
   completePlan(planName:string):Observable<Plan>{
     return this.httpClient.post(this.urlPrefix +"done?planName="+ planName,"",{withCredentials:true} ) as Observable<Plan>
   }
-  likePlan(abbv:string):Observable<Plan>{
-    return this.httpClient.post(this.urlPrefix +"favA?abbrev="+abbv,"",{withCredentials:true} ) as Observable<Plan>
+  likePlan(name:string):Observable<Plan>{
+    return this.httpClient.put(this.urlPrefix +"favN?planName="+name,"",{withCredentials:true} ) as Observable<Plan>
   }
   dislikePlan(abbv:string):Observable<Plan>{
-    return this.httpClient.post(this.urlPrefix +"notfavA?abbrev="+abbv,"",{withCredentials:true} ) as Observable<Plan>
+    return this.httpClient.put(this.urlPrefix +"notfavA?abbrev="+abbv,"",{withCredentials:true} ) as Observable<Plan>
   }
 }

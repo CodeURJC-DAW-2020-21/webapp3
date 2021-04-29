@@ -25,15 +25,12 @@ export class ExploreComponent implements OnInit {
     this.refresh();
   }
 
-
   private getPlans(content:pageable):void{
     content.content.forEach(plan=>(this.plans.push(plan)))
   }
+
   public refresh() {
     this.registered=this.userService.isLogged();
-    if (this.registered){
-      console.log("logged");
-    }
     this.admin=this.userService.isAdmin();
     if (!this.noMorePages){
       this.planService.getPage(this.pageNumber++).subscribe(
@@ -43,22 +40,34 @@ export class ExploreComponent implements OnInit {
     else { alert("No more plans to load"); }
   }
 
-
   public CompletePlan(PlanName){
     this.planService.completePlan(PlanName).subscribe(
-      _=> {console.log("funciona")},
-      error => console.log(error)    );
+      _=> {console.log("It worked")},
+      error => console.log(error));
   }
 
   public EmptyHeart(abbv: string){
-    this.planService.dislikePlan(abbv);
-    window.location.reload();
-  }
-
-  public FillHeart(abbv: string){
-    this.planService.likePlan(abbv).subscribe(
+    this.planService.dislikePlan(abbv).subscribe(
       _ => {console.log("It worked"); window.location.reload()}
-    )
+    );
+    console.log(this.plans);
+    this.ChangePlanLike(abbv);
   }
 
+  public FillHeart(abbv: string) {
+    this.planService.likePlan(abbv).subscribe(
+      _ => {
+        console.log("It worked");
+        window.location.reload()
+      });
+    console.log(this.plans);
+    this.ChangePlanLike(abbv);
+  }
+  public ChangePlanLike(abbv: string){
+    for (let plan of this.plans){
+      if (plan.name==abbv){
+        plan.likedUser=!plan.likedUser;
+        break;
+      }}
+  }
 }

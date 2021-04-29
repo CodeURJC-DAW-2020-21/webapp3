@@ -27,10 +27,10 @@
                 </button>
               </div>
               <div *ngIf="registered" class="col-3">
-                <h2 *ngIf="registered"><img id="FullHeart {{plan.name}}" class="like icon" (click)="FillHeart(plan.name)"
+                <h2 [hidden]="likedUser"><img id="FullHeart {{plan.name}}" class="like icon" (click)="FillHeart(plan.name)"
                                                          src="/assets/img/level/EmptyHeart.svg"/></h2>
 
-                <h2 *ngIf="!registered"><img id="EmptyHeart {{plan.abv}}" class="like icon" (click)="EmptyHeart(plan.name)"
+                <h2 [hidden]="!likedUser"><img id="EmptyHeart {{plan.abv}}" class="like icon" (click)="EmptyHeart(plan.name)"
                                                           src="/assets/img/level/FullHeart.svg"/></h2>
               </div>
             </ng-template>

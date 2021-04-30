@@ -32,7 +32,7 @@ public class Category {
     @Id
     private String name;
     @JsonView(Basic.class)
-    private String des;
+    private String description;
 
     @Lob
     @JsonIgnore
@@ -59,7 +59,7 @@ public class Category {
     public Category(String name, String description, String color) {
         super();
         this.name = name;
-        this.des = description;
+        this.description = description;
         this.color = color;
         this.plans = new ArrayList<>();
         try {
@@ -75,7 +75,7 @@ public class Category {
     public Category(String name, String description, MultipartFile icon, String color) throws IOException {
         super();
         this.name = name;
-        this.des = description;
+        this.description = description;
         this.color = color;
         this.plans = new ArrayList<>();
         this.icon = BlobProxy.generateProxy(icon.getInputStream(), icon.getSize());
@@ -84,7 +84,7 @@ public class Category {
     public Category(String name, String description, String icon, String color) {
         super();
         this.name = name;
-        this.des = description;
+        this.description = description;
         this.color = color;
         this.plans = new ArrayList<>();
         try {
@@ -96,7 +96,6 @@ public class Category {
         }
     }
 
-
     public String getName() {
         return name;
     }
@@ -106,11 +105,11 @@ public class Category {
     }
 
     public String getDescription() {
-        return des;
+        return description;
     }
 
     public void setDescription(String description) {
-        this.des = description;
+        this.description = description;
     }
 
     public Blob getIcon() {
@@ -165,7 +164,7 @@ public class Category {
     public String toString() {
         return "Category{" +
                 "name='" + name + '\'' +
-                ", description='" + des + '\'' +
+                ", description='" + description + '\'' +
                 ", icon='" + icon + '\'' +
                 ", color='" + color + '\'' +
                 '}';
@@ -176,12 +175,12 @@ public class Category {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Category category = (Category) o;
-        return Objects.equals(name, category.name) && Objects.equals(des, category.des) && Objects.equals(icon, category.icon) && Objects.equals(color, category.color);
+        return Objects.equals(name, category.name) && Objects.equals(description, category.description) && Objects.equals(icon, category.icon) && Objects.equals(color, category.color);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, des, icon, color);
+        return Objects.hash(name, description, icon, color);
     }
 
 

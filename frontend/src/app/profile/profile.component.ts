@@ -99,16 +99,15 @@ export class ProfileComponent implements OnInit {
 
   downloadPDF(){
     var day = new Date();
-    const options = {
-      filename: 'progress' + day.getMonth() + '-' + day.getDate() + '-' + day.getFullYear() + '.pdf',
-      image: {type: 'jpeg', quality: 10.98},
-      html2canvas: {scale: 3, letterRendering: true,},
-      jsPDF:{orientation: 'portrait', unit: "in", format: "a4",}
-    }
     const progress: Element = document.getElementById('chartsPDF');
     html2pdf()
+      .set({
+        filename: 'progress' + day.getMonth() + '-' + day.getDate() + '-' + day.getFullYear() + '.pdf',
+        image: {type: 'png', quality: 0.98},
+        html2canvas: {scale: 3, letterRendering: true,},
+        jsPDF:{orientation: 'portrait', unit: "in", format: "a4",}
+      })
       .from(progress)
-      .set(options)
       .save()
       .catch(err => console.log(err));
   }

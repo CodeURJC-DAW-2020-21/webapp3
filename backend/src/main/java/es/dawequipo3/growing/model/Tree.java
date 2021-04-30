@@ -113,6 +113,7 @@ public class Tree {
         this.category = category;
     }
 
+    @JsonView(Basic.class)
     public String getDate() {
         Calendar date = Calendar.getInstance();
         date.setTimeInMillis(this.last_update);

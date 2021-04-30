@@ -1,55 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Growing - Mental Health</title>
-
-  {{>head}}
-  <link href="/assets/css/category.css" rel="stylesheet">
-
-  <!-- jquery  -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-
-</head>
-
-<body>
-
 <app-header></app-header>
-<!-- Start of the Page-->
-<section id="mentalHealth" class="mentalHealth">
-  <div class="container">
-    <!-- Container of the header-->
-    <header class="section-header category" data-aos="fade-left">
-      <li *ngFor="let category of categoryList">
-      <form class="editCategory" method="post" action="/editCategory/{{category.name}}">
-        <input type="hidden" name="_csrf" value="{{token}}"/>
-        <input class="edit" type="submit" value="Edit category">
-      </form>
-      <div class="justify-content-center">
-        <h1>{{category.name}}</h1>
-
-        {{#registered}}
-        {{^category.likedByUser}}
-        <form method="post" action="/categoryInfo/{{category.name}}/like">
-          <input type="hidden" name="_csrf" value="{{token}}"/>
-          <input type="image" name="submit" src="/assets/img/level/EmptyHeart.svg" class="photoHeart like" alt="emptyHeart">
-        </form>
-        {{/category.likedByUser}}
-        {{#category.likedByUser}}
-        <form method="post" action="/categoryInfo/{{category.name}}/dislike">
-          <input type="hidden" name="_csrf" value="{{token}}"/>
-          <input type="image" name="submit" src ="/assets/img/level/FullHeart.svg" class="photoHeart like" alt="filledHeart">
-        </form>
-        {{/category.likedByUser}}
-        {{/registered}}
-        <h2 class="subtitle">{{category.des}}</h2>
-      </div>
-    </header>
-    <!-- End of the container of the header-->
-    {{#admin}}
     <!-- Add button for Admin User -->
     <div class="editCategory align-items-center">
       <button class="addNew" onclick="javascript:openCloseForm()" data-aos="fade-up">Add plan</button>
@@ -60,7 +9,7 @@
           <!-- Plan name -->
           <div class="input-field">
             <i class="fas fa-signature"></i>
-            <input type="text" name="planName" placeholder="name" required/>
+            <input #name type="text" name="planName" placeholder="name" required/>
           </div>
           <!-- abv -->
           <div class="input-field">
@@ -87,7 +36,6 @@
     </div>
 
     <!-- End add button for Admin User -->
-    {{/admin}}
     <div class="row" data-aos="fade-up">
       <!-- Tree section-->
       <div class="col-md-5">
@@ -95,14 +43,15 @@
           <h3>Your progress</h3>
         </header>
         <div class="imagenArbol">
-          {{#registered}}
-          <img class="progress" src="{{image}}"/>
-          <p class="update"> Last updated: {{date}} </p>
-          {{/registered}}
-          {{^registered}}
-          <img class="progress" src="{{image}}"/>
-          <p class="update">To see your real progress: <a href="/getStarted">log in</a></p>
-          {{/registered}}
+          <span *ngIf="permissions.isLogged() else elseBlock">
+            <img class="progress" src="{{image}}"/>
+            <p class="update"> Last updated: {{date}} </p>
+          </span>
+          <ng-template #elseBlock>
+            <img class="progress" src="{{image}}"/>
+            <p class="update">To see your real progress: <a href="/getStarted">log in</a></p>
+          </ng-template>
+
         </div>
       </div>
       <!-- End of Tree Section -->
@@ -113,15 +62,11 @@
           <h3>Task</h3>
         </header>
 
-        {{>accordionCategories}}
+        <app-category-accordion></app-category-accordion>
         <!-- End Task List -->
       </div>
       <!-- End container Task List -->
     </div>
-    <!-- End row -->
-  </div>
   <!-- End Screen Container -->
-</section>
-
-{{>footer}}
+<app-footer></app-footer>
 

@@ -1,0 +1,365 @@
+/*--------------------------------------------------------------
+# Charts Section
+--------------------------------------------------------------*/
+
+body{
+    background-image: url(../img/background.svg);
+    background-color: #D6FFB9;
+}
+
+.main{
+    margin-top: 10px;
+    background: #ffffff;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px 0 rgba(0,0,0,0.3);
+}
+
+.main .title{
+    color: #0c63e4;
+    margin-top: 30px;
+    font-size: 44px;
+    font-weight: bold;
+    background: linear-gradient(to right, #D6FFB9 0%, #12a294 50% ,#0a58ca 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+
+canvas{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+@media (max-width: 700px) {
+    .chart{
+        margin-top: 1em;
+        margin-left: 1.5em;
+    }
+}
+
+.wrapper{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    background-color: #f2f2f2;
+}
+
+.profileContainer{
+    min-height: 80vh;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-card{
+    width: 90%;
+    height: 100%;
+    text-align: center;
+    border-radius: 10px;
+    overflow: hidden;
+    font-family: "Nunito", sans-serif;
+    padding-bottom: 10%;
+}
+
+section .services{
+    padding-top: 5px;
+}
+
+.category{
+    padding-top: 10px;
+}
+
+.card-header {
+    background-image: repeating-linear-gradient(123deg, rgba(255,255,255, 0.05) 0px, rgba(255,255,255, 0.05) 1px,transparent 1px, transparent 11px,rgba(255,255,255, 0.05) 11px, rgba(255,255,255, 0.05) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(78deg, rgba(255,255,255, 0.05) 0px, rgba(255,255,255, 0.05) 1px,transparent 1px, transparent 11px,rgba(255,255,255, 0.05) 11px, rgba(255,255,255, 0.05) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(213deg, rgba(255,255,255, 0.05) 0px, rgba(255,255,255, 0.05) 1px,transparent 1px, transparent 11px,rgba(255,255,255, 0.05) 11px, rgba(255,255,255, 0.05) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(168deg, rgba(255,255,255, 0.05) 0px, rgba(255,255,255, 0.05) 1px,transparent 1px, transparent 11px,rgba(255,255,255, 0.05) 11px, rgba(255,255,255, 0.05) 12px,transparent 12px, transparent 32px),linear-gradient(168deg, rgb(0,0,0),rgb(66, 66, 66));
+}
+
+.card-header.admin{
+    background-image: repeating-linear-gradient(103deg, rgb(212,175,55) 0px, rgb(212,175,55) 1px,transparent 1px, transparent 11px,rgb(212,175,55) 11px, rgb(212,175,55) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(58deg, rgb(212,175,55) 0px, rgb(212,175,55) 1px,transparent 1px, transparent 11px,rgb(212,175,55) 11px, rgb(212,175,55) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(193deg, rgb(212,175,55) 0px, rgb(212,175,55) 1px,transparent 1px, transparent 11px,rgb(212,175,55) 11px, rgb(212,175,55) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(148deg, rgb(212,175,55) 0px, rgb(212,175,55) 1px,transparent 1px, transparent 11px,rgb(212,175,55) 11px, rgb(212,175,55) 12px,transparent 12px, transparent 32px),linear-gradient(148deg, rgb(212,175,55),rgb(229,228,226));
+}
+
+.card-title.admin{
+    font-size: 30px;
+    padding-top: 15px;
+    font-weight: bold;
+    background: #E5E4E2;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.pic{
+    display: inline-block;
+    max-height: 30vh;
+    margin: 10%;
+    background-size: 200% 200%;
+    animation: animated-gradient 2s linear infinite;
+}
+
+@keyframes animated-gradient{
+    25%{
+        background-position: left bottom;
+    }
+    50%{
+        background-position: right bottom;
+    }
+    75%{
+        background-position: right top;
+    }
+    100%{
+        background-position: left top;
+    }
+}
+
+.pic img{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.name{
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: normal;
+}
+
+.name.admin{
+    color: #023198;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.card-footer{
+    background: #f4f4f4;
+    padding: 20px 10px;
+}
+
+.item{
+    flex: 1;
+    font-size: 20px;
+    color: #01E0EF;
+    font-weight: bold;
+}
+
+.item.admin{
+    color: #000000;
+}
+
+.email{
+    font-size: 22px;
+    color: #ffffff;
+    font-weight: normal;
+}
+
+.email.admin{
+    color: #023198;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.fa-user-edit{
+    color: #01E0EF;
+}
+
+.administrator {
+    color: #000000;
+}
+
+.ad {
+    color: #0153d9;
+}
+
+.services .service-box {
+    box-shadow: 0 0 30px rgba(1, 41, 112, 0.08);
+    height: 100%;
+    padding: 60px 30px;
+    text-align: center;
+    transition: 0.3s;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+.header h1{
+    color: #000000;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.section{
+    padding: 20px;
+}
+
+.section-header h2{
+    color: #1150e5;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.chartSeparation {
+    height: 100%;
+    margin-bottom: 15px;
+}
+
+.mini{
+    height:1.5em;
+    width:1.5em;
+}
+
+.start{
+    background-color: #008CBA;
+}
+
+.finish{
+    background-color: #4CAF50;
+    display: none;
+}
+
+.leave {
+    background-color: #b8b894;
+    display: none;
+}
+
+.like {
+    float: right;
+    padding: 10px;
+}
+
+.services .service-box.blue {
+    border-bottom: 3px solid #2db6fa;
+    box-shadow: 0 0 30px rgb(8, 79, 134);
+}
+
+.services .service-box.orange {
+    border-bottom: 3px solid #f68c09;
+    box-shadow: 0 0 30px rgb(164, 86, 1);
+}
+
+.services .service-box.green {
+    border-bottom: 3px solid #08da4e;
+    box-shadow: 0 0 30px rgb(32, 96, 8);
+}
+
+.services .service-box.red {
+    border-bottom: 3px solid #e9222c;
+    box-shadow: 0 0 30px rgba(126, 7, 21,0.4);
+}
+
+.services .service-box.bluenavy {
+    border-bottom: 3px solid #09039d;
+    box-shadow: 0 0 30px rgba(4, 87, 241, 0.4);
+}
+
+.services .service-box.bluenavy .icon {
+    color: #09039d;
+    background: #d6d5f8;
+}
+
+.services .service-box.purple {
+    border-bottom: 3px solid #9814b8;
+    box-shadow: 0 0 30px rgb(117, 48, 215);
+}
+
+.completedTasks {
+  background-color: #ffffff;
+}
+
+.field {
+    display:flex;
+    position:relative;
+    margin:5em auto;
+    width:70%;
+    flex-direction:row;
+    box-shadow:
+            1px 1px 0 rgb(22, 160, 133),
+            2px 2px 0 rgb(22, 160, 133),
+            3px 3px 0 rgb(22, 160, 133),
+            4px 4px 0 rgb(22, 160, 133),
+            5px 5px 0 rgb(22, 160, 133),
+            6px 6px 0 rgb(22, 160, 133),
+            7px 7px 0 rgb(22, 160, 133)
+;
+}
+
+#searchform {
+    display:block;
+    font:1.2em 'Nunito', sans-serif;
+}
+
+#searchterm {
+    flex: 1;
+    padding: 0.6em;
+    width: 88%;
+    border: 0.2em solid rgb(26, 188, 156);
+}
+
+#search{
+    width: auto;
+    padding: 0.8em;
+    background-color: rgb(26, 188, 156);
+    color: white;
+}
+
+#UsersTableTitle{
+    font-family: "Nunito", sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+#UsersTableTitle td, #UsersTableTitle th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+#UsersTableTitle th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(26, 188, 156);
+    color: white;
+}
+
+#UsersTable {
+    font-family: "Nunito", sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#UsersTable td, #UsersTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#UsersTable tr:nth-child(even){background-color: #f2f2f2;}
+
+#UsersTable tr:hover {background-color: #ddd;}
+
+#UsersTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(26, 188, 156);
+    color: white;
+}
+
+#PDF {
+    float: right;
+    margin: 10px;
+    display: inline-block;
+    padding: 5px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #12a294;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 5px #999;
+}
+
+#PDF:hover {background-color: #0d776d
+}
+
+#PDF:active {
+    background-color: #0d776d;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Growing - About us</title>
+
+    {{>head}}
+
+</head>
+
+<body>
+
+<!-- ======= Header ======= -->
+<header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+        <a href="/" class="logo d-flex align-items-center">
+            <img src="/images/growingLogo.png" alt="">
+        </a>
+
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a class="nav-link scrollto" href="/">Home</a></li>
+                <li><a class="nav-link scrollto" href="/categories">Categories</a></li>
+                <li><a class="nav-link scrollto " href="/explore">Explore</a></li>
+                <li><a class="nav-link scrollto active" href="/aboutUs">About us</a></li>
+                {{#registered}}
+                <li><a class="nav-link scrollto" href="/profile"><i class="fas fa-user"></i></a>
+                </li>
+                <form action="/logout" method="post">
+                    <input type="hidden" name="_csrf" value="{{token}}"/>
+                    <input type="submit" value="Sign out" class="sign_out scrollto"/>
+                </form>
+                {{/registered}}
+                {{^registered}}
+                <li><a class="getstarted scrollto" href="/getStarted">Get Started</a></li>
+                {{/registered}}
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+    </div>
+</header><!-- End Header -->
+
+
+<!-- ======= Team Section ======= -->
+<main>
+    <section id="team" class="team">
+
+    <div class="container" data-aos="fade-left">
+        <!-- Title header-->
+        <header class="section-header category">
+            <div class="justify-content-center">
+                <h1>About us</h1>
+                <h2 class="subtitle">We are a team of software engineering stundents working on this web looking forward
+                    to learn web development</h2>
+            </div>
+        </header>
+        <!-- End Title header -->
+
+        <div class="row gy-4">
+            <!-- Member 1 -->
+            <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                <div class="member">
+                    <div class="member-img">
+                        <img src="assets/img/team/team-1.png" class="img-fluid" alt="">
+                    </div>
+                    <div class="member-info">
+                        <h4>Flavia Vásquez Gutiérrez</h4>
+                        <span>I+D</span>
+                        <p>Hello there, I am the project manager in charge of everything working. I am also the
+                            responsible of new technologies which we use in the web app.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Member 2 -->
+            <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+                <div class="member">
+                    <div class="member-img">
+                        <img src="assets/img/team/team-2.PNG" class="img-fluid" alt="">
+                    </div>
+                    <div class="member-info">
+                        <h4>Antonio Agudo Esperanza</h4>
+                        <span>Idea developer</span>
+                        <p>Hello, I am responsible for the technologies related to java in the application, I am also in
+                            charge of the management of the database.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Member 3 -->
+            <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+                <div class="member">
+                    <div class="member-img">
+                        <img src="assets/img/team/team-3.PNG" class="img-fluid" alt="">
+                    </div>
+                    <div class="member-info">
+                        <h4>Jorge Adame Prudencio</h4>
+                        <span>Expert at HCI</span>
+                        <p>Hello, I am the responsible of making a good UI for the clients and having a good UX
+                            reviewing aspects like usability. Although, I participate on backend to make a good feedback
+                            to the users.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Member 4 -->
+            <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
+                <div class="member">
+                    <div class="member-img">
+                        <img src="assets/img/team/team-4.PNG" class="img-fluid" alt="">
+                    </div>
+                    <div class="member-info">
+                        <h4>Marcos Robles Rodríguez</h4>
+                        <span>Expert on VCS</span>
+                        <p>Hi, I am the responsible of the VCS of the project and I also work on the algorithms and
+                            backend. I also work on the frontend when needed.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- End row -->
+        </div>
+        <!--End members container -->
+    </section>
+    <!-- End Team Section -->
+
+
+</main><!-- End #main -->
+
+<!-- ======= Footer ======= -->
+{{>footer}}

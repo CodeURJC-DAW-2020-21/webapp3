@@ -1,0 +1,57 @@
+#btnAdd{
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.editCategory{
+    align-items: center;
+    margin-top: 10px;
+    height: 30%;
+}
+
+.btnEditCategory{
+    font-family: "Nunito", sans-serif;
+    font-size: 24px;
+    width: 15%;
+    border-radius: 15px;
+    margin-bottom: 3%;
+    color: #ffffff;
+    background-color: #11ba3f;
+    border-color: #ffffff;
+    border-width: 5px;
+}
+.btnEditCategory i{
+    padding-left: 10px;
+}
+
+.btnEditCategory:hover{
+    border-radius: 15px;
+    color: #11ba3f;
+    background-color: #ffffff;
+    border-color: #11ba3f;
+    border-width: 5px;
+}
+
+.btn-add{
+    color: #02b364;
+    font: 40px/1px FontAwesome ;
+}
+
+#edit{
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.editIcon{
+    padding-left: 10px;
+}
+
+
+a {
+    color: #12a294;
+    text-decoration: none;
+}
+a:hover {
+    color: #717ff5;
+    text-decoration: none;
+}

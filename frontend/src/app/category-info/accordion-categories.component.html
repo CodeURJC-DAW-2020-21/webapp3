@@ -1,0 +1,56 @@
+<div class="accordion accordion-flush" id="faqlist1">
+  <!-- Item 1-->
+  {{category.plans}}
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#faq-content-{{-index}}">
+        <div class="service-box">
+          <i class="{{category.icon}}"></i>
+        </div>
+        {{category.name}} <img src="/assets/img/level/level{{plan.difficulty}}.png" class="icon mini"/>
+        }}
+        <span *ngIf="permissions.isAdmin()">
+        <a href="/editPlan/{{plan.name}}"><i class="editIcon fas fa-pencil-alt fa-lg"></i></a>
+        </span>
+      </button>
+    </h2>
+
+    <div id="faq-content-{{-index}}" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+      <div class="accordion-body ">
+        <div class="container">
+          <div class="row">
+            <div>{{plan.des}}</div>
+            <span *ngIf="permissions.isLogged()">
+            <div class="col-9">
+              <button onclick="ChangeButtonsStatus(this)" class="start">Start</button>
+              <form method="post" action="/complete/{{plan.name}}">
+                <input type="submit" class="finish"  value="I did it!">
+                <input type="hidden" name="_csrf" value="{{token}}"/>
+              </form>
+              <button onclick="ChangeButtonsStatus(this)" class="leave">I won't finish</button>
+            </div>
+            </span>
+            <div class="col-3">
+              <!-- This is to differentiate if the like icon is appearing because the user is logged-->
+              <span *ngIf="permissions.isLogged()">
+                <span *ngIf="plan.likedUser else ElseBlock">
+                  <form action="/categoryInfo/{{category.name}}/{{plan.name}}/like" method="post">
+                    <input type="hidden" name="_csrf" value="{{token}}"/>
+                    <input type="image" name="submit" src="/assets/img/level/EmptyHeart.svg" class="photoHeart like" alt="emptyHeart">
+                  </form>
+                </span>
+                <ng-template #ElseBlock>
+                  <form action="/categoryInfo/{{category.name}}/{{plan.name}}/dislike" method="post">
+                    <input type="hidden" name="_csrf" value="{{token}}"/>
+                    <input type="image" name="submit" src ="/assets/img/level/FullHeart.svg" class="photoHeart like" alt="filledHeart">
+                  </form>
+                </ng-template>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

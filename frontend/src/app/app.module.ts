@@ -20,6 +20,7 @@ import {ProfileComponent} from './profile/profile.component';
 import {EditProfileComponent} from './edit-profile/edit-profile.component';
 import { AdminTableComponent } from './admin-table/admin-table.component';
 import {CategoryInfoComponent} from './category-info/category-info.component';
+import {CategoryAccordionComponent} from './category-info/accordion-categories.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import {CategoryInfoComponent} from './category-info/category-info.component';
     ProfileComponent,
     EditProfileComponent,
     AdminTableComponent,
-    CategoryInfoComponent
+    CategoryInfoComponent,
+    CategoryAccordionComponent
   ],
 
   imports: [

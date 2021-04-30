@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PlanService} from './explore.service';
 import {UserService} from '../service/user.service';
+import {ImageService} from '../service/image.service';
 import {Plan} from './explore';
 import {pageable} from './explore';
 import { Observable } from 'rxjs';
@@ -12,7 +13,7 @@ import { Observable } from 'rxjs';
 })
 export class ExploreComponent implements OnInit {
 
-  constructor(private planService: PlanService, private userService: UserService) { }
+  constructor(private planService: PlanService, private userService: UserService, private imageService:ImageService) { }
 
 
   pageNumber: number;
@@ -27,7 +28,9 @@ export class ExploreComponent implements OnInit {
 
 
   private getPlans(content:pageable):void{
-    content.content.forEach(plan=>(this.plans.push(plan)))
+    content.content.forEach(plan=>{
+      plan["imageURL"]=this.imageService.getCategoryImageSafeUrl(plan.categoryName);
+      this.plans.push(plan)});
   }
 
   private refresh() {
@@ -91,5 +94,4 @@ export class ExploreComponent implements OnInit {
       )
     }
   }
-
 }

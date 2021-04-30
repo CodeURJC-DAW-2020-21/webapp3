@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {CategoryService} from '../service/category.service';
-import {HttpClient} from '@angular/common/http';
-import {Category} from '../model/Category';
-import {Title} from "@angular/platform-browser";
+import { CategoryService } from '../service/category.service';
+import { HttpClient } from '@angular/common/http';
+import { Category } from '../model/Category';
 
 @Component({
   selector: 'category-list',
@@ -19,7 +18,6 @@ export class CategoryListComponent implements OnInit {
     this.getCategories();
   }
 
-
   public getCategories() {
     this.categoryService.getCategories().subscribe(
       category => {this.categories = category},
@@ -28,8 +26,7 @@ export class CategoryListComponent implements OnInit {
     return this.categories;
   }
 
-
-  getCategoryIcon(categoryIcon:string){
+  getCategoryIcon(categoryIcon:string) {
     return this.categoryService.getCategoryIcon(categoryIcon)
   }
 

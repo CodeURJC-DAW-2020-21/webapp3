@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryService } from '../../category-list/category.service';
-import {ChartOptions, ChartType } from "chart.js";
+import { CategoryListService } from '../../category-list/category-list.service';
+import { ChartOptions, ChartType } from "chart.js";
 import { DoughnutChartService } from "./doughnut-chart.service";
-import {BarChartService} from "../barChart/bar-chart.service";
 
 @Component({
   selector: 'app-doughnut-chart',
@@ -12,7 +11,7 @@ import {BarChartService} from "../barChart/bar-chart.service";
 
 export class DoughnutChartComponent implements OnInit {
 
-  constructor(private categoryService : CategoryService, private doughnutChartService: DoughnutChartService) {
+  constructor(private categoryService : CategoryListService, private doughnutChartService: DoughnutChartService) {
   }
 
   public doughnutChartData = [];

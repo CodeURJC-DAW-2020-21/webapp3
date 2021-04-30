@@ -4,43 +4,45 @@
   <div class="container">
 
     <header class="section-header category">
-      <div class="justify-content-center">
+      <div class="align-content-center">
         <h1>Explore</h1>
         <h2 *ngIf="registered ;else notRegistered" class="subtitle">A specific selection of our plans according to your
           likes</h2>
-        <ng-template #notRegistered><h2  class="subtitle">A selection of our plans for your pleasure</h2></ng-template>
+        <ng-template #notRegistered><h2 class="subtitle">A selection of our plans for your pleasure</h2></ng-template>
       </div>
     </header>
-    <div class="row" id="PlanList">
-      <div class="col-lg-6">
-        <ngb-accordion [closeOthers]="true">
-          <ngb-panel *ngFor="let plan of plans">
-            <ng-template ngbPanelTitle>
-              <img alt="{{plan.categoryName}}" class="icon" [src]="plan.imageURL"/>
-              {{plan.name}}
-              <img alt="{{plan.difficulty}}" class="icon" src="/assets/img/level/level{{plan.difficulty}}.png"/>
-              <a *ngIf="admin"><i class="editIcon fas fa-pencil-alt fa-lg"></i></a>
-            </ng-template>
-            <ng-template ngbPanelContent>
-              {{plan.description}}
-              <div *ngIf="registered" class="col-7">
-                <button  (click)="CompletePlan(plan.name)">I did it!
-                </button>
-              </div>
-              <div *ngIf="registered" class="col-3">
-                <h2 *ngIf="registered && !plan.likedUser"><img id="FullHeart {{plan.name}}" class="like icon" (click)="FillHeart(plan.name)"
-                                                         src="/assets/img/level/EmptyHeart.svg"/></h2>
+    <div class="align-content-center" id="PlanList">
 
-                <h2 *ngIf="registered && plan.likedUser"><img id="EmptyHeart {{plan.name}}" class="like icon" (click)="EmptyHeart(plan.name)"
-                                                          src="/assets/img/level/FullHeart.svg"/></h2>
-              </div>
-            </ng-template>
-          </ngb-panel>
-        </ngb-accordion>
-      </div>
+      <ngb-accordion [closeOthers]="true">
+        <ngb-panel *ngFor="let plan of plans">
+          <ng-template class="title" ngbPanelTitle>
+            <img alt="{{plan.categoryName}}" class="icon" [src]="plan.imageURL"/>
+            {{plan.name}}
+            <img alt="{{plan.difficulty}}" class="flag" src="/assets/img/level/level{{plan.difficulty}}.png"/>
+            <a *ngIf="admin"><i class="editIcon fas fa-pencil-alt fa-lg"></i></a>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            {{plan.description}}
+            <div *ngIf="registered" class="col-7">
+              <button (click)="CompletePlan(plan.name)">I did it!
+              </button>
+            </div>
+            <div *ngIf="registered" class="col-3">
+              <h2 *ngIf="registered && !plan.likedUser"><img id="FullHeart {{plan.name}}" class="like flag"
+                                                             (click)="FillHeart(plan.name)"
+                                                             src="/assets/img/level/EmptyHeart.svg"/></h2>
+
+              <h2 *ngIf="registered && plan.likedUser"><img id="EmptyHeart {{plan.name}}" class="like flag"
+                                                            (click)="EmptyHeart(plan.name)"
+                                                            src="/assets/img/level/FullHeart.svg"/></h2>
+            </div>
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
+      <button class="loadmore" (click)="loadMore()">Load more plans</button>
     </div>
+
   </div>
-  <button class="loadmore" (click)="loadMore()">Load more plans</button>
 </section><!-- End F.A.Q Section -->
 
 

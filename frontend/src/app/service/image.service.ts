@@ -24,13 +24,5 @@ export class ImageService {
     return this.httpClient.get('/api/users/profile/image', {withCredentials: true, responseType: 'blob'}) as Observable<Blob>;
   }
 
-  public getCategoryImageSafeUrl(catName:string){
-    var url;
-    var data= this.httpClient.get('/api/categories/image?categoryName='+catName, {responseType: 'blob'}).subscribe((blob : any) => {
-      let objectURL = URL.createObjectURL(blob);
-      url = this.sanitizer.bypassSecurityTrustUrl(objectURL);
-      console.log(url);
-    },error=>console.log(error));
-    return url;
-  }
+
 }

@@ -5,6 +5,8 @@ import {ImageService} from '../service/image.service';
 import {Plan} from './explore';
 import {pageable} from './explore';
 import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-explore',
@@ -13,7 +15,7 @@ import { Observable } from 'rxjs';
 })
 export class ExploreComponent implements OnInit {
 
-  constructor(private planService: PlanService, private userService: UserService, private imageService:ImageService) { }
+  constructor(private httpClient: HttpClient,private planService: PlanService, private userService: UserService, private imageService:ImageService,private sanitizer: DomSanitizer) { }
 
 
   pageNumber: number;
@@ -26,12 +28,15 @@ export class ExploreComponent implements OnInit {
     this.refresh();
   }
 
-
   private getPlans(content:pageable):void{
     content.content.forEach(plan=>{
-      plan["imageURL"]=this.imageService.getCategoryImageSafeUrl(plan.categoryName);
-      this.plans.push(plan)});
-  }
+      var data = this.httpClient.get('/api/categories/image?categoryName=' + plan.categoryName, {responseType: 'blob'}).subscribe((blob: any) => {
+        let objectURL = URL.createObjectURL(blob);
+        plan["imageURL"] = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+        console.log(plan);
+        this.plans.push(plan)});
+    }, error => console.log(error));
+    }
 
   private refresh() {
     this.pageNumber = 0;

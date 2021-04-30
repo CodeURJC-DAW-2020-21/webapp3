@@ -19,6 +19,7 @@
               <img alt="{{plan.categoryName}}" class="icon" src="/image/category/{{plan.categoryName}}"/>
               {{plan.name}}
               <img alt="{{plan.difficulty}}" class="icon" src="/assets/img/level/level{{plan.difficulty}}.png"/>
+              <a *ngIf="admin"><i class="editIcon fas fa-pencil-alt fa-lg"></i></a>
             </ng-template>
             <ng-template ngbPanelContent>
               {{plan.description}}
@@ -39,7 +40,7 @@
       </div>
     </div>
   </div>
-  <button class="loadmore" (click)="refresh()">Load more plans</button>
+  <button class="loadmore" (click)="loadMore()">Load more plans</button>
 </section><!-- End F.A.Q Section -->
 
 

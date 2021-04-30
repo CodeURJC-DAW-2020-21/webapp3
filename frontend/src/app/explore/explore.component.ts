@@ -8,14 +8,14 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-explore',
   templateUrl: './explore.component.html',
-  styleUrls: ['../../assets/css/style.css']
+  styleUrls: ['../../assets/css/style.css', "../../assets/vendor/font-awesome/css/all.css"]
 })
 export class ExploreComponent implements OnInit {
 
   constructor(private planService: PlanService, private userService: UserService) { }
 
 
-  pageNumber: number=0;
+  pageNumber: number;
   plans: Plan[] = [];
   registered:boolean;
   admin:boolean;
@@ -30,38 +30,66 @@ export class ExploreComponent implements OnInit {
     content.content.forEach(plan=>(this.plans.push(plan)))
   }
 
-  public refresh() {
+  private refresh() {
+    this.pageNumber = 0;
+    this.plans = [];
+    this.planService.getPage(0).subscribe(
+      pageable=> {
+        this.registered=this.userService.isLogged();
+        this.admin = this.userService.isAdmin()
+        this.getPlans(pageable); this.noMorePages = pageable.last
+        this.pageNumber++;
+      },
+      error => console.log(error));
+  }
 
-    if (!this.noMorePages){
-      this.planService.getPage(this.pageNumber++).subscribe(
-        pageable=> {
-          this.registered=this.userService.isLogged();
-          this.admin=this.userService.isAdmin();
-          this.getPlans(pageable); this.noMorePages = pageable.last},
-        error => console.log(error));
+  public loadMore(){
+    if (!this.noMorePages) {
+      this.planService.getPage(this.pageNumber).subscribe(
+        pageable => {
+          this.getPlans(pageable);
+          this.noMorePages = pageable.last;
+          this.pageNumber ++;
+        }
+      )
     }
     else {
-      alert("No more plans to load");
-    }
+        alert("No more plans to load");
+      }
   }
 
 
   public CompletePlan(PlanName){
-    this.planService.completePlan(PlanName).subscribe(
-      _=> {console.log("funciona")},
-      error => console.log(error)    );
+    this.planService.completePlan(PlanName).subscribe();
   }
 
   public EmptyHeart(abbv: string){
     this.planService.dislikePlan(abbv).subscribe(
-      _ =>  window.location.reload()
+      _ =>  {
+        this.recoverPages()
+      }
     )
   }
 
   public FillHeart(abbv: string){
     this.planService.likePlan(abbv).subscribe(
-      _ => {console.log("It worked"); window.location.reload()}
+      _ =>  {
+        this.recoverPages()
+      }
     )
+  }
+
+  private recoverPages(){
+    var actualPage = this.pageNumber;
+    this.refresh();
+    for (let _i = 1; _i <= actualPage; _i++){
+      this.planService.getPage(0).subscribe(
+        pageable => {
+          this.getPlans(pageable);
+          this.noMorePages = pageable.last
+        }
+      )
+    }
   }
 
 }

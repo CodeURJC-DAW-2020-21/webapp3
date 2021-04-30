@@ -22,7 +22,7 @@ export class PlanService {
   likePlan(name:string):Observable<Plan>{
     return this.httpClient.put(this.urlPrefix +"favN?planName="+name,"",{withCredentials:true} ) as Observable<Plan>
   }
-  dislikePlan(abbv:string):Observable<Plan>{
-    return this.httpClient.put(this.urlPrefix +"notfavA?abbrev="+abbv,"",{withCredentials:true} ) as Observable<Plan>
+  dislikePlan(name:string):Observable<Plan>{
+    return this.httpClient.put(this.urlPrefix +"notFavN?planName="+name,"",{withCredentials:true} ) as Observable<Plan>
   }
 }

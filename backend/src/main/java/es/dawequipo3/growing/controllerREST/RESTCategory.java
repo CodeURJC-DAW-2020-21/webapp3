@@ -29,6 +29,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.net.URI;
+import java.security.Principal;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -52,13 +53,16 @@ public class RESTCategory {
     @Autowired
     private ImageService imageService;
 
+    @Autowired
+    private UserService userService;
+
     interface CategoriesDetails extends Category.Basic {
     }
 
-    interface CategoryDetails extends Category.Basic, Category.Plans, Tree.Basic, Plan.Basic, User.Basic {
+    interface CategoryDetails extends Category.Basic, Category.Registered, Category.Plans, Tree.Basic, Plan.Basic, Plan.Registered, User.Basic {
     }
 
-    interface UserRegisteredCategoryDetails extends Category.Registered, Category.Basic, Category.Plans, Tree.Basic, Plan.Basic, User.Basic {
+    interface UserRegisteredCategoryDetails extends Category.Registered, Category.Basic, Category.Plans, Tree.Basic, Plan.Basic, Plan.Registered, User.Basic {
     }
 
     @Operation(summary = "Get the information of all existing categories")
@@ -101,17 +105,24 @@ public class RESTCategory {
         Optional<Category> op = categoryService.findByName(name);
         if (op.isPresent()) {
             Category category = op.get();
-            ArrayList<Object> categories = new ArrayList<>();
-            if (request.getUserPrincipal() != null) {
+            Principal optionalUser = request.getUserPrincipal();
+            if (optionalUser != null) {
                 String email = request.getUserPrincipal().getName();
-                Optional<Tree> tree = treeService.findTree(email, name);
-                categories.add(tree);
+                User user = userService.findUserByEmail(email).orElse(null);
+                category.setLikedByUser(user.getUserFavoritesCategory().contains(category));
+                ArrayList<Object> categories = new ArrayList<>();
+                if (request.getUserPrincipal() != null) {
+                    Optional<Tree> tree = treeService.findTree(email, name);
+                    categories.add(tree);
+                }
+                for(Plan plan : category.getPlans()){
+                    plan.setLikedUser(user.getLikedPlans().contains(plan));
+                }
+                categories.add(category);
+                return ResponseEntity.ok(categories);
             }
-            categories.add(category);
-            return ResponseEntity.ok(categories);
-        } else {
-            return ResponseEntity.notFound().build();
         }
+        return ResponseEntity.notFound().build();
     }
 
     @Operation(summary = "Changes the current icon with a new one indicated by the user")

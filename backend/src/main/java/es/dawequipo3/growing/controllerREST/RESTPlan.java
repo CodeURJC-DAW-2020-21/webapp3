@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.URI;
+import java.security.Principal;
 import java.util.*;
 
 
@@ -111,8 +112,15 @@ public class RESTPlan {
     })
     @JsonView(PlanDetails.class)
     @GetMapping("/explore")
-    public ResponseEntity<Page<Plan>> getPlansPage(@RequestParam(defaultValue = "0", required = false) int page) {
+    public ResponseEntity<Page<Plan>> getPlansPage(@RequestParam(defaultValue = "0", required = false) int page, HttpServletRequest request) {
         Page<Plan> plans = planService.findAll(page);
+        Principal principal = request.getUserPrincipal();
+        if (principal != null){
+            User user = userService.findUserByEmail(request.getUserPrincipal().getName()).orElse(null);
+            for (Plan plan : plans.getContent()){
+                plan.setLikedUser(user.getLikedPlans().contains(plan));
+            }
+        }
         if (page < 0 || page > plans.getTotalPages()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else

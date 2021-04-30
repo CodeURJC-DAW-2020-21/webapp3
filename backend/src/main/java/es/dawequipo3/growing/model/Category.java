@@ -153,6 +153,7 @@ public class Category {
         this.plans = plans;
     }
 
+    @JsonView(Registered.class)
     public boolean isLikedByUser() {
         return likedByUser;
     }

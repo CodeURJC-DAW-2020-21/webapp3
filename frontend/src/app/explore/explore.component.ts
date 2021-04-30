@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 })
 export class ExploreComponent implements OnInit {
 
-  constructor(private planService: PlanService,private userService: UserService) { }
+  constructor(private planService: PlanService, private userService: UserService) { }
 
 
   pageNumber: number=0;
@@ -29,18 +29,20 @@ export class ExploreComponent implements OnInit {
   private getPlans(content:pageable):void{
     content.content.forEach(plan=>(this.plans.push(plan)))
   }
+
   public refresh() {
-    this.registered=this.userService.isLogged();
-    if (this.registered){
-      console.log("logged");
-    }
-    this.admin=this.userService.isAdmin();
+
     if (!this.noMorePages){
       this.planService.getPage(this.pageNumber++).subscribe(
-        pageable=> {this.getPlans(pageable); this.noMorePages = pageable.last},
+        pageable=> {
+          this.registered=this.userService.isLogged();
+          this.admin=this.userService.isAdmin();
+          this.getPlans(pageable); this.noMorePages = pageable.last},
         error => console.log(error));
     }
-    else { alert("No more plans to load"); }
+    else {
+      alert("No more plans to load");
+    }
   }
 
 
@@ -51,8 +53,9 @@ export class ExploreComponent implements OnInit {
   }
 
   public EmptyHeart(abbv: string){
-    this.planService.dislikePlan(abbv);
-    window.location.reload();
+    this.planService.dislikePlan(abbv).subscribe(
+      _ =>  window.location.reload()
+    )
   }
 
   public FillHeart(abbv: string){

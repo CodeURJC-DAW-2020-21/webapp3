@@ -76,7 +76,6 @@ export class UserService {
   }
 
   isLogged() {
-    console.log("Islogged:"+this.logged);
     return this.logged;
   }
 

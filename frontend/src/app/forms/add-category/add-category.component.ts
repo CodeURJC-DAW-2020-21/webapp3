@@ -19,14 +19,15 @@ export class AddCategoryComponent implements OnInit {
   icon: Image;
   admin: boolean
 
-  newCategory(event: MouseEvent, name: string, des: string, icon: any, color: string) {
-    this.categoryService.createCategory(this.category = {
+  newCategory(event: MouseEvent, name: string, description: string, icon: any, color: string) {
+    this.category = {
       name: name,
       color: color,
-      des: des
-    }).subscribe(
+      description: description
+    }
+    this.categoryService.createCategory(this.category).subscribe(
       _ => {
-        console.log(this.category,des, this.category.des)
+        window.location.reload();
     },
       _ => alert('Bad request')
     );

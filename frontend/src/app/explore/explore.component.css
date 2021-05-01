@@ -1,0 +1,25 @@
+.icon{
+  height:3.5em;
+  width:3.5em;
+}
+
+.flag{
+  height: 1.7em;
+  width: 1.7em;
+  margin-left: 20px;
+}
+
+.title{
+  margin-left: 10px;
+  font-family: "Nunito", sans-serif;
+  color: #12a294;
+}
+
+.editIcon{
+  margin-left: 30px;
+  color: #12a294;
+}
+
+.loadmore{
+  margin-top: 20px;
+}

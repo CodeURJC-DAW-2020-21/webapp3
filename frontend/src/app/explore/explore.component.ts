@@ -11,7 +11,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-explore',
   templateUrl: './explore.component.html',
-  styleUrls: ['../../assets/css/style.css', "../../assets/vendor/font-awesome/css/all.css"]
+  styleUrls: ['../../assets/css/style.css', "../../assets/vendor/font-awesome/css/all.css", "./explore.component.css"]
 })
 export class ExploreComponent implements OnInit {
 

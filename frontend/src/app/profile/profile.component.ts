@@ -5,7 +5,7 @@ import { Title } from '@angular/platform-browser';
 import {ImageService} from "../service/image.service";
 import {BarChartComponent} from "../charts/barChart/barChart.component";
 import {RadarChartComponent} from "../charts/radar-chart/radar-chart.component";
-import * as html2pdf from 'html2pdf.js'
+import * as html2pdf from 'html2pdf.js';
 
 
 @Component({

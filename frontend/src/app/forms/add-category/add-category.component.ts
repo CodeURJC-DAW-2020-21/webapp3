@@ -23,7 +23,7 @@ export class AddCategoryComponent implements OnInit {
     this.category = {
       name: name,
       color: color,
-      description: description
+      des: description
     }
     this.categoryService.createCategory(this.category).subscribe(
       _ => {

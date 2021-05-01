@@ -13,7 +13,6 @@
       </div>
     </header>
     <div class="align-content-center" id="PlanList">
-
       <ngb-accordion [closeOthers]="true">
         <ngb-panel *ngFor="let plan of plans">
           <ng-template class="title" ngbPanelTitle>
@@ -25,7 +24,11 @@
           <ng-template ngbPanelContent>
             {{plan.description}}
             <div *ngIf="registered" class="col-7">
-              <button (click)="CompletePlan(plan.name)">I did it!
+              <button id="start" class="start" (click)="firstPlanDisplay()">start
+              </button>
+              <button id="finish" class="finish" (click)="CompletePlan(plan.name)">I did it!
+              </button>
+              <button  id="leave" class="leave" (click)="secondPlanDisplay()">I won't do it
               </button>
               
             </div>

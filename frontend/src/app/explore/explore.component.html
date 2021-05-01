@@ -27,6 +27,7 @@
             <div *ngIf="registered" class="col-7">
               <button (click)="CompletePlan(plan.name)">I did it!
               </button>
+              
             </div>
             <div *ngIf="registered" class="col-3">
               <h2 *ngIf="registered && !plan.likedUser"><img id="FullHeart {{plan.name}}" class="like flag"

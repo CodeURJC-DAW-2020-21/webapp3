@@ -6,6 +6,7 @@
     <header class="section-header category">
       <div class="align-content-center">
         <h1>Explore</h1>
+
         <h2 *ngIf="registered ;else notRegistered" class="subtitle">A specific selection of our plans according to your
           likes</h2>
         <ng-template #notRegistered><h2 class="subtitle">A selection of our plans for your pleasure</h2></ng-template>
@@ -39,7 +40,8 @@
           </ng-template>
         </ngb-panel>
       </ngb-accordion>
-      <button class="loadmore" (click)="loadMore()">Load more plans</button>
+      <h2 id="spinner"><img src="/assets/img/spinner.gif"/></h2>
+      <button id="loadmore" class="loadmore" (click)="loadMore()">Load more plans</button>
     </div>
 
   </div>

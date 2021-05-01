@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ApplicationRef, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import {PlanService} from './explore.service';
 import {UserService} from '../service/user.service';
 import {ImageService} from '../service/image.service';
@@ -15,7 +15,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class ExploreComponent implements OnInit {
 
-  constructor(private httpClient: HttpClient,private planService: PlanService, private userService: UserService, private imageService:ImageService,private sanitizer: DomSanitizer) { }
+  constructor(private httpClient: HttpClient,private planService: PlanService, private userService: UserService,private change:ApplicationRef) { }
 
 
   pageNumber: number;
@@ -37,6 +37,7 @@ export class ExploreComponent implements OnInit {
   private refresh() {
     this.pageNumber = 0;
     this.plans = [];
+    this.showloader();
     this.planService.getPage(0).subscribe(
       pageable=> {
         this.registered=this.userService.isLogged();
@@ -44,16 +45,34 @@ export class ExploreComponent implements OnInit {
         this.getPlans(pageable); this.noMorePages = pageable.last
         this.pageNumber++;
       },
-      error => console.log(error));
-  }
+      error => console.log(error),
+      ()=>{
+      this.hideloader();
+      console.log("ended");
+      });
+    }
 
+  private showloader(){
+    document.getElementById("spinner").style.display='inline';
+    document.getElementById("loadmore").style.display='none';
+  }
+    private hideloader(){
+    document.getElementById("spinner").style.display='none';
+      document.getElementById("loadmore").style.display='inline';
+
+  }
   public loadMore(){
     if (!this.noMorePages) {
+      this.showloader();
       this.planService.getPage(this.pageNumber).subscribe(
         pageable => {
           this.getPlans(pageable);
           this.noMorePages = pageable.last;
           this.pageNumber ++;
+        },
+        error =>console.log(error),
+        () =>{
+          this.hideloader();
         }
       )
     }

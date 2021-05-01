@@ -81,8 +81,22 @@ export class ExploreComponent implements OnInit {
       }
   }
 
+  public firstPlanDisplay(){
+    //this function displays the second set of buttons on click
+    document.getElementById("start").style.display='none';
+    document.getElementById("finish").style.display='inline';
+    document.getElementById("leave").style.display='inline';
+  }
+
+  public secondPlanDisplay(){
+    //this function displays the first set of buttons on click
+    document.getElementById("start").style.display='inline';
+    document.getElementById("finish").style.display='none';
+    document.getElementById("leave").style.display='none';
+  }
 
   public CompletePlan(PlanName){
+    this.secondPlanDisplay();
     this.planService.completePlan(PlanName).subscribe();
   }
 

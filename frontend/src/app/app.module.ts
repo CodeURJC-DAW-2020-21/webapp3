@@ -23,6 +23,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { CategoryScreenComponent } from './category-screen/category-screen.component';
 import { ExploreComponent } from './explore/explore.component';
 import { AddCategoryComponent } from './forms/add-category/add-category.component';
+import { AddPlanComponent } from './forms/add-plan/add-plan.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { AddCategoryComponent } from './forms/add-category/add-category.componen
     PageNotFoundComponent,
     CategoryScreenComponent,
     ExploreComponent,
-    AddCategoryComponent
+    AddCategoryComponent,
+    AddPlanComponent
   ],
 
   imports: [

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
 import { DomSanitizer } from '@angular/platform-browser';
 
 
@@ -25,5 +25,9 @@ export class ImageService {
     return this.httpClient.get('/api/users/profile/image', {withCredentials: true, responseType: 'blob'}) as Observable<Blob>;
   }
 
-
+  public addIconCategory(icon: File, categoryName: string): Observable<Object> {
+    const formData = new FormData();
+    formData.append('imageFile', icon, icon.name);
+    return this.httpClient.put('/api/categories/image?name='+categoryName, formData ,{withCredentials:true});
+  }
 }

@@ -16,7 +16,7 @@
       <ngb-accordion [closeOthers]="true">
         <ngb-panel *ngFor="let plan of plans">
           <ng-template class="title" ngbPanelTitle>
-            <img alt="{{plan.categoryName}}" class="icon" [src]="plan.imageURL"/>
+            <img alt="{{plan.categoryName}}" class="icon" src="/api/categories/image?categoryName={{plan.categoryName}}"/>
             {{plan.name}}
             <img alt="{{plan.difficulty}}" class="flag" src="/assets/img/level/level{{plan.difficulty}}.png"/>
             <a *ngIf="admin"><i class="editIcon fas fa-pencil-alt fa-lg"></i></a>

@@ -30,13 +30,9 @@ export class ExploreComponent implements OnInit {
 
   private getPlans(content:pageable):void{
     content.content.forEach(plan=>{
-      var data = this.httpClient.get('/api/categories/image?categoryName=' + plan.categoryName, {responseType: 'blob'}).subscribe((blob: any) => {
-        let objectURL = URL.createObjectURL(blob);
-        plan["imageURL"] = this.sanitizer.bypassSecurityTrustUrl(objectURL);
-        console.log(plan);
         this.plans.push(plan)});
-    }, error => console.log(error));
     }
+
 
   private refresh() {
     this.pageNumber = 0;

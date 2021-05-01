@@ -65,7 +65,8 @@ export class ProfileComponent implements OnInit {
             email: true,
             ad: this.admin
           }
-      }
+      },
+      _ => {this.router.navigate(["getStarted"]); alert("You need to be logged");}
     )
   }
 

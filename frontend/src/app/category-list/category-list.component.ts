@@ -22,12 +22,7 @@ export class CategoryListComponent implements OnInit {
 
   public getCategories() {
     this.categoryService.getCategories().subscribe(
-      category => {
-        var data = this.httpClient.get('/api/categories/image?categoryName=' + "Savings", {responseType: 'blob'}).subscribe((blob: any) => {
-            let objectURL = URL.createObjectURL(blob);
-            category["imageURL"] = this.sanitizer.bypassSecurityTrustUrl(objectURL);
-          },error=>console.log(error));
-          this.categories = category;},
+      category => {this.categories = category;},
       error => console.log(error))
   }
 }

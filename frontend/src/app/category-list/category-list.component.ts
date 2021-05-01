@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryService } from '../service/category.service';
-import { HttpClient } from '@angular/common/http';
-import { Category } from '../model/Category';
+import {CategoryService} from '../service/category.service';
+import {HttpClient} from '@angular/common/http';
+import {Category} from '../model/Category';
+import {DomSanitizer, Title} from "@angular/platform-browser";
+
 
 @Component({
   selector: 'category-list',
@@ -10,7 +12,7 @@ import { Category } from '../model/Category';
 })
 export class CategoryListComponent implements OnInit {
 
-  constructor(private categoryService: CategoryService, private httpClient: HttpClient) { }
+  constructor(private categoryService: CategoryService, private httpClient: HttpClient,private sanitizer: DomSanitizer) { }
 
   categories: Category[] = [];
 
@@ -20,14 +22,11 @@ export class CategoryListComponent implements OnInit {
 
   public getCategories() {
     this.categoryService.getCategories().subscribe(
-      category => {this.categories = category},
-      error => console.log(error)
-    );
-    return this.categories;
+      category => {this.categories = category;},
+      error => console.log(error))
   }
 
   getCategoryIcon(categoryIcon:string) {
     return this.categoryService.getCategoryIcon(categoryIcon)
   }
-
 }

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
+import { DomSanitizer } from '@angular/platform-browser';
+
 
 
 @Injectable({
@@ -8,7 +10,7 @@ import { Observable } from "rxjs";
 })
 export class ImageService {
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient,private sanitizer:DomSanitizer) {}
 
 
   public uploadImage(image: File): Observable<Object> {
@@ -22,5 +24,6 @@ export class ImageService {
   public getProfileImage(): Observable<Blob> {
     return this.httpClient.get('/api/users/profile/image', {withCredentials: true, responseType: 'blob'}) as Observable<Blob>;
   }
+
 
 }

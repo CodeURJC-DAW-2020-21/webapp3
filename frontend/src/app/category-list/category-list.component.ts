@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Category} from '../model/Category';
 import {DomSanitizer, Title} from "@angular/platform-browser";
 
+
 @Component({
   selector: 'category-list',
   templateUrl: './category-list.component.html',
@@ -19,10 +20,13 @@ export class CategoryListComponent implements OnInit {
     this.getCategories();
   }
 
-
   public getCategories() {
     this.categoryService.getCategories().subscribe(
       category => {this.categories = category;},
       error => console.log(error))
+  }
+
+  getCategoryIcon(categoryIcon:string) {
+    return this.categoryService.getCategoryIcon(categoryIcon)
   }
 }

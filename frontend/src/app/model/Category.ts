@@ -13,7 +13,4 @@ export class Category {
   set color(value: string) {
     this._color = value;
   }
-
-
 }
-

@@ -106,21 +106,20 @@ public class RESTCategory {
         if (op.isPresent()) {
             Category category = op.get();
             Principal optionalUser = request.getUserPrincipal();
+            ArrayList<Object> categories = new ArrayList<>();
             if (optionalUser != null) {
                 String email = request.getUserPrincipal().getName();
                 User user = userService.findUserByEmail(email).orElse(null);
                 category.setLikedByUser(user.getUserFavoritesCategory().contains(category));
-                ArrayList<Object> categories = new ArrayList<>();
-                if (request.getUserPrincipal() != null) {
-                    Optional<Tree> tree = treeService.findTree(email, name);
-                    categories.add(tree);
-                }
+                Optional<Tree> tree = treeService.findTree(email, name);
+                categories.add(tree);
+
                 for(Plan plan : category.getPlans()){
                     plan.setLikedUser(user.getLikedPlans().contains(plan));
                 }
-                categories.add(category);
-                return ResponseEntity.ok(categories);
             }
+            categories.add(category);
+            return ResponseEntity.ok(categories);
         }
         return ResponseEntity.notFound().build();
     }

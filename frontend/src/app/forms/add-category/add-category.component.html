@@ -31,9 +31,8 @@
         </select>
       </div>
 
-      <button type="submit" id="create" (click)="newCategory($event, name.value, description.value, icon.value, color.value)">Create Category</button>
+      <button type="submit" id="create" (click)="newCategory($event, name.value, description.value, icon, color.value)">Create Category</button>
       <button type="button" id="cancel" (click)="openCloseForm()">Cancel</button>
-      <input type="hidden" name="_csrf" value="d0190fd6-f444-43e8-9036-5f018c653e42">
     </form>
   </div>
 </div>

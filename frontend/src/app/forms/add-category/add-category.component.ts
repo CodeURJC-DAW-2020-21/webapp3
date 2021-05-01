@@ -5,7 +5,6 @@ import { Category } from "../../model/Category";
 import { Image } from "../../model/Image";
 import {Router} from "@angular/router";
 import {ImageService} from "../../service/image.service";
-import {Title} from "@angular/platform-browser";
 
 
 @Component({
@@ -19,7 +18,6 @@ export class AddCategoryComponent implements OnInit {
 
   category: Category;
   selectedFile: Image;
-  icon: Image;
   admin: boolean
 
   processFile(icon: any, name: string) {
@@ -27,14 +25,12 @@ export class AddCategoryComponent implements OnInit {
     const reader = new FileReader();
 
     reader.addEventListener('load', (event: any) => {
-
       this.selectedFile = new Image(event.target.result, file);
 
       this.imageService.addIconCategory(this.selectedFile.file,name).subscribe(
-        _ =>{
-
-        }
-      )
+        _ => {
+          this.router.navigate(['categories'])
+        })
     });
     reader.readAsDataURL(file);
   }
@@ -49,11 +45,9 @@ export class AddCategoryComponent implements OnInit {
       _ => {
         if (icon.files.length != 0)
           this.processFile(icon, this.category.name)
-        else this.router.navigate([''])
     },
       _ => alert('Bad request')
     );
-    window.location.reload();
   }
 
   openCloseForm() {

@@ -25,9 +25,7 @@ export class ImageService {
 
   public addIconCategory(icon: File, categoryName: string): Observable<Object> {
     const formData = new FormData();
-
     formData.append('imageFile', icon, icon.name);
-
     return this.httpClient.put('/api/categories/image?name='+categoryName, formData ,{withCredentials:true});
   }
 }

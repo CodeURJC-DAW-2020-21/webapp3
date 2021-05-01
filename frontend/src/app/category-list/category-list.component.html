@@ -14,7 +14,7 @@
         <div *ngFor="let category of categories" class="col-lg-4 col-md-6 categoryMargin">
           <div class="service-box {{category.color}}">
             <div class="profile-background">
-              <img [src]="getCategoryIcon(category.name)" class="photo icon" alt="categoryIcon">
+              <img [src]="category.imageURL" class="photo icon" alt="{{category.name}}">
             </div>
             <h3>{{category.name}}</h3>
             <p>{{category.des}}</p>

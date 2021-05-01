@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CategoryService} from '../service/category.service';
 import {HttpClient} from '@angular/common/http';
 import {Category} from '../model/Category';
-import {Title} from "@angular/platform-browser";
+import {DomSanitizer, Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'category-list',
@@ -11,7 +11,7 @@ import {Title} from "@angular/platform-browser";
 })
 export class CategoryListComponent implements OnInit {
 
-  constructor(private categoryService: CategoryService, private httpClient: HttpClient) { }
+  constructor(private categoryService: CategoryService, private httpClient: HttpClient,private sanitizer: DomSanitizer) { }
 
   categories: Category[] = [];
 
@@ -22,15 +22,12 @@ export class CategoryListComponent implements OnInit {
 
   public getCategories() {
     this.categoryService.getCategories().subscribe(
-      category => {this.categories = category},
-      error => console.log(error)
-    );
-    return this.categories;
+      category => {
+        var data = this.httpClient.get('/api/categories/image?categoryName=' + "Savings", {responseType: 'blob'}).subscribe((blob: any) => {
+            let objectURL = URL.createObjectURL(blob);
+            category["imageURL"] = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+          },error=>console.log(error));
+          this.categories = category;},
+      error => console.log(error))
   }
-
-
-  getCategoryIcon(categoryIcon:string){
-    return this.categoryService.getCategoryIcon(categoryIcon)
-  }
-
 }

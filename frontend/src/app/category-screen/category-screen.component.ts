@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Title} from "@angular/platform-browser";
+import {CategoryListComponent} from "../category-list/category-list.component";
 
 @Component({
   selector: 'app-category-screen',
@@ -8,6 +9,7 @@ import {Title} from "@angular/platform-browser";
 })
 export class CategoryScreenComponent implements OnInit {
 
+  @ViewChild(CategoryListComponent) categories
   constructor(private titleService: Title) { }
 
   ngOnInit(): void {
@@ -16,6 +18,10 @@ export class CategoryScreenComponent implements OnInit {
 
   public setTitle(newTitle: string) {
     this.titleService.setTitle(newTitle);
+  }
+
+  reloadCategories(){
+    this.categories.getCategories();
   }
 
 }

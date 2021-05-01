@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { UserService } from "../../service/user.service";
 import { CategoryService } from "../../service/category.service";
 import { Category } from "../../model/Category";
@@ -18,7 +18,10 @@ export class AddCategoryComponent implements OnInit {
 
   category: Category;
   selectedFile: Image;
-  admin: boolean
+  admin: boolean;
+
+  @Output()
+  event = new EventEmitter<any>()
 
   processFile(icon: any, name: string) {
     const file: File = icon.files[0];
@@ -45,6 +48,8 @@ export class AddCategoryComponent implements OnInit {
       _ => {
         if (icon.files.length != 0)
           this.processFile(icon, this.category.name)
+
+        this.event.emit()
     },
       _ => alert('Bad request')
     );

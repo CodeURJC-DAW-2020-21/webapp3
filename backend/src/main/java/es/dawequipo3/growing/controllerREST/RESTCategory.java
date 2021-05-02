@@ -100,8 +100,8 @@ public class RESTCategory {
             ),
     })
     @JsonView(CategoryDetails.class)
-    @GetMapping("")
-    public ResponseEntity<ArrayList<Object>> categoryInfo(@RequestParam String name, HttpServletRequest request) {
+    @GetMapping("/{name}")
+    public ResponseEntity<ArrayList<Object>> categoryInfo(@PathVariable String name, HttpServletRequest request) {
         Optional<Category> op = categoryService.findByName(name);
         if (op.isPresent()) {
             Category category = op.get();

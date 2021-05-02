@@ -45,4 +45,8 @@ export class CategoryService {
   createCategory(newCat: Category) {
     return this.httpClient.post(this.urlPrefix, newCat);
   }
+
+  getCategory(name: string): Observable<Category> {
+    return this.httpClient.get(this.urlPrefix+"/"+name, {withCredentials:true}) as Observable<Category>
+  }
 }

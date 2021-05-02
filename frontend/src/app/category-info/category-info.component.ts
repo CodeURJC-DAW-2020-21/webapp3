@@ -1,39 +1,50 @@
 import {ApplicationRef, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import {PlanService} from '../explore/explore.service';
 import {UserService} from '../service/user.service';
-import {ImageService} from '../service/image.service';
 import {Plan} from '../explore/explore';
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { DomSanitizer } from '@angular/platform-browser';
+import {ActivatedRoute} from "@angular/router";
+import {CategoryService} from "../service/category.service";
+import {Category} from "../model/Category";
 
 @Component({
   selector: 'app-category-info',
   templateUrl: './category-info.component.html',
-  styleUrls: ['./category-info.component.css']
+  styleUrls: ['./categoryInfo.css']
 })
 export class CategoryInfoComponent implements OnInit {
 
-  constructor(private httpClient: HttpClient,private planService: PlanService, private userService: UserService,private change:ApplicationRef) { }
+  category: Category;
+  plans: Plan[]=[];
+  registered:boolean;
+  admin:boolean;
+  name: string;
+
+  constructor(private httpClient: HttpClient,private categoryService: CategoryService, private planService: PlanService, private userService: UserService,private change:ApplicationRef,
+              activatedRoute: ActivatedRoute) {
+    this.name = activatedRoute.snapshot.params['name'];
+  }
 
   ngOnInit() {
     this.refresh();
   }
 
-  plans: Plan[]=[];
-  registered:boolean;
-  admin:boolean;
-
   private refresh() {
-    this.plans = [];
-    this.planService.getPageByCat().subscribe(
-      pageable=> {
-        this.registered=this.userService.isLogged();
-        this.admin = this.userService.isAdmin()
-      },
-      error => console.log(error)
-      );
-    
+    this.userService.getUserInfo().subscribe(
+      _ => {
+        this.categoryService.getCategory(this.name).subscribe(
+          category => {
+            this.category = category[1];
+            this.category.imagePath = category[0].imagePath;
+            this.category.date = category[0].date;
+            this.plans = category[1].plans;
+          }
+        )
+        this.registered = this.userService.isLogged();
+        this.admin = this.userService.isAdmin();
+      }
+    )
+
   }
   public firstPlanDisplay(){
     //this function displays the second set of buttons on click

@@ -7,6 +7,7 @@ import {ProfileComponent} from './profile/profile.component';
 import {EditProfileComponent} from "./edit-profile/edit-profile.component";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {ExploreComponent} from './explore/explore.component';
+import {CategoryInfoComponent} from "./category-info/category-info.component";
 
 const appRoutes = [
   { path: '', component:IndexComponent },
@@ -17,6 +18,7 @@ const appRoutes = [
   { path: 'categories', component: CategoryScreenComponent },
   { path: 'getStarted', component: GetStartedComponent },
   { path: 'explore', component: ExploreComponent },
+  { path: 'categories/:name', component: CategoryInfoComponent},
   { path: '**', component: PageNotFoundComponent}
 ]
 

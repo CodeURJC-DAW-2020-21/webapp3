@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Category } from '../model/Category';
 
-
 class CategoryEdition {
   description: string;
   color: string;
@@ -42,4 +41,13 @@ export class CategoryService {
   getCategoryNotRegistered(name:string): Observable<Category> {
     return this.httpClient.get(this.urlPrefix+'/'+name) as Observable<Category>
   }
+
+  likeCategory(name:string): Observable<Category> {
+    return this.httpClient.put(this.urlPrefix+"/fav?categoryName="+name ,{withCredentials: true}) as Observable<Category>
+  }
+
+  dislikeCategory(name:string): Observable<Category> {
+    return this.httpClient.put(this.urlPrefix+"/notFav?categoryName="+name, {withCredentials: true}) as Observable<Category>
+  }
+
 }

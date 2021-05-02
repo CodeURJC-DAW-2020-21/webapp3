@@ -89,4 +89,20 @@ export class CategoryInfoComponent implements OnInit {
   private recoverPages(){
     this.refresh();
   }
+
+  public dislikeCategory(name:string){
+    this.categoryService.dislikeCategory(this.category.name).subscribe(
+      _ => {
+        this.recoverPages()
+      }
+    )
+  }
+
+  public likeCategory(name:string){
+    this.categoryService.likeCategory(this.category.name).subscribe(
+      _ => {
+        this.recoverPages()
+      }
+    )
+  }
 }

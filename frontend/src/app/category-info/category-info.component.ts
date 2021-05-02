@@ -99,6 +99,7 @@ export class CategoryInfoComponent implements OnInit {
   }
 
   public likeCategory(name:string){
+    this.category.likedByUser=!this.category.likedByUser;
     this.categoryService.likeCategory(this.category.name).subscribe(
       _ => {
         this.recoverPages()

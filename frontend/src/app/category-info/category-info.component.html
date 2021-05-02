@@ -10,10 +10,10 @@
         <div *ngIf="registered">
           <div *ngIf="category.likedByUser;else NotLiked">
             <input  alt="filledHeart" class="photoHeart like" name="submit" src="/assets/img/level/FullHeart.svg"
-                   type="image" (click)= likeCategory(category.name)>
+                   type="image" (click)= dislikeCategory(category.name)>
           </div>
           <ng-template #NotLiked>
-            <input (click)= dislikeCategory() alt="emptyHeart" class="photoHeart like" name="submit" src="/assets/img/level/EmptyHeart.svg"
+            <input (click)= likeCategory(category.name) alt="emptyHeart" class="photoHeart like" name="submit" src="/assets/img/level/EmptyHeart.svg"
                    type="image">
           </ng-template>
         </div>

@@ -24,6 +24,8 @@ import { CategoryScreenComponent } from './category-screen/category-screen.compo
 import { ExploreComponent } from './explore/explore.component';
 import { AddCategoryComponent } from './forms/add-category/add-category.component';
 import { AddPlanComponent } from './forms/add-plan/add-plan.component';
+import { CategoryInfoComponent } from './category-info/category-info.component';
+import { CategoryAccordionComponent } from './category-accordion/category-accordion.component';
 
 
 @NgModule({
@@ -46,7 +48,9 @@ import { AddPlanComponent } from './forms/add-plan/add-plan.component';
     CategoryScreenComponent,
     ExploreComponent,
     AddCategoryComponent,
-    AddPlanComponent
+    AddPlanComponent,
+    CategoryInfoComponent,
+    CategoryAccordionComponent
   ],
 
   imports: [

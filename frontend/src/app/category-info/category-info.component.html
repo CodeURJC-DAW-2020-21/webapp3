@@ -1,0 +1,75 @@
+<app-header></app-header>
+<!-- Start of the Page-->
+<section id="mentalHealth" class="mentalHealth">
+    <span *ngFor="let category of categoryList">
+        <div class="container">
+        <!-- Container of the header-->
+        <header class="section-header category" data-aos="fade-left">
+            <span *ngIf="user.isAdmin()">
+                <form class="editCategory" method="post" action="/editCategory/{{category.name}}">
+                    <input class="edit" type="submit" value="Edit category">
+                </form>
+            </span>
+            <div class="justify-content-center">
+                <h1>{{category.name}}</h1>
+
+                <span *ngIf=user.isLogged()>
+                    <span *ngIf="category.likedByUser else NotLikedBlock">
+                        <form method="post" action="/categoryInfo/{{category.name}}/like">
+                            <input type="image" name="submit" src="/assets/img/level/EmptyHeart.svg" class="photoHeart like" alt="emptyHeart">
+                        </form>
+                    </span>
+                    <span #NotLikedBlock>
+                        <form method="post" action="/categoryInfo/{{category.name}}/dislike">
+                            <input type="image" name="submit" src ="/assets/img/level/FullHeart.svg" class="photoHeart like" alt="filledHeart">
+                        </form>
+                    </span>
+                </span>
+                <h2 class="subtitle">{{category.description}}</h2>
+            </div>
+        </header>
+        <!-- End of the container of the header-->
+        <span *ngIf="user.isAdmin()">
+            <app-add-plan></app-add-plan>
+            <!-- End add button for Admin User -->
+        </span>>
+        <div class="row" data-aos="fade-up">
+            <!-- Tree section-->
+            <div class="col-md-5">
+                <header class="section-header">
+                    <h3>Your progress</h3>
+                </header>
+                <div class="imagenArbol">
+                    <span *ngIf="user.isLogged() else NotRegisteredBlock">
+                        <!--
+                        <img class="progress" src="{{image}}"/>
+                        <p class="update"> Last updated: {{date}} </p>
+                        -->
+                    </span> 
+                    <span #NotRegisteredBlock>
+                        <!--
+                        <img class="progress" src="{{image}}"/>
+                        <p class="update">To see your real progress: <a href="/getStarted">log in</a></p>
+                        -->
+                    </span>
+                </div>
+            </div>
+            <!-- End of Tree Section -->
+
+            <!-- Start of Task List -->
+            <div class="col-md-7 list">
+                <header class="section-header plan">
+                    <h3>Task</h3>
+                </header>
+
+                <app-category-accordion></app-category-accordion>
+                <!-- End Task List -->
+            </div>
+            <!-- End container Task List -->
+        </div>
+        <!-- End row -->
+    </div>
+    <!-- End Screen Container -->
+    </span>
+</section>
+<app-footer></app-footer>

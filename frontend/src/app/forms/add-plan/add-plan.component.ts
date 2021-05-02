@@ -24,15 +24,13 @@ export class AddPlanComponent implements OnInit {
 
   newPlan(event: MouseEvent, planName: string, abr: string, description: string, difficulty: string){
     this.plan = {
-      name: planName,
+      planName: planName,
       abv: abr,
       description: description,
-      difficulty: Number(difficulty),
-      categoryName: this.categoryName,
-      likedUser: false,
+      difficulty: Number(difficulty)
     }
-    this.planService.createPlan(this.plan,this.categoryName).subscribe(
-      _ => this.router.navigate(['']),
+    this.planService.createPlan(this.plan, this.categoryName).subscribe(
+      _ => this.router.navigate(['categories/'+this.categoryName]),
       error => alert("Bad request")
     )
   }

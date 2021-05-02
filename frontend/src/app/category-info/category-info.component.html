@@ -22,39 +22,7 @@
     </header>
 
     <div *ngIf="admin">
-      <!-- Add button for Admin User -->
-      <div class="editCategory align-items-center">
-        <button class="addNew" data-aos="fade-up" onclick="javascript:openCloseForm()">Add plan</button>
-        <div class="form-popup" id="myForm">
-          <form action="#" class="sign-up-form form-container"
-                enctype="multipart/form-data" method="post">
-            <h2 class="title">Create new plan</h2>
-            Plan name
-            <div class="input-field">
-              <i class="fas fa-signature"></i>
-              <input name="planName" placeholder="name" required type="text"/>
-            </div>
-            abv
-            <div class="input-field">
-              <i class="fas fa-font"></i>
-              <input name="abv" placeholder="abv" required type="text"/>
-            </div>
-            Description
-            <div class="input-field">
-              <i class="far fa-comments"></i>
-              <input name="description" placeholder="description" required type="text"/>
-            </div>
-            Difficulty
-            <div class="input-field">
-              <i class="fas fa-traffic-light"></i>
-              <input max="3" min="1" name="difficulty" placeholder="level" required
-                     type="number"/>
-            </div>
-            <input id="create" type="submit" value="Create plan"/>
-            <button id="cancel" onclick="javascript:closeForm()" type="button">Cancel</button>
-          </form>
-        </div>
-      </div>
+      <app-add-plan [categoryName]="category.name"></app-add-plan>
     </div>
     <div class="row" data-aos="fade-up">
       <!-- Tree section-->

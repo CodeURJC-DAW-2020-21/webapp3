@@ -24,7 +24,7 @@ export class EditCategoryComponent implements OnInit {
   ngOnInit(): void {
     this.setTitle("Growing - Edit plan")
     this.categoryName = this.activatedRoute.snapshot.params['categoryName']
-    this.categoryService.getCategoryByName(this.categoryName).subscribe(
+    this.categoryService.getCategory(this.categoryName).subscribe(
       category => {
         this.category = category
       }

@@ -1,4 +1,4 @@
-<div class="editCategory align-items-center" *ngIf="authorization.isAdmin()">
+<div class="editCategory align-items-center">
   <button class="addNew" (click)="openCloseForm()" data-aos="fade-up">Add plan</button>
   <div class="form-popup" id="myForm">
     <form action="/categoryInfo/{{categoryName}}/addPlan" method="post"

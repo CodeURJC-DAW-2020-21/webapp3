@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {UserService} from '../service/user.service';
 import {CategoryService} from '../service/category.service';
 import { Router } from '@angular/router';
 import { Category } from '../model/Category';
+import { User } from '../model/User';
 
 @Component({
   selector: 'app-category-info',
@@ -11,16 +12,16 @@ import { Category } from '../model/Category';
 })
 export class CategoryInfoComponent implements OnInit {
 
-  categoryList : Category[];
-  category: CategoryService;
-  user: UserService;
-  constructor(private router:Router, private categoryService: CategoryService) { }
+  user: User;
+  logged: boolean = false;
+  constructor(private router:Router, private categoryService: CategoryService ,public userService: UserService) { }
 
+  
   ngOnInit() {
     this.categoryService.getCategories().subscribe(
-      categoryList => this.categoryList = categoryList,
-      error => console.log(error)
-    );
+    
+    )
+    
   }
 
 }

@@ -1,0 +1,40 @@
+<main>
+  <section class="edit_data">
+
+    <h1 class="title"> Edit your data</h1>
+
+    <div class="container">
+      <!-- Photo -->
+      <div class="d-flex justify-content-center">
+        <div class="container photo">
+          <div class="profile-background">
+            <img class="photo" [src]="img" alt="profileImage">
+          </div>
+        </div>
+      </div>
+      <form method="post">
+        <div class="contact-form row">
+          <div class="d-flex justify-content-center">
+            <input type="text" readonly class="form-control-plaintext" id="staticPlanName"
+                   [value]="plan.name">
+          </div>
+          <div class="form-field col-lg-12">
+            <input #abv id="abv" class="form-control" name="abv" type="text"
+                   [value]="plan.abv">
+            <label for="abv" class="form-label">Abbreviation</label>
+          </div>
+          <div class="form-field col-lg-6">
+            <label for="newDescription">Description</label>
+            <textarea #newDescription [value]="plan.description" id="newDescription" name="newDescription" rows="5" cols="80"></textarea>
+          </div>
+          <select #difficulty name="difficulty" id="difficulty">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+          <button type="submit" (click)="editPlan($event, newDescription.value, abv.value, difficulty.value)" class="btn-submit">Confirm</button>
+        </div>
+    </form>
+    </div>
+  </section>
+</main>

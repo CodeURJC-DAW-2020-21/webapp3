@@ -38,6 +38,10 @@ export class CategoryService {
     return response.map(category => category.color);
   }
 
+  public getCategoryByName(categoryName: string): Observable<Category>{
+    return this.httpClient.get("/api/categories?name="+categoryName) as Observable<Category>
+  }
+
   public getCategoryIcon(categoryName: string):string{
     return 'https://localhost:8443'+this.urlPrefix+'/image?categoryName='+categoryName;
   }

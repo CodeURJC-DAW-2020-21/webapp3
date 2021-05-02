@@ -5,6 +5,4 @@ export class Category {
   color: string;
   description: string;
   imageURL?:SafeUrl;
-  likedByUser: boolean= false;
-
 }

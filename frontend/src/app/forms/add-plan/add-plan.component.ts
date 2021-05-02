@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {UserService} from "../../service/user.service";
 import {CategoryService} from "../../service/category.service";
 import {Plan} from "../../explore/explore";
 import {PlanService} from "../../explore/explore.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-plan',
@@ -11,9 +12,11 @@ import {PlanService} from "../../explore/explore.service";
 })
 export class AddPlanComponent implements OnInit {
 
-  constructor(public authorization: UserService, private categoryService: CategoryService, public planService: PlanService) { }
+  constructor(public authorization: UserService, private categoryService: CategoryService, private router: Router, public planService: PlanService) { }
 
+  @Input()
   categoryName: string;
+
   plan: Plan;
 
   ngOnInit(): void {
@@ -29,7 +32,8 @@ export class AddPlanComponent implements OnInit {
       likedUser: false,
     }
     this.planService.createPlan(this.plan,this.categoryName).subscribe(
-
+      _ => this.router.navigate(['']),
+      error => alert("Bad request")
     )
   }
 

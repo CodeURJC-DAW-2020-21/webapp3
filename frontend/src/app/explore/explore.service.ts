@@ -2,7 +2,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import {pageable, Plan} from './explore';
+import {User} from "../model/User";
 
+class PlanEdition {
+  newDescription: string;
+  abv: string;
+  difficulty: number;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +40,13 @@ export class PlanService {
 
   createPlan(newPlan: Plan, categoryName: string) {
     return this.httpClient.post(this.urlPrefix+"?category="+categoryName, newPlan,{withCredentials:true} ) as Observable<Plan>
+  }
+
+  getPlanByName(planName: string):Observable<Plan> {
+    return this.httpClient.get("api/plans?planName="+planName) as Observable<Plan>
+  }
+
+  editPlan(data: PlanEdition, planName: string): Observable<Plan> {
+    return this.httpClient.put("/api/plans?planName="+planName, data,{withCredentials: true}) as Observable<Plan>
   }
 }

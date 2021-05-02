@@ -1,0 +1,43 @@
+<main>
+  <section class="edit_data">
+
+    <h1 class="title"> Edit your data</h1>
+
+    <div class="container">
+      <!-- Photo -->
+      <div class="d-flex justify-content-center">
+        <div class="container photo">
+          <div class="profile-background">
+            <img class="photo" [src]="img" alt="profileImage">
+          </div>
+        </div>
+      </div>
+      <form method="post" enctype="multipart/form-data">
+        <div class="contact-form row">
+          <div class="d-flex justify-content-center">
+            <input type="text" readonly class="form-control-plaintext" id="staticCategoryName" [value]="category.name">
+
+            <div class="form-field col-lg-6">
+              <label for="newDescription">Description</label>
+              <textarea #newDescription [value]="category.description" id="newDescription" name="newDescription"
+                        rows="5" cols="80"></textarea>
+            </div>
+            <label for="color">Choose a color:</label>
+            <select #color name="color" id="color">
+              <option value="orange">Orange</option>
+              <option value="darkblue">Dark blue</option>
+              <option value="purple">Purple</option>
+              <option value="blue">Blue</option>
+              <option value="red">Red</option>
+              <option value="green">Green</option>
+            </select>
+            <input #icon type="file" name="imageFile" id="customFile">
+            <button type="submit" class="btn-submit"
+                    (click)="editCategory($event, newDescription.value, color.value, icon)">Confirm
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>

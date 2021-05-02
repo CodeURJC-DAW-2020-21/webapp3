@@ -4,6 +4,10 @@ import { HttpClient } from '@angular/common/http';
 import { Category } from '../model/Category';
 import { map } from 'rxjs/operators';
 
+class CategoryEdition {
+  description: string;
+  color: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -48,5 +52,9 @@ export class CategoryService {
 
   createCategory(newCat: Category) {
     return this.httpClient.post(this.urlPrefix, newCat);
+  }
+
+  editCategory(data: CategoryEdition, categoryName: string): Observable<Category> {
+    return this.httpClient.put("/api/categories?categoryName="+categoryName, data, {withCredentials: true}) as Observable<Category>
   }
 }

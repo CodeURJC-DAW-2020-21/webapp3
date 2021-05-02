@@ -49,4 +49,8 @@ export class CategoryService {
   getCategory(name: string): Observable<Category> {
     return this.httpClient.get(this.urlPrefix+"/"+name, {withCredentials:true}) as Observable<Category>
   }
+
+  getCategoryNotRegistered(name:string): Observable<Category> {
+    return this.httpClient.get(this.urlPrefix+'/'+name) as Observable<Category>
+  }
 }

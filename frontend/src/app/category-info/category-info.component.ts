@@ -1,4 +1,4 @@
-import {ApplicationRef, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import {ApplicationRef, Component, OnInit } from '@angular/core';
 import {PlanService} from '../explore/explore.service';
 import {UserService} from '../service/user.service';
 import {Plan} from '../explore/explore';
@@ -10,7 +10,7 @@ import {Category} from "../model/Category";
 @Component({
   selector: 'app-category-info',
   templateUrl: './category-info.component.html',
-  styleUrls: ['./categoryInfo.css']
+  styleUrls: ['./categoryInfo.css', '../../assets/css/category.css']
 })
 export class CategoryInfoComponent implements OnInit {
 
@@ -42,7 +42,13 @@ export class CategoryInfoComponent implements OnInit {
         )
         this.registered = this.userService.isLogged();
         this.admin = this.userService.isAdmin();
-      }
+      },
+      _ => this.categoryService.getCategoryNotRegistered(this.name).subscribe(
+        category => {
+          this.category = category[0];
+          this.plans = this.category.plans;
+        }
+      )
     )
 
   }

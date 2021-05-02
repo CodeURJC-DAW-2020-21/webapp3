@@ -17,6 +17,9 @@ export class PlanService {
     return this.httpClient.get(this.urlPrefix+"/explore?page="+page.toString()) as Observable<pageable>;
   }
 
+  getPageByCat(category:string):Observable<Plan[]> {
+    return this.httpClient.get("api/categories?name="+category) as Observable<Plan[]>;
+  }
   completePlan(planName:string):Observable<Plan>{
     return this.httpClient.post(this.urlPrefix +"/done?planName="+ planName,"",{withCredentials:true} ) as Observable<Plan>
   }

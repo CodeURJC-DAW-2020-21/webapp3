@@ -522,18 +522,18 @@ I have also added requests to the POSTMAN file and regulated access in the RESTS
 
 ***Note:*** For a better visualization, the image is an SVG file.
 
-## Video<a name="videoP4"></a>
+## Video <a name="videoP4"></a>
 
-[Youtube video](https://www.youtube.com/watch?v=RzoUvkS6uQ4)
+[Youtube video.](https://www.youtube.com/watch?v=RzoUvkS6uQ4)
 
 ## Participation of each member <a name="participationP4"></a>  
  
 **Jorge Adame Prudencio** <a name="jorgeP4"></a>
-  #### Description
+#### Description
 In this phase I made the index page, bring the categories' information, the about us screen and get started. Also I elaborated the user sign in and sign up, edition (including image posting and visualization), helped with charts and explore when needed.
 
 ---
- #### Top 5 commits
+#### Top 5 commits
 1. [User edition.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/00b246e939c1fdf4b61a9b7ab74fe7edcbd7a21f)
 2. [User creation.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/e79e920df18f8295919e56b8c7ca08ad3f917864)
 3. [Admin table part 1.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/ed6bbe013e2f8eae7e924d8345fb3ea292ca6336) - [Admin table part 2.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/37a67d53a18a11330820010dff0fdbfc062c6e00)
@@ -547,19 +547,19 @@ In this phase I made the index page, bring the categories' information, the abou
 3. [profile.component.ts](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/frontend/src/app/components/profile/profile.component.ts)
 4. [get-started.component.ts](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/frontend/src/app/components/get-started/get-started.component.ts)
 5. [completed-plan.service.ts](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/frontend/src/app/service/completed-plan.service.ts)
---
-
-**Antonio Agudo Esperanza** <a name="antonioP4"></a>
-  #### Description
-In this stage i tried to do the category-info template, i did the like and dislike category buttons, the SPA diagram and the edition of the youtube video
 
 ---
- #### Top 5 commits
-1. [add Button for like and dislike a category](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/f3047ac51279ecdd2dbb19edb888b535b68d33c2)
-2. [category info angularized and created plan service](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/189f7f8173e8b38f5d56236c445b81b0a526008d)
-3. [Navigation Diagram](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/b18b602c0a78067352f4e4070f74be7c9eb4926f)
-4. [Changes in category-info and added tree service and user service](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/61f89b8d235420fc307fce198651495d29b78005)
-5. [update category info](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/a7fc83007a0fc83daafa90486422423aa143020b)
+**Antonio Agudo Esperanza** <a name="antonioP4"></a>
+#### Description
+In this stage i tried to do the category-info template, i did the like and dislike category buttons, the SPA diagram and the edition of the youtube video.
+
+---
+#### Top 5 commits
+1. [Add Button for like and dislike a category.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/f3047ac51279ecdd2dbb19edb888b535b68d33c2)
+2. [Category info angularized and created plan service.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/189f7f8173e8b38f5d56236c445b81b0a526008d)
+3. [Navigation Diagram.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/b18b602c0a78067352f4e4070f74be7c9eb4926f)
+4. [Changes in category-info and added tree service and user service.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/61f89b8d235420fc307fce198651495d29b78005)
+5. [Update category info.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/a7fc83007a0fc83daafa90486422423aa143020b)
 
 ---
 #### Top 5 files
@@ -571,11 +571,11 @@ In this stage i tried to do the category-info template, i did the like and disli
 
 ---
 **Marcos Robles Rodríguez** <a name="marcosP4"></a>
-  #### Description
+#### Description
 In this phase I have done the explore page including the template, pagination, plan template and handling and image requests.
 
 ---
- #### Top 5 commits
+#### Top 5 commits
 1. [Complete explore images.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/f815f09f7e1e719e6183da21284e12061f45a1df)
 2. [Simplify the image requests.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/5cfe8fac1d2cc1aeea9850d1c093f3b20450c736)
 3. [Create the explore accordions.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/c63263f48ad964e9a627761db62646d36ec81119)
@@ -592,11 +592,11 @@ In this phase I have done the explore page including the template, pagination, p
 
 ---
 **Flavia Vásquez Gutiérrez** <a name="flaviaP4"></a>
- #### Description
+#### Description
 In this last phase, I have made the editing screens of plans and categories, I have added the button for new plans and categories and to download the pdf. Also, I have added the radar and doughnut charts.
 
 ---
- #### Top 5 commits
+#### Top 5 commits
 1. [Added and implemented the new category button.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/6cbb53814aff2370d53612f4c3ddc7e306843ded) - [Added new plan form.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/11ae4902b3f5d5ff8ae73115ca3102cf1e30c0fd)
 2. [Added edit plan page.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/fccbfeea7cebabaf58ba0883bca72c976eb3c78f) - [Added edit category page.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/f629d853033f96c242a96faf7f083ab31fb5108a)
 3. [Completed the edit pages.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/75254cfb112132391e11cf8c09506825e865d7bf) 

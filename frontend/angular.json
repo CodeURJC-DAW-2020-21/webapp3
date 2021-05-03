@@ -30,7 +30,11 @@
               "src/styles.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "html2pdf.js",
+              "chart.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -55,7 +59,7 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
+                  "maximumWarning": "100kb",
                   "maximumError": "100kb"
                 }
               ]

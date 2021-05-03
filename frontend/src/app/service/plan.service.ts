@@ -23,7 +23,7 @@ export class PlanService {
   }
 
   getPageByCat(category:string):Observable<Plan[]> {
-    return this.httpClient.get("api/categories?name="+category) as Observable<Plan[]>;
+    return this.httpClient.get("/api/categories?name="+category) as Observable<Plan[]>;
   }
   completePlan(planName:string):Observable<Plan>{
     return this.httpClient.post(this.urlPrefix +"/done?planName="+ planName,"",{withCredentials:true} ) as Observable<Plan>
@@ -42,7 +42,7 @@ export class PlanService {
   }
 
   getPlanByName(planName: string):Observable<Plan> {
-    return this.httpClient.get("api/plans?planName="+planName) as Observable<Plan>
+    return this.httpClient.get(this.urlPrefix + "?planName="+planName) as Observable<Plan>
   }
 
   editPlan(data: PlanEdition, planName: string): Observable<Plan> {

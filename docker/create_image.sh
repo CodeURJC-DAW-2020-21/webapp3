@@ -14,8 +14,7 @@ fi
 cd ../frontend
 
 # Build the application, but first, install npm
-sudo npm install
-ng build --prod --base-href="/new/"
+sudo docker run -v "$PWD":/usr/src/app -w /usr/src/app node:latest -c 'npm install && npm run build'
 
 # Copy all the dist folder content into backend static folder
 cp dist/frontend/* ../backend/src/main/resources/static/new

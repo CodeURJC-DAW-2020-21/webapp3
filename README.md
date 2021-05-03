@@ -520,6 +520,7 @@ I have also added requests to the POSTMAN file and regulated access in the RESTS
 
 <img src="https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/Documentation%20images/Stage%204%20images/SPADiagram.svg">
 
+***Note:*** For a better visualization, the image is an SVG file.
 
 ## Video<a name="videoP4"></a>
 
@@ -540,11 +541,11 @@ In this phase I made the index page, bring the categories' information, the abou
 
 ---
 #### Top 5 files
-1.
-2.
-3.
-4.
-5. 
+1. [admin-table.component.ts](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/frontend/src/app/components/admin/admin-table/admin-table.component.ts)
+2. [edit-profile.component.ts](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/frontend/src/app/components/edit-profile/edit-profile.component.ts)
+3. [profile.component.ts](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/frontend/src/app/components/profile/profile.component.ts)
+4. [get-started.component.ts](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/frontend/src/app/components/get-started/get-started.component.ts)
+5. [completed-plan.service.ts](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/frontend/src/app/service/completed-plan.service.ts)
 
 ---
 **Antonio Agudo Esperanza** <a name="antonioP4"></a>

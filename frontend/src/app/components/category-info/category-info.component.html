@@ -1,0 +1,90 @@
+<section class="mentalHealth" id="mentalHealth">
+  <div class="container">
+    <header class="section-header category" data-aos="fade-left">
+      <div *ngIf="admin">
+        <input class="edit" type="submit" [routerLink]="['/editCategory/'+category.name]" value="Edit category">
+      </div>
+      <div class="justify-content-center">
+        <h1>{{category.name}}</h1>
+
+        <div *ngIf="registered">
+          <div *ngIf="category.likedByUser;else NotLiked">
+            <input  alt="filledHeart" class="photoHeart like" name="submit" src="/src/assets/img/level/FullHeart.svg"
+                   type="image" (click)= dislikeCategory(category.name)>
+          </div>
+          <ng-template #NotLiked>
+            <input (click)= likeCategory(category.name) alt="emptyHeart" class="photoHeart like" name="submit" src="/src/assets/img/level/EmptyHeart.svg"
+                   type="image">
+          </ng-template>
+        </div>
+        <h2 class="subtitle">{{category.description}}</h2>
+      </div>
+    </header>
+
+    <div *ngIf="admin">
+      <app-add-plan [categoryName]="category.name"></app-add-plan>
+    </div>
+    <div class="row" data-aos="fade-up">
+      <!-- Tree section-->
+      <div class="col-md-5">
+        <header class="section-header">
+          <h3>Your progress</h3>
+        </header>
+        <div class="imagenArbol">
+          <div *ngIf="registered;else notReg">
+            <img class="progress" src="{{category.imagePath}}"/>
+            <p class="update"> Last updated: {{category.date}} </p>
+          </div>
+          <ng-template #notReg>
+            <img class="progress" src="/src/assets/img/progress/fase5.png"/>
+            <p class="update">To see your real progress: <a [routerLink]="['/getStarted']">log in</a></p>
+          </ng-template>
+
+        </div>
+      </div>
+      <!-- End of Tree Section -->
+
+      <!-- Start of Task List -->
+      <div class="col-md-7 list">
+        <header class="section-header plan">
+          <h3>Task</h3>
+        </header>
+        <ngb-accordion>
+          <ngb-panel *ngFor="let plan of plans">
+            <ng-template class="title" ngbPanelTitle>
+              <img alt="{{plan.categoryName}}" class="icon"
+                   src="/api/categories/image?categoryName={{plan.categoryName}}"/>
+              {{plan.name}}
+              <img alt="{{plan.difficulty}}" class="flag" src="/assets/img/level/level{{plan.difficulty}}.png"/>
+              <a *ngIf="admin"><i class="editIcon fas fa-pencil-alt fa-lg" [routerLink]="'/editPlan/'+plan.name"></i></a>
+            </ng-template>
+            <ng-template ngbPanelContent>
+              {{plan.description}}
+              <div *ngIf="registered" class="col-7">
+                <button id="start" class="start" (click)="firstPlanDisplay()">start
+                </button>
+                <button id="finish" class="finish" (click)="CompletePlan(plan.name)">I did it!
+                </button>
+                <button id="leave" class="leave" (click)="secondPlanDisplay()">I won't do it
+                </button>
+              </div>
+              <div *ngIf="registered" class="col-3">
+                <h2 *ngIf="registered && !plan.likedUser"><img id="FullHeart {{plan.name}}" class="like flag"
+                                                               (click)="FillHeart(plan.name)"
+                                                               src="/assets/img/level/EmptyHeart.svg"/></h2>
+
+                <h2 *ngIf="registered && plan.likedUser"><img id="EmptyHeart {{plan.name}}" class="like flag"
+                                                              (click)="EmptyHeart(plan.name)"
+                                                              src="/assets/img/level/FullHeart.svg"/></h2>
+              </div>
+            </ng-template>
+          </ngb-panel>
+        </ngb-accordion>
+
+        <!-- End Task List -->
+      </div>
+      <!-- End container Task List -->
+    </div>
+    <!-- End row -->
+  </div>
+</section>

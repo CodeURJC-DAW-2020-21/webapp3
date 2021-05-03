@@ -1,15 +1,15 @@
 import { RouterModule } from '@angular/router';
-import { IndexComponent } from './index/index.component';
-import { AboutUsComponent } from './about-us/about-us.component';
-import { CategoryScreenComponent } from './category-screen/category-screen.component';
-import { GetStartedComponent } from "./get-started/get-started.component";
-import { ProfileComponent } from './profile/profile.component';
-import { EditProfileComponent } from "./edit-profile/edit-profile.component";
-import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
-import { ExploreComponent } from './explore/explore.component';
-import { CategoryInfoComponent } from "./category-info/category-info.component";
-import { EditCategoryComponent } from "./admin/edit-category/edit-category.component";
-import { EditPlanComponent } from "./admin/edit-plan/edit-plan.component";
+import { IndexComponent } from './components/index/index.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { CategoryScreenComponent } from './components/category-screen/category-screen.component';
+import { GetStartedComponent } from "./components/get-started/get-started.component";
+import { ProfileComponent } from './components/profile/profile.component';
+import { EditProfileComponent } from "./components/edit-profile/edit-profile.component";
+import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
+import { ExploreComponent } from './components/explore/explore.component';
+import { CategoryInfoComponent } from "./components/category-info/category-info.component";
+import { EditCategoryComponent } from "./components/admin/edit-category/edit-category.component";
+import { EditPlanComponent } from "./components/admin/edit-plan/edit-plan.component";
 
 const appRoutes = [
   { path: '', component:IndexComponent },

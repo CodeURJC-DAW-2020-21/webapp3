@@ -3,8 +3,8 @@ import { UserService } from "../../service/user.service";
 import { CategoryService } from "../../service/category.service";
 import { Category } from "../../model/Category";
 import { Image } from "../../model/Image";
-import {Router} from "@angular/router";
-import {ImageService} from "../../service/image.service";
+import { Router } from "@angular/router";
+import { ImageService } from "../../service/image.service";
 
 
 @Component({

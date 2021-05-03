@@ -1,7 +1,7 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
-import {CompletedPlan} from "../model/CompletedPlan";
-import {CompletedPlanService} from "../service/completed-plan.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { CompletedPlan } from "../model/CompletedPlan";
+import { CompletedPlanService } from "../service/completed-plan.service";
+import { ActivatedRoute, Router } from "@angular/router";
 
 
 @Component({

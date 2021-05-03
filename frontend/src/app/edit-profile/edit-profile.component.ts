@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {Title} from "@angular/platform-browser";
-import {UserService} from "../service/user.service";
-import {Image} from "../model/Image";
-import {ImageService} from "../service/image.service";
-import {Router} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { Title } from "@angular/platform-browser";
+import { UserService } from "../service/user.service";
+import { Image } from "../model/Image";
+import { ImageService } from "../service/image.service";
+import { Router } from "@angular/router";
 
 
 class UserData{

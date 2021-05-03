@@ -1,11 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {UserService} from "../service/user.service";
-
-import {Router} from "@angular/router";
-import {Title} from "@angular/platform-browser";
-import {User} from "../model/User";
-import {ImageService} from "../service/image.service";
-import {Image} from "../model/Image";
+import { Component, OnInit } from '@angular/core';
+import { UserService } from "../service/user.service";
+import { Router } from "@angular/router";
+import { Title } from "@angular/platform-browser";
+import { User } from "../model/User";
+import { ImageService } from "../service/image.service";
+import { Image } from "../model/Image";
 
 
 @Component({

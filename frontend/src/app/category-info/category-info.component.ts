@@ -1,11 +1,11 @@
-import {ApplicationRef, Component, OnInit } from '@angular/core';
-import {PlanService} from '../explore/explore.service';
-import {UserService} from '../service/user.service';
-import {Plan} from '../explore/explore';
+import { ApplicationRef, Component, OnInit } from '@angular/core';
+import { PlanService } from '../explore/explore.service';
+import { UserService } from '../service/user.service';
+import { Plan } from '../explore/explore';
 import { HttpClient } from '@angular/common/http';
-import {ActivatedRoute} from "@angular/router";
-import {CategoryService} from "../service/category.service";
-import {Category} from "../model/Category";
+import { ActivatedRoute } from "@angular/router";
+import { CategoryService } from "../service/category.service";
+import { Category } from "../model/Category";
 
 @Component({
   selector: 'app-category-info',

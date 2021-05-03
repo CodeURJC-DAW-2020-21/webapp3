@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {Plan} from "../explore/explore";
-import {PlanService} from "../explore/explore.service";
-import {ImageService} from "../service/image.service";
-import {Title} from "@angular/platform-browser";
+import { ActivatedRoute, Router } from "@angular/router";
+import { Plan } from "../explore/explore";
+import { PlanService } from "../explore/explore.service";
+import { ImageService } from "../service/image.service";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: 'app-edit-plan',

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {CategoryService} from '../../service/category.service';
-import {Category} from "../../model/Category";
-import {map} from 'rxjs/operators';
-import {ChartOptions, ChartType} from "chart.js";
-import {RadarChartService} from "./radar-chart.service";
+import { CategoryService } from '../../service/category.service';
+import { ChartOptions, ChartType } from "chart.js";
+import { RadarChartService } from "./radar-chart.service";
 
 @Component({
   selector: 'app-radar-chart',

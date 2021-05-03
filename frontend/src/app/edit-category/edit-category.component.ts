@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Category} from "../model/Category";
-import {Image} from "../model/Image";
-import {Title} from "@angular/platform-browser";
-import {ActivatedRoute, Router} from "@angular/router";
-import {PlanService} from "../explore/explore.service";
-import {ImageService} from "../service/image.service";
-import {CategoryService} from "../service/category.service";
+import { Category } from "../model/Category";
+import { Image } from "../model/Image";
+import { Title } from "@angular/platform-browser";
+import { ActivatedRoute, Router } from "@angular/router";
+import { ImageService } from "../service/image.service";
+import { CategoryService } from "../service/category.service";
 
 @Component({
   selector: 'app-edit-category',

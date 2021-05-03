@@ -1,9 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {UserService} from "../../service/user.service";
-import {CategoryService} from "../../service/category.service";
-import {Plan} from "../../explore/explore";
-import {PlanService} from "../../explore/explore.service";
-import {Router} from "@angular/router";
+import { Component, Input, OnInit } from '@angular/core';
+import { UserService } from "../../service/user.service";
+import { CategoryService } from "../../service/category.service";
+import { Plan } from "../../explore/explore";
+import { PlanService } from "../../explore/explore.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-add-plan',

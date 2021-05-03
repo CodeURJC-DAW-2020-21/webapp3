@@ -550,22 +550,22 @@ In this phase I made the index page, bring the categories' information, the abou
 ---
 **Antonio Agudo Esperanza** <a name="antonioP4"></a>
  #### Description
-
+ In this stage i tried to do the category-info template, i did the like and dislike category buttons, the SPA diagram and the edition of the youtube video 
 ---
  #### Top 5 commits
-1.
-2. 
-3. 
-4. 
-5. 
+1. [add Button for like and dislike a category](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/f3047ac51279ecdd2dbb19edb888b535b68d33c2)
+2. [category info angularized and created plan service](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/189f7f8173e8b38f5d56236c445b81b0a526008d)
+3. [Navigation Diagram](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/b18b602c0a78067352f4e4070f74be7c9eb4926f)
+4. [Changes in category-info and added tree service and user service](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/61f89b8d235420fc307fce198651495d29b78005)
+5. [update category info](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/a7fc83007a0fc83daafa90486422423aa143020b)
 
 ---
 #### Top 5 files
-1.
-2. 
-3.
-4. 
-5. 
+1.[accordion-categories.component.html](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/Agudo/AngularCategoryInfo/frontend/src/app/category-info/accordion-categories.component.html)
+2. [accordion-categories.component.ts](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/Agudo/AngularCategoryInfo/frontend/src/app/category-info/accordion-categories.component.ts)
+3.[category-info.component.html](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/Agudo/AngularCategoryInfo/frontend/src/app/category-info/category-info.component.html)
+4.[category-info.component.ts](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/Agudo/AngularCategoryInfo/frontend/src/app/category-info/category-info.component.ts)
+5.[SPADiagram.svg](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/Documentation%20images/Stage%204%20images/SPADiagram.svg)
 
 ---
 **Marcos Robles Rodríguez** <a name="marcosP4"></a>

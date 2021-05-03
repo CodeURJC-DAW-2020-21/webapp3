@@ -527,11 +527,11 @@ I have also added requests to the POSTMAN file and regulated access in the RESTS
 
 ---
  #### Top 5 commits
-1. 
-2. 
-3. 
-4. 
-5. 
+1. [User edition.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/00b246e939c1fdf4b61a9b7ab74fe7edcbd7a21f)
+2. [User creation.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/e79e920df18f8295919e56b8c7ca08ad3f917864)
+3. [Admin table part 1.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/ed6bbe013e2f8eae7e924d8345fb3ea292ca6336) - [Admin table part 2.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/37a67d53a18a11330820010dff0fdbfc062c6e00)
+4. [Image posting and visualization](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/631e742ac39b6443e0c72e96228da3df9409581d)
+5. [Bar chart](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/fdba6e86ee24b2d9feac13f107a89c17e45a212f)
 
 ---
 #### Top 5 files

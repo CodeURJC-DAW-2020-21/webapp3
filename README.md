@@ -602,8 +602,8 @@ In this last phase, I have made the editing screens of plans and categories, I h
 
 ---
 #### Top 5 files
-1. 
-2. 
-3.
-4. 
-5.
+1. [add-plan.component.ts](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/frontend/src/app/components/admin/add-plan/add-plan.component.ts)
+2. [edit-plan.component.ts](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/frontend/src/app/components/admin/edit-plan/edit-plan.component.ts)
+3. [edit-category.component.ts](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/frontend/src/app/components/admin/edit-category/edit-category.component.ts)
+4. [add-category.component.ts](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/frontend/src/app/components/admin/add-category/add-category.component.ts)
+5. [doughnut-chart.component.ts](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/frontend/src/app/components/charts/doughnut-chart/doughnut-chart.component.ts)

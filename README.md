@@ -527,14 +527,13 @@ I have also added requests to the POSTMAN file and regulated access in the RESTS
   #### Description
 In this phase I made the index page, bring the categories' information, the about us screen and get started. Also I elaborated the user sign in and sign up, edition (including image posting and visualization), helped with charts and explore when needed.
 
-
 ---
  #### Top 5 commits
 1. [User edition.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/00b246e939c1fdf4b61a9b7ab74fe7edcbd7a21f)
 2. [User creation.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/e79e920df18f8295919e56b8c7ca08ad3f917864)
 3. [Admin table part 1.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/ed6bbe013e2f8eae7e924d8345fb3ea292ca6336) - [Admin table part 2.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/37a67d53a18a11330820010dff0fdbfc062c6e00)
-4. [Image posting and visualization](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/631e742ac39b6443e0c72e96228da3df9409581d)
-5. [Bar chart](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/fdba6e86ee24b2d9feac13f107a89c17e45a212f)
+4. [Image posting and visualization.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/631e742ac39b6443e0c72e96228da3df9409581d)
+5. [Bar chart.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/fdba6e86ee24b2d9feac13f107a89c17e45a212f)
 
 ---
 #### Top 5 files
@@ -544,12 +543,10 @@ In this phase I made the index page, bring the categories' information, the abou
 4.
 5. 
 
-
 ---
 **Antonio Agudo Esperanza** <a name="antonioP4"></a>
  #### Description
 
- 
 ---
  #### Top 5 commits
 1.
@@ -566,11 +563,9 @@ In this phase I made the index page, bring the categories' information, the abou
 4. 
 5. 
 
-
 ---
 **Marcos Robles Rodríguez** <a name="marcosP4"></a>
   #### Description
-
 
 ---
  #### Top 5 commits
@@ -591,14 +586,15 @@ In this phase I made the index page, bring the categories' information, the abou
 ---
 **Flavia Vásquez Gutiérrez** <a name="flaviaP4"></a>
  #### Description
+In this last phase, I have made the editing screens of plans and categories, I have added the button for new plans and categories and to download the pdf. Also, I have added the radar and doughnut charts.
 
 ---
  #### Top 5 commits
-1. 
-2.
-3. 
-4. 
-5.
+1. [Added and implemented the new category button.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/6cbb53814aff2370d53612f4c3ddc7e306843ded) - [Added new plan form.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/11ae4902b3f5d5ff8ae73115ca3102cf1e30c0fd)
+2. [Added edit plan page.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/fccbfeea7cebabaf58ba0883bca72c976eb3c78f) - [Added edit category page.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/f629d853033f96c242a96faf7f083ab31fb5108a)
+3. [Completed the edit pages.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/75254cfb112132391e11cf8c09506825e865d7bf) 
+4. [Completed doughnutChart and radarChart.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/5e817091d02472180987483dd404d59ea480b2b0) - [Added remaining files for charts.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/740239dbd98a4308bbfe09d62547d24e096d882d)
+5. [Added PDF converter to profile page.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/5d549b6a2a5196f6cee7490479a81be6e74726ae)
 
 ---
 #### Top 5 files

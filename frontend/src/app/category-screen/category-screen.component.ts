@@ -1,6 +1,6 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {Title} from "@angular/platform-browser";
-import {CategoryListComponent} from "../category-list/category-list.component";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Title } from "@angular/platform-browser";
+import { CategoryListComponent } from "../category-list/category-list.component";
 
 @Component({
   selector: 'app-category-screen',

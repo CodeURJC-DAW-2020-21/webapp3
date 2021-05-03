@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {CategoryService} from '../service/category.service';
-import {HttpClient} from '@angular/common/http';
-import {Category} from '../model/Category';
-import {DomSanitizer, Title} from "@angular/platform-browser";
+import { CategoryService } from '../service/category.service';
+import { HttpClient } from '@angular/common/http';
+import { Category } from '../model/Category';
+import { DomSanitizer } from "@angular/platform-browser";
 
 
 @Component({

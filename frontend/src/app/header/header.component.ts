@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../service/user.service';
-
-
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +7,6 @@ import {UserService} from '../service/user.service';
   styleUrls: ["../../../src/assets/vendor/font-awesome/css/all.css"]
 })
 export class HeaderComponent implements OnInit {
-
 
   constructor(public authorization: UserService) { }
 

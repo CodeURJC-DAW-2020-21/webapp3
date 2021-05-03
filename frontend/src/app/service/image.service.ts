@@ -25,6 +25,10 @@ export class ImageService {
     return this.httpClient.get('/api/users/profile/image', {withCredentials: true, responseType: 'blob'}) as Observable<Blob>;
   }
 
+  public getCategoryIcon(categoryName: string): Observable<Blob> {
+    return this.httpClient.get('/api/categories/image?categoryName='+categoryName, {responseType: 'blob'}) as Observable<Blob>;
+  }
+
   public addIconCategory(icon: File, categoryName: string): Observable<Object> {
     const formData = new FormData();
     formData.append('imageFile', icon, icon.name);

@@ -1,12 +1,11 @@
-import {Injectable} from '@angular/core';
-import {User} from "../model/User";
-import {HttpClient} from "@angular/common/http";
-import {Router} from "@angular/router";
-import {Observable} from "rxjs";
+import { Injectable } from '@angular/core';
+import { User } from "../model/User";
+import { HttpClient } from "@angular/common/http";
+import { Router } from "@angular/router";
+import { Observable } from "rxjs";
 
 const BASE_URL = '/api/auth';
 const urlPrefix = '/api/users';
-
 
 class UserEdition {
   username: string;

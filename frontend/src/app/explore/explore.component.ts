@@ -1,12 +1,9 @@
-import {ApplicationRef, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import {PlanService} from './explore.service';
-import {UserService} from '../service/user.service';
-import {ImageService} from '../service/image.service';
-import {Plan} from './explore';
-import {pageable} from './explore';
-import { Observable } from 'rxjs';
+import { ApplicationRef, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { PlanService } from './explore.service';
+import { UserService } from '../service/user.service';
+import { Plan } from './explore';
+import { pageable } from './explore';
 import { HttpClient } from '@angular/common/http';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-explore',

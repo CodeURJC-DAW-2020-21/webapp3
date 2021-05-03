@@ -1,10 +1,10 @@
 export interface Plan {
-  name:string;
-  abv:string;
+  planName:string;
+  abv?:string;
   description:string;
   difficulty:number;
-  categoryName:string;
-  likedUser:boolean;
+  categoryName?:string;
+  likedUser?:boolean;
 }
 
 export interface pageable{

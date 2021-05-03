@@ -3,8 +3,8 @@ import { UserService } from "../../service/user.service";
 import { CategoryService } from "../../service/category.service";
 import { Category } from "../../model/Category";
 import { Image } from "../../model/Image";
-import {Router} from "@angular/router";
-import {ImageService} from "../../service/image.service";
+import { Router } from "@angular/router";
+import { ImageService } from "../../service/image.service";
 
 
 @Component({
@@ -12,6 +12,7 @@ import {ImageService} from "../../service/image.service";
   templateUrl: './add-category.component.html',
   styleUrls: ['./add-category.component.css']
 })
+
 export class AddCategoryComponent implements OnInit {
 
   constructor(public authorization: UserService, private categoryService: CategoryService, private router: Router, private imageService: ImageService) { }
@@ -32,7 +33,7 @@ export class AddCategoryComponent implements OnInit {
 
       this.imageService.addIconCategory(this.selectedFile.file,name).subscribe(
         _ => {
-          this.router.navigate(['categories'])
+          this.router.navigate(['categories/'+this.category.name])
         })
     });
     reader.readAsDataURL(file);

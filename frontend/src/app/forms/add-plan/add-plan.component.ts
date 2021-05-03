@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import {UserService} from "../../service/user.service";
-import {CategoryService} from "../../service/category.service";
-import {Plan} from "../../explore/explore";
-import {PlanService} from "../../explore/explore.service";
+import { Component, Input, OnInit } from '@angular/core';
+import { UserService } from "../../service/user.service";
+import { CategoryService } from "../../service/category.service";
+import { Plan } from "../../explore/explore";
+import { PlanService } from "../../explore/explore.service";
+import { Router } from "@angular/router";
+import { CategoryInfoComponent } from "../../category-info/category-info.component";
 
 @Component({
   selector: 'app-add-plan',
@@ -11,8 +13,9 @@ import {PlanService} from "../../explore/explore.service";
 })
 export class AddPlanComponent implements OnInit {
 
-  constructor(public authorization: UserService, private categoryService: CategoryService, public planService: PlanService) { }
+  constructor(public authorization: UserService, private categoryService: CategoryService, private router: Router, public planService: PlanService, private  categoryInfo: CategoryInfoComponent) { }
 
+  @Input()
   categoryName: string;
   plan: Plan;
 
@@ -21,15 +24,16 @@ export class AddPlanComponent implements OnInit {
 
   newPlan(event: MouseEvent, planName: string, abr: string, description: string, difficulty: string){
     this.plan = {
-      name: planName,
+      planName: planName,
       abv: abr,
       description: description,
-      difficulty: Number(difficulty),
-      categoryName: this.categoryName,
-      likedUser: false,
+      difficulty: Number(difficulty)
     }
-    this.planService.createPlan(this.plan,this.categoryName).subscribe(
-
+    this.planService.createPlan(this.plan, this.categoryName).subscribe(
+      _ => {
+        this.categoryInfo.refresh()
+      },
+      error => alert("Bad request")
     )
   }
 

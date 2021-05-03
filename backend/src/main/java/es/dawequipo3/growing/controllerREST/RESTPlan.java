@@ -453,13 +453,13 @@ public class RESTPlan {
             )
     })
     @JsonView(PlanDetails.class)
-    @PutMapping("")
-    public ResponseEntity<Plan> editPlan(@RequestParam String planName, @RequestBody EditPlanRequest editPlanRequest) {
+    @PutMapping("{name}")
+    public ResponseEntity<Plan> editPlan(@PathVariable String name, @RequestBody EditPlanRequest editPlanRequest) {
         String newDescription=editPlanRequest.getNewDescription();
         String abv=editPlanRequest.getAbv();
         int difficulty=editPlanRequest.getDifficulty();
         try{
-            Plan plan=planService.editPlan(planName,newDescription,abv,difficulty);
+            Plan plan=planService.editPlan(name,newDescription,abv,difficulty);
             return ResponseEntity.ok(plan);
         } catch (NoSuchElementException e){
             return ResponseEntity.notFound().build();

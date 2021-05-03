@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ChartOptions, ChartType } from 'chart.js';
 import { CategoryListService } from '../../category-list/category-list.service';
 import { BarChartService } from "./bar-chart.service";
-import {generate} from "rxjs";
 
 @Component({
   selector: 'app-barChart',

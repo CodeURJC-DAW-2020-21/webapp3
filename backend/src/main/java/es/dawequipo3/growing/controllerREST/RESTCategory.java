@@ -100,8 +100,8 @@ public class RESTCategory {
             ),
     })
     @JsonView(CategoryDetails.class)
-    @GetMapping("")
-    public ResponseEntity<ArrayList<Object>> categoryInfo(@RequestParam String name, HttpServletRequest request) {
+    @GetMapping("/{name}")
+    public ResponseEntity<ArrayList<Object>> categoryInfo(@PathVariable String name, HttpServletRequest request) {
         Optional<Category> op = categoryService.findByName(name);
         if (op.isPresent()) {
             Category category = op.get();
@@ -245,15 +245,15 @@ public class RESTCategory {
             )
     })
     @JsonView(CategoriesDetails.class)
-    @PutMapping("")
+    @PutMapping("/{name}")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Category> editCategory(@RequestParam String categoryName, @RequestBody CategoryRequest categoryRequest) {
+    public ResponseEntity<Category> editCategory(@PathVariable String name, @RequestBody CategoryRequest categoryRequest) {
 
         String newDescription = categoryRequest.getDescription();
         String color = categoryRequest.getColor();
 
         try {
-            Category category = categoryService.editCategory(categoryName, newDescription, color);
+            Category category = categoryService.editCategory(name, newDescription, color);
             return ResponseEntity.ok(category);
         } catch (NoSuchElementException e) {
             return ResponseEntity.notFound().build();

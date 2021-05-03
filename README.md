@@ -522,7 +522,7 @@ I have also added requests to the POSTMAN file and regulated access in the RESTS
  
 **Jorge Adame Prudencio** <a name="jorgeP4"></a>
   #### Description
-
+In this phase I made the index page, bring the categories' information, the about us screen and get started. Also I elaborated the user sign in and sign up, edition (including image posting and visualization), helped with charts and explore when needed.
 
 
 ---

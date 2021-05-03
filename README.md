@@ -512,11 +512,11 @@ I have also added requests to the POSTMAN file and regulated access in the RESTS
 ## Set up of the IDE <a name="IDEsetup"></a>
 
 1. ```git clone https://github.com/CodeURJC-DAW-2020-21/webapp3.git```
-2. ```cd webapp3/frontend/```
-3. ```npm install```
-4. ```ng serve --proxy-config proxy.conf.json```
-5. ```cd ../docker/```
-6. ```docker-compose up```
+2. ```cd webapp3/docker/```
+3. ```docker-compose up -d```
+4. ```cd ../frontend/```
+5. ```npm install```
+6. ```ng serve --proxy-config proxy.conf.json```
 
 ## SPA Diagram <a name="diagramsP4"></a>
 

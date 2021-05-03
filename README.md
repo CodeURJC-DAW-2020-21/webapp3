@@ -47,6 +47,15 @@
   * [Marcos Robles Rodríguez](#marcosP3)
   * [Flavia Vásquez Gutiérrez](#flaviaP3)
 
+[**Phase 4**](#phase4)
+* [IDE set up](#IDEsetup)
+* [SPA diagram](#diagramsP4)
+* [Video](#videoP4)
+* [Participation of each member](#participationP4)
+  * [Jorge Adame Prudencio](#jorgeP4)
+  * [Antonio Agudo Esperanza](#antonioP4)
+  * [Marcos Robles Rodríguez](#marcosP4)
+  * [Flavia Vásquez Gutiérrez](#flaviaP4)
 ---
 ## PHASE 0  <a name="phase0"></a>  
 ## Team Members  <a name="team"></a>  
@@ -497,3 +506,101 @@ I have also added requests to the POSTMAN file and regulated access in the RESTS
 3. [api.postman_collection.json](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/api.postman_collection.json)
 4. [RESTPlan.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/controllerREST/RESTPlan.java)
 5. [RESTCategory.java](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/backend/src/main/java/es/dawequipo3/growing/controllerREST/RESTCategory.java)
+
+## PHASE 4 <a name="phase4"></a> 
+
+## Set up of the IDE <a name="IDEsetup"></a>
+
+
+
+## SPA Diagram <a name="diagramsP4"></a>
+
+## Video<a name="videoP4"></a>
+
+
+## Participation of each member <a name="participationP4"></a>  
+ 
+**Jorge Adame Prudencio** <a name="jorgeP4"></a>
+  #### Description
+
+
+
+---
+ #### Top 5 commits
+1. 
+2. 
+3. 
+4. 
+5. 
+
+---
+#### Top 5 files
+1.
+2.
+3.
+4.
+5. 
+
+
+---
+**Antonio Agudo Esperanza** <a name="antonioP4"></a>
+ #### Description
+
+ 
+---
+ #### Top 5 commits
+1.
+2. 
+3. 
+4. 
+5. 
+
+---
+#### Top 5 files
+1.
+2. 
+3.
+4. 
+5. 
+
+
+---
+**Marcos Robles Rodríguez** <a name="marcosP4"></a>
+  #### Description
+
+
+---
+ #### Top 5 commits
+1. 
+2.
+3.
+4. 
+5.
+
+---
+#### Top 5 files
+1. 
+2.
+3. 
+4.
+5.
+
+---
+**Flavia Vásquez Gutiérrez** <a name="flaviaP4"></a>
+ #### Description
+
+---
+ #### Top 5 commits
+1. 
+2.
+3. 
+4. 
+5.
+
+---
+#### Top 5 files
+1. 
+2. 
+3.
+4. 
+5.

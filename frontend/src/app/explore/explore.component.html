@@ -19,7 +19,7 @@
             <img alt="{{plan.categoryName}}" class="icon" src="/api/categories/image?categoryName={{plan.categoryName}}"/>
             {{plan.name}}
             <img alt="{{plan.difficulty}}" class="flag" src="/assets/img/level/level{{plan.difficulty}}.png"/>
-            <a *ngIf="admin"><i class="editIcon fas fa-pencil-alt fa-lg"></i></a>
+            <a *ngIf="admin"><i class="editIcon fas fa-pencil-alt fa-lg" [routerLink]="'/editPlan/'+plan.name"></i></a>
           </ng-template>
           <ng-template ngbPanelContent>
             {{plan.description}}
@@ -30,7 +30,7 @@
               </button>
               <button  id="leave" class="leave" (click)="secondPlanDisplay()">I won't do it
               </button>
-              
+
             </div>
             <div *ngIf="registered" class="col-3">
               <h2 *ngIf="registered && !plan.likedUser"><img id="FullHeart {{plan.name}}" class="like flag"

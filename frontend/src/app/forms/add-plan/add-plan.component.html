@@ -1,8 +1,7 @@
-<div class="editCategory align-items-center">
+<div class="editCategory align-items-center" >
   <button class="addNew" (click)="openCloseForm()" data-aos="fade-up">Add plan</button>
   <div class="form-popup" id="myForm">
-    <form action="/categoryInfo/{{categoryName}}/addPlan" method="post"
-          class="sign-up-form form-container" enctype="multipart/form-data">
+    <form method="post" class="sign-up-form form-container" enctype="multipart/form-data">
       <h2 class="title">Create new plan</h2>
       <!-- Plan name -->
       <div class="input-field">
@@ -26,7 +25,7 @@
                required/>
       </div>
       <button type="submit" id="create" (click)="newPlan($event, planName.value, abv.value, description.value, difficulty.value)">Create plan</button>
-      <button type="button" id="cancel" (click)="openCloseForm()">Cancel</button>
+      <button type="reset" id="cancel" (click)="openCloseForm()">Cancel</button>
     </form>
 
   </div>

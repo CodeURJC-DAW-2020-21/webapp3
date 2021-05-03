@@ -4,6 +4,7 @@ import { CategoryService } from "../../service/category.service";
 import { Plan } from "../../explore/explore";
 import { PlanService } from "../../explore/explore.service";
 import { Router } from "@angular/router";
+import { CategoryInfoComponent } from "../../category-info/category-info.component";
 
 @Component({
   selector: 'app-add-plan',
@@ -12,11 +13,10 @@ import { Router } from "@angular/router";
 })
 export class AddPlanComponent implements OnInit {
 
-  constructor(public authorization: UserService, private categoryService: CategoryService, private router: Router, public planService: PlanService) { }
+  constructor(public authorization: UserService, private categoryService: CategoryService, private router: Router, public planService: PlanService, private  categoryInfo: CategoryInfoComponent) { }
 
   @Input()
   categoryName: string;
-
   plan: Plan;
 
   ngOnInit(): void {
@@ -30,7 +30,9 @@ export class AddPlanComponent implements OnInit {
       difficulty: Number(difficulty)
     }
     this.planService.createPlan(this.plan, this.categoryName).subscribe(
-      _ => this.router.navigate(['categories/'+this.categoryName]),
+      _ => {
+        this.categoryInfo.refresh()
+      },
       error => alert("Bad request")
     )
   }

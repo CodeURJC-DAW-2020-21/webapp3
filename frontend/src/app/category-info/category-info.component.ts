@@ -29,7 +29,7 @@ export class CategoryInfoComponent implements OnInit {
     this.refresh();
   }
 
-  private refresh() {
+  public refresh() {
     this.userService.getUserInfo().subscribe(
       _ => {
         this.categoryService.getCategory(this.name).subscribe(

@@ -550,6 +550,7 @@ In this phase I made the index page, bring the categories' information, the abou
 ---
 **Antonio Agudo Esperanza** <a name="antonioP4"></a>
  #### Description
+ 
  In this stage i tried to do the category-info template, i did the like and dislike category buttons, the SPA diagram and the edition of the youtube video 
 ---
  #### Top 5 commits

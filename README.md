@@ -546,8 +546,8 @@ In this phase I made the index page, bring the categories' information, the abou
 3. [profile.component.ts](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/frontend/src/app/components/profile/profile.component.ts)
 4. [get-started.component.ts](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/frontend/src/app/components/get-started/get-started.component.ts)
 5. [completed-plan.service.ts](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/frontend/src/app/service/completed-plan.service.ts)
---
 
+---
 **Antonio Agudo Esperanza** <a name="antonioP4"></a>
   #### Description
 In this stage i tried to do the category-info template, i did the like and dislike category buttons, the SPA diagram and the edition of the youtube video

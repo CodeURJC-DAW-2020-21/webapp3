@@ -546,8 +546,8 @@ In this phase I made the index page, bring the categories' information, the abou
 3. [profile.component.ts](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/frontend/src/app/components/profile/profile.component.ts)
 4. [get-started.component.ts](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/frontend/src/app/components/get-started/get-started.component.ts)
 5. [completed-plan.service.ts](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/frontend/src/app/service/completed-plan.service.ts)
+--
 
----
 **Antonio Agudo Esperanza** <a name="antonioP4"></a>
   #### Description
 In this stage i tried to do the category-info template, i did the like and dislike category buttons, the SPA diagram and the edition of the youtube video
@@ -571,22 +571,23 @@ In this stage i tried to do the category-info template, i did the like and disli
 ---
 **Marcos Robles Rodríguez** <a name="marcosP4"></a>
   #### Description
+In this phase I have done the explore page including the template, pagination, plan template and handling and image requests.
 
 ---
  #### Top 5 commits
-1. 
-2.
-3.
-4. 
-5.
+1. [Complete explore images.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/f815f09f7e1e719e6183da21284e12061f45a1df)
+2. [Simplify the image requests.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/5cfe8fac1d2cc1aeea9850d1c093f3b20450c736)
+3. [Create the explore accordions.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/c63263f48ad964e9a627761db62646d36ec81119)
+4. [Complete pagination.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/abe18d07a667f39914a16b9a5e75c0d218f6c4c1)
+5. [Create the buttons.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/8d7812f5bc675d9984b9e122efab06563eb76a74)
 
 ---
 #### Top 5 files
-1. 
-2.
-3. 
-4.
-5.
+1. [explore.component.html](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/frontend/src/app/components/explore/explore.component.html)
+2. [explore.component.ts](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/frontend/src/app/components/explore/explore.component.ts)
+3. [plan.service.ts](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/frontend/src/app/service/plan.service.ts)
+4. [Plan.ts](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/frontend/src/app/model/Plan.ts)
+5. [category-info.component.html](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/frontend/src/app/components/category-info/category-info.component.html)
 
 ---
 **Flavia Vásquez Gutiérrez** <a name="flaviaP4"></a>

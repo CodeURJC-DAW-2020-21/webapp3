@@ -35,16 +35,16 @@
             <div *ngIf="registered" class="col-3">
               <h2 *ngIf="registered && !plan.likedUser"><img id="FullHeart {{plan.name}}" class="like flag"
                                                              (click)="FillHeart(plan.name)"
-                                                             src="/src/assets/img/level/EmptyHeart.svg"/></h2>
+                                                             src="/assets/img/level/EmptyHeart.svg"/></h2>
 
               <h2 *ngIf="registered && plan.likedUser"><img id="EmptyHeart {{plan.name}}" class="like flag"
                                                             (click)="EmptyHeart(plan.name)"
-                                                            src="/src/assets/img/level/FullHeart.svg"/></h2>
+                                                            src="/assets/img/level/FullHeart.svg"/></h2>
             </div>
           </ng-template>
         </ngb-panel>
       </ngb-accordion>
-      <h2 id="spinner"><img src="/src/assets/img/spinner.gif"/></h2>
+      <h2 id="spinner"><img src="/assets/img/spinner.gif"/></h2>
       <button id="loadmore" class="loadmore" (click)="loadMore()">Load more plans</button>
     </div>
 

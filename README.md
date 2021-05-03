@@ -561,11 +561,11 @@ In this phase I made the index page, bring the categories' information, the abou
 
 ---
 #### Top 5 files
-1.[accordion-categories.component.html](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/Agudo/AngularCategoryInfo/frontend/src/app/category-info/accordion-categories.component.html)
+1. [accordion-categories.component.html](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/Agudo/AngularCategoryInfo/frontend/src/app/category-info/accordion-categories.component.html)
 2. [accordion-categories.component.ts](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/Agudo/AngularCategoryInfo/frontend/src/app/category-info/accordion-categories.component.ts)
-3.[category-info.component.html](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/Agudo/AngularCategoryInfo/frontend/src/app/category-info/category-info.component.html)
-4.[category-info.component.ts](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/Agudo/AngularCategoryInfo/frontend/src/app/category-info/category-info.component.ts)
-5.[SPADiagram.svg](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/Documentation%20images/Stage%204%20images/SPADiagram.svg)
+3. [category-info.component.html](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/Agudo/AngularCategoryInfo/frontend/src/app/category-info/category-info.component.html)
+4. [category-info.component.ts](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/Agudo/AngularCategoryInfo/frontend/src/app/category-info/category-info.component.ts)
+5. [SPADiagram.svg](https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/Documentation%20images/Stage%204%20images/SPADiagram.svg)
 
 ---
 **Marcos Robles Rodríguez** <a name="marcosP4"></a>

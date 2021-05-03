@@ -571,11 +571,12 @@ I have also added requests to the POSTMAN file and regulated access in the RESTS
 
 ---
  #### Top 5 commits
-1. 
-2.
-3.
-4. 
-5.
+1. [Complete explore images.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/f815f09f7e1e719e6183da21284e12061f45a1df)
+2. [Simplify the image requests.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/5cfe8fac1d2cc1aeea9850d1c093f3b20450c736)
+3. [Create the explore accordions.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/c63263f48ad964e9a627761db62646d36ec81119)
+4. [Complete pagination.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/abe18d07a667f39914a16b9a5e75c0d218f6c4c1)
+5. [Create the buttons.](https://github.com/CodeURJC-DAW-2020-21/webapp3/commit/8d7812f5bc675d9984b9e122efab06563eb76a74)
+
 
 ---
 #### Top 5 files

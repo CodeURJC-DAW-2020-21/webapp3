@@ -5,6 +5,7 @@ import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ImageService } from "../../../service/image.service";
 import { CategoryService } from "../../../service/category.service";
+import {UserService} from '../../../service/user.service';
 
 @Component({
   selector: 'app-edit-category',
@@ -18,11 +19,22 @@ export class EditCategoryComponent implements OnInit {
   category: Category;
   selectedFile: Image;
 
-  constructor(private titleService: Title, private activatedRoute: ActivatedRoute, private categoryService: CategoryService, private imageService:ImageService, private router: Router) { }
+  constructor(private userService: UserService, private titleService: Title, private activatedRoute: ActivatedRoute, private categoryService: CategoryService, private imageService:ImageService, private router: Router) { }
 
   ngOnInit(): void {
-    this.setTitle("Growing - Edit plan")
+    this.setTitle("Growing - Edit category")
     this.categoryName = this.activatedRoute.snapshot.params['name']
+    this.userService.getUserInfo().subscribe(
+      _ => {
+        if (!this.userService.isAdmin()){
+          alert("You need to be admin to complete this action"); this.router.navigate(['']);
+        }
+      },
+      _ => {
+        alert("You need to be registered to continue");
+        this.router.navigate(['/getStarted'])
+      }
+    )
     this.categoryService.getCategory(this.categoryName).subscribe(
       category => {
         this.category = category

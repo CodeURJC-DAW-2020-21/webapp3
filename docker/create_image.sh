@@ -4,7 +4,7 @@
 if [ -d "../backend/src/main/resources/static/new" ]
 then
 # Delete all the inside content 
-	rm -f ../backend/src/main/resources/static/new/*
+	rm -rf ../backend/src/main/resources/static/new
 else
 # Create the folder
 	mkdir ../backend/src/main/resources/static/new
@@ -14,7 +14,7 @@ fi
 cd ../frontend
 
 # Build the application, but first, install npm
-sudo docker run -v "$PWD":/usr/src/app -w /usr/src/app node:latest -c 'npm install && npm run build'
+sudo docker run --rm -v "$PWD":/usr/src/app -w /usr/src/app node:16.0.0 /bin/bash -c "npm install && npm run build"
 
 # Copy all the dist folder content into backend static folder
 cp dist/frontend/* ../backend/src/main/resources/static/new

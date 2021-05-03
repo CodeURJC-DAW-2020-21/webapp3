@@ -66,6 +66,10 @@ export class ProfileComponent implements OnInit {
             email: true,
             ad: this.admin
           }
+      },
+      _ => {
+        alert("You need to be registered to continue");
+        this.router.navigate(['/getStarted'])
       }
     )
   }

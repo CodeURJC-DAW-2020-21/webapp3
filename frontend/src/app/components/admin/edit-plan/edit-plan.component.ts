@@ -4,6 +4,7 @@ import { Plan } from "../../../model/Plan";
 import { PlanService } from "../../../service/plan.service";
 import { ImageService } from "../../../service/image.service";
 import { Title } from "@angular/platform-browser";
+import {UserService} from '../../../service/user.service';
 
 @Component({
   selector: 'app-edit-plan',
@@ -16,13 +17,24 @@ export class EditPlanComponent implements OnInit {
   plan: Plan;
   img;
 
-  constructor(private titleService: Title, private activatedRoute: ActivatedRoute, private planService: PlanService, private imageService:ImageService, private router: Router) {
+  constructor(private userService: UserService, private titleService: Title, private activatedRoute: ActivatedRoute, private planService: PlanService, private imageService:ImageService, private router: Router) {
 
   }
 
   ngOnInit(): void {
     this.setTitle("Growing - Edit plan")
     this.name = this.activatedRoute.snapshot.params['name'];
+    this.userService.getUserInfo().subscribe(
+      _ => {
+        if (!this.userService.isAdmin()){
+          alert("You need to be admin to complete this action"); this.router.navigate(['']);
+        }
+      },
+      _ => {
+        alert("You need to be registered to continue");
+        this.router.navigate(['/getStarted'])
+      }
+    )
     this.planService.getPlanByName(this.name).subscribe(
       plan => {
         this.plan = plan;

@@ -38,6 +38,10 @@ export class EditProfileComponent implements OnInit {
     this.authorizationService.getUserInfo().subscribe(
       user => {
         this.user = user
+      },
+      _ => {
+        alert("You need to be registered to continue");
+        this.router.navigate(['/getStarted'])
       }
     )
   }

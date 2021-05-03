@@ -518,6 +518,9 @@ I have also added requests to the POSTMAN file and regulated access in the RESTS
 
 ## SPA Diagram <a name="diagramsP4"></a>
 
+<img src="https://github.com/CodeURJC-DAW-2020-21/webapp3/blob/main/Documentation%20images/Stage%204%20images/SPADiagram.svg">
+
+
 ## Video<a name="videoP4"></a>
 
 

@@ -47,6 +47,6 @@ export class PlanService {
   }
 
   editPlan(data: PlanEdition, planName: string): Observable<Plan> {
-    return this.httpClient.put("/api/plans?planName="+planName, data,{withCredentials: true}) as Observable<Plan>
+    return this.httpClient.put("/api/plans/"+planName, data,{withCredentials: true}) as Observable<Plan>
   }
 }

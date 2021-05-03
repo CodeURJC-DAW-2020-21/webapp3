@@ -2,7 +2,7 @@
   <div class="container">
     <header class="section-header category" data-aos="fade-left">
       <div *ngIf="admin">
-        <input class="edit" type="submit" value="Edit category">
+        <input class="edit" type="submit" [routerLink]="['/editCategory/'+category.name]" value="Edit category">
       </div>
       <div class="justify-content-center">
         <h1>{{category.name}}</h1>
@@ -56,7 +56,7 @@
                    src="/api/categories/image?categoryName={{plan.categoryName}}"/>
               {{plan.name}}
               <img alt="{{plan.difficulty}}" class="flag" src="/assets/img/level/level{{plan.difficulty}}.png"/>
-              <a *ngIf="admin"><i class="editIcon fas fa-pencil-alt fa-lg"></i></a>
+              <a *ngIf="admin"><i class="editIcon fas fa-pencil-alt fa-lg" [routerLink]="'/editPlan/'+plan.name"></i></a>
             </ng-template>
             <ng-template ngbPanelContent>
               {{plan.description}}

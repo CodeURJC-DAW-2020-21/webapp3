@@ -31,7 +31,7 @@ export class CategoryService {
   }
 
   editCategory(data: CategoryEdition, categoryName: string): Observable<Category> {
-    return this.httpClient.put("/api/categories?categoryName="+categoryName, data, {withCredentials: true}) as Observable<Category>
+    return this.httpClient.put("/api/categories/"+categoryName, data, {withCredentials: true}) as Observable<Category>
   }
 
   getCategory(name: string): Observable<Category> {

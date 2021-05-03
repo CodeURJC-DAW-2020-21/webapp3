@@ -10,7 +10,7 @@ import {CategoryService} from "../service/category.service";
 @Component({
   selector: 'app-edit-category',
   templateUrl: './edit-category.component.html',
-  styleUrls: ['./edit-category.component.css']
+  styleUrls: ['../../assets/css/editProfileStyle.css', '../../assets/css/profileStylesheet.css']
 })
 export class EditCategoryComponent implements OnInit {
 
@@ -23,7 +23,7 @@ export class EditCategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.setTitle("Growing - Edit plan")
-    this.categoryName = this.activatedRoute.snapshot.params['categoryName']
+    this.categoryName = this.activatedRoute.snapshot.params['name']
     this.categoryService.getCategory(this.categoryName).subscribe(
       category => {
         this.category = category
@@ -61,7 +61,7 @@ export class EditCategoryComponent implements OnInit {
 
       this.imageService.addIconCategory(this.selectedFile.file, this.categoryName).subscribe(
         _ => {
-          this.router.navigate(['categories'])
+          this.router.navigate(['categories/'+this.categoryName])
         })
     });
     reader.readAsDataURL(file);
@@ -77,8 +77,7 @@ export class EditCategoryComponent implements OnInit {
       _ => {
         if (icon.files.length > 0)
           this.processFile(icon)
-        else
-          this.router.navigate(['categories'])
+        this.router.navigate(['categories/'+this.categoryName])
       }
     )
 

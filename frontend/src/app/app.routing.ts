@@ -8,6 +8,8 @@ import {EditProfileComponent} from "./edit-profile/edit-profile.component";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {ExploreComponent} from './explore/explore.component';
 import {CategoryInfoComponent} from "./category-info/category-info.component";
+import {EditCategoryComponent} from "./edit-category/edit-category.component";
+import {EditPlanComponent} from "./edit-plan/edit-plan.component";
 
 const appRoutes = [
   { path: '', component:IndexComponent },
@@ -19,6 +21,8 @@ const appRoutes = [
   { path: 'getStarted', component: GetStartedComponent },
   { path: 'explore', component: ExploreComponent },
   { path: 'categories/:name', component: CategoryInfoComponent},
+  { path: 'editCategory/:name', component: EditCategoryComponent},
+  { path: 'editPlan/:name', component: EditPlanComponent},
   { path: '**', component: PageNotFoundComponent}
 ]
 

@@ -67,7 +67,9 @@ export class CategoryInfoComponent implements OnInit {
   }
   public CompletePlan(PlanName){
     this.secondPlanDisplay();
-    this.planService.completePlan(PlanName).subscribe();
+    this.planService.completePlan(PlanName).subscribe(
+      _=>{this.refresh()}
+    );
   }
 
   public EmptyHeart(abbv: string){

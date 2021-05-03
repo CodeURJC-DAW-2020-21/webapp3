@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartOptions, ChartType } from 'chart.js';
-import { CategoryListService } from '../../category-list/category-list.service';
-import { BarChartService } from "./bar-chart.service";
+import { CategoryService } from '../../service/category.service';
+import { BarChartService } from "../../service/charts/bar-chart.service";
 
 @Component({
   selector: 'app-barChart',
@@ -32,7 +32,7 @@ export class BarChartComponent implements OnInit {
     responsive: true
   };
 
-  constructor(private categoryService : CategoryListService, private barChartService: BarChartService) {
+  constructor(private categoryService : CategoryService, private barChartService: BarChartService) {
   }
 
   ngOnInit() {

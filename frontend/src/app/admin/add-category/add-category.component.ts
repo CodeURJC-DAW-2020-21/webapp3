@@ -32,9 +32,7 @@ export class AddCategoryComponent implements OnInit {
       this.selectedFile = new Image(event.target.result, file);
 
       this.imageService.addIconCategory(this.selectedFile.file,name).subscribe(
-        _ => {
-          this.router.navigate(['categories/'+this.category.name])
-        })
+        _ => {})
     });
     reader.readAsDataURL(file);
   }

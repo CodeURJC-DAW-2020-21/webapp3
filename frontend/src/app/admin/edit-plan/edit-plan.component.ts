@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { Plan } from "../explore/explore";
-import { PlanService } from "../explore/explore.service";
-import { ImageService } from "../service/image.service";
+import { Plan } from "../../model/Plan";
+import { PlanService } from "../../service/plan.service";
+import { ImageService } from "../../service/image.service";
 import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: 'app-edit-plan',
   templateUrl: './edit-plan.component.html',
-  styleUrls: ['../../assets/css/editProfileStyle.css', '../../assets/css/profileStylesheet.css']
+  styleUrls: ['../../../assets/css/editProfileStyle.css', '../../../assets/css/profileStylesheet.css']
 })
 export class EditPlanComponent implements OnInit {
 

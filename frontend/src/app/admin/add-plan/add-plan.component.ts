@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { UserService } from "../../service/user.service";
 import { CategoryService } from "../../service/category.service";
-import { Plan } from "../../explore/explore";
-import { PlanService } from "../../explore/explore.service";
+import { Plan } from "../../model/Plan";
+import { PlanService } from "../../service/plan.service";
 import { Router } from "@angular/router";
 import { CategoryInfoComponent } from "../../category-info/category-info.component";
 

@@ -1,7 +1,7 @@
 import { ApplicationRef, Component, OnInit } from '@angular/core';
-import { PlanService } from '../explore/explore.service';
+import { PlanService } from '../service/plan.service';
 import { UserService } from '../service/user.service';
-import { Plan } from '../explore/explore';
+import { Plan } from '../model/Plan';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from "@angular/router";
 import { CategoryService } from "../service/category.service";

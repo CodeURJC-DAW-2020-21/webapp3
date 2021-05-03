@@ -1,8 +1,8 @@
 import { ApplicationRef, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { PlanService } from './explore.service';
+import { PlanService } from '../service/plan.service';
 import { UserService } from '../service/user.service';
-import { Plan } from './explore';
-import { pageable } from './explore';
+import { Plan } from '../model/Plan';
+import { pageable } from '../model/Plan';
 import { HttpClient } from '@angular/common/http';
 
 @Component({

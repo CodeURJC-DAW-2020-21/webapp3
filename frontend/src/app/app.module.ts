@@ -22,10 +22,10 @@ import { AdminTableComponent } from './admin-table/admin-table.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CategoryScreenComponent } from './category-screen/category-screen.component';
 import { ExploreComponent } from './explore/explore.component';
-import { AddCategoryComponent } from './forms/add-category/add-category.component';
-import { AddPlanComponent } from './forms/add-plan/add-plan.component';
-import { EditCategoryComponent } from './edit-category/edit-category.component';
-import { EditPlanComponent } from './edit-plan/edit-plan.component';
+import { AddCategoryComponent } from './admin/add-category/add-category.component';
+import { AddPlanComponent } from './admin/add-plan/add-plan.component';
+import { EditCategoryComponent } from './admin/edit-category/edit-category.component';
+import { EditPlanComponent } from './admin/edit-plan/edit-plan.component';
 import { CategoryInfoComponent } from './category-info/category-info.component';
 
 

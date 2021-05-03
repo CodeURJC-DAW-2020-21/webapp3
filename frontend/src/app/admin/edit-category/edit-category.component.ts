@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from "../model/Category";
-import { Image } from "../model/Image";
+import { Category } from "../../model/Category";
+import { Image } from "../../model/Image";
 import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
-import { ImageService } from "../service/image.service";
-import { CategoryService } from "../service/category.service";
+import { ImageService } from "../../service/image.service";
+import { CategoryService } from "../../service/category.service";
 
 @Component({
   selector: 'app-edit-category',
   templateUrl: './edit-category.component.html',
-  styleUrls: ['../../assets/css/editProfileStyle.css', '../../assets/css/profileStylesheet.css']
+  styleUrls: ['../../../assets/css/editProfileStyle.css', '../../../assets/css/profileStylesheet.css']
 })
 export class EditCategoryComponent implements OnInit {
 

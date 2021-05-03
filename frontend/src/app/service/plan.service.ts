@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { pageable, Plan } from './explore';
+import { pageable, Plan } from '../model/Plan';
 
 class PlanEdition {
   newDescription: string;

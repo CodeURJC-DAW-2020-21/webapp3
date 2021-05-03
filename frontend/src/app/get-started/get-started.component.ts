@@ -67,7 +67,7 @@ export class GetStartedComponent implements OnInit {
 
       this.imageService.uploadImage(this.selectedFile.file).subscribe(
         _ => {
-          this.authorizationService.logOut()
+          this.router.navigate(['']);
         })
     });
     reader.readAsDataURL(file);
@@ -89,7 +89,9 @@ export class GetStartedComponent implements OnInit {
           _ => {
             if (imageFile.files.length != 0)
               this.processFile(imageFile)
-            else this.router.navigate([''])
+            else {
+              this.router.navigate(['']);
+            }
           },
           _ => alert('Bad request')
         )
